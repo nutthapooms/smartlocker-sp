@@ -33,4 +33,12 @@ export class ItemBrowserComponent implements OnInit {
     });
   }
 
+  getFirstModelImage(model) {
+    if(model.images.length > 0){
+      return 'http://52.163.226.37/api/images/' + model.images[0];
+    } else {
+      return 'http://www.independentmediators.co.uk/wp-content/uploads/2016/02/placeholder-image.jpg'
+    }
+  }
+
 }
