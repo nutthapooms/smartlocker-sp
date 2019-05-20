@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-item-browser',
@@ -8,12 +9,28 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ItemBrowserComponent implements OnInit {
   models: any = [];
-  constructor(private http: HttpClient) { }
+  activeCategoryId: number = -1;
+  activeSubcategoryId: number = -1;
+  keyword: string = '';
+
+  constructor(private http: HttpClient,
+    private _route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.http.get('http://52.163.226.37/api/models').subscribe(data =>
-      this.models = data
-    )
+    this.fetchModels();
+  }
+
+  fetchModels() {
+
+    this._route.queryParams.subscribe(queries => {
+      if (queries.categoryId) this.activeCategoryId = queries.categoryId;
+      if (queries.subcategoryId) this.activeSubcategoryId = queries.subcategoryId;
+      let endpoint = `http://52.163.226.37/api/models?subcategoryId=${this.activeSubcategoryId}&categoryId=${this.activeCategoryId}&keyword=${this.keyword}`
+      console.log("Fetching models...", endpoint)
+      this.http.get(endpoint).subscribe(data =>
+        this.models = data
+      )
+    });
   }
 
 }

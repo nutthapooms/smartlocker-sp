@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { MomentModule } from 'ngx-moment';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,7 +26,8 @@ import { ItemBrowserComponent } from './browse-items/item-browser/item-browser.c
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
-    MomentModule
+    MomentModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

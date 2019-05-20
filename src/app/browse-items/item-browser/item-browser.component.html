@@ -1,3 +1,7 @@
+<div class="search-input">
+  <input type="text" [(ngModel)]="keyword" (keyup)="fetchModels()">
+</div>
+<div class="model-count">Showing {{models.length}} results</div>
 <div class="model-list-container">
   <div class="model-container" *ngFor="let model of models">
     <div class="model-image"></div>

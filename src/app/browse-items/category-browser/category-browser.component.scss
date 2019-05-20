@@ -25,6 +25,11 @@
             .subcategory-link {
                 line-height: 1.75rem;
                 cursor: pointer;
+                &.active {
+                  color: #2196f3;
+                  font-weight: 600;
+                  text-decoration: underline;
+              }
             }
         }
     }
