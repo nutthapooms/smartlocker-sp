@@ -11,6 +11,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { BrowseItemsComponent } from './browse-items/browse-items.component';
 import { CategoryBrowserComponent } from './browse-items/category-browser/category-browser.component';
 import { ItemBrowserComponent } from './browse-items/item-browser/item-browser.component';
+import { MyDashboardComponent } from './my-dashboard/my-dashboard.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ItemBrowserComponent } from './browse-items/item-browser/item-browser.c
     HeaderComponent,
     BrowseItemsComponent,
     CategoryBrowserComponent,
-    ItemBrowserComponent
+    ItemBrowserComponent,
+    MyDashboardComponent
   ],
   imports: [
     BrowserModule,
