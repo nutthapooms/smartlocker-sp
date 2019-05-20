@@ -11,6 +11,8 @@ export class ItemBrowserComponent implements OnInit {
   models: any = [];
   activeCategoryId: number = -1;
   activeSubcategoryId: number = -1;
+  activeSiteId: number = -1;
+  activeContainerId: number = -1;
   keyword: string = '';
 
   constructor(private http: HttpClient,
@@ -25,7 +27,9 @@ export class ItemBrowserComponent implements OnInit {
     this._route.queryParams.subscribe(queries => {
       if (queries.categoryId) this.activeCategoryId = queries.categoryId;
       if (queries.subcategoryId) this.activeSubcategoryId = queries.subcategoryId;
-      let endpoint = `http://52.163.226.37/api/items?subcategoryId=${this.activeSubcategoryId}&categoryId=${this.activeCategoryId}&keyword=${this.keyword}`
+      if (queries.siteId) this.activeSiteId = queries.siteId;
+      if (queries.containerId) this.activeContainerId = queries.containerId;
+      let endpoint = `http://52.163.226.37/api/items?subcategoryId=${this.activeSubcategoryId}&categoryId=${this.activeCategoryId}&siteId=${this.activeSiteId}&containerId=${this.activeContainerId}&keyword=${this.keyword}`
       console.log("Fetching models...", endpoint)
       this.http.get(endpoint).subscribe(data =>
         this.models = data
