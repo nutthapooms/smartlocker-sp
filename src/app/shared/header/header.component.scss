@@ -48,6 +48,9 @@
           margin-left: 1.5rem;
           color: white;
           text-decoration: none;
+          &.active {
+            font-weight: 500;
+          }
 				}
 			}
     }

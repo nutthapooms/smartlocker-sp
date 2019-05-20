@@ -25,7 +25,7 @@ export class ItemBrowserComponent implements OnInit {
     this._route.queryParams.subscribe(queries => {
       if (queries.categoryId) this.activeCategoryId = queries.categoryId;
       if (queries.subcategoryId) this.activeSubcategoryId = queries.subcategoryId;
-      let endpoint = `http://52.163.226.37/api/models?subcategoryId=${this.activeSubcategoryId}&categoryId=${this.activeCategoryId}&keyword=${this.keyword}`
+      let endpoint = `http://52.163.226.37/api/items?subcategoryId=${this.activeSubcategoryId}&categoryId=${this.activeCategoryId}&keyword=${this.keyword}`
       console.log("Fetching models...", endpoint)
       this.http.get(endpoint).subscribe(data =>
         this.models = data
