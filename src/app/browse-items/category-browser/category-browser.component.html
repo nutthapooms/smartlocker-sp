@@ -1,0 +1,12 @@
+<div class="category-container">
+  <div class="category-header">Category</div>
+  <div class="category-item">
+      <div class="category-link active">All</div>
+  </div>
+  <div class="category-item" *ngFor="let category of categories">
+    <div class="category-link">{{category.name}}</div>
+    <div class="subcategory-container" *ngFor="let subcategory of category.subcategories">
+        <div class="subcategory-link">{{subcategory.name}}</div>
+    </div>
+  </div>
+</div>

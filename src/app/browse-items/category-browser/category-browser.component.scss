@@ -1,0 +1,30 @@
+.category-container {
+    display: flex;
+    flex-direction: column;
+    color: grey;
+    .category-header {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        color: dimgrey;
+    }
+    .category-item {
+        font-size: 0.9rem;
+        .category-link {
+            line-height: 1.75rem;
+            &.active {
+                color: #2196f3;
+                font-weight: 600;
+                text-decoration: underline;
+            }
+        }
+        .subcategory-container {
+            margin-left: 0.5rem;
+            padding-left: 0.5rem;
+            border-left: 1px solid rgba(0,0,0,0.1);
+            .subcategory-link {
+                line-height: 1.75rem;
+            }
+        }
+    }
+    
+}

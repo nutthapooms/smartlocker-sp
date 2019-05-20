@@ -1,0 +1,53 @@
+.header-container {
+  background: linear-gradient(to right, #00a3e0, #3a397b);
+  .global-navigation {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0.5rem 0;
+    font-size: 0.75rem;
+    .container {
+      display: flex;
+      justify-content: flex-end;
+      .user-container {
+        display: flex;
+        align-items: center;
+        .user-profile {
+          width: 15px;
+          height: 15px;
+          border-radius: 15px;
+          background-color: white;
+          margin-right: 0.25rem;
+        }
+        .user-name {
+          color: white;
+          margin-left: auto;
+        }
+      }
+    }
+  }
+  .navigation-container {
+    color: white;
+    .container {
+      display: flex;
+			justify-content: space-between;
+			align-items: flex-end;
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+      .logo-container {
+        .logo-text {
+					font-weight: 300;
+          .logo-title {
+            font-size: 2.5rem;
+            font-weight: 400;
+          }
+          .logo-subtitle {
+          }
+        }
+			}
+			.menu-container {
+				.menu-item {
+					margin-left: 1.5rem;
+				}
+			}
+    }
+  }
+}	
