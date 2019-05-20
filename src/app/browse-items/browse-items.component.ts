@@ -8,10 +8,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BrowseItemsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    
+
   }
 
 }

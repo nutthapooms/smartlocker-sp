@@ -1,0 +1,41 @@
+.model-list-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 0.5rem;
+  .model-container {
+    display: flex;
+    .model-image {
+      background-color: black;
+      width: 75px;
+      height: 75px;
+      flex: 0 0 auto;
+
+    }
+    .model-text {
+      margin-left: 0.75rem;
+      .model-name {
+        font-size: 1rem;
+        color: dimgray;
+        line-height: 1.15rem;
+        font-weight: 500;
+      }
+      .model-category {
+        color: dimgray;
+        font-size: 0.9rem;
+        line-height: 1.15rem;
+      }
+      .model-duration {
+        color: grey;
+        font-size: 0.9rem;
+        line-height: 1.15rem;
+      }
+      .model-availability {
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin-top: 0.25rem;
+        color: #4CAF50;
+        line-height: 1.15rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+<div class="model-list-container">
+  <div class="model-container" *ngFor="let model of models">
+    <div class="model-image"></div>
+    <div class="model-text">
+      <div class="model-name">{{model.name}}</div>
+      <div class="model-category">{{model.categoryName}} / {{model.subcategoryName}}</div>
+      <div class="model-duration">{{model.defaultDuration | amDuration:'seconds'}} </div>
+      <div class="model-availability">{{model.available}} units available</div>
+    </div>
+  </div>
+</div>
