@@ -1,0 +1,12 @@
+<h2>My Watch List ({{watches.length}})</h2>
+<div class="item-list-container">
+  <div class="item-container" *ngFor="let watch of watches">
+    <div class="item-image"></div>
+    <div class="item-text">
+      <div class="item-name">{{watch.item.name}}</div>
+      <div class="item-category">{{watch.item.categoryName | uppercase}} / {{watch.item.subcategoryName | uppercase}}</div>
+      <div class="item-location">HRH / {{watch.containerName}} / {{watch.lockerName}}</div>
+      <div class="item-due">{{watch.item.available}} units available</div>
+    </div>
+  </div>
+</div>

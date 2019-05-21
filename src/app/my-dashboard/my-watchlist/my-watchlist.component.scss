@@ -1,0 +1,44 @@
+h2{
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+.item-list-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1rem;
+  .item-container {
+    display: flex;
+    .item-image {
+      width: 100px;
+      height: 100px;
+      background-color: gainsboro;
+      border-radius: 10px;
+    }
+    .item-text {
+      margin-left: 0.5rem;
+      .item-name {
+        font-weight: 500;
+        font-size: 1.1rem;
+        line-height: 1.25rem;
+        color: #333;
+      }
+      .item-category {
+        font-size: 0.75rem;
+        line-height: 1rem;
+        color: gray;
+      }
+      .item-location {
+        font-size: 0.75rem;
+        line-height: 1rem;
+        color: gray;
+      }
+      .item-due {
+        font-weight: 500;
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+      }
+    }
+  }
+  margin-bottom: 4rem;
+}

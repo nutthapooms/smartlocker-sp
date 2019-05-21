@@ -1,0 +1,24 @@
+import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment';
+import { HttpClient } from '@angular/common/http';
+
+@Component({
+  selector: 'app-my-watchlist',
+  templateUrl: './my-watchlist.component.html',
+  styleUrls: ['./my-watchlist.component.scss']
+})
+export class MyWatchlistComponent implements OnInit {
+
+  watches: any = []
+  today = moment.now();
+  constructor(private http: HttpClient) { }
+
+  ngOnInit() {
+    this.http.get('http://52.163.226.37/api/users/1/watch-list').subscribe(data => {
+        console.log(data)
+        this.watches = data;
+      }
+    )
+  }
+
+}
