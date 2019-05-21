@@ -1,0 +1,23 @@
+<div class="site-filter">
+    <div class="filter-container" *ngIf="countries">
+      <label for="" class="filter-label">COUNTRY</label>
+      <select name="" id="" [(ngModel)]="countryId" (change)="changeParams()">
+          <option [ngValue]="-1">All</option>
+        <option [ngValue]="country.id" *ngFor="let country of countries">{{country.name}}</option>
+      </select>
+    </div>
+    <div class="filter-container" [ngClass]="{'disabled': sites == null}">
+      <label for="" class="filter-label">SITE</label>
+      <select name="" id="" [(ngModel)]="siteId" (change)="changeParams()">
+        <option [ngValue]="-1">All</option>
+        <option [ngValue]="site.id" *ngFor="let site of sites">{{site.name}}</option>
+      </select>
+    </div>
+    <div class="filter-container" [ngClass]="{'disabled': containers == null}">
+      <label for="" class="filter-label">CONTAINER</label>
+      <select name="" id=""  [(ngModel)]="containerId" (change)="changeParams()">
+          <option [ngValue]="-1">All</option>
+        <option [ngValue]="container.id" *ngFor="let container of containers">{{container.name}}</option>
+      </select>
+    </div>
+  </div>

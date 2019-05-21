@@ -1,5 +1,5 @@
 .search-input {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   input {
     width: 100%;
     padding: 0.5rem;
@@ -10,6 +10,9 @@
     box-sizing: border-box;
   }
 }
+
+
+
 .model-count {
   font-size: 0.8rem;
   color: dimgrey;
@@ -21,6 +24,9 @@
   grid-gap: 1rem;
   .model-container {
     display: flex;
+    &.unavailable {
+      opacity: 0.6;
+    }
     .model-image {
       border-radius: 10px;
       background-color: #e4e4e4;
@@ -55,6 +61,12 @@
         margin-top: 0.25rem;
         color: #4CAF50;
         line-height: 1.15rem;
+        &.available-1 {
+          color: #f3b600;
+        }
+        &.available-0 {
+          color: grey;
+        }
       }
     }
   }

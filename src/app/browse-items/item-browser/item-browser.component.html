@@ -1,15 +1,18 @@
 <div class="search-input">
   <input type="text" [(ngModel)]="keyword" (keyup)="fetchModels()">
 </div>
+
+<app-item-filter></app-item-filter>
+
 <div class="model-count">Showing {{models.length}} results</div>
 <div class="model-list-container">
-  <div class="model-container" *ngFor="let model of models">
+  <div class="model-container" *ngFor="let model of models" [ngClass]="{'unavailable': model.available == 0}">
     <div class="model-image" [style.background-image]="'url(' + getFirstModelImage(model) + ')'"></div>
     <div class="model-text">
       <div class="model-name">{{model.name}}</div>
       <div class="model-category">{{model.categoryName}} / {{model.subcategoryName}}</div>
       <div class="model-duration">{{model.defaultDuration | amDuration:'seconds'}} </div>
-      <div class="model-availability">{{model.available}} units available</div>
+      <div class="model-availability" [ngClass]="'available-' + model.available">{{model.available}} units available</div>
     </div>
   </div>
 </div>

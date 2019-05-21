@@ -14,6 +14,8 @@ import { ItemBrowserComponent } from './browse-items/item-browser/item-browser.c
 import { MyDashboardComponent } from './my-dashboard/my-dashboard.component';
 import { MyItemComponent } from './my-dashboard/my-item/my-item.component';
 import { MyWatchlistComponent } from './my-dashboard/my-watchlist/my-watchlist.component';
+import { ItemFilterComponent } from './browse-items/item-filter/item-filter.component';
+import { ItemDetailComponent } from './item-detail/item-detail.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { MyWatchlistComponent } from './my-dashboard/my-watchlist/my-watchlist.c
     ItemBrowserComponent,
     MyDashboardComponent,
     MyItemComponent,
-    MyWatchlistComponent
+    MyWatchlistComponent,
+    ItemFilterComponent,
+    ItemDetailComponent,
   ],
   imports: [
     BrowserModule,

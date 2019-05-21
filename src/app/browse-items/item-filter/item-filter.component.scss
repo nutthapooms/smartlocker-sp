@@ -1,0 +1,27 @@
+.site-filter {
+  display: flex;
+  margin-bottom: 3rem;
+
+  .filter-container {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1rem;
+    &.disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    label {
+      font-size: 0.75rem;
+      color: dimgray;
+      margin-bottom: 0.25rem;
+      font-weight: 500;
+    }
+    select {
+      border: 1px solid rgb(196, 196, 196);
+      padding: 0.3rem 1rem 0.2rem 0.3rem;
+      font-family: EMPrint;
+      font-size: 1rem;
+      color: #0c69b0;
+    }
+  }
+}

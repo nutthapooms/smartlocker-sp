@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  .item-image-list {
+    display: flex;
+    flex-direction: column;
+    .item-image {
+      width: 75px;
+      height: 75px;
+      background-color: silver;
+      margin-bottom: 1rem;
+    }
+  }
+  .item-image-viewer {
+    width: 500px;
+    height: 500px;
+    background-color: silver;
+    margin-left: 1rem;
+  }
+  .item-detail {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    .detail-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1.5rem;
+      .detail-title {
+        font-size: 0.7rem;
+        color: rgb(139, 139, 139);
+        font-weight: 500;
+        line-height: 1rem;
+      }
+      .detail-body {
+        font-weight: 500;
+        color: rgb(36, 36, 36)
+      }
+    }
+  }
+}
