@@ -198,7 +198,8 @@
               "projects/online-storage/src/assets"
             ],
             "styles": [
-              "projects/online-storage/src/styles.scss"
+              "projects/online-storage/src/styles.scss",
+              "src/_reset.css"
             ],
             "scripts": [],
             "es5BrowserSupport": true
@@ -349,7 +350,8 @@
               "projects/locker-kiosk/src/assets"
             ],
             "styles": [
-              "projects/locker-kiosk/src/styles.scss"
+              "projects/locker-kiosk/src/styles.scss",
+              "src/_reset.css"
             ],
             "scripts": [],
             "es5BrowserSupport": true
