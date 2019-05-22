@@ -42,9 +42,30 @@ export class ItemFilterComponent implements OnInit {
 
 
   changeParams() {
-    if (this.countryId > -1) { this.sites = this.countries.find(each => each.id == this.countryId).sites } else { this.sites = null; this.siteId = -1 }
-    if (this.siteId > -1) { this.containers = this.sites.find(each => each.id == this.siteId).containers } else { this.containers = null; this.containerId = -1 }
-    if (this.containerId > -1) { this.lockers = this.containers.find(each => each.id == this.containerId).lockers } else { this.lockers = null; this.lockerId = -1 }
+    if (this.countryId > -1) {
+      this.http.get<Array<SiteResponse>>(`http://52.163.226.37/api/getCountries/${this.countryId}/sites`).subscribe(data => {
+        this.sites = data
+        console.log(data)
+      })
+    } else {
+      this.sites = null; this.siteId = -1
+    }
+
+    if (this.siteId > -1) {
+      this.http.get<Array<ContainerResponse>>(`http://52.163.226.37/api/getCountries/${this.countryId}/sites/${this.siteId}/containers`).subscribe(data => {
+        this.containers = data
+        console.log(data)
+      })
+    } else {
+      this.containers = null; this.containerId = -1
+    }
+
+    // if (this.containerId > -1) {
+    //   this.lockers = this.containers.find(each => each.id == this.containerId).lockers
+    // } else {
+    //   this.lockers = null; this.lockerId = -1
+    // }
+
 
 
     this._router.navigate([], {
