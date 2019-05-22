@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="item">
   <div class="item-image-list">
     <div class="item-image"></div>
     <div class="item-image"></div>
@@ -7,15 +7,15 @@
   <div class="item-detail">
     <div class="detail-group">
       <div class="detail-title">MODEL</div>
-      <div class="detail-body">Logitech M280</div>
+      <div class="detail-body">{{item.name}}</div>
     </div>
     <div class="detail-group">
         <div class="detail-title">CATEGORY</div>
-        <div class="detail-body">Input Device</div>
+        <div class="detail-body">{{item.categoryName}}</div>
       </div>
     <div class="detail-group">
       <div class="detail-title">SUBCATEGORY</div>
-      <div class="detail-body">Mouse</div>
+      <div class="detail-body">{{item.subcategoryName}}</div>
     </div>
     <div class="detail-group">
         <div class="detail-title">DURATION</div>
