@@ -7,9 +7,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "online": "ng serve --project online-storage",
-    "kiosk": "ng serve --project locker-kiosk"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
