@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CountryResponse, SiteResponse, ContainerResponse } from 'src/app/shared/model';
+import { CountryResponse, SiteResponse, ContainerResponse } from '../../../../../../src/app/shared/model';
 
 @Component({
   selector: 'app-item-browser',

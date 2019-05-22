@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CountryResponse, SiteResponse, ContainerResponse, LockerResponse } from 'src/app/shared/model';
+import { CountryResponse, SiteResponse, ContainerResponse, LockerResponse } from '../../../../../../src/app/shared/model';
 import { HttpClient } from '@angular/common/http';
 
 @Component({

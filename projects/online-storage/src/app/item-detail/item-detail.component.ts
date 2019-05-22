@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { ItemResponse } from '../shared/model';
+import { ItemResponse } from '../../../../../src/app/shared/model';
 
 @Component({
   selector: 'app-item-detail',
