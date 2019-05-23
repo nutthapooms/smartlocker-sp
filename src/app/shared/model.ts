@@ -2,12 +2,16 @@ export class LockerResponse {
   id: number;
   name: string;
   description: string;
+  total: number;
+  available: number;
 }
 
 export class ContainerResponse {
   id: number;
   name: string;
   description: string;
+  total: number;
+  available: number;
   lockers: Array<LockerResponse> = Array<LockerResponse>();
 }
 
@@ -35,4 +39,5 @@ export class ItemResponse {
   subcategoryName: string;
   categoryName: string;
   images: Array<string>;
+  availability: Array<CountryResponse>
 }

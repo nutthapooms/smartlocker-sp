@@ -4,26 +4,48 @@
 
 <div class="container item-viewer" *ngIf="item">
   <div class="item-image-list">
-    <div class="item-image" *ngFor="let image of item.images" [style.background-image]="'url(http://52.163.226.37/api/images/' + image + ')'"></div>
+    <div class="item-image" *ngFor="let image of item.images"
+      [style.background-image]="'url(http://52.163.226.37/api/images/' + image + ')'"></div>
   </div>
-  <div class="item-image-viewer" [style.background-image]="'url(http://52.163.226.37/api/images/' + activeImage + ')'"></div>
+  <div class="item-image-viewer" [style.background-image]="'url(http://52.163.226.37/api/images/' + activeImage + ')'">
+  </div>
   <div class="item-detail">
     <div class="detail-group">
       <div class="detail-title">MODEL</div>
       <div class="detail-body">{{item.name}}</div>
     </div>
     <div class="detail-group">
-        <div class="detail-title">CATEGORY</div>
-        <div class="detail-body">{{item.categoryName}}</div>
-      </div>
+      <div class="detail-title">CATEGORY</div>
+      <div class="detail-body">{{item.categoryName}}</div>
+    </div>
     <div class="detail-group">
       <div class="detail-title">SUBCATEGORY</div>
       <div class="detail-body">{{item.subcategoryName}}</div>
     </div>
     <div class="detail-group">
-        <div class="detail-title">DURATION</div>
-        <div class="detail-body">14 days</div>
-      </div>
+      <div class="detail-title">DURATION</div>
+      <div class="detail-body">14 days</div>
+    </div>
   </div>
-  <div class="item-availability"></div>
+  <div class="item-availability" *ngIf="item">
+    <div class="availability-header">
+      <div class="availability-title">Availability</div>
+      <div class="availability-country">{{activeCountry.name}}</div>
+      <div class="availability-site">{{activeSite.name}}</div>
+    </div>
+    <div class="availability-list">
+      <div class="list-country" *ngFor="let country of item.availability">
+        <div class="list-site" *ngFor="let site of country.sites">
+          <div class="list-container" *ngFor="let container of site.containers">
+            <div class="container-text">
+              <div class="container-name">{{container.name}}</div>
+              <div class="container-location">{{country.name}} / {{site.name}}</div>
+            </div>
+            <div class="container-availability">{{container.available}}/{{container.total}}</div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
