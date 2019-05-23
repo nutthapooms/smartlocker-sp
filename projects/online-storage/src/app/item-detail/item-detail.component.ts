@@ -11,6 +11,7 @@ import { ItemResponse } from '../../../../../src/app/shared/model';
 export class ItemDetailComponent implements OnInit {
   item: ItemResponse = null;
   itemId: number;
+  activeImage: string;
   constructor(private http: HttpClient,
     private _route: ActivatedRoute,
     private _router: Router) { }
@@ -22,6 +23,9 @@ export class ItemDetailComponent implements OnInit {
     this.http.get<ItemResponse>(`http://52.163.226.37/api/items/${this.itemId}`).subscribe(data => {
       this.item = data
       console.log(data)
+      if(this.item.images.length > 0) {
+        this.activeImage = this.item.images[0]
+      }
     }
 
     )

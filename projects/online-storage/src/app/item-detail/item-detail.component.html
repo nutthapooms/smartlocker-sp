@@ -1,9 +1,12 @@
-<div class="container" *ngIf="item">
+<div class="container item-name" *ngIf="item">
+  <h1>{{item.name}}</h1>
+</div>
+
+<div class="container item-viewer" *ngIf="item">
   <div class="item-image-list">
-    <div class="item-image"></div>
-    <div class="item-image"></div>
+    <div class="item-image" *ngFor="let image of item.images" [style.background-image]="'url(http://52.163.226.37/api/images/' + image + ')'"></div>
   </div>
-  <div class="item-image-viewer"></div>
+  <div class="item-image-viewer" [style.background-image]="'url(http://52.163.226.37/api/images/' + activeImage + ')'"></div>
   <div class="item-detail">
     <div class="detail-group">
       <div class="detail-title">MODEL</div>

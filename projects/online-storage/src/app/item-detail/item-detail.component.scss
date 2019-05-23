@@ -1,4 +1,13 @@
-.container {
+.item-name {
+  margin-top: 4rem;
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    color: #333;
+  }
+}
+.item-viewer {
+
   display: flex;
   .item-image-list {
     display: flex;
@@ -8,6 +17,10 @@
       height: 75px;
       background-color: silver;
       margin-bottom: 1rem;
+      flex: 0 0 auto;
+      background-position: center center;
+      background-size: contain;
+      border: 1px solid #eee;
     }
   }
   .item-image-viewer {
@@ -15,6 +28,11 @@
     height: 500px;
     background-color: silver;
     margin-left: 1rem;
+    flex: 0 0 auto;
+    background-position: center center;
+    background-size: cover;
+    border: 1px solid #eee;
+
   }
   .item-detail {
     display: flex;
@@ -32,7 +50,7 @@
       }
       .detail-body {
         font-weight: 500;
-        color: rgb(36, 36, 36)
+        color: #555;
       }
     }
   }
