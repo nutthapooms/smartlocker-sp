@@ -1,11 +1,11 @@
-<h2>My items ({{loans.length}})</h2>
-<div class="item-list-container">
-  <div class="item-container" *ngFor="let loan of loans">
-    <div class="item-image"></div>
+<h2>My items <span *ngIf="loans">({{loans.total}})</span></h2>
+<div class="item-list-container" *ngIf="loans">
+  <div class="item-container" *ngFor="let loan of loans.units">
+    <div class="item-image" [style.background-image]="'url(http://52.163.226.37/api/images/' + loan.item.images[0] + ')'"></div>
     <div class="item-text">
       <a class="item-name" routerLink="/item/{{loan.item.id}}">{{loan.item.name}}</a>
-      <div class="item-category">{{loan.item.categoryName | uppercase}} / {{loan.item.subcategoryName | uppercase}}</div>
-      <div class="item-location">HRH / {{loan.containerName}} / {{loan.lockerName}}</div>
+      <div class="item-category">{{loan.category.name | uppercase}} / {{loan.subcategory.name | uppercase}}</div>
+      <div class="item-location">{{loan.site.name}} / {{loan.container.name}} / {{loan.locker.name}}</div>
       <div class="item-due">Due in {{loan.loanDate | amParse | amDifference: today :'seconds' : true | amDuration:'seconds'}}</div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CountryResponse, SiteResponse, ContainerResponse, LockerResponse } from '../../../../../../src/app/shared/model';
+import { CountryResponse, SiteResponse, ContainerResponse, LockerResponse } from 'src/app/shared/model';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -25,7 +25,11 @@ export class ItemFilterComponent implements OnInit {
 
   ngOnInit() {
     this.fetchCountires();
-
+    this._route.queryParams.subscribe(queries => {
+      if (queries.countryId) this.countryId = queries.countryId;
+      if (queries.siteId) this.siteId = queries.siteId;
+      if (queries.containerId) this.lockerId = queries.containerId;
+    })
   }
 
 

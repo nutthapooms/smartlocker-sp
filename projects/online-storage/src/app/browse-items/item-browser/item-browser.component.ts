@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CountryResponse, SiteResponse, ContainerResponse } from '../../../../../../src/app/shared/model';
+import { CountryResponse, SiteResponse, ContainerResponse, BrowseResponse } from '../../../../../../src/app/shared/model';
 
 @Component({
   selector: 'app-item-browser',
@@ -9,7 +9,7 @@ import { CountryResponse, SiteResponse, ContainerResponse } from '../../../../..
   styleUrls: ['./item-browser.component.scss']
 })
 export class ItemBrowserComponent implements OnInit {
-  models: any = [];
+  catalog: BrowseResponse;
   containers: any = null;
 
   activeCategoryId: number = -1;
@@ -44,10 +44,10 @@ export class ItemBrowserComponent implements OnInit {
       if (queries.countryId) this.activeCountryId = queries.countryId;
       if (queries.siteId) this.activeSiteId = queries.siteId;
       if (queries.containerId) this.activeContainerId = queries.containerId;
-      let endpoint = `http://52.163.226.37/api/items?subcategoryId=${this.activeSubcategoryId}&categoryId=${this.activeCategoryId}&siteId=${this.activeSiteId}&containerId=${this.activeContainerId}&keyword=${this.keyword}&countryId=${this.activeCountryId}`
+      let endpoint = `http://52.163.226.37/api/browse-items?subcategoryId=${this.activeSubcategoryId}&categoryId=${this.activeCategoryId}&siteId=${this.activeSiteId}&containerId=${this.activeContainerId}&keyword=${this.keyword}&countryId=${this.activeCountryId}`
       console.log("Fetching models...", endpoint)
-      this.http.get(endpoint).subscribe(data =>
-        this.models = data
+      this.http.get<BrowseResponse>(endpoint).subscribe(data =>
+        this.catalog = data
       )
     });
   }

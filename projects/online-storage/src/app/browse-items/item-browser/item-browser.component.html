@@ -4,15 +4,15 @@
 
 <app-item-filter></app-item-filter>
 
-<div class="model-count">Showing {{models.length}} results</div>
-<div class="model-list-container">
-  <div class="model-container" *ngFor="let model of models" [ngClass]="{'unavailable': model.available == 0}">
-    <div class="model-image" [style.background-image]="'url(' + getFirstModelImage(model) + ')'"></div>
+<div class="model-count" *ngIf="catalog">Showing {{catalog.total}} results</div>
+<div class="model-list-container" *ngIf="catalog">
+  <div class="model-container" *ngFor="let item of catalog.items" [ngClass]="{'unavailable': item.available == 0}">
+    <div class="model-image" [style.background-image]="'url(http://52.163.226.37/api/images/' + item.item.images[0] + ')'"></div>
     <div class="model-text">
-      <a class="model-name" routerLink="/item/{{model.id}}" queryParamsHandling="preserve">{{model.name}}</a>
-      <div class="model-category">{{model.categoryName}} / {{model.subcategoryName}}</div>
-      <div class="model-duration">{{model.defaultDuration | amDuration:'seconds'}} </div>
-      <div class="model-availability" [ngClass]="'available-' + model.available">{{model.available}} units available</div>
+      <a class="model-name" routerLink="/item/{{item.item.id}}" queryParamsHandling="preserve">{{item.item.name}}</a>
+      <div class="model-category">{{item.category.name}} / {{item.subcategory.name}}</div>
+      <div class="model-duration">{{item.item.defaultDuration | amDuration:'seconds'}} </div>
+      <div class="model-availability" [ngClass]="'available-' + item.available">{{item.available}} units available</div>
     </div>
   </div>
 </div>

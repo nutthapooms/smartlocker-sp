@@ -1,0 +1,21 @@
+<div class="item-availability" *ngIf="item">
+    <div class="availability-header">
+      <div class="availability-title">Availability</div>
+      <div class="availability-country">{{activeCountry.name}}</div>
+      <div class="availability-site">{{activeSite.name}}</div>
+    </div>
+    <div class="availability-list">
+      <div class="list-country" *ngFor="let country of item.availability">
+        <div class="list-site" *ngFor="let site of country.sites">
+          <div class="list-container" *ngFor="let container of site.containers">
+            <div class="container-text">
+              <div class="container-name">{{container.name}}</div>
+              <div class="container-location">{{country.name}} / {{site.name}}</div>
+            </div>
+            <div class="container-availability">{{container.available}}/{{container.total}}</div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

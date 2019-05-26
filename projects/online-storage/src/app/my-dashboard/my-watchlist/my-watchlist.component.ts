@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { HttpClient } from '@angular/common/http';
+import { DashboardWatchResponse } from 'src/app/shared/model';
 
 @Component({
   selector: 'app-my-watchlist',
@@ -9,12 +10,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MyWatchlistComponent implements OnInit {
 
-  watches: any = []
+  watches: DashboardWatchResponse;
   today = moment.now();
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get('http://52.163.226.37/api/users/1/watch-list').subscribe(data => {
+    this.http.get<DashboardWatchResponse>('http://52.163.226.37/api/users/1/watch-list').subscribe(data => {
         console.log(data)
         this.watches = data;
       }

@@ -1,12 +1,12 @@
-<h2>My Watch List ({{watches.length}})</h2>
-<div class="item-list-container">
-  <div class="item-container" *ngFor="let watch of watches">
-    <div class="item-image"></div>
+<h2>My Watch List <span *ngIf="watches">({{watches.total}})</span></h2>
+<div class="item-list-container" *ngIf="watches">
+  <div class="item-container" *ngFor="let watch of watches.items">
+    <div class="item-image" [style.background-image]="'url(http://52.163.226.37/api/images/' + watch.item.images[0] + ')'"></div>
     <div class="item-text">
       <a class="item-name" routerLink="/item/{{watch.item.id}}">{{watch.item.name}}</a>
-      <div class="item-category">{{watch.item.categoryName | uppercase}} / {{watch.item.subcategoryName | uppercase}}</div>
-      <div class="item-location">HRH / {{watch.containerName}} / {{watch.lockerName}}</div>
-      <div class="item-due">{{watch.item.available}} units available</div>
+      <div class="item-category">{{watch.category.name | uppercase}} / {{watch.subcategory.name | uppercase}}</div>
+      <div class="item-location">{{watch.site.name}} / {{watch.container.name}}</div>
+      <div class="item-due">{{watch.available}} units available</div>
     </div>
   </div>
 </div>

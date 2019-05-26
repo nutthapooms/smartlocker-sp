@@ -1,0 +1,56 @@
+.item-availability {
+  margin-left: 2rem;
+  flex: 0 0 300px;
+
+  .availability-header {
+    background: linear-gradient(to right,#007096, #00ACA8);
+    padding: 1rem;
+    color: white;
+    .availability-title {
+      font-weight: 500;
+      line-height: 1.5rem;
+    }
+    .availability-country {
+      font-size: 0.9rem;
+      line-height: 1rem;
+    }
+    .availability-site {
+      font-size: 0.9rem;
+      line-height: 1rem;
+    }
+    .availability-container {
+      font-size: 0.9rem;
+      line-height: 1rem;
+    }
+  }
+  .availability-list {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+    border: 1px solid #eee;
+    .list-container {
+      display: flex;
+      padding: 0.5rem 0;
+      & + .list-container {
+        border-top: 1px solid #eee;
+      }
+
+      .container-text {
+        flex: 1 1 auto;
+        .container-name {
+          font-weight: 500;
+        }
+        .container-location {
+          color: #888;
+          text-transform: uppercase;
+          font-size: 0.7rem;
+          line-height: 1rem;
+        }
+      }
+      .container-availability{
+        font-weight: 500;
+      }
+    }
+  }
+
+}
