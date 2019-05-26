@@ -150,6 +150,7 @@ export class TypeSubcategory {
 
 export class ItemDetailResponse {
   public item: ItemDTO;
+  public loans: ItemDetailLoan;
   public availability: Array<ItemDetailAvailabilityContainer> = new Array<ItemDetailAvailabilityContainer>();
 }
 export class ItemDetailAvailabilityContainer {
@@ -158,4 +159,9 @@ export class ItemDetailAvailabilityContainer {
   public country: CountryDTO;
   public total: number;
   public available: number;
+}
+export class ItemDetailLoan {
+  public loanDate: Date;
+  public returnDate: Date;
+  public dueDate: Date;
 }

@@ -29,5 +29,6 @@
   </div>
   <div class="item-status">
       <app-availability [availability]="item.availability"></app-availability>
+      <app-loan [loan]="loan" *ngFor="let loan of item.loans"></app-loan>
   </div>
 </div>

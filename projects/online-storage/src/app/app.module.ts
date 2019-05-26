@@ -17,6 +17,7 @@ import { MyWatchlistComponent } from './my-dashboard/my-watchlist/my-watchlist.c
 import { ItemFilterComponent } from './browse-items/item-filter/item-filter.component';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
 import { AvailabilityComponent } from './item-detail/availability/availability.component';
+import { LoanComponent } from './item-detail/loan/loan.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { AvailabilityComponent } from './item-detail/availability/availability.c
     ItemFilterComponent,
     ItemDetailComponent,
     AvailabilityComponent,
+    LoanComponent,
   ],
   imports: [
     BrowserModule,

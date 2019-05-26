@@ -1,0 +1,63 @@
+.item-loan {
+  margin-left: 2rem;
+  flex: 0 0 300px;
+
+  .loan-header {
+    background: linear-gradient(to right,#007096, #00ACA8);
+    padding: 1rem;
+    color: white;
+    .loan-title {
+      font-weight: 500;
+      line-height: 1.5rem;
+    }
+    .loan-country {
+      font-size: 0.9rem;
+      line-height: 1rem;
+    }
+    .loan-site {
+      font-size: 0.9rem;
+      line-height: 1rem;
+      &.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+      }
+    }
+    .loan-container {
+      font-size: 0.9rem;
+      line-height: 1rem;
+    }
+
+    select {
+      border: none;
+      background: none;
+      color: white;
+      font-family: EMPrint;
+      padding: 0;
+      option {
+        color: black;
+      }
+    }
+  }
+  .loan-detail {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    border: 1px solid #eee;
+    .detail-item {
+      & + .detail-item {
+        margin-top: 2rem;
+      }
+      .detail-title {
+        color: #888;
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        line-height: 1rem;
+
+      }
+      .detail-body {
+        font-weight: 500;
+
+      }
+    }
+  }
+}
