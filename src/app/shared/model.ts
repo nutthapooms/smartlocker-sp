@@ -117,3 +117,33 @@ export class BrowseItem {
   public total: number;
   public available: number;
 }
+
+export class LocationResponse {
+  public countries: Array<LocationCountry> = new Array<LocationCountry>();
+}
+export class LocationCountry {
+  public country: CountryDTO;
+  public sites: Array<LocationSite>;
+}
+export class LocationSite {
+  public site: SiteDTO;
+  public containers: Array<LocationContainer> = new Array<LocationContainer>();
+}
+export class LocationContainer {
+  public container: ContainerDTO;
+  public lockers: Array<LocationLocker> = new Array<LocationLocker>();
+}
+export class LocationLocker {
+  public locker: LockerDTO;
+}
+export class TypeResponse {
+  public categories: Array<TypeCategory> = new Array<TypeCategory>();
+}
+export class TypeCategory {
+
+  public category: CategoryDTO;
+  public subcategories: Array<TypeSubcategory> = new Array<TypeSubcategory>();
+}
+export class TypeSubcategory {
+  public subcategory: SubcategoryDTO;
+}

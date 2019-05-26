@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CountryResponse, SiteResponse, ContainerResponse, LockerResponse } from 'src/app/shared/model';
+import { CountryResponse, SiteResponse, ContainerResponse, LockerResponse, LocationResponse, LocationCountry, LocationSite, LocationContainer, LocationLocker } from 'src/app/shared/model';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -14,10 +14,16 @@ export class ItemFilterComponent implements OnInit {
   containerId: number = -1;
   lockerId: number = -1;
 
-  countries: Array<CountryResponse> = null;
-  sites: Array<SiteResponse> = null;
-  containers: Array<ContainerResponse> = null;
-  lockers: Array<LockerResponse> = null;
+  locations: LocationResponse;
+
+  countries: Array<LocationCountry> = null;
+  sites: Array<LocationSite> = null;
+  containers: Array<LocationContainer> = null;
+  lockers: Array<LocationLocker> = null;
+
+  activeCountry: LocationCountry = null;
+  activeSite: LocationSite = null;
+  activeContainer: LocationContainer = null;
 
   constructor(private http: HttpClient,
     private _route: ActivatedRoute,
@@ -25,39 +31,41 @@ export class ItemFilterComponent implements OnInit {
 
   ngOnInit() {
     this.fetchCountires();
-    this._route.queryParams.subscribe(queries => {
-      if (queries.countryId) this.countryId = queries.countryId;
-      if (queries.siteId) this.siteId = queries.siteId;
-      if (queries.containerId) this.lockerId = queries.containerId;
-    })
+
   }
 
 
   fetchCountires() {
-    let endpoint = `http://52.163.226.37/api/countries`
+    let endpoint = `http://52.163.226.37/api/browse-locations`
     console.log("Fetching containers...", endpoint)
-    this.http.get<Array<CountryResponse>>(endpoint).subscribe(data => {
-      this.countries = data
-      console.log(data)
-    }
-
-    )
+    this.http.get<LocationResponse>(endpoint).subscribe(data => {
+      this.locations = data
+      this._route.queryParams.subscribe(queries => {
+        console.log(queries)
+        if (queries.countryId != null) this.activeCountry = this.locations.countries.find(x => x.country.id == queries.countryId);
+        if (queries.siteId != null && this.activeCountry != null) this.activeSite = this.activeCountry.sites.find(x => x.site.id == queries.siteId);
+        if (queries.containerId != null && this.activeSite != null) this.activeContainer = this.activeSite.containers.find(x => x.container.id == queries.containerId);
+      })
+    })
   }
 
 
   changeParams() {
-    if (this.countryId > -1) { this.sites = this.countries.find(each => each.id == this.countryId).sites } else { this.sites = null; this.siteId = -1 }
-    if (this.siteId > -1) { this.containers = this.sites.find(each => each.id == this.siteId).containers } else { this.containers = null; this.containerId = -1 }
-    if (this.containerId > -1) { this.lockers = this.containers.find(each => each.id == this.containerId).lockers } else { this.lockers = null; this.lockerId = -1 }
+    let countryId = null;
+    if(this.activeCountry) countryId = this.activeCountry.country.id;
 
+    let siteId = null;
+    if(this.activeSite) siteId = this.activeSite.site.id;
+
+    let containerId = null;
+    if(this.activeContainer) containerId = this.activeContainer.container.id;
 
     this._router.navigate([], {
       relativeTo: this._route,
       queryParams: {
-        countryId: this.countryId,
-        siteId: this.siteId,
-        containerId: this.containerId,
-        lockerId: this.lockerId
+        countryId: countryId,
+        siteId: siteId,
+        containerId: containerId
       },
       queryParamsHandling: 'merge',
     });

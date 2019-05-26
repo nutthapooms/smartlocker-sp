@@ -1,12 +1,12 @@
-<div class="category-container">
+<div class="category-container" *ngIf="types">
   <div class="category-header">Category</div>
-  <div class="category-item">
-      <div class="category-link" [ngClass]="{'active': activeCategoryId == -1 && activeSubcategoryId == -1}" (click)="addCategoryParams(-1); addSubcategoryParams(-1)">All</div>
+  <div class="category-item" >
+      <div class="category-link" [ngClass]="{'active': activeCategoryId == null && activeSubcategoryId == null}" (click)="addCategoryParams(null); addSubcategoryParams(null)">All</div>
   </div>
-  <div class="category-item" *ngFor="let category of categories">
-    <div class="category-link" (click)="addCategoryParams(category.id)" [ngClass]="{'active': activeCategoryId == category.id}">{{category.name}}</div>
+  <div class="category-item" *ngFor="let category of types.categories">
+    <div class="category-link" (click)="addCategoryParams(category.category.id)" [ngClass]="{'active': activeCategoryId == category.category.id}">{{category.category.name}}</div>
     <div class="subcategory-container" *ngFor="let subcategory of category.subcategories">
-        <div class="subcategory-link" (click)="addSubcategoryParams(subcategory.id)" [ngClass]="{'active': activeSubcategoryId == subcategory.id}">{{subcategory.name}}</div>
+        <div class="subcategory-link" (click)="addSubcategoryParams(subcategory.subcategory.id)" [ngClass]="{'active': activeSubcategoryId == subcategory.subcategory.id}">{{subcategory.subcategory.name}}</div>
     </div>
   </div>
 </div>
