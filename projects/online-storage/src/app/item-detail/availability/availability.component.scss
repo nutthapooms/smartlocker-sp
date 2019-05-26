@@ -17,10 +17,25 @@
     .availability-site {
       font-size: 0.9rem;
       line-height: 1rem;
+      &.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+      }
     }
     .availability-container {
       font-size: 0.9rem;
       line-height: 1rem;
+    }
+
+    select {
+      border: none;
+      background: none;
+      color: white;
+      font-family: EMPrint;
+      padding: 0;
+      option {
+        color: black;
+      }
     }
   }
   .availability-list {

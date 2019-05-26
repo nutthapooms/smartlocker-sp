@@ -13,7 +13,6 @@
       <ng-container *ngIf="activeCountry">
         <option [ngValue]="site" *ngFor="let site of activeCountry.sites">{{site.site.name}}</option>
       </ng-container>
-
     </select>
   </div>
   <div class="filter-container" [ngClass]="{'disabled': activeSite == null}">

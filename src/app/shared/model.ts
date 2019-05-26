@@ -147,3 +147,15 @@ export class TypeCategory {
 export class TypeSubcategory {
   public subcategory: SubcategoryDTO;
 }
+
+export class ItemDetailResponse {
+  public item: ItemDTO;
+  public availability: Array<ItemDetailAvailabilityContainer> = new Array<ItemDetailAvailabilityContainer>();
+}
+export class ItemDetailAvailabilityContainer {
+  public container: ContainerDTO;
+  public site: SiteDTO;
+  public country: CountryDTO;
+  public total: number;
+  public available: number;
+}

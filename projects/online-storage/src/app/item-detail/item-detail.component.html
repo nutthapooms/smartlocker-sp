@@ -1,10 +1,10 @@
 <div class="container item-name" *ngIf="item">
-  <h1>{{item.name}}</h1>
+  <h1>{{item.item.name}}</h1>
 </div>
 
 <div class="container item-viewer" *ngIf="item">
   <div class="item-image-list">
-    <div class="item-image" *ngFor="let image of item.images"
+    <div class="item-image" *ngFor="let image of item.item.images"
       [style.background-image]="'url(http://52.163.226.37/api/images/' + image + ')'"></div>
   </div>
   <div class="item-image-viewer" [style.background-image]="'url(http://52.163.226.37/api/images/' + activeImage + ')'">
@@ -12,15 +12,15 @@
   <div class="item-detail">
     <div class="detail-group">
       <div class="detail-title">MODEL</div>
-      <div class="detail-body">{{item.name}}</div>
+      <div class="detail-body">{{item.item.name}}</div>
     </div>
     <div class="detail-group">
       <div class="detail-title">CATEGORY</div>
-      <div class="detail-body">{{item.categoryName}}</div>
+      <!-- <div class="detail-body">{{item.item.categoryName}}</div> -->
     </div>
     <div class="detail-group">
       <div class="detail-title">SUBCATEGORY</div>
-      <div class="detail-body">{{item.subcategoryName}}</div>
+      <!-- <div class="detail-body">{{item.subcategoryName}}</div> -->
     </div>
     <div class="detail-group">
       <div class="detail-title">DURATION</div>
@@ -28,6 +28,6 @@
     </div>
   </div>
   <div class="item-status">
-      <app-availability [item]="item" [activeSite]="activeContainer" [activeSite]="activeSite"></app-availability>
+      <app-availability [availability]="item.availability"></app-availability>
   </div>
 </div>
