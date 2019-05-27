@@ -48,15 +48,26 @@
         margin-top: 2rem;
       }
       .detail-title {
-        color: #888;
+        color: #999;
         text-transform: uppercase;
         font-size: 0.7rem;
         line-height: 1rem;
-
+        margin-bottom: 0.2rem;
       }
       .detail-body {
         font-weight: 500;
 
+      }
+      .detail-due {
+        display: inline-block;
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 0.75rem;
+        background-color: darkred;
+        color: white;
+        margin-top: 0.25rem;
+        padding: 0.35rem 0.75rem;
+        border-radius: 50px;
       }
     }
   }

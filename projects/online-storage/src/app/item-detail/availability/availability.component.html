@@ -24,7 +24,11 @@
               <div class="container-name">{{container.container.name}}</div>
               <div class="container-location">{{container.country.name}} / {{container.site.name}}</div>
             </div>
-            <div class="container-availability">{{container.available}}/{{container.total}}</div>
+            <div class="container-availability">
+              <div class="availability-number">{{container.available}}/{{container.total}}</div>
+              <button class="availability-action" (click)="notifyMe(container)" *ngIf="container.watch == null">Notify me</button>
+              <button class="availability-action" (click)="unnotifyMe(container)" *ngIf="container.watch != null">Unnotify me</button>
+            </div>
     </div>
   </div>
 </div>

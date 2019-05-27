@@ -159,9 +159,16 @@ export class ItemDetailAvailabilityContainer {
   public country: CountryDTO;
   public total: number;
   public available: number;
+  public subscribedEmployees: Array<number>;
+  public watch: WatchDTO;
 }
 export class ItemDetailLoan {
   public loanDate: Date;
   public returnDate: Date;
   public dueDate: Date;
+}
+
+export class WatchDTO {
+  public id: number;
+  public Item: ItemDTO;
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ItemDetailLoan } from 'src/app/shared/model';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-loan',
@@ -7,7 +8,8 @@ import { ItemDetailLoan } from 'src/app/shared/model';
   styleUrls: ['./loan.component.scss']
 })
 export class LoanComponent implements OnInit {
-  @Input() loan: Array<ItemDetailLoan>;
+  @Input() loan: ItemDetailLoan;
+  today = moment.now();
 
   constructor() { }
 

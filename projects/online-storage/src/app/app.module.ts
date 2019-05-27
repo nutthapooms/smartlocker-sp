@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { MomentModule } from 'ngx-moment';
 import { FormsModule } from '@angular/forms';
@@ -18,6 +18,7 @@ import { ItemFilterComponent } from './browse-items/item-filter/item-filter.comp
 import { ItemDetailComponent } from './item-detail/item-detail.component';
 import { AvailabilityComponent } from './item-detail/availability/availability.component';
 import { LoanComponent } from './item-detail/loan/loan.component';
+import { TokenInterceptor } from 'src/app/shared/auth.token';
 
 
 @NgModule({
@@ -43,7 +44,13 @@ import { LoanComponent } from './item-detail/loan/loan.component';
     MomentModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

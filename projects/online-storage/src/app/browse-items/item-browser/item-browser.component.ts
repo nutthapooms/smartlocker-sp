@@ -39,12 +39,12 @@ export class ItemBrowserComponent implements OnInit {
 
   fetchModels() {
     this._route.queryParams.subscribe(queries => {
-      if (queries.categoryId) this.activeCategoryId = queries.categoryId;
-      if (queries.subcategoryId) this.activeSubcategoryId = queries.subcategoryId;
+      if (queries.categoryId) {this.activeCategoryId = queries.categoryId} else {this.activeCategoryId = null};
+      if (queries.subcategoryId) {this.activeSubcategoryId = queries.subcategoryId} else {this.activeSubcategoryId = null};
       if (queries.countryId) this.activeCountryId = queries.countryId;
       if (queries.siteId) this.activeSiteId = queries.siteId;
       if (queries.containerId) this.activeContainerId = queries.containerId;
-      let endpoint = `http://52.163.226.37/api/browse-items?subcategoryId=${this.activeSubcategoryId}&categoryId=${this.activeCategoryId}&siteId=${this.activeSiteId}&containerId=${this.activeContainerId}&keyword=${this.keyword}&countryId=${this.activeCountryId}`
+      let endpoint = `http://52.163.226.37/api/items?subcategoryId=${this.activeSubcategoryId}&categoryId=${this.activeCategoryId}&siteId=${this.activeSiteId}&containerId=${this.activeContainerId}&keyword=${this.keyword}&countryId=${this.activeCountryId}`
       console.log("Fetching models...", endpoint)
       this.http.get<BrowseResponse>(endpoint).subscribe(data =>
         this.catalog = data

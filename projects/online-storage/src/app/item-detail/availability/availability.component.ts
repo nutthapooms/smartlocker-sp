@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ItemResponse, CountryResponse, SiteResponse, ContainerResponse, ItemDetailAvailabilityContainer, LocationResponse, LocationCountry, LocationSite, LocationContainer } from 'src/app/shared/model';
+import { ItemResponse, CountryResponse, SiteResponse, ContainerResponse, ItemDetailAvailabilityContainer, LocationResponse, LocationCountry, LocationSite, LocationContainer, WatchDTO, ItemDTO } from 'src/app/shared/model';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -10,10 +10,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AvailabilityComponent implements OnInit {
   @Input() availability: Array<ItemDetailAvailabilityContainer>;
+  @Input() item: ItemDTO;
   filteredAvailability: Array<ItemDetailAvailabilityContainer>;
   activeCountry: LocationCountry = null;
   activeSite: LocationSite = null;
-
+  isNotifiable: boolean = false;
   locations: LocationResponse;
   constructor(private http: HttpClient,
     private _route: ActivatedRoute,
@@ -58,9 +59,23 @@ export class AvailabilityComponent implements OnInit {
     this.filteredAvailability = JSON.parse(JSON.stringify(this.availability));
 
     if(this.activeCountry) this.filteredAvailability = this.filteredAvailability.filter(x => x.country.id == this.activeCountry.country.id);
-    if(this.activeSite) this.filteredAvailability = this.filteredAvailability.filter(x => x.site.id == this.activeSite.site.id);
+    // if(this.activeSite) this.filteredAvailability = this.filteredAvailability.filter(x => x.site.id == this.activeSite.site.id);
 
     console.log(this.filteredAvailability)
   }
+
+  notifyMe(container: ItemDetailAvailabilityContainer) {
+    this.http.post<WatchDTO>(`http://localhost:80/api/items/${this.item.id}/watch`, {
+      "containerId": container.container.id
+    }).subscribe(data => {
+      container.watch = data;
+    })
+  }
+  unnotifyMe(container: ItemDetailAvailabilityContainer) {
+    this.http.delete<number>(`http://localhost:80/api/items/${this.item.id}/watch/${container.watch.id}`).subscribe(data => {
+      container.watch = null;
+    })
+  }
+
 
 }
