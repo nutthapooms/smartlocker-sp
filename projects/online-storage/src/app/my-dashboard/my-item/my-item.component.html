@@ -6,7 +6,7 @@
       <a class="item-name" routerLink="/item/{{loan.item.id}}">{{loan.item.name}}</a>
       <div class="item-category">{{loan.category.name | uppercase}} / {{loan.subcategory.name | uppercase}}</div>
       <div class="item-location">{{loan.site.name}} / {{loan.container.name}} / {{loan.locker.name}}</div>
-      <div class="item-due">Due in {{loan.loanDate | amParse | amDifference: today :'seconds' : true | amDuration:'seconds'}}</div>
+      <div class="item-due">Due in {{loan.dueDate | amParse | amTimeAgo}}</div>
     </div>
   </div>
 </div>

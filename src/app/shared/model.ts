@@ -87,7 +87,7 @@ export class DashboardLoanUnit {
   public container: ContainerDTO;
   public locker: LockerDTO;
   public loanDate: Date;
-  public returnDate: Date;
+  public dueDate: Date;
 }
 export class DashboardWatchResponse {
   public total: number;
