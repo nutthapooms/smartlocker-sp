@@ -60,17 +60,21 @@ export class SubcategoryDTO {
 export class CountryDTO {
   public id: number;
   public name: string;
+  public siteCount: number;
 }
 export class SiteDTO {
   public id: number;
+  public containerCount: number;
   public name: string;
 }
 export class ContainerDTO {
   public id: number;
+  public lockerCount: number;
   public name: string;
 }
 export class LockerDTO {
   public id: number;
+  public unitCount: number;
   public name: string;
 }
 

@@ -1,0 +1,5 @@
+<ol class="em-c-breadcrumbs " role="navigation">
+    <li class="em-c-breadcrumbs__item" *ngFor="let item of breadcrumbs">
+      <a routerLink="{{item.url}}" class="em-c-breadcrumbs__link ">{{item.label}}</a>
+    </li>
+  </ol>
