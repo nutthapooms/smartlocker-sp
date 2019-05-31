@@ -1,7 +1,4 @@
-<div class="em-c-page-header em-c-page-header--small">
-    <h1 class="em-c-page-header__title">Lockers </h1>
-  </div>
-  <div class="em-c-table-object ">
+<div class="em-c-table-object ">
     <div class="em-c-table-object__body">
       <div class="em-c-table-object__body-inner">
         <table class="em-c-table ">
@@ -13,16 +10,16 @@
             </tr>
           </thead>
           <tbody class="em-c-table__body ">
-            <tr class="em-c-table__row " *ngFor="let locker of lockers">
+            <tr class="em-c-table__row">
               <td class="em-c-table__cell " colspan="">
-                {{locker.name}}
+               a
               </td>
               <td class="em-c-table__cell " colspan="">
-                <a [routerLink]="locker.id + '/units'">{{locker.unitCount}} units</a>
+                <a [routerLink]="'/lockers'">a lockers</a>
               </td>
               <td class="em-c-table__cell " colspan="">
-                <a [routerLink]="locker.id + '/edit'"><strong>Edit</strong></a>
-                <a [routerLink]="locker.id"><strong>View</strong></a>
+                <a [routerLink]="'/edit'"><strong>Edit</strong></a>
+                <a [routerLink]=""><strong>View</strong></a>
               </td>
             </tr>
           </tbody>
@@ -80,4 +77,3 @@
         </div>
       </div>
     </div>
-  </div>

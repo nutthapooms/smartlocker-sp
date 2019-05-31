@@ -24,7 +24,7 @@ export class AvailabilityComponent implements OnInit {
     this.fetchCountires()
   }
   fetchCountires() {
-    let endpoint = `http://52.163.226.37/api/browse-locations`
+    let endpoint = `http://52.163.226.37/api/online/browse-locations`
     console.log("Fetching containers...", endpoint)
     this.http.get<LocationResponse>(endpoint).subscribe(data => {
       this.locations = data

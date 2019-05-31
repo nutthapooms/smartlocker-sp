@@ -1,5 +1,5 @@
 <div class="em-c-page-header em-c-page-header--small">
-  <h1 class="em-c-page-header__title">Countries </h1>
+  <h1 class="em-c-page-header__title">Sites </h1>
 </div>
 <div class="em-c-table-object ">
   <div class="em-c-table-object__body">
@@ -7,22 +7,25 @@
       <table class="em-c-table ">
         <thead class="em-c-table__header">
           <tr class="em-c-table__header-row">
-            <th scope="col" class="em-c-table__header-cell ">Name</th>
-            <th scope="col" class="em-c-table__header-cell ">Sites</th>
+            <th scope="col" class="em-c-table__header-cell ">Model name</th>
+            <th scope="col" class="em-c-table__header-cell ">Serial Number</th>
+            <th scope="col" class="em-c-table__header-cell ">Barcode Number</th>
             <th scope="col" class="em-c-table__header-cell ">Action</th>
           </tr>
         </thead>
         <tbody class="em-c-table__body ">
-          <tr class="em-c-table__row " *ngFor="let country of countries">
+          <tr class="em-c-table__row " *ngFor="let unit of units">
             <td class="em-c-table__cell " colspan="">
-              {{country.name}}
+              {{unit.item.name}}
             </td>
             <td class="em-c-table__cell " colspan="">
-              <a [routerLink]="country.id + '/sites'">{{country.siteCount}} sites</a>
+              {{unit.name}}
             </td>
             <td class="em-c-table__cell " colspan="">
-              <a [routerLink]="country.id + '/edit'"><strong>Edit</strong></a>
-              <a [routerLink]="country.id + '/delete'" [queryParams]="{endpoint: '/countries/' + country.id, next: '/countries'}"><strong>Delete</strong></a>
+              {{unit.name}}
+            </td>
+            <td class="em-c-table__cell " colspan="">
+              <a [routerLink]="unit.id + '/edit'"><strong>Remove</strong></a>
             </td>
           </tr>
         </tbody>

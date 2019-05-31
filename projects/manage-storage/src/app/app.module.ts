@@ -19,6 +19,16 @@ import { ContainerFormComponent } from './container/container-form/container-for
 import { LockerFormComponent } from './locker/locker-form/locker-form.component';
 import { LockerListComponent } from './locker/locker-list/locker-list.component';
 import { LockerDetailComponent } from './locker/locker-detail/locker-detail.component';
+import { TableComponent } from './shared/table/table.component';
+import { UnitListComponent } from './unit/unit-list/unit-list.component';
+import { UnitFormComponent } from './unit/unit-form/unit-form.component';
+import { UnitDetailComponent } from './unit/unit-detail/unit-detail.component';
+import { DeviceListComponent } from './device/device-list/device-list.component';
+import { CategoryListComponent } from './category/category-list/category-list.component';
+import { SubcategoryListComponent } from './subcategory/subcategory-list/subcategory-list.component';
+import { ItemListComponent } from './item/item-list/item-list.component';
+import { FormsModule } from '@angular/forms';
+import { DeleteConfirmationComponent } from './shared/delete-confirmation/delete-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -37,12 +47,22 @@ import { LockerDetailComponent } from './locker/locker-detail/locker-detail.comp
     ContainerFormComponent,
     LockerFormComponent,
     LockerListComponent,
-    LockerDetailComponent
+    LockerDetailComponent,
+    TableComponent,
+    UnitListComponent,
+    UnitFormComponent,
+    UnitDetailComponent,
+    DeviceListComponent,
+    CategoryListComponent,
+    SubcategoryListComponent,
+    ItemListComponent,
+    DeleteConfirmationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

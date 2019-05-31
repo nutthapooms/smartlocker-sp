@@ -12,7 +12,7 @@ export class CountryListComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get<Array<CountryDTO>>('http://52.163.226.37/api/countries').subscribe(data => {
+    this.http.get<Array<CountryDTO>>('http://52.163.226.37/api/admin/countries').subscribe(data => {
         console.log(data)
         this.countries = data;
       }

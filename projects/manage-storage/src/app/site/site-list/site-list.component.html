@@ -22,7 +22,7 @@
               </td>
               <td class="em-c-table__cell " colspan="">
                 <a [routerLink]="site.id + '/edit'"><strong>Edit</strong></a>
-                <a [routerLink]="site.id"><strong>View</strong></a>
+                <a [routerLink]="site.id + '/delete'" [queryParams]="{endpoint: '/sites/' + site.id, next: '/countries/' + countryId + '/sites'}"><strong>Delete</strong></a>
               </td>
             </tr>
           </tbody>

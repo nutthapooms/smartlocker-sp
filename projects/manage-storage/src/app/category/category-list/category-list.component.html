@@ -1,5 +1,5 @@
 <div class="em-c-page-header em-c-page-header--small">
-  <h1 class="em-c-page-header__title">Countries </h1>
+  <h1 class="em-c-page-header__title">Categories </h1>
 </div>
 <div class="em-c-table-object ">
   <div class="em-c-table-object__body">
@@ -13,16 +13,16 @@
           </tr>
         </thead>
         <tbody class="em-c-table__body ">
-          <tr class="em-c-table__row " *ngFor="let country of countries">
+          <tr class="em-c-table__row " *ngFor="let category of categories">
             <td class="em-c-table__cell " colspan="">
-              {{country.name}}
+              {{category.name}}
             </td>
             <td class="em-c-table__cell " colspan="">
-              <a [routerLink]="country.id + '/sites'">{{country.siteCount}} sites</a>
+              <a [routerLink]="category.id + '/subcategories'">{{category.subcategoryCount}} subcategories</a>
             </td>
             <td class="em-c-table__cell " colspan="">
-              <a [routerLink]="country.id + '/edit'"><strong>Edit</strong></a>
-              <a [routerLink]="country.id + '/delete'" [queryParams]="{endpoint: '/countries/' + country.id, next: '/countries'}"><strong>Delete</strong></a>
+              <a [routerLink]="category.id + '/edit'"><strong>Edit</strong></a>
+              <a [routerLink]="category.id"><strong>View</strong></a>
             </td>
           </tr>
         </tbody>

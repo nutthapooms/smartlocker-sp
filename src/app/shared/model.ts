@@ -45,16 +45,19 @@ export class ItemResponse {
 
 export class ItemDTO {
   public id: number;
+  public unitCount: number;
   public name: string;
   public images: Array<number>;
   public defaultDuration: number;
 }
 export class CategoryDTO {
   public id: number;
+  public subcategoryCount: number;
   public name: string;
 }
 export class SubcategoryDTO {
   public id: number;
+  public itemCount: number;
   public name: string;
 }
 export class CountryDTO {
@@ -175,4 +178,13 @@ export class ItemDetailLoan {
 export class WatchDTO {
   public id: number;
   public Item: ItemDTO;
+}
+export class UnitDTO {
+  public id: number;
+  public locker: LockerDTO;
+  public container: ContainerDTO;
+  public site: SiteDTO;
+  public country: CountryDTO;
+  public item: ItemDTO;
+  public name: string;
 }

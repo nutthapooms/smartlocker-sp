@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoryDTO, LockerDTO } from 'src/app/shared/model';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
-import { LockerDTO } from 'src/app/shared/model';
 
 @Component({
-  selector: 'app-locker-list',
-  templateUrl: './locker-list.component.html',
-  styleUrls: ['./locker-list.component.scss']
+  selector: 'app-category-list',
+  templateUrl: './category-list.component.html',
+  styleUrls: ['./category-list.component.scss']
 })
-export class LockerListComponent implements OnInit {
-  lockers: LockerDTO[];
+export class CategoryListComponent implements OnInit {
+
+  categories: CategoryDTO[];
   containerId: string;
 
   constructor(private http: HttpClient,
@@ -20,11 +21,12 @@ export class LockerListComponent implements OnInit {
     let params = new HttpParams();
     if(this.containerId) params = params.append('containerId', this.containerId);
 
-    this.http.get<Array<LockerDTO>>(`http://52.163.226.37/api/admin/lockers`, { params: params }).subscribe(data => {
+    this.http.get<Array<CategoryDTO>>(`http://52.163.226.37/api/admin/categories`, { params: params }).subscribe(data => {
         console.log(data)
-        this.lockers = data;
+        this.categories = data;
       }
     )
   }
+
 
 }

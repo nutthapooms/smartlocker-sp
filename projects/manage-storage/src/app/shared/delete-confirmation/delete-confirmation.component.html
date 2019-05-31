@@ -1,24 +1,17 @@
 <div class="em-c-page-header ">
-  <h1 class="em-c-page-header__title" *ngIf="siteId == null">Add Site </h1>
-  <h1 class="em-c-page-header__title" *ngIf="siteId != null">Edit Site </h1>
-  <p class="em-c-page-header__desc"></p>
+  <h1 class="em-c-page-header__title">Delete confirmation </h1>
+  <p class="em-c-page-header__desc">Would you like to delete?</p>
 </div>
-<div class="em-l--two-column" *ngIf="siteId == null || site != null">
+<div class="em-l--two-column">
   <div class="em-l__main">
     <div class="em-l-linelength-container">
       <form action="#" method="post" class="em-js-form" validate>
         <fieldset class="em-c-fieldset">
           <!-- <legend class="em-c-fieldset__legend">Legend</legend> -->
-          <div class="em-c-field ">
-            <label for="file" class="em-c-field__label">Site Name</label>
-            <div class="em-c-field__body">
-              <input type="" id="file" class="em-c-input" [(ngModel)]="site.name" name="site-name" required />
-            </div>
-          </div>
 
           <div class="em-c-btn-group ">
             <button class="em-c-btn em-c-btn--primary">
-              <span class="em-c-btn__text" (click)="submitForm()">Submit</span>
+              <span class="em-c-btn__text" (click)="delete()">Delete</span>
             </button>
             <a [routerLink]="'../../'" class="em-c-btn em-c-btn--secondary">
               <span class="em-c-btn__text">Cancel</span>
