@@ -1,0 +1,45 @@
+<div class="em-c-page-header ">
+  <h1 class="em-c-page-header__title" *ngIf="itemId == null">Add Item </h1>
+  <h1 class="em-c-page-header__title" *ngIf="itemId != null">Edit Item </h1>
+</div>
+<div class="em-l--two-column">
+  <div class="em-l__main">
+    <div class="em-l-linelength-container">
+      <form action="#" method="post" class="em-js-form" validate>
+        <fieldset class="em-c-fieldset">
+          <div class="em-c-field ">
+            <label for="file" class="em-c-field__label">Name</label>
+            <div class="em-c-field__body">
+              <input type="" id="file" class="em-c-input" name="item-name" [(ngModel)]="itemRequest.name" />
+            </div>
+            <div class="em-c-field__note">This is a note about the field</div>
+          </div>
+          <div class="em-c-field em-c-field--file-upload ">
+            <label for="file" class="em-c-field__label">Image</label>
+            <div class="em-c-field__body">
+              <svg class="em-c-icon em-c-icon--large em-c-field__block-icon">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/images/48/em-icons.svg#upload"></use>
+              </svg>
+              <input type="file" name="file[]" id="file" class="em-c-file-upload" placeholder="Placeholder" value=""
+                multiple="" (change)="onFileSelected($event)"/>
+              <ul class="em-c-field__list em-js-field-list">
+                <li class="em-c-field__item">Drag files here</li>
+                <li class="em-c-field__item em-c-field__item--small">Or click to choose file</li>
+              </ul>
+            </div>
+            <div class="em-c-field__note">{{itemRequest.attachments.length}}</div>
+          </div>
+          <div class="em-c-btn-group ">
+            <button class="em-c-btn em-c-btn--primary" (click)="submitForm()">
+              <span class="em-c-btn__text">Submit</span>
+            </button>
+            <button class="em-c-btn em-c-btn--secondary">
+              <span class="em-c-btn__text">Cancel</span>
+            </button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <div class="em-l__secondary">
+  </div>

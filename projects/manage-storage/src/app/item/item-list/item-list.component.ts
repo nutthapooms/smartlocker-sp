@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ItemListComponent implements OnInit {
 
   items: ItemDTO[];
+  categoryId: string;
   subcategoryId: string;
 
   constructor(private http: HttpClient,
@@ -18,6 +19,7 @@ export class ItemListComponent implements OnInit {
 
   ngOnInit() {
     this.subcategoryId = this.route.snapshot.paramMap.get('subcategoryId');
+    this.categoryId = this.route.snapshot.paramMap.get('categoryId');
     let params = new HttpParams();
     if(this.subcategoryId) params = params.append('subcategoryId', this.subcategoryId);
 

@@ -29,6 +29,7 @@ import { SubcategoryListComponent } from './subcategory/subcategory-list/subcate
 import { ItemListComponent } from './item/item-list/item-list.component';
 import { FormsModule } from '@angular/forms';
 import { DeleteConfirmationComponent } from './shared/delete-confirmation/delete-confirmation.component';
+import { ItemFormComponent } from './item/item-form/item-form.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { DeleteConfirmationComponent } from './shared/delete-confirmation/delete
     CategoryListComponent,
     SubcategoryListComponent,
     ItemListComponent,
-    DeleteConfirmationComponent
+    DeleteConfirmationComponent,
+    ItemFormComponent
   ],
   imports: [
     BrowserModule,

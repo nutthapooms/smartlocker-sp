@@ -13,6 +13,10 @@ import { ItemListComponent } from './item/item-list/item-list.component';
 import { DeleteConfirmationComponent } from './shared/delete-confirmation/delete-confirmation.component';
 import { SiteDetailComponent } from './site/site-detail/site-detail.component';
 import { SiteFormComponent } from './site/site-form/site-form.component';
+import { ContainerFormComponent } from './container/container-form/container-form.component';
+import { ItemFormComponent } from './item/item-form/item-form.component';
+import { LockerFormComponent } from './locker/locker-form/locker-form.component';
+import { UnitFormComponent } from './unit/unit-form/unit-form.component';
 
 const routes: Routes = [
   { path: 'countries', component: CountryListComponent },
@@ -28,11 +32,29 @@ const routes: Routes = [
   { path: 'countries/:countryId/sites/:siteId/delete', component: DeleteConfirmationComponent },
 
   { path: 'countries/:countryId/sites/:siteId/containers', component: ContainerListComponent },
+  { path: 'countries/:countryId/sites/:siteId/containers/add', component: ContainerFormComponent },
+  { path: 'countries/:countryId/sites/:siteId/containers/:containerId/edit', component: ContainerFormComponent },
+  { path: 'countries/:countryId/sites/:siteId/containers/:containerId/delete', component: DeleteConfirmationComponent },
+
+
+
   { path: 'countries/:countryId/sites/:siteId/containers/:containerId/lockers', component: LockerListComponent },
+  { path: 'countries/:countryId/sites/:siteId/containers/:containerId/lockers/add', component: LockerFormComponent },
+  { path: 'countries/:countryId/sites/:siteId/containers/:containerId/lockers/:lockerId/edit', component: LockerFormComponent },
+  { path: 'countries/:countryId/sites/:siteId/containers/:containerId/lockers/:lockerId/delete', component: DeleteConfirmationComponent },
+
+
   { path: 'countries/:countryId/sites/:siteId/containers/:containerId/lockers/:lockerId/units', component: UnitListComponent },
+  { path: 'countries/:countryId/sites/:siteId/containers/:containerId/lockers/:lockerId/units/add', component: UnitFormComponent },
+
+
   { path: 'categories', component: CategoryListComponent },
   { path: 'categories/:categoryId/subcategories', component: SubcategoryListComponent },
+
   { path: 'categories/:categoryId/subcategories/:subcategoryId/items', component: ItemListComponent },
+  { path: 'categories/:categoryId/subcategories/:subcategoryId/items/add', component: ItemFormComponent },
+  { path: 'categories/:categoryId/subcategories/:subcategoryId/items/:itemId/edit', component: ItemFormComponent },
+  { path: 'categories/:categoryId/subcategories/:subcategoryId/items/:itemId/delete', component: DeleteConfirmationComponent },
 
 
 ];

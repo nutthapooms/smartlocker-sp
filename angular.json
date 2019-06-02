@@ -541,7 +541,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "manage-storage:build"
+            "browserTarget": "manage-storage:build",
+            "port": 4500
           },
           "configurations": {
             "production": {

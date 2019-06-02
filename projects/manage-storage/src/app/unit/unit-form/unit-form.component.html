@@ -1,3 +1,65 @@
-<p>
-  unit-form works!
-</p>
+<div class="em-c-page-header ">
+  <h1 class="em-c-page-header__title">Add item unit to locker </h1>
+  <p class="em-c-page-header__desc">This is a brief description of what this form is about.</p>
+</div>
+<div class="em-l--two-column">
+  <div class="em-l__main">
+    <div class="em-l-linelength-container">
+      <form action="#" method="post" class="em-js-form" validate>
+        <fieldset class="em-c-fieldset">
+          <div class="em-c-field ">
+            <label for="file" class="em-c-field__label">Category</label>
+            <div class="em-c-field__body">
+              <select class="em-c-select em-c-select" id="file" (change)="fetchSubcategory(categoryId)" [(ngModel)]="categoryId" name="category">
+                <option [ngValue]="category.id" *ngFor="let category of categories">{{category.name}}</option>
+              </select>
+            </div>
+            <div class="em-c-field__note">This is a note about the field</div>
+          </div>
+          <div class="em-c-field ">
+            <label for="file" class="em-c-field__label">Subcategory</label>
+            <div class="em-c-field__body">
+              <select class="em-c-select em-c-select" id="file" name="subcategory" (change)="fetchItem(subcategoryId)" [(ngModel)]="subcategoryId">
+                <option [ngValue]="subcategory.id" *ngFor="let subcategory of subcategories">{{subcategory.name}}</option>
+              </select>
+            </div>
+            <div class="em-c-field__note">This is a note about the field</div>
+          </div>
+          <div class="em-c-field ">
+            <label for="file" class="em-c-field__label">Item</label>
+            <div class="em-c-field__body">
+              <select class="em-c-select em-c-select" id="file" placeholder="Placeholder"  [(ngModel)]="itemId" name="item" (change)="fetchUnit(itemId)">
+                <option [ngValue]="item.id" *ngFor="let item of items">{{item.name}}</option>
+              </select>
+            </div>
+            <div class="em-c-field__note">This is a note about the field</div>
+          </div>
+          <div class="em-c-field ">
+            <h4 for="file" class="em-c-field__label">Unit</h4>
+            <div class="em-c-field__body">
+              <ul class="em-c-option-list ">
+                <li class="em-c-option-list__item em-js-radio-trigger-parent"  *ngFor="let unit of units">
+                  <label class="em-c-input-group" for="radio-{{unit.id}}">
+                    <input id="radio-{{unit.id}}" type="radio" name="radioname" [value]="unit.id" class="em-c-input-group__control em-js-radio-trigger" checked [(ngModel)]="unitId" name="unit" >
+                    <span class="em-c-input-group__text">{{unit.id}} {{unit.item.name}} {{unit.container.name}}</span>
+                  </label>
+                </li>
+              </ul>
+            </div>
+            <div class="em-c-field__note">This is a note about the field</div>
+          </div>
+          <div class="em-c-btn-group ">
+            <button class="em-c-btn em-c-btn--primary" (click)="submitForm()">
+              <span class="em-c-btn__text">Submit</span>
+            </button>
+            <button class="em-c-btn em-c-btn--secondary">
+              <span class="em-c-btn__text">Cancel</span>
+            </button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <div class="em-l__secondary">
+  </div>
+</div>

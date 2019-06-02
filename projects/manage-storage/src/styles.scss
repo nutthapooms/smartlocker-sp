@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+.em-c-table__cell {
+  a + a {
+    margin-left: 1rem;
+  }
+}

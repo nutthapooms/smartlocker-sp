@@ -65,14 +65,14 @@ export class AvailabilityComponent implements OnInit {
   }
 
   notifyMe(container: ItemDetailAvailabilityContainer) {
-    this.http.post<WatchDTO>(`http://localhost:80/api/items/${this.item.id}/watch`, {
+    this.http.post<WatchDTO>(`http://localhost:80/api/online/items/${this.item.id}/watch`, {
       "containerId": container.container.id
     }).subscribe(data => {
       container.watch = data;
     })
   }
   unnotifyMe(container: ItemDetailAvailabilityContainer) {
-    this.http.delete<number>(`http://localhost:80/api/items/${this.item.id}/watch/${container.watch.id}`).subscribe(data => {
+    this.http.delete<number>(`http://localhost:80/api/online/items/${this.item.id}/watch/${container.watch.id}`).subscribe(data => {
       container.watch = null;
     })
   }

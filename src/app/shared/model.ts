@@ -26,7 +26,7 @@ export class CountryResponse {
   id: number;
   name: string;
   description: string;
-  sites: Array<SiteResponse> = new  Array<SiteResponse>();
+  sites: Array<SiteResponse> = new Array<SiteResponse>();
 }
 
 export class ItemResponse {
@@ -107,8 +107,8 @@ export class DashboardWatchItem {
   public country: CountryDTO;
   public site: SiteDTO;
   public container: ContainerDTO;
-  public available : number;
-  public total : number;
+  public available: number;
+  public total: number;
 
   public watchSince: Date;
 }
@@ -187,4 +187,11 @@ export class UnitDTO {
   public country: CountryDTO;
   public item: ItemDTO;
   public name: string;
+}
+
+
+export class ItemRequest {
+  public name: string;
+  public subcategoryId: string;
+  public attachments: Array<number> = new Array<number>();
 }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ContainerDTO } from 'src/app/shared/model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-container-form',
@@ -7,9 +10,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContainerFormComponent implements OnInit {
 
-  constructor() { }
+  countryId: string;
+  siteId: string;
+  containerId: string;
+  container: ContainerDTO = new ContainerDTO();
+
+  constructor(private http: HttpClient,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
+    this.siteId = this.route.snapshot.paramMap.get('siteId');
+    this.containerId = this.route.snapshot.paramMap.get('containerId');
+    this.countryId = this.route.snapshot.paramMap.get('countryId');
+    if(this.containerId != null) {
+      this.http.get<ContainerDTO>(`http://52.163.226.37/api/admin/containers/${this.containerId}`).subscribe(data => {
+        console.log(data)
+        this.container = data;
+      })
+    }
+
   }
 
+  submitForm() {
+    let endpoint: string;
+    if(this.containerId != null) {
+      endpoint = `http://52.163.226.37/api/admin/containers/${this.containerId}`
+     } else {
+      endpoint = `http://52.163.226.37/api/admin/containers`
+     }
+
+    this.http.post<any>(endpoint, {
+      "name": this.container.name,
+      "siteId": this.siteId
+    }).subscribe(data => {
+      console.log(this.route.parent)
+      this.router.navigate(['/countries/',this.countryId,'sites', this.siteId,'containers'])
+    })
+  }
 }

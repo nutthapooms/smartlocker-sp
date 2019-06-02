@@ -44,7 +44,7 @@ export class ItemBrowserComponent implements OnInit {
       if (queries.countryId) this.activeCountryId = queries.countryId;
       if (queries.siteId) this.activeSiteId = queries.siteId;
       if (queries.containerId) this.activeContainerId = queries.containerId;
-      let endpoint = `http://52.163.226.37/api/items?subcategoryId=${this.activeSubcategoryId}&categoryId=${this.activeCategoryId}&siteId=${this.activeSiteId}&containerId=${this.activeContainerId}&keyword=${this.keyword}&countryId=${this.activeCountryId}`
+      let endpoint = `http://52.163.226.37/api/online/items?subcategoryId=${this.activeSubcategoryId}&categoryId=${this.activeCategoryId}&siteId=${this.activeSiteId}&containerId=${this.activeContainerId}&keyword=${this.keyword}&countryId=${this.activeCountryId}`
       console.log("Fetching models...", endpoint)
       this.http.get<BrowseResponse>(endpoint).subscribe(data =>
         this.catalog = data
