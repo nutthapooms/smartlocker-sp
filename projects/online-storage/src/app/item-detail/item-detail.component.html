@@ -16,15 +16,15 @@
     </div>
     <div class="detail-group">
       <div class="detail-title">CATEGORY</div>
-      <!-- <div class="detail-body">{{item.item.categoryName}}</div> -->
+      <div class="detail-body">{{item.item.category.name}}</div>
     </div>
     <div class="detail-group">
       <div class="detail-title">SUBCATEGORY</div>
-      <!-- <div class="detail-body">{{item.subcategoryName}}</div> -->
+      <div class="detail-body">{{item.item.subcategory.name}}</div>
     </div>
     <div class="detail-group">
       <div class="detail-title">DURATION</div>
-      <div class="detail-body">14 days</div>
+      <div class="detail-body">{{item.item.defaultDuration | amDuration:'seconds'}}</div>
     </div>
   </div>
   <div class="item-status">

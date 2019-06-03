@@ -49,6 +49,9 @@ export class ItemDTO {
   public name: string;
   public images: Array<number>;
   public defaultDuration: number;
+  public category: CategoryDTO;
+  public subcategory: SubcategoryDTO;
+
 }
 export class CategoryDTO {
   public id: number;
@@ -174,6 +177,8 @@ export class ItemDetailLoan {
   public loanDate: Date;
   public returnDate: Date;
   public dueDate: Date;
+  public unit: UnitDTO;
+
 }
 
 export class WatchDTO {
