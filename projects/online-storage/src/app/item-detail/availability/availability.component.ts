@@ -55,11 +55,9 @@ export class AvailabilityComponent implements OnInit {
       },
       queryParamsHandling: 'merge',
     });
-
     this.filteredAvailability = JSON.parse(JSON.stringify(this.availability));
-
     if(this.activeCountry) this.filteredAvailability = this.filteredAvailability.filter(x => x.country.id == this.activeCountry.country.id);
-    // if(this.activeSite) this.filteredAvailability = this.filteredAvailability.filter(x => x.site.id == this.activeSite.site.id);
+    if(this.activeSite) this.filteredAvailability = this.filteredAvailability.filter(x => x.site.id == this.activeSite.site.id);
 
     console.log(this.filteredAvailability)
   }
