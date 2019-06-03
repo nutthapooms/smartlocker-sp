@@ -50,5 +50,8 @@ export class ItemDetailComponent implements OnInit {
 
     )
   }
+  setActiveImage(imageId: number){
+    this.activeImage = imageId;
+  }
 
 }

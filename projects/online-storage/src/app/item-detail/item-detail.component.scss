@@ -15,23 +15,25 @@
     .item-image {
       width: 75px;
       height: 75px;
-      background-color: silver;
+      background-color: white;
       margin-bottom: 1rem;
       flex: 0 0 auto;
       background-position: center center;
       background-size: contain;
       border: 1px solid #eee;
+      background-repeat: no-repeat;
     }
   }
   .item-image-viewer {
     width: 500px;
     height: 500px;
-    background-color: silver;
+    background-color: white;;
     margin-left: 1rem;
     flex: 0 0 auto;
     background-position: center center;
-    background-size: cover;
+    background-size: contain;
     border: 1px solid #eee;
+    background-repeat:  no-repeat;
 
   }
   .item-detail {
