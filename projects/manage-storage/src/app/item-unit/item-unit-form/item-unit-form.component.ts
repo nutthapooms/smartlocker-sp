@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UnitDTO } from 'src/app/shared/model';
+import { UnitDTO, ItemDTO } from 'src/app/shared/model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { GetDtoService } from 'src/app/shared/get-dto.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-item-unit-form',
@@ -15,10 +17,13 @@ export class ItemUnitFormComponent implements OnInit {
   unit: UnitDTO = new UnitDTO();
   subcategoryId: string;
   categoryId: string;
+  item: ItemDTO;
 
   constructor(private http: HttpClient,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private dto: GetDtoService,
+    private location: Location) { }
 
   ngOnInit() {
     this.unitId = this.route.snapshot.paramMap.get('unitId');
@@ -31,8 +36,11 @@ export class ItemUnitFormComponent implements OnInit {
         this.unit = data;
       })
     }
+    this.dto.getDTO('items', this.itemId).subscribe(data => this.item = data)
 
   }
+
+
 
   submitForm() {
     let endpoint: string;
@@ -43,10 +51,17 @@ export class ItemUnitFormComponent implements OnInit {
      }
 
     this.http.post<any>(endpoint, {
-      "name": this.unit.name,
+      "barcode": this.unit.barcode,
+      "serialNumber": this.unit.serialNumber,
       "itemId": this.itemId
     }).subscribe(data => {
       this.router.navigate(['/categories',this.categoryId,'subcategories', this.subcategoryId,'items', this.itemId,'units'])
     })
+
+
+  }
+
+  back() {
+    this.location.back();
   }
 }

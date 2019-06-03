@@ -11,8 +11,8 @@
       <table class="em-c-table ">
         <thead class="em-c-table__header">
           <tr class="em-c-table__header-row">
-            <th scope="col" class="em-c-table__header-cell ">Name</th>
-            <th scope="col" class="em-c-table__header-cell ">Sites</th>
+            <th scope="col" class="em-c-table__header-cell ">Subcategory Name</th>
+            <th scope="col" class="em-c-table__header-cell ">Models</th>
             <th scope="col" class="em-c-table__header-cell ">Action</th>
           </tr>
         </thead>
@@ -22,11 +22,11 @@
               {{subcategory.name}}
             </td>
             <td class="em-c-table__cell " colspan="">
-              <a [routerLink]="subcategory.id + '/items'">{{subcategory.itemCount}} devices</a>
+              <a [routerLink]="subcategory.id + '/items'">{{subcategory.itemCount}} models</a>
             </td>
             <td class="em-c-table__cell " colspan="">
               <a [routerLink]="subcategory.id + '/edit'"><strong>Edit</strong></a>
-              <a [routerLink]="subcategory.id + '/delete'" [queryParams]="{endpoint: '/subcategories/' + subcategory.id, next: '/categories/' + categoryId + '/subcategories/'}"><strong>Delete</strong></a>
+              <a [routerLink]="subcategory.id + '/delete'" [queryParams]="{endpoint: '/subcategories/' + subcategory.id, next: currentLocation()}"><strong>Delete</strong></a>
             </td>
           </tr>
         </tbody>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SiteDTO } from 'src/app/shared/model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-site-form',
@@ -15,7 +16,9 @@ export class SiteFormComponent implements OnInit {
 
   constructor(private http: HttpClient,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private location: Location) { }
+
 
   ngOnInit() {
     this.siteId = this.route.snapshot.paramMap.get('siteId');
@@ -44,6 +47,9 @@ export class SiteFormComponent implements OnInit {
       console.log(this.route.parent)
       this.router.navigate(['/countries/',this.countryId,'sites'])
     })
+  }
+  back() {
+    this.location.back();
   }
 
 }

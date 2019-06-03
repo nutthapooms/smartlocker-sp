@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ItemRequest, ContainerDTO, ItemDTO } from 'src/app/shared/model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-item-form',
@@ -17,7 +18,9 @@ export class ItemFormComponent implements OnInit {
   itemId: string;
   constructor(private http: HttpClient,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private location: Location) { }
+
 
   ngOnInit() {
 
@@ -60,6 +63,9 @@ export class ItemFormComponent implements OnInit {
     this.http.post<any>(endpoint, this.itemRequest).subscribe(data => {
       this.router.navigate(['/categories',this.categoryId,'subcategories', this.subcategoryId,'items'])
     })
+  }
+  back() {
+    this.location.back();
   }
 
 }

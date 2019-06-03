@@ -24,7 +24,7 @@
             </td>
             <td class="em-c-table__cell " colspan="">
               <a [routerLink]="country.id + '/edit'"><strong>Edit</strong></a>
-              <a [routerLink]="country.id + '/delete'" [queryParams]="{endpoint: '/countries/' + country.id, next: '/countries'}"><strong>Delete</strong></a>
+              <a [routerLink]="country.id + '/delete'" [queryParams]="{endpoint: '/countries/' + country.id, next: currentLocation()}"><strong>Delete</strong></a>
             </td>
           </tr>
         </tbody>

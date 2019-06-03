@@ -11,7 +11,8 @@
       <table class="em-c-table ">
         <thead class="em-c-table__header">
           <tr class="em-c-table__header-row">
-            <th scope="col" class="em-c-table__header-cell ">Name</th>
+            <th scope="col" class="em-c-table__header-cell ">Model name</th>
+            <th scope="col" class="em-c-table__header-cell ">Images</th>
             <th scope="col" class="em-c-table__header-cell ">Units</th>
             <th scope="col" class="em-c-table__header-cell ">Action</th>
           </tr>
@@ -22,12 +23,15 @@
               {{item.name}}
             </td>
             <td class="em-c-table__cell " colspan="">
+                {{item.images.length}} images
+              </td>
+            <td class="em-c-table__cell " colspan="">
               <a [routerLink]="item.id + '/units'">{{item.unitCount}} units</a>
             </td>
             <td class="em-c-table__cell " colspan="">
               <a [routerLink]="item.id + '/edit'"><strong>Edit</strong></a>
               <a [routerLink]="item.id + '/delete'"
-                [queryParams]="{endpoint: '/items/' + item.id, next: '/categories/' + categoryId + '/subcategories/' + subcategoryId + '/items'}"><strong>Delete</strong></a>
+                [queryParams]="{endpoint: '/items/' + item.id, next: currentLocation()}"><strong>Delete</strong></a>
             </td>
           </tr>
         </tbody>

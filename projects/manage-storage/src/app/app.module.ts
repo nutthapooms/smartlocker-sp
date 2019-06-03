@@ -35,6 +35,7 @@ import { CategoryFormComponent } from './category/category-form/category-form.co
 import { SubcategoryFormComponent } from './subcategory/subcategory-form/subcategory-form.component';
 import { ItemUnitFormComponent } from './item-unit/item-unit-form/item-unit-form.component';
 import { ItemUnitListComponent } from './item-unit/item-unit-list/item-unit-list.component';
+import { GlobalService } from 'src/app/shared/global.service';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,10 @@ import { ItemUnitListComponent } from './item-unit/item-unit-list/item-unit-list
     HttpClientModule,
     FormsModule
   ],
-  providers: [GetDtoService],
+  providers: [
+    GetDtoService,
+    GlobalService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

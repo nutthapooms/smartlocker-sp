@@ -3,6 +3,7 @@ import { ItemDTO, CategoryDTO, SubcategoryDTO } from 'src/app/shared/model';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { GetDtoService } from 'src/app/shared/get-dto.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-item-list',
@@ -20,7 +21,8 @@ export class ItemListComponent implements OnInit {
 
   constructor(private http: HttpClient,
     private route: ActivatedRoute,
-    private dto: GetDtoService) { }
+    private dto: GetDtoService,
+    private location: Location) { }
 
 
   ngOnInit() {
@@ -36,6 +38,9 @@ export class ItemListComponent implements OnInit {
       this.dto.getDTO('categories', this.categoryId).subscribe(data => this.category = data)
       this.dto.getDTO('subcategories', this.subcategoryId).subscribe(data => this.subcategory = data)
 
+  }
+  currentLocation() {
+    return this.location.path()
   }
 
 }

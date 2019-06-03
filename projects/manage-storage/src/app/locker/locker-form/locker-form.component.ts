@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LockerDTO } from 'src/app/shared/model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-locker-form',
@@ -19,7 +20,8 @@ export class LockerFormComponent implements OnInit {
 
   constructor(private http: HttpClient,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private location: Location) { }
 
   ngOnInit() {
     this.countryId = this.route.snapshot.paramMap.get('countryId');
@@ -51,6 +53,10 @@ export class LockerFormComponent implements OnInit {
       console.log(this.route.parent)
       this.router.navigate(['/countries/',this.countryId,'sites', this.siteId,'containers', this.containerId,'lockers'])
     })
+  }
+
+  back() {
+    this.location.back();
   }
 
 }

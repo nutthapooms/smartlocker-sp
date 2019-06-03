@@ -14,12 +14,12 @@
         <thead class="em-c-table__header">
           <tr class="em-c-table__header-row">
             <th scope="col" class="em-c-table__header-cell ">ID</th>
-            <th scope="col" class="em-c-table__header-cell ">Serial Number</th>
             <th scope="col" class="em-c-table__header-cell ">Barcode Number</th>
-            <th scope="col" class="em-c-table__header-cell ">Locker</th>
-            <th scope="col" class="em-c-table__header-cell ">Container</th>
-            <th scope="col" class="em-c-table__header-cell ">Site</th>
+            <th scope="col" class="em-c-table__header-cell ">Serial Number</th>
             <th scope="col" class="em-c-table__header-cell ">Country</th>
+            <th scope="col" class="em-c-table__header-cell ">Site</th>
+            <th scope="col" class="em-c-table__header-cell ">Container</th>
+            <th scope="col" class="em-c-table__header-cell ">Locker</th>
             <th scope="col" class="em-c-table__header-cell ">Action</th>
           </tr>
         </thead>
@@ -29,34 +29,35 @@
               {{unit.id}}
             </td>
             <td class="em-c-table__cell " colspan="">
-              {{unit.name}}
+              {{unit.barcode}}
             </td>
             <td class="em-c-table__cell " colspan="">
-              {{unit.name}}
+              {{unit.serialNumber}}
             </td>
             <td class="em-c-table__cell " colspan="">
-              <span *ngIf="unit.locker">{{unit.locker.name}}</span>
-              <span *ngIf="!unit.locker">N/A</span>
+              <span *ngIf="unit.country">{{unit.country.name}}</span>
+              <span *ngIf="!unit.country">N/A</span>
             </td>
+            <td class="em-c-table__cell " colspan="">
+              <span *ngIf="unit.site">{{unit.site.name}}</span>
+              <span *ngIf="!unit.site">N/A</span>
+            </td>
+
             <td class="em-c-table__cell " colspan="">
               <span *ngIf="unit.container">{{unit.container.name}}</span>
               <span *ngIf="!unit.container">N/A</span>
 
             </td>
-            <td class="em-c-table__cell " colspan="">
-              <span *ngIf="unit.site">{{unit.site.name}}</span>
-              <span *ngIf="!unit.site">N/A</span>
 
-            </td>
             <td class="em-c-table__cell " colspan="">
-              <span *ngIf="unit.country">{{unit.country.name}}</span>
-              <span *ngIf="!unit.country">N/A</span>
+              <span *ngIf="unit.locker">{{unit.locker.name}}</span>
+              <span *ngIf="!unit.locker">N/A</span>
+            </td>
 
-            </td>
             <td class="em-c-table__cell " colspan="">
-                <a [routerLink]="unit.id + '/edit'"><strong>Edit</strong></a>
-                <a [routerLink]="unit.id + '/delete'"
-                [queryParams]="{endpoint: '/units/' + unit.id, next: '/categories/' + categoryId + '/subcategories/' + subcategoryId + '/items/' + itemId +'/units'}"><strong>Delete</strong></a>
+              <a [routerLink]="unit.id + '/edit'"><strong>Edit</strong></a>
+              <a [routerLink]="unit.id + '/delete'"
+                [queryParams]="{endpoint: '/units/' + unit.id, next: currentLocation()}"><strong>Delete</strong></a>
             </td>
           </tr>
         </tbody>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SubcategoryDTO } from 'src/app/shared/model';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-subcategory-form',
@@ -17,7 +18,8 @@ export class SubcategoryFormComponent implements OnInit {
 
   constructor(private http: HttpClient,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private location: Location) { }
 
   ngOnInit() {
     this.categoryId = this.route.snapshot.paramMap.get('categoryId');
@@ -47,6 +49,10 @@ export class SubcategoryFormComponent implements OnInit {
       console.log(this.route.parent)
       this.router.navigate(['/categories/',this.categoryId,'subcategories'])
     })
+  }
+
+  back() {
+    this.location.back();
   }
 
 }

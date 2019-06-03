@@ -187,7 +187,9 @@ export class UnitDTO {
   public site: SiteDTO;
   public country: CountryDTO;
   public item: ItemDTO;
-  public name: string;
+  public barcode: string;
+  public serialNumber: string;
+  public isReported: boolean;
 }
 
 

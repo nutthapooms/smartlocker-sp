@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { SubcategoryDTO, CategoryDTO } from 'src/app/shared/model';
 import { ActivatedRoute } from '@angular/router';
 import { GetDtoService } from 'src/app/shared/get-dto.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-subcategory-list',
@@ -18,7 +19,8 @@ export class SubcategoryListComponent implements OnInit {
 
   constructor(private http: HttpClient,
     private route: ActivatedRoute,
-    private dto: GetDtoService) { }
+    private dto: GetDtoService,
+    private location: Location) { }
 
   ngOnInit() {
     this.categoryId = this.route.snapshot.paramMap.get('categoryId');
@@ -31,6 +33,10 @@ export class SubcategoryListComponent implements OnInit {
       })
       this.dto.getDTO('categories', this.categoryId).subscribe(data => this.category = data)
 
+  }
+
+  currentLocation() {
+    return this.location.path()
   }
 
 }

@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { UnitDTO, CountryDTO, SiteDTO, ContainerDTO } from 'src/app/shared/model';
 import { ActivatedRoute } from '@angular/router';
 import { GetDtoService } from 'src/app/shared/get-dto.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-unit-list',
@@ -25,7 +26,8 @@ export class UnitListComponent implements OnInit {
 
   constructor(private http: HttpClient,
     private route: ActivatedRoute,
-    private dto: GetDtoService) { }
+    private dto: GetDtoService,
+    private location: Location) { }
 
   ngOnInit() {
     this.countryId = this.route.snapshot.paramMap.get('countryId');
@@ -47,6 +49,10 @@ export class UnitListComponent implements OnInit {
     this.dto.getDTO('containers', this.containerId).subscribe(data => this.container = data)
     this.dto.getDTO('lockers', this.lockerId).subscribe(data => this.locker = data)
 
+  }
+
+  currentLocation() {
+    return this.location.path()
   }
 
 }

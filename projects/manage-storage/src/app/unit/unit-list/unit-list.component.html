@@ -25,13 +25,13 @@
               {{unit.item.name}}
             </td>
             <td class="em-c-table__cell " colspan="">
-              {{unit.name}}
+              {{unit.serialNumber}}
             </td>
             <td class="em-c-table__cell " colspan="">
-              {{unit.name}}
+              {{unit.barcode}}
             </td>
             <td class="em-c-table__cell " colspan="">
-              <a [routerLink]="unit.id + '/edit'"><strong>Remove</strong></a>
+              <a [routerLink]="unit.id + '/unassign'" [queryParams]="{endpoint: '/units/' + unit.id + '/assign', next: currentLocation()}"><strong>Unassign</strong></a>
             </td>
           </tr>
         </tbody>
@@ -45,7 +45,7 @@
   <div class="em-c-table-object__footer">
       <div class="em-c-toolbar ">
         <div class="em-c-toolbar__item">
-          <a [routerLink]="'add'">Add</a>
+          <a [routerLink]="'add'">Assign item</a>
         </div>
       </div>
     </div>

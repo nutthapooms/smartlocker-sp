@@ -50,6 +50,7 @@ const routes: Routes = [
 
   { path: 'countries/:countryId/sites/:siteId/containers/:containerId/lockers/:lockerId/units', component: UnitListComponent },
   { path: 'countries/:countryId/sites/:siteId/containers/:containerId/lockers/:lockerId/units/add', component: UnitFormComponent },
+  { path: 'countries/:countryId/sites/:siteId/containers/:containerId/lockers/:lockerId/units/:unitId/unassign', component: DeleteConfirmationComponent },
 
 
   { path: 'categories', component: CategoryListComponent },

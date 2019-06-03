@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CategoryDTO, LockerDTO } from 'src/app/shared/model';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-category-list',
@@ -14,7 +15,8 @@ export class CategoryListComponent implements OnInit {
   containerId: string;
 
   constructor(private http: HttpClient,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private location: Location) { }
 
   ngOnInit() {
     this.containerId = this.route.snapshot.paramMap.get('containerId');
@@ -26,6 +28,10 @@ export class CategoryListComponent implements OnInit {
         this.categories = data;
       }
     )
+  }
+
+  currentLocation() {
+    return this.location.path()
   }
 
 

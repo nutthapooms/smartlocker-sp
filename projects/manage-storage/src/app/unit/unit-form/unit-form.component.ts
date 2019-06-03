@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CategoryDTO, SubcategoryDTO, ItemDTO, UnitDTO } from 'src/app/shared/model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-unit-form',
@@ -28,7 +29,9 @@ export class UnitFormComponent implements OnInit {
 
   constructor(private http: HttpClient,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private location: Location) { }
+
 
 
   ngOnInit() {
@@ -81,6 +84,10 @@ export class UnitFormComponent implements OnInit {
       console.log(this.route.parent)
       this.router.navigate(['/countries/',this.countryId,'sites',this.siteId,'containers',this.containerId,'lockers',this.lockerId,'units'])
     })
+  }
+
+  back() {
+    this.location.back();
   }
 
 }

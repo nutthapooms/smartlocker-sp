@@ -9,10 +9,25 @@
       <form action="#" method="post" class="em-js-form" validate>
         <fieldset class="em-c-fieldset">
           <!-- <legend class="em-c-fieldset__legend">Legend</legend> -->
+
+          <div class="em-c-field " *ngIf="item">
+            <label for="file" class="em-c-field__label">Item</label>
+            <div class="em-c-field__body">
+              <input type="" id="file" class="em-c-input" [(ngModel)]="item.name" name="item-name"
+                disabled="disabled" />
+            </div>
+          </div>
+
           <div class="em-c-field ">
             <label for="file" class="em-c-field__label">Barcode Number</label>
             <div class="em-c-field__body">
-              <input type="" id="file" class="em-c-input" [(ngModel)]="unit.name" name="unit-name" required />
+              <input type="" id="file" class="em-c-input" [(ngModel)]="unit.barcode" name="unit-barcode" required />
+            </div>
+          </div>
+          <div class="em-c-field ">
+            <label for="file" class="em-c-field__label">Serial Number (optional)</label>
+            <div class="em-c-field__body">
+              <input type="" id="file" class="em-c-input" [(ngModel)]="unit.serialNumber" name="unit-serial" />
             </div>
           </div>
 
@@ -20,9 +35,9 @@
             <button class="em-c-btn em-c-btn--primary" (click)="submitForm()">
               <span class="em-c-btn__text">Submit</span>
             </button>
-            <a [routerLink]="'/countries'" class="em-c-btn em-c-btn--secondary">
-              <span class="em-c-btn__text">Cancel</span>
-            </a>
+            <a (click)="back()" class="em-c-btn em-c-btn--secondary">
+                <span class="em-c-btn__text">Cancel</span>
+              </a>
           </div>
         </fieldset>
       </form>
