@@ -30,6 +30,11 @@ import { ItemListComponent } from './item/item-list/item-list.component';
 import { FormsModule } from '@angular/forms';
 import { DeleteConfirmationComponent } from './shared/delete-confirmation/delete-confirmation.component';
 import { ItemFormComponent } from './item/item-form/item-form.component';
+import { GetDtoService } from 'src/app/shared/get-dto.service';
+import { CategoryFormComponent } from './category/category-form/category-form.component';
+import { SubcategoryFormComponent } from './subcategory/subcategory-form/subcategory-form.component';
+import { ItemUnitFormComponent } from './item-unit/item-unit-form/item-unit-form.component';
+import { ItemUnitListComponent } from './item-unit/item-unit-list/item-unit-list.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +63,11 @@ import { ItemFormComponent } from './item/item-form/item-form.component';
     SubcategoryListComponent,
     ItemListComponent,
     DeleteConfirmationComponent,
-    ItemFormComponent
+    ItemFormComponent,
+    CategoryFormComponent,
+    SubcategoryFormComponent,
+    ItemUnitFormComponent,
+    ItemUnitListComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,7 +75,7 @@ import { ItemFormComponent } from './item/item-form/item-form.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [GetDtoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,77 @@
+<div class="em-c-page-header em-c-page-header--small">
+  <h1 class="em-c-page-header__title">
+    <a [routerLink]="'/countries/'">Device</a>
+    <a [routerLink]="'/categories/' + categoryId + '/subcategories/'" *ngIf="category">{{category.name}}</a>
+    <a [routerLink]="'/categories/' + categoryId + '/subcategories/' + subcategoryId +'/items'"
+      *ngIf="subcategory">{{subcategory.name}}</a>
+    <a class="active" *ngIf="item">{{item.name}}</a>
+  </h1>
+</div>
+<div class="em-c-table-object ">
+  <div class="em-c-table-object__body">
+    <div class="em-c-table-object__body-inner">
+      <table class="em-c-table ">
+        <thead class="em-c-table__header">
+          <tr class="em-c-table__header-row">
+            <th scope="col" class="em-c-table__header-cell ">ID</th>
+            <th scope="col" class="em-c-table__header-cell ">Serial Number</th>
+            <th scope="col" class="em-c-table__header-cell ">Barcode Number</th>
+            <th scope="col" class="em-c-table__header-cell ">Locker</th>
+            <th scope="col" class="em-c-table__header-cell ">Container</th>
+            <th scope="col" class="em-c-table__header-cell ">Site</th>
+            <th scope="col" class="em-c-table__header-cell ">Country</th>
+            <th scope="col" class="em-c-table__header-cell ">Action</th>
+          </tr>
+        </thead>
+        <tbody class="em-c-table__body ">
+          <tr class="em-c-table__row " *ngFor="let unit of units">
+            <td class="em-c-table__cell " colspan="">
+              {{unit.id}}
+            </td>
+            <td class="em-c-table__cell " colspan="">
+              {{unit.name}}
+            </td>
+            <td class="em-c-table__cell " colspan="">
+              {{unit.name}}
+            </td>
+            <td class="em-c-table__cell " colspan="">
+              <span *ngIf="unit.locker">{{unit.locker.name}}</span>
+              <span *ngIf="!unit.locker">N/A</span>
+            </td>
+            <td class="em-c-table__cell " colspan="">
+              <span *ngIf="unit.container">{{unit.container.name}}</span>
+              <span *ngIf="!unit.container">N/A</span>
+
+            </td>
+            <td class="em-c-table__cell " colspan="">
+              <span *ngIf="unit.site">{{unit.site.name}}</span>
+              <span *ngIf="!unit.site">N/A</span>
+
+            </td>
+            <td class="em-c-table__cell " colspan="">
+              <span *ngIf="unit.country">{{unit.country.name}}</span>
+              <span *ngIf="!unit.country">N/A</span>
+
+            </td>
+            <td class="em-c-table__cell " colspan="">
+                <a [routerLink]="unit.id + '/edit'"><strong>Edit</strong></a>
+                <a [routerLink]="unit.id + '/delete'"
+                [queryParams]="{endpoint: '/units/' + unit.id, next: '/categories/' + categoryId + '/subcategories/' + subcategoryId + '/items/' + itemId +'/units'}"><strong>Delete</strong></a>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot class="em-c-table__footer">
+          <tr class="em-c-table__footer-row">
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+  <div class="em-c-table-object__footer">
+    <div class="em-c-toolbar ">
+      <div class="em-c-toolbar__item">
+        <a [routerLink]="'add'">Add</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,9 @@
 <div class="em-c-page-header em-c-page-header--small">
-    <h1 class="em-c-page-header__title">Containers </h1>
+    <h1 class="em-c-page-header__title">
+        <a [routerLink]="'/countries/'">Storage</a>
+        <a [routerLink]="'/countries/' + countryId + '/sites/'" *ngIf="country">{{country.name}}</a>
+        <a class="active"  *ngIf="site">{{site.name}}</a>
+     </h1>
   </div>
   <div class="em-c-table-object ">
     <div class="em-c-table-object__body">
@@ -7,8 +11,8 @@
         <table class="em-c-table ">
           <thead class="em-c-table__header">
             <tr class="em-c-table__header-row">
-              <th scope="col" class="em-c-table__header-cell ">Name</th>
-              <th scope="col" class="em-c-table__header-cell ">Sites</th>
+              <th scope="col" class="em-c-table__header-cell ">Container Name</th>
+              <th scope="col" class="em-c-table__header-cell ">Lockers</th>
               <th scope="col" class="em-c-table__header-cell ">Action</th>
             </tr>
           </thead>
@@ -35,50 +39,10 @@
       </div>
     </div>
     <div class="em-c-table-object__footer">
-      <div class="em-c-toolbar ">
-        <div class="em-c-toolbar__item">
-          Label
-        </div>
-        <div class="em-c-toolbar__item em-is-aligned-right">
-          <ol class="em-c-pagination" role="navigation" aria-labelledby="pagination-label">
-            <li class="em-c-pagination__item">
-              <a class="em-c-pagination__link  em-is-disabled" href="#">
-                <svg class="em-c-icon em-c-icon--small em-c-pagination__icon">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/images/em-icons.svg#caret-left">
-                  </use>
-                </svg>
-              </a>
-            </li>
-            <li class="em-c-pagination__item">
-              <a class="em-c-pagination__link  em-is-current" href="#">
-                1
-              </a>
-            </li>
-            <li class="em-c-pagination__item">
-              <a class="em-c-pagination__link  " href="#">
-                2
-              </a>
-            </li>
-            <li class="em-c-pagination__item">
-              <a class="em-c-pagination__link  " href="#">
-                3
-              </a>
-            </li>
-            <li class="em-c-pagination__item">
-              <a class="em-c-pagination__link  " href="#">
-                4
-              </a>
-            </li>
-            <li class="em-c-pagination__item">
-              <a class="em-c-pagination__link  " href="#">
-                <svg class="em-c-icon em-c-icon--small em-c-pagination__icon">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/images/em-icons.svg#caret-right">
-                  </use>
-                </svg>
-              </a>
-            </li>
-          </ol>
+        <div class="em-c-toolbar ">
+          <div class="em-c-toolbar__item">
+            <a [routerLink]="'add'">Add</a>
+          </div>
         </div>
       </div>
-    </div>
   </div>

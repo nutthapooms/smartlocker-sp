@@ -69,6 +69,7 @@ export class SiteDTO {
   public id: number;
   public containerCount: number;
   public name: string;
+  public country: CountryDTO;
 }
 export class ContainerDTO {
   public id: number;

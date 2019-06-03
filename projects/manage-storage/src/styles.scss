@@ -4,3 +4,16 @@
     margin-left: 1rem;
   }
 }
+
+.em-c-page-header__title {
+    a + a::before {
+      content: '/';
+      margin-left: 0.75rem;
+      margin-right: 0.75rem;
+      opacity: 0.5;
+      text-decoration: none;
+    }
+    a:not(.active) {
+      color: #0c69b0;
+    }
+}

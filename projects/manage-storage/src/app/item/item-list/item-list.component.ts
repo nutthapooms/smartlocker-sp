@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ItemDTO } from 'src/app/shared/model';
+import { ItemDTO, CategoryDTO, SubcategoryDTO } from 'src/app/shared/model';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { GetDtoService } from 'src/app/shared/get-dto.service';
 
 @Component({
   selector: 'app-item-list',
@@ -14,8 +15,13 @@ export class ItemListComponent implements OnInit {
   categoryId: string;
   subcategoryId: string;
 
+  category: CategoryDTO;
+  subcategory: SubcategoryDTO;
+
   constructor(private http: HttpClient,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private dto: GetDtoService) { }
+
 
   ngOnInit() {
     this.subcategoryId = this.route.snapshot.paramMap.get('subcategoryId');
@@ -26,8 +32,10 @@ export class ItemListComponent implements OnInit {
     this.http.get<Array<ItemDTO>>(`http://52.163.226.37/api/admin/items`, { params: params }).subscribe(data => {
         console.log(data)
         this.items = data;
-      }
-    )
+      })
+      this.dto.getDTO('categories', this.categoryId).subscribe(data => this.category = data)
+      this.dto.getDTO('subcategories', this.subcategoryId).subscribe(data => this.subcategory = data)
+
   }
 
 }
