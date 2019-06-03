@@ -36,7 +36,7 @@ export class ItemUnitListComponent implements OnInit {
     let params = new HttpParams();
     if(this.itemId) params = params.append('itemId', this.itemId);
 
-    this.http.get<Array<UnitDTO>>(`http://52.163.226.37/api/admin/units`, { params: params }).subscribe(data => {
+    this.http.get<Array<UnitDTO>>(`http://13.76.81.234/api/admin/units`, { params: params }).subscribe(data => {
         console.log(data)
         this.units = data;
       }

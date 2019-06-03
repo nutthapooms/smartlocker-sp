@@ -24,7 +24,7 @@ export class AvailabilityComponent implements OnInit {
     this.fetchCountires()
   }
   fetchCountires() {
-    let endpoint = `http://52.163.226.37/api/online/browse-locations`
+    let endpoint = `http://13.76.81.234/api/online/browse-locations`
     console.log("Fetching containers...", endpoint)
     this.http.get<LocationResponse>(endpoint).subscribe(data => {
       this.locations = data
@@ -65,14 +65,14 @@ export class AvailabilityComponent implements OnInit {
   }
 
   notifyMe(container: ItemDetailAvailabilityContainer) {
-    this.http.post<WatchDTO>(`http://localhost:80/api/online/items/${this.item.id}/watch`, {
+    this.http.post<WatchDTO>(`http://13.76.81.234/api/online/items/${this.item.id}/watch`, {
       "containerId": container.container.id
     }).subscribe(data => {
       container.watch = data;
     })
   }
   unnotifyMe(container: ItemDetailAvailabilityContainer) {
-    this.http.delete<number>(`http://localhost:80/api/online/items/${this.item.id}/watch/${container.watch.id}`).subscribe(data => {
+    this.http.delete<number>(`http://13.76.81.234/api/online/items/${this.item.id}/watch/${container.watch.id}`).subscribe(data => {
       container.watch = null;
     })
   }

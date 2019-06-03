@@ -24,40 +24,58 @@ export class ItemBrowserComponent implements OnInit {
   activeContainer: ContainerResponse = new ContainerResponse();
   keyword: string = '';
 
+  queryParams: BrowseItemParams = new BrowseItemParams();
+
   constructor(private http: HttpClient,
     private _route: ActivatedRoute,
     private _router: Router) { }
 
   ngOnInit() {
-    this.fetchModels();
-  }
-
-
-
-  addCategoryParams(id) {
-  }
-
-  fetchModels() {
     this._route.queryParams.subscribe(queries => {
-      if (queries.categoryId) {this.activeCategoryId = queries.categoryId} else {this.activeCategoryId = null};
-      if (queries.subcategoryId) {this.activeSubcategoryId = queries.subcategoryId} else {this.activeSubcategoryId = null};
-      if (queries.countryId) this.activeCountryId = queries.countryId;
-      if (queries.siteId) this.activeSiteId = queries.siteId;
-      if (queries.containerId) this.activeContainerId = queries.containerId;
-      let endpoint = `http://52.163.226.37/api/online/items?subcategoryId=${this.activeSubcategoryId}&categoryId=${this.activeCategoryId}&siteId=${this.activeSiteId}&containerId=${this.activeContainerId}&keyword=${this.keyword}&countryId=${this.activeCountryId}`
-      console.log("Fetching models...", endpoint)
-      this.http.get<BrowseResponse>(endpoint).subscribe(data =>
+      this.queryParams.categoryId = queries.categoryId ? queries.categoryId : undefined
+      this.queryParams.subcategoryId = queries.subcategoryId ? queries.subcategoryId : undefined
+      this.queryParams.countryId = queries.countryId ? queries.countryId : undefined
+      this.queryParams.siteId = queries.siteId ? queries.siteId : undefined
+      this.queryParams.containerId = queries.containerId ? queries.containerId : undefined
+      this.queryParams.keyword = queries.keyword ? queries.keyword : undefined
+      let endpoint = `http://13.76.81.234/api/online/items`
+      console.log("Fetching models...", endpoint, {params : this.queryParams})
+      this.http.get<BrowseResponse>(endpoint, {params : JSON.parse(JSON.stringify(this.queryParams))}).subscribe(data =>
         this.catalog = data
       )
     });
   }
 
+
+
+
+
   getFirstModelImage(model) {
     if(model.images.length > 0){
-      return 'http://52.163.226.37/api/images/' + model.images[0];
+      return 'http://13.76.81.234/api/images/' + model.images[0];
     } else {
       return 'http://www.independentmediators.co.uk/wp-content/uploads/2016/02/placeholder-image.jpg'
     }
   }
 
+  changeParams() {
+
+    this._router.navigate([], {
+      relativeTo: this._route,
+      queryParams: {
+        keyword: this.queryParams.keyword,
+      },
+      queryParamsHandling: 'merge',
+    });
+  }
+
+}
+
+export class BrowseItemParams {
+  subcategoryId: string = undefined;
+  categoryId: string = undefined;
+  countryId: string = undefined;
+  siteId: string = undefined;
+  containerId: string = undefined;
+  keyword: string = undefined;
 }

@@ -36,29 +36,41 @@ export class ItemFilterComponent implements OnInit {
 
 
   fetchCountires() {
-    let endpoint = `http://52.163.226.37/api/online/browse-locations`
+    let endpoint = `http://13.76.81.234/api/online/browse-locations`
     console.log("Fetching containers...", endpoint)
     this.http.get<LocationResponse>(endpoint).subscribe(data => {
       this.locations = data
       this._route.queryParams.subscribe(queries => {
-        console.log(queries)
-        if (queries.countryId != null) this.activeCountry = this.locations.countries.find(x => x.country.id == queries.countryId);
-        if (queries.siteId != null && this.activeCountry != null) this.activeSite = this.activeCountry.sites.find(x => x.site.id == queries.siteId);
-        if (queries.containerId != null && this.activeSite != null) this.activeContainer = this.activeSite.containers.find(x => x.container.id == queries.containerId);
+        this.countryId = queries.countryId ? parseInt(queries.countryId) : -1
+        this.siteId = queries.siteId ? parseInt(queries.siteId) : -1
+        this.containerId = queries.containerId ? parseInt(queries.containerId) : -1
+  
+        let country = this.locations.countries.find(x => x.country.id == this.countryId)
+        if(country) {
+          this.sites = country.sites;
+        } else {
+          this.siteId = -1
+          this.sites = []
+        }
+
+        let site = this.sites.find(x => x.site.id == this.siteId)
+        if(site) {
+          this.containers = site.containers;
+        } else {
+          this.containerId = -1
+          this.containers = []
+        }
+        this.changeParams()
+        
       })
     })
   }
 
 
   changeParams() {
-    let countryId = null;
-    if(this.activeCountry) countryId = this.activeCountry.country.id;
-
-    let siteId = null;
-    if(this.activeSite) siteId = this.activeSite.site.id;
-
-    let containerId = null;
-    if(this.activeContainer) containerId = this.activeContainer.container.id;
+    let countryId = this.countryId != -1 ? this.countryId : undefined;
+    let siteId = this.siteId != -1 ? this.siteId : undefined;
+    let containerId = this.containerId != -1 ? this.containerId : undefined;
 
     this._router.navigate([], {
       relativeTo: this._route,

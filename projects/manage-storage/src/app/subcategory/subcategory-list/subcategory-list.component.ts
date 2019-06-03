@@ -27,7 +27,7 @@ export class SubcategoryListComponent implements OnInit {
     let params = new HttpParams();
     if(this.categoryId) params = params.append('categoryId', this.categoryId);
 
-    this.http.get<Array<SubcategoryDTO>>(`http://52.163.226.37/api/admin/subcategories`, { params: params }).subscribe(data => {
+    this.http.get<Array<SubcategoryDTO>>(`http://13.76.81.234/api/admin/subcategories`, { params: params }).subscribe(data => {
         console.log(data)
         this.subcategories = data;
       })
