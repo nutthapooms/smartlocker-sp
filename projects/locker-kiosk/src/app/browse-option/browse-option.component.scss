@@ -1,0 +1,51 @@
+.container {
+    padding: 5rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+    .topic {
+        font-size: 4rem;
+        font-weight: 300;
+    }
+    hr {
+        margin-top: 1rem;
+        width: 100px;
+        height: 4px;
+        border: none;
+        background-color: white;
+        margin-right: auto;
+        margin-left: 0;
+    }
+    .option-container {
+        margin-top: 4rem;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-gap: 1rem;
+        flex: 1 1 auto;
+        .option {
+            height: 100%;
+            border-radius: 5px;
+            background-image: linear-gradient(to top, #ece9e6, #ffffff);
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.3);        
+            color: #555;
+            display: flex;
+            align-items: flex-end;
+            padding: 2rem;
+            box-sizing: border-box;
+            text-transform: uppercase;
+            font-weight: 500;
+            font-size: 1.5rem;
+            .option-text {
+                .text-sub {
+                    font-weight: 400;
+                    font-size: 1.5rem;
+                }
+                .text-main {
+                    font-size: 2.5rem;
+                }
+            }
+        }
+    }
+}

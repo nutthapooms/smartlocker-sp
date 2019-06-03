@@ -46,27 +46,27 @@ export class UnitFormComponent implements OnInit {
     })
   }
 
-  fetchSubcategory(categoryId: number) {
+  fetchSubcategory(categoryId: string) {
     this.http.get<Array<SubcategoryDTO>>(`http://13.76.81.234/api/admin/subcategories`, {params : {
-      "categoryId": categoryId.toString()
+      "categoryId": categoryId
     }}).subscribe(data => {
       console.log(data)
       this.subcategories = data;
     })
   }
 
-  fetchItem(subcategoryId: number) {
+  fetchItem(subcategoryId: string) {
     this.http.get<Array<ItemDTO>>(`http://13.76.81.234/api/admin/items`, {params : {
-      "subcategoryId": subcategoryId.toString()
+      "subcategoryId": subcategoryId
     }}).subscribe(data => {
       console.log(data)
       this.items = data;
     })
   }
 
-  fetchUnit(itemId: number) {
+  fetchUnit(itemId: string) {
     this.http.get<Array<UnitDTO>>(`http://13.76.81.234/api/admin/units`, {params : {
-      "itemId": itemId.toString()
+      "itemId": itemId
     }}).subscribe(data => {
       console.log(data)
       this.units = data;
