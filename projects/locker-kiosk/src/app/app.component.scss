@@ -2,4 +2,8 @@
     width: 100vw;
     height: 100vh;
     background-image: linear-gradient(45deg, #3a397b 0%, #0c69b0 100%);
+    overflow: hidden;
+    .route-container {
+        height: 100%;
+    }
 }
