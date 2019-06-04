@@ -10,12 +10,12 @@
     flex: 0 0 55%;
     .topic-title {
       font-size: 10rem;
-      font-weight: 600;
+      font-weight: 500;
       font-stretch: condensed;
       margin-bottom: 0.5rem;
     }
     .topic-sub {
-      font-weight: 400;
+      font-weight: 300;
       font-stretch: normal;
       font-size: 2rem;
       opacity: 0.8;
@@ -71,7 +71,7 @@
             font-size: 2.5rem;
             position: relative;
             top: 5px;
-            font-weight: 400;
+            font-weight: 300;
           }
         }
       }
