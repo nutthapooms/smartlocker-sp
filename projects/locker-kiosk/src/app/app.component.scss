@@ -1,9 +1,23 @@
 .full-screen {
-    width: 100vw;
-    height: 100vh;
-    background-image: linear-gradient(45deg, #3a397b 0%, #0c69b0 100%);
-    overflow: hidden;
-    .route-container {
-        height: 100%;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(138deg, #00a3e0, #3a397b);
+  background-size: 400% 400%;
+
+  animation: AnimationName 28s ease infinite;
+  @keyframes AnimationName {
+    0% {
+      background-position: 0% 13%;
     }
+    50% {
+      background-position: 100% 88%;
+    }
+    100% {
+      background-position: 0% 13%;
+    }
+  }
+  overflow: hidden;
+  .route-container {
+    height: 100%;
+  }
 }
