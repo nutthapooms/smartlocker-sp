@@ -13,6 +13,7 @@
           <tr class="em-c-table__header-row">
             <th scope="col" class="em-c-table__header-cell ">Model name</th>
             <th scope="col" class="em-c-table__header-cell ">Images</th>
+            <th scope="col" class="em-c-table__header-cell ">Default Duration</th>
             <th scope="col" class="em-c-table__header-cell ">Units</th>
             <th scope="col" class="em-c-table__header-cell ">Action</th>
           </tr>
@@ -25,6 +26,9 @@
             <td class="em-c-table__cell " colspan="">
                 {{item.images.length}} images
               </td>
+              <td class="em-c-table__cell " colspan="">
+                  {{item.defaultDuration | amDuration:'seconds'}}
+                </td>
             <td class="em-c-table__cell " colspan="">
               <a [routerLink]="item.id + '/units'">{{item.unitCount}} units</a>
             </td>

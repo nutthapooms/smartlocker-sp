@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ItemRequest, ContainerDTO, ItemDTO } from 'src/app/shared/model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-item-form',
@@ -16,6 +17,9 @@ export class ItemFormComponent implements OnInit {
   subcategoryId: string;
   categoryId: string;
   itemId: string;
+  durationInput: string;
+  durationDict: any;
+  duration: moment.Duration = moment.duration(0);
   constructor(private http: HttpClient,
     private route: ActivatedRoute,
     private router: Router,
@@ -28,19 +32,34 @@ export class ItemFormComponent implements OnInit {
     this.categoryId = this.route.snapshot.paramMap.get('categoryId');
     this.itemId = this.route.snapshot.paramMap.get('itemId');
     this.itemRequest.subcategoryId = this.subcategoryId
-    if(this.itemId != null) {
+    if (this.itemId != null) {
       this.http.get<ItemDTO>(`http://52.163.226.37/api/admin/items/${this.itemId}`).subscribe(data => {
         console.log(data)
         this.item = data;
         this.itemRequest.name = this.item.name
         this.itemRequest.attachments = this.item.images
+        this.duration = moment.duration(this.item.defaultDuration, 'seconds')
+        this.durationInput = this.duration.humanize();
       })
     }
+
+
+  }
+
+  changeDuration() {
+    this.durationDict = {}
+    let durationInputList = this.durationInput.split(' ')
+    for(let i = 0; i < durationInputList.length ; i++){
+      if(i % 2 !=0) {
+        this.durationDict[durationInputList[i]] = durationInputList[i-1]
+      }
+    }
+    this.duration = moment.duration(this.durationDict)
+
   }
 
   onFileSelected(event) {
-    if(event.target.files.length > 0)
-     {
+    if (event.target.files.length > 0) {
       this.fileData = <File>event.target.files[0];
       const formData = new FormData();
       formData.append('file', this.fileData);
@@ -49,19 +68,21 @@ export class ItemFormComponent implements OnInit {
           this.itemRequest.attachments.push(res);
           console.log(`Added image id ${res} to request model`, this.itemRequest)
         })
-     }
-   }
+    }
+  }
 
-   submitForm() {
+  submitForm() {
     let endpoint: string;
-    if(this.itemId != null) {
+    if (this.itemId != null) {
       endpoint = `http://52.163.226.37/api/admin/items/${this.itemId}`
-     } else {
+    } else {
       endpoint = `http://52.163.226.37/api/admin/items`
-     }
+    }
+
+    this.itemRequest.defaultDuration = this.duration.asSeconds();
 
     this.http.post<any>(endpoint, this.itemRequest).subscribe(data => {
-      this.router.navigate(['/categories',this.categoryId,'subcategories', this.subcategoryId,'items'])
+      this.router.navigate(['/categories', this.categoryId, 'subcategories', this.subcategoryId, 'items'])
     })
   }
   back() {

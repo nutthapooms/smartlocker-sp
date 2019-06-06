@@ -196,5 +196,6 @@ export class UnitDTO {
 export class ItemRequest {
   public name: string;
   public subcategoryId: string;
+  public defaultDuration: number;
   public attachments: Array<number> = new Array<number>();
 }

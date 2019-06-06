@@ -14,6 +14,13 @@
             </div>
             <div class="em-c-field__note">This is a note about the field</div>
           </div>
+          <div class="em-c-field ">
+              <label for="file" class="em-c-field__label">Default Duration</label>
+              <div class="em-c-field__body">
+                <input type="" id="file" class="em-c-input" name="item-duraion" [(ngModel)]="durationInput"  (keyup)="changeDuration()"/>
+              </div>
+              <div class="em-c-field__note">example: 14 days 4 hours | Valid date: {{duration.asSeconds() != 0}}</div>
+            </div>
           <div class="em-c-field em-c-field--file-upload ">
             <label for="file" class="em-c-field__label">Image</label>
             <div class="em-c-field__body">
