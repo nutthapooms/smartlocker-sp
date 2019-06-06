@@ -3,6 +3,10 @@
     <div class="loan-title">Loan</div>
   </div>
   <div class="loan-detail">
+      <div class="detail-item">
+          <div class="detail-title">Barcode</div>
+          <div class="detail-body">{{loan.unit.barcode}}</div>
+        </div>
     <div class="detail-item">
       <div class="detail-title">Loan date</div>
       <div class="detail-body">{{loan.loanDate | amLocale:'en' | amDateFormat:'MMMM Do YYYY, h:mm:ss a'}}</div>

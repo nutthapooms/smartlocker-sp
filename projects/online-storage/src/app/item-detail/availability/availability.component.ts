@@ -24,7 +24,7 @@ export class AvailabilityComponent implements OnInit {
     this.fetchCountires()
   }
   fetchCountires() {
-    let endpoint = `http://52.163.226.37/api/online/browse-locations`
+    let endpoint = `http://13.76.81.234/api/online/browse-locations`
     console.log("Fetching containers...", endpoint)
     this.http.get<LocationResponse>(endpoint).subscribe(data => {
       this.locations = data
@@ -55,24 +55,22 @@ export class AvailabilityComponent implements OnInit {
       },
       queryParamsHandling: 'merge',
     });
-
     this.filteredAvailability = JSON.parse(JSON.stringify(this.availability));
-
     if(this.activeCountry) this.filteredAvailability = this.filteredAvailability.filter(x => x.country.id == this.activeCountry.country.id);
-    // if(this.activeSite) this.filteredAvailability = this.filteredAvailability.filter(x => x.site.id == this.activeSite.site.id);
+    if(this.activeSite) this.filteredAvailability = this.filteredAvailability.filter(x => x.site.id == this.activeSite.site.id);
 
     console.log(this.filteredAvailability)
   }
 
   notifyMe(container: ItemDetailAvailabilityContainer) {
-    this.http.post<WatchDTO>(`http://localhost:80/api/online/items/${this.item.id}/watch`, {
+    this.http.post<WatchDTO>(`http://13.76.81.234/api/online/items/${this.item.id}/watch`, {
       "containerId": container.container.id
     }).subscribe(data => {
       container.watch = data;
     })
   }
   unnotifyMe(container: ItemDetailAvailabilityContainer) {
-    this.http.delete<number>(`http://localhost:80/api/online/items/${this.item.id}/watch/${container.watch.id}`).subscribe(data => {
+    this.http.delete<number>(`http://13.76.81.234/api/online/items/${this.item.id}/watch/${container.watch.id}`).subscribe(data => {
       container.watch = null;
     })
   }

@@ -31,7 +31,7 @@ export class ItemUnitFormComponent implements OnInit {
     this.categoryId = this.route.snapshot.paramMap.get('categoryId');
     this.itemId = this.route.snapshot.paramMap.get('itemId');
     if(this.unitId != null) {
-      this.http.get<UnitDTO>(`http://52.163.226.37/api/admin/units/${this.unitId}`).subscribe(data => {
+      this.http.get<UnitDTO>(`http://13.76.81.234/api/admin/units/${this.unitId}`).subscribe(data => {
         console.log(data)
         this.unit = data;
       })
@@ -45,9 +45,9 @@ export class ItemUnitFormComponent implements OnInit {
   submitForm() {
     let endpoint: string;
     if(this.unitId != null) {
-      endpoint = `http://52.163.226.37/api/admin/units/${this.unitId}`
+      endpoint = `http://13.76.81.234/api/admin/units/${this.unitId}`
      } else {
-      endpoint = `http://52.163.226.37/api/admin/units`
+      endpoint = `http://13.76.81.234/api/admin/units`
      }
 
     this.http.post<any>(endpoint, {

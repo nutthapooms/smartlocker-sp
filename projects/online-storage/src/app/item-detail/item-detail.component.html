@@ -5,9 +5,9 @@
 <div class="container item-viewer" *ngIf="item">
   <div class="item-image-list">
     <div class="item-image" *ngFor="let image of item.item.images"
-      [style.background-image]="'url(http://52.163.226.37/api/images/' + image + ')'" (click)="setActiveImage(image)"></div>
+      [style.background-image]="'url(http://13.76.81.234/api/images/' + image + ')'" (click)="setActiveImage(image)"></div>
   </div>
-  <div class="item-image-viewer" [style.background-image]="'url(http://52.163.226.37/api/images/' + activeImage + ')'">
+  <div class="item-image-viewer" [style.background-image]="'url(http://13.76.81.234/api/images/' + activeImage + ')'">
   </div>
   <div class="item-detail">
     <div class="detail-group">
@@ -16,15 +16,15 @@
     </div>
     <div class="detail-group">
       <div class="detail-title">CATEGORY</div>
-      <!-- <div class="detail-body">{{item.item.categoryName}}</div> -->
+      <div class="detail-body">{{item.item.category.name}}</div>
     </div>
     <div class="detail-group">
       <div class="detail-title">SUBCATEGORY</div>
-      <!-- <div class="detail-body">{{item.subcategoryName}}</div> -->
+      <div class="detail-body">{{item.item.subcategory.name}}</div>
     </div>
     <div class="detail-group">
       <div class="detail-title">DURATION</div>
-      <div class="detail-body">14 days</div>
+      <div class="detail-body">{{item.item.defaultDuration | amDuration:'seconds'}}</div>
     </div>
   </div>
   <div class="item-status">

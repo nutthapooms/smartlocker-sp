@@ -1,26 +1,26 @@
 <div class="site-filter">
   <div class="filter-container" *ngIf="locations">
     <label for="" class="filter-label">COUNTRY</label>
-    <select name="" id="" [(ngModel)]="activeCountry" (change)="changeParams()">
-      <option [ngValue]="null" [selected]="true">All</option>
-      <option [ngValue]="country" *ngFor="let country of locations.countries">{{country.country.name}}</option>
+    <select name="" id="" [(ngModel)]="countryId" (change)="changeParams()">
+      <option [ngValue]="-1" [selected]="true">All</option>
+      <option [ngValue]="country.country.id" *ngFor="let country of locations.countries">{{country.country.name}}</option>
     </select>
   </div>
-  <div class="filter-container" [ngClass]="{'disabled': activeCountry == null}">
+  <div class="filter-container" [ngClass]="{'disabled': countryId == -1}">
     <label for="" class="filter-label">SITE</label>
-    <select name="" id="" [(ngModel)]="activeSite" (change)="changeParams()">
-      <option [ngValue]="null" [selected]="true">All</option>
-      <ng-container *ngIf="activeCountry">
-        <option [ngValue]="site" *ngFor="let site of activeCountry.sites">{{site.site.name}}</option>
+    <select name="" id="" [(ngModel)]="siteId" (change)="changeParams()">
+      <option [ngValue]="-1" [selected]="true">All</option>
+      <ng-container *ngIf="sites">
+        <option [ngValue]="site.site.id" *ngFor="let site of sites">{{site.site.name}}</option>
       </ng-container>
     </select>
   </div>
-  <div class="filter-container" [ngClass]="{'disabled': activeSite == null}">
+  <div class="filter-container" [ngClass]="{'disabled': siteId == -1}">
     <label for="" class="filter-label">CONTAINER</label>
-    <select name="" id="" [(ngModel)]="activeContainer" (change)="changeParams()">
-      <option [ngValue]="null" [selected]="true">All</option>
-      <ng-container *ngIf="activeSite">
-        <option [ngValue]="container" *ngFor="let container of activeSite.containers">{{container.container.name}}</option>
+    <select name="" id="" [(ngModel)]="containerId" (change)="changeParams()">
+      <option [ngValue]="-1" [selected]="true">All</option>
+      <ng-container *ngIf="containers">
+        <option [ngValue]="container.container.id" *ngFor="let container of containers">{{container.container.name}}</option>
       </ng-container>
 
     </select>

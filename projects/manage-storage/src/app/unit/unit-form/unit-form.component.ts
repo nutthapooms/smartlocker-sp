@@ -40,33 +40,33 @@ export class UnitFormComponent implements OnInit {
     this.containerId = this.route.snapshot.paramMap.get('containerId');
     this.lockerId = this.route.snapshot.paramMap.get('lockerId');
 
-    this.http.get<Array<CategoryDTO>>(`http://52.163.226.37/api/admin/categories`).subscribe(data => {
+    this.http.get<Array<CategoryDTO>>(`http://13.76.81.234/api/admin/categories`).subscribe(data => {
       console.log(data)
       this.categories = data;
     })
   }
 
-  fetchSubcategory(categoryId: number) {
-    this.http.get<Array<SubcategoryDTO>>(`http://52.163.226.37/api/admin/subcategories`, {params : {
-      "categoryId": categoryId.toString()
+  fetchSubcategory(categoryId: string) {
+    this.http.get<Array<SubcategoryDTO>>(`http://13.76.81.234/api/admin/subcategories`, {params : {
+      "categoryId": categoryId
     }}).subscribe(data => {
       console.log(data)
       this.subcategories = data;
     })
   }
 
-  fetchItem(subcategoryId: number) {
-    this.http.get<Array<ItemDTO>>(`http://52.163.226.37/api/admin/items`, {params : {
-      "subcategoryId": subcategoryId.toString()
+  fetchItem(subcategoryId: string) {
+    this.http.get<Array<ItemDTO>>(`http://13.76.81.234/api/admin/items`, {params : {
+      "subcategoryId": subcategoryId
     }}).subscribe(data => {
       console.log(data)
       this.items = data;
     })
   }
 
-  fetchUnit(itemId: number) {
-    this.http.get<Array<UnitDTO>>(`http://52.163.226.37/api/admin/units`, {params : {
-      "itemId": itemId.toString()
+  fetchUnit(itemId: string) {
+    this.http.get<Array<UnitDTO>>(`http://13.76.81.234/api/admin/units`, {params : {
+      "itemId": itemId
     }}).subscribe(data => {
       console.log(data)
       this.units = data;
@@ -76,7 +76,7 @@ export class UnitFormComponent implements OnInit {
 
   submitForm() {
     let endpoint: string;
-    endpoint = `http://52.163.226.37/api/admin/units/${this.unitId}`
+    endpoint = `http://13.76.81.234/api/admin/units/${this.unitId}`
 
     this.http.post<any>(endpoint, {
       "lockerId": this.lockerId,
