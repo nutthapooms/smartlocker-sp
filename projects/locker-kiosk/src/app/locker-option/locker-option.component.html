@@ -7,54 +7,11 @@
   <div class="option-wrapper">
     <div class="option-opacity-gradient"></div>
     <div class="option-container">
-      <div class="option">
-        <div class="option-text">
-          <div class="text-main">Locker 1</div>
-        </div>
-      </div> 
-      <div class="option">
-        <div class="option-text" >
-          <div class="text-main" >Locker 2</div>
-        </div>
-      </div>
-      <div class="option">
-        <div class="option-text">
-          <div class="text-main">Locker 2</div>
-        </div>
-      </div>
-      <div class="option">
-        <div class="option-text">
-          <div class="text-main">Locker 2</div>
-        </div>
-      </div>
-      <div class="option">
-        <div class="option-text">
-          <div class="text-main"onclick="endd()">Locker 4</div>
-        </div>
-      </div>
-      <div class="option">
-        <div class="option-text">
-          <div class="text-main">Locker 2</div>
-        </div>
-      </div>
-      <div class="option">
-        <div class="option-text">
-          <div class="text-main">Locker 2</div>
-        </div>
-      </div>
-      <div class="option">
-        <div class="option-text">
-          <div class="text-main">Locker 2</div>
-        </div>
-      </div>
-      <div class="option">
-        <div class="option-text">
-          <div class="text-main">Locker 2</div>
-        </div>
-      </div>
-      <div class="option">
-        <div class="option-text">
-          <div class="text-main">Locker 2</div>
+      <div *ngFor="let locker of lockers">
+        <div class="option">
+          <div class="option-text">
+            <div class="text-main" class="text-main"onclick="endd()">Locker {{locker}}</div>
+          </div>
         </div>
       </div>
     </div>

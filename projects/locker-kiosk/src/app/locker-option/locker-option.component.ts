@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-
 @Component({
   selector: 'app-locker-option',
   templateUrl: './locker-option.component.html',
@@ -9,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class LockerOptionComponent implements OnInit {
 
   constructor() { }
+  lockers = [1,2,3,4,5,6,7,8,9]
 
   ngOnInit() {
   }
