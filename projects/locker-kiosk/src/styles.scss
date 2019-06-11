@@ -12,7 +12,7 @@
   .topic-container {
     flex: 0 0 55%;
     .topic-title {
-      font-size: 10rem;
+      font-size: calc((.4em + 2vmin) + (.4em + 2vmax));
       font-weight: 500;
       font-stretch: condensed;
       margin-bottom: 0.5rem;
@@ -20,7 +20,7 @@
     .topic-sub {
       font-weight: 300;
       font-stretch: normal;
-      font-size: 2rem;
+      font-size: calc((.3em + 1vmin) + (.3em + 1vmax));
       opacity: 0.8;
     }
   }
@@ -71,7 +71,7 @@
             font-size: 1.5rem;
           }
           .text-main {
-            font-size: 2.5rem;
+            font-size: calc((.4em + 1vmin) + (.4em + 1vmax));
             position: relative;
             top: 5px;
             font-weight: 300;

@@ -32,7 +32,8 @@
         align-items: center;
         justify-content: center;
         .main-text {
-            font-size: 4rem;
+            font-size: calc((.4em + 2vmin) + (.4em + 2vmax));
+
         }
     }
 }
