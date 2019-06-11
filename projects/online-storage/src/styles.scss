@@ -1,7 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 .fontall{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  }
+  font-family: EMprint;
+}
+@font-face {
+  font-family: EMprint;
+  src: url(fonts/EMprintW05Regular_web.woff);
+}
+@font-face {
+  font-family: EMprint;
+  src: url(fonts/EMprintW05Semibold_web.woff);
+  font-weight: bold;
+}
 .container {
     max-width: 1200px;
     margin-left: auto;

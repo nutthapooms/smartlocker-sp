@@ -1,5 +1,14 @@
 .fontall{
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: EMprint;
+}
+@font-face {
+  font-family: EMprint;
+  src: url(fonts/EMprintW05Regular_web.woff);
+}
+@font-face {
+  font-family: EMprint;
+  src: url(fonts/EMprintW05Semibold_web.woff);
+  font-weight: bold;
 }
 .option-page {
   padding: 5rem;
@@ -13,7 +22,7 @@
     flex: 0 0 55%;
     .topic-title {
       font-size: calc((.4em + 2vmin) + (.4em + 2vmax));
-      font-weight: 500;
+      font-weight: bold;
       font-stretch: condensed;
       margin-bottom: 0.5rem;
     }
