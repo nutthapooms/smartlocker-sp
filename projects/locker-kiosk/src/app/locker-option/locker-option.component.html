@@ -10,10 +10,13 @@
       <div *ngFor="let locker of lockers">
         <div class="option">
           <div class="option-text">
-            <div class="text-main" class="text-main"onclick="endd()">Locker {{locker}}</div>
+            <span (click)="endd(locker)">
+            <div class="text-main" class="text-main " >Locker {{locker}}</div>
+            </span> 
           </div>
         </div>
       </div>
+     
     </div>
   </div>
 </div>
