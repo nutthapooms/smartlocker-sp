@@ -52,6 +52,7 @@
     .option-container {
       overflow-y: auto;
       height: 100%;
+      width: 90%;
       padding-left: 2rem;
       border-left: 3px solid #aaa;
       border-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0))
@@ -90,7 +91,10 @@
     }
   }
 }
-
+.numpad{
+  height: 100px;
+  width: 100px;
+}
 
 *:focus {
     outline: none;
