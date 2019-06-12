@@ -10,6 +10,7 @@ import { CategoryOptionComponent } from './category-option/category-option.compo
 import { SubcategoryOptionComponent } from './subcategory-option/subcategory-option.component';
 import { LockerOptionComponent } from './locker-option/locker-option.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NavigationComponent } from './navigation/navigation.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
