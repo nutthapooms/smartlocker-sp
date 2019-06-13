@@ -16,26 +16,6 @@
 
 </body>
 <script>
-var displaynumber = "";
-var lockernum = "";
-const Url = '/lockers/open/';
-const Http = new XMLHttpRequest();
-function addnum(num = ""){
-    lockernum = lockernum + num
-  }
-function openLocker(){
-    // alert(Url+this.lockernum);
-    Http.open('GET',Url+lockernum);
-    Http.send() 
-    console.log(Url+lockernum);
-    lockernum = "";
 
-  }
-// alert(test());
-function test(){
-    alert(Url+"2");
-    Http.open('GET',Url+"2");
-    Http.send() 
-}
 </script>
 </html>
