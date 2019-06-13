@@ -1,6 +1,6 @@
 {
 	"/lockers/*":{
-	"target": "http://192.168.4.103:8000", //change to localhost:8000 when run on rpi
+	"target": "http://192.168.4.103:8000", 
 	"secure": false,
 	"logLevel": "debug",
 	"changeOrigin": true
