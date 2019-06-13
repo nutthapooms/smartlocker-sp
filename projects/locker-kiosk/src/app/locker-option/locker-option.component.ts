@@ -23,8 +23,13 @@ export class LockerOptionComponent implements OnInit {
   }
 openLocker(){
     // alert(Url+this.lockernum);
-    Http.open('GET',Url+this.lockernum);
-    Http.send() 
+    // Http.open('GET',Url+this.lockernum);
+    // Http.send() 
+    this.http.get(Url+this.lockernum).subscribe(
+      data => {
+        console.log(data);
+      }
+    )
     console.log(Url+this.lockernum);
     document.getElementById("displayNum").innerHTML = "Box number "+this.lockernum+" open!";
 
@@ -34,8 +39,8 @@ openLocker(){
 // alert(test());
    test(){
     alert(Url+"2");
-    Http.open('GET',Url+"2");
-    Http.send() 
+    // Http.open('GET',Url+"2");
+    // Http.send() 
 }
   
 
