@@ -12,7 +12,11 @@
     
     </div>
   </div>
-  <div class="main" [routerLink]="'/browse-option'">
+  <!-- <div class="main" [routerLink]="'/browse-option'">
     <div class="main-text">Tap here to start browsing items</div>
+  </div> -->
+  <div class="main" (keydown.enter)="onKeypress($event)">
+    <div class="main-text">Scan card to start browsing items</div>
+    <!-- <div><input type="password" ></div> -->
   </div>
 </div>
