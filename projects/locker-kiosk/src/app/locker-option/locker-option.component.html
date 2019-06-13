@@ -12,23 +12,23 @@
     </div>
     <table>
       <tr>
-        <td ><button class = "numpad" (click)="addnum(7)">7</button></td>
-        <td ><button class = "numpad"(click)="addnum(8)"(click)="addnum()">8</button></td>
-        <td ><button class = "numpad"(click)="addnum(9)"(click)="addnum()">9</button></td>
+        <td ><button class = "numpad" onclick="addnum(7)">7</button></td>
+        <td ><button class = "numpad" onclick="addnum(8)">8</button></td>
+        <td ><button class = "numpad" onclick="addnum(9)">9</button></td>
       </tr>
       <tr>
-        <td ><button class = "numpad"(click)="addnum(4)"(click)="addnum()">4</button></td>
-        <td ><button class = "numpad"(click)="addnum(5)"(click)="addnum()">5</button></td>
-        <td ><button class = "numpad"(click)="addnum(6)"(click)="addnum()">6</button></td>
+        <td ><button class = "numpad" onclick="addnum(4)">4</button></td>
+        <td ><button class = "numpad" onclick="addnum(5)">5</button></td>
+        <td ><button class = "numpad" onclick="addnum(6)">6</button></td>
       </tr>
       <tr>
-        <td ><button class = "numpad"(click)="addnum(1)">1</button></td>
-        <td ><button class = "numpad"(click)="addnum(2)">2</button></td>
-        <td ><button class = "numpad"(click)="addnum(3)">3</button></td>
+        <td ><button class = "numpad" onclick="addnum(1)">1</button></td>
+        <td ><button class = "numpad" onclick="addnum(2)">2</button></td>
+        <td ><button class = "numpad" onclick="addnum(3)">3</button></td>
       </tr>
       <tr>
-        <td ><button class = "numpad" (click)="openLocker()">enter</button></td>
-        <td ><button class = "numpad"(click)="addnum(0)">0</button></td>
+        <td ><button class = "numpad" onclick="openLocker()">enter</button></td>
+        <td ><button class = "numpad" onclick="addnum(0)">0</button></td>
         <td ><button class = "numpad">delete</button></td>
       </tr>
 
@@ -42,7 +42,7 @@
       <div *ngFor="let locker of lockers">
         <div class="option">
           <div class="option-text">
-            <span (click)="endd(locker)">
+            <span onclick="endd(locker)">
               <div class="text-main" class="text-main ">Locker {{locker}}</div>
             </span>
           </div>
