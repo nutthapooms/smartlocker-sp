@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { DataService} from '../data.service';
@@ -11,28 +11,50 @@ import { DataService} from '../data.service';
 })
 export class NavigationComponent implements OnInit {
   isHome: boolean = false;
-  message : string;
+  // message : string;
   constructor(private location: Location,
-    private router: Router,
-    // private data : DataService
+    private router: Router
     ) { }
-
+  card_number = ""
+    enterCheck = 1;
   ngOnInit() {
-    // this.data.currentMessage.subscribe(message=> this.message = message);
-    this.router.events.subscribe(event => {
+    document.getElementById("logOutIcon").style.visibility = 'hidden';
+    document.getElementById("backBtn").style.visibility = 'hidden';
 
-      if (event instanceof NavigationEnd ) {
-        this.isHome = event.url == '/'
-      }
-    });
   }
+  @HostListener('document:keydown',['$event'])onkeydownHandler(event: KeyboardEvent){
+    if (event.key === "Enter"){
 
+      // alert(this.card_number)
+      // this.data.changeMessage(this.card_number);
+      if(this.enterCheck ==1){
+        document.getElementById("backBtn").style.visibility = 'visible';
+
+        document.getElementById("logOutIcon").style.visibility = 'visible';
+        document.getElementById("logOut").innerHTML = "ID: " + this.card_number+ " Log out";
+        this.router.navigate(['/browse-option'])
+        this.enterCheck = 0;
+      }
+    }
+    else{
+      if("1234567890_".includes(event.key)){
+        this.card_number = this.card_number + event.key
+      }
+    }
+  }
+  
   back() {
     this.location.back()
   }
   out() {
+    document.getElementById("logOutIcon").style.visibility = 'hidden';
+    document.getElementById("logOut").innerHTML = "";
+    document.getElementById("backBtn").style.visibility = 'hidden';    
+    this.enterCheck = 1;
+    this.card_number = "";
     this.router.navigate(['/'])
     
   }
 
 }
+

@@ -1,14 +1,14 @@
-<div class="nav-container" *ngIf="!isHome">
-  <div class="back-button" (click)="back()">
+<div class="nav-container" >
+  <div class="back-button" id = "backBtn" (click)="back()">
     <div class="back-icon">
       <img src="assets/back.png" alt="">
     </div>
     <div class="back-text">Back</div>
   </div>
   <div class="out-button" (click)="out()">
-    <div class="back-icon">
+    <div class="back-icon" id = "logOutIcon">
       <img src="assets/back.png" alt="">
     </div>
-    <div class="out-text">Log out</div>
+    <div class="out-text" id = "logOut"></div>
   </div>
 </div>

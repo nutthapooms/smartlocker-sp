@@ -27,7 +27,7 @@ export class ContainerFormComponent implements OnInit {
     this.containerId = this.route.snapshot.paramMap.get('containerId');
     this.countryId = this.route.snapshot.paramMap.get('countryId');
     if(this.containerId != null) {
-      this.http.get<ContainerDTO>(`http://13.76.81.234/api/admin/containers/${this.containerId}`).subscribe(data => {
+      this.http.get<ContainerDTO>(`http://207.46.236.46/api/admin/containers/${this.containerId}`).subscribe(data => {
         console.log(data)
         this.container = data;
       })
@@ -38,9 +38,9 @@ export class ContainerFormComponent implements OnInit {
   submitForm() {
     let endpoint: string;
     if(this.containerId != null) {
-      endpoint = `http://13.76.81.234/api/admin/containers/${this.containerId}`
+      endpoint = `http://207.46.236.46/api/admin/containers/${this.containerId}`
      } else {
-      endpoint = `http://13.76.81.234/api/admin/containers`
+      endpoint = `http://207.46.236.46/api/admin/containers`
      }
 
     this.http.post<any>(endpoint, {

@@ -34,7 +34,7 @@ export class LockerListComponent implements OnInit {
     let params = new HttpParams();
     if(this.containerId) params = params.append('containerId', this.containerId);
 
-    this.http.get<Array<LockerDTO>>(`http://13.76.81.234/api/admin/lockers`, { params: params }).subscribe(data => {
+    this.http.get<Array<LockerDTO>>(`http://207.46.236.46/api/admin/lockers`, { params: params }).subscribe(data => {
         console.log(data)
         this.lockers = data;
       })

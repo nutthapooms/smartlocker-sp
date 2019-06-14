@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { slideInAnimation } from './animation';
 import {HttpClient} from '@angular/common/http';
 import {DataService} from './data.service';
-import{BehaviorSubject} from 'rxjs';
+// import{BehaviorSubject} from 'rxjs';
 
 @Component({
   selector: 'app-root',

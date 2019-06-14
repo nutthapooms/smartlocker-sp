@@ -33,7 +33,7 @@ export class ItemFormComponent implements OnInit {
     this.itemId = this.route.snapshot.paramMap.get('itemId');
     this.itemRequest.subcategoryId = this.subcategoryId
     if(this.itemId != null) {
-      this.http.get<ItemDTO>(`http://13.76.81.234/api/admin/items/${this.itemId}`).subscribe(data => {
+      this.http.get<ItemDTO>(`http://207.46.236.46/api/admin/items/${this.itemId}`).subscribe(data => {
         console.log(data)
         this.item = data;
         this.itemRequest.name = this.item.name
@@ -74,9 +74,9 @@ export class ItemFormComponent implements OnInit {
   submitForm() {
     let endpoint: string;
     if(this.itemId != null) {
-      endpoint = `http://13.76.81.234/api/admin/items/${this.itemId}`
+      endpoint = `http://207.46.236.46/api/admin/items/${this.itemId}`
      } else {
-      endpoint = `http://13.76.81.234/api/admin/items`
+      endpoint = `http://207.46.236.46/api/admin/items`
      }
     this.http.post<any>(endpoint, this.itemRequest).subscribe(data => {
       this.router.navigate(['/categories', this.categoryId, 'subcategories', this.subcategoryId, 'items'])
