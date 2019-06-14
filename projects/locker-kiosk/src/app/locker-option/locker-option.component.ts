@@ -22,14 +22,15 @@ export class LockerOptionComponent implements OnInit {
   }
   @HostListener('document:keydown', ['$event']) onkeydownHandler(event: KeyboardEvent) {
     if (event.key === "Enter") {
-      // alert(card_number)
-      card_number = "";
+      document.getElementById("numPad").innerHTML = serial_number + " Close the door";
+      
+      serial_number = "";
       // this.router.navigate(['/browse-option'])
       this.checkLocker();
     }
     else {
       if ("1234567890_".includes(event.key)) {
-        card_number = card_number + event.key
+        serial_number = serial_number + event.key
       }
     }
   }
@@ -56,7 +57,7 @@ export class LockerOptionComponent implements OnInit {
         detail = data;
         console.log("detail is " + detail.result);
         if (detail.result == 1) {
-          alert("close")
+          // alert("close")
           this.router.navigate(['/browse-option'])
         }
         console.log(data);
@@ -65,7 +66,7 @@ export class LockerOptionComponent implements OnInit {
     this.lockernum = "";
   }
 }
-var card_number = ""
+var serial_number = ""
 var detail;
 const Url = '/lockers/open/';
 const Urlcheck = '/lockers/checkclose/';
