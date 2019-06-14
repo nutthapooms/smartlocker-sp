@@ -4,6 +4,7 @@ import { detachEmbeddedView } from '@angular/core/src/view';
 import { ContainerDetailComponent } from 'projects/manage-storage/src/app/container/container-detail/container-detail.component';
 import { delay } from 'q';
 import { ActivatedRoute, Router } from '@angular/router';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-locker-option',
@@ -15,6 +16,7 @@ export class LockerOptionComponent implements OnInit {
   lockers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
   displaynumber = [""];
   lockernum = "";
+  
   constructor(private http: HttpClient, private route: ActivatedRoute,
     private router: Router, ) { }
 
@@ -43,13 +45,27 @@ export class LockerOptionComponent implements OnInit {
     document.getElementById("displayNum").innerHTML = "Box number :" + this.lockernum;
   }
   openLocker() {
-    this.http.get(Url + this.lockernum).subscribe(
+    this.http.get(UrlMaxSlot).subscribe(
       data => {
-        console.log(data);
+        maxSlot = data;
+        console.log(maxSlot.result);
       }
     )
-    console.log(Url + this.lockernum);
-    document.getElementById("numPad").innerHTML = "Box number " + this.lockernum + " open!  Scan serial";
+    if(Number(this.lockernum)<maxSlot.result){
+      this.http.get(Url + this.lockernum).subscribe(
+        data => {
+          console.log(data);
+        }
+      )
+      console.log(Url + this.lockernum);
+      document.getElementById("numPad").innerHTML = "Box number " + this.lockernum + " open!  Scan serial";  
+    }
+    else{
+      document.getElementById("displayNum").innerHTML = "No Box number: "+this.lockernum+" Please enter again.";
+      this.lockernum = "";
+    }
+    
+    
   }
   checkLocker() {
     this.http.get(Urlcheck + this.lockernum).subscribe(
@@ -68,8 +84,10 @@ export class LockerOptionComponent implements OnInit {
 }
 var serial_number = ""
 var detail;
+var maxSlot;
 const Url = '/lockers/open/';
 const Urlcheck = '/lockers/checkclose/';
+const UrlMaxSlot = '/lockers/maxSlot/';
 
 
 

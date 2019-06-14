@@ -1,18 +1,35 @@
 .nav-container {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
+  right: 0;
   padding: 2rem;
 
   .back-button {
     display: flex;
     color: white;
     align-items: center;
+    float : left;
     img {
       width: 40px;
       height: 40px;
     }
     .back-text {
+      font-size: 1.5rem;
+      font-weight: 100;
+      margin-left: 0.5rem;
+    }
+  }
+  .out-button{
+    display: flex;
+    color: white;
+    align-items: center;
+    float : right;
+    img {
+      width: 40px;
+      height: 40px;
+    }
+    .out-text {
       font-size: 1.5rem;
       font-weight: 100;
       margin-left: 0.5rem;

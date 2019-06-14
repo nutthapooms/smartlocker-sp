@@ -11,6 +11,8 @@ import { SubcategoryOptionComponent } from './subcategory-option/subcategory-opt
 import { LockerOptionComponent } from './locker-option/locker-option.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import {HttpClientModule} from '@angular/common/http';
+import {DataService} from './data.service';
+import{BehaviorSubject} from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    // DataService,
+    // BehaviorSubject
   ],
   providers: [],
   bootstrap: [AppComponent]
