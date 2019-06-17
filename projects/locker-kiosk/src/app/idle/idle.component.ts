@@ -9,9 +9,8 @@ import {DataService} from '../data.service';
   styleUrls: ['./idle.component.scss']
 })
 export class IdleComponent implements OnInit {
-  message : string;
   constructor(private http: HttpClient,
-    // private data: DataService,
+    private data: DataService,
     private route: ActivatedRoute,
     private router: Router,
     ) { }

@@ -10,9 +10,9 @@ import { CategoryOptionComponent } from './category-option/category-option.compo
 import { SubcategoryOptionComponent } from './subcategory-option/subcategory-option.component';
 import { LockerOptionComponent } from './locker-option/locker-option.component';
 import { NavigationComponent } from './navigation/navigation.component';
-import {HttpClientModule} from '@angular/common/http';
-import {DataService} from './data.service';
-import{BehaviorSubject} from 'rxjs';
+import { HttpClientModule} from '@angular/common/http';
+import { DataService} from './data.service';
+// import{BehaviorSubject} from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,8 @@ import{BehaviorSubject} from 'rxjs';
     CategoryOptionComponent,
     SubcategoryOptionComponent,
     LockerOptionComponent,
-    NavigationComponent
+    NavigationComponent,
+    // DataService,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +33,12 @@ import{BehaviorSubject} from 'rxjs';
     // DataService,
     // BehaviorSubject
   ],
-  providers: [],
+  exports:[
+    // DataService,    
+  ],
+  providers: [
+    DataService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

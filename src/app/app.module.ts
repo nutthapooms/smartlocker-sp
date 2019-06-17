@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+// import { DataService }from './data.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,8 @@ import { AppComponent } from './app.component';
     RouterModule,
     HttpClientModule,
     MomentModule,
-    FormsModule
+    FormsModule,
+    // DataService
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,7 +5,7 @@ import { ContainerDetailComponent } from 'projects/manage-storage/src/app/contai
 import { delay } from 'q';
 import { ActivatedRoute, Router } from '@angular/router';
 import { stringify } from 'querystring';
-
+import { DataService }from '../data.service';
 @Component({
   selector: 'app-locker-option',
   templateUrl: './locker-option.component.html',
@@ -16,11 +16,14 @@ export class LockerOptionComponent implements OnInit {
   lockers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
   displaynumber = [""];
   lockernum = "";
-  
+  message : string;
+
   constructor(private http: HttpClient, private route: ActivatedRoute,
+    private data: DataService,
     private router: Router, ) { }
 
   ngOnInit() {
+    this.data.currentMessage.subscribe(message => this.message = message);
   }
   @HostListener('document:keydown', ['$event']) onkeydownHandler(event: KeyboardEvent) {
     if (event.key === "Enter") {

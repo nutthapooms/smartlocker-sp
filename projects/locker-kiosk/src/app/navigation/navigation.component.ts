@@ -11,9 +11,10 @@ import { DataService } from '../data.service';
 })
 export class NavigationComponent implements OnInit {
   isHome: boolean = false;
-  // message : string;
+  message : string;
   constructor(private location: Location,
-    private router: Router
+    private router: Router,
+    private data: DataService
   ) { }
   card_number = ""
   enterCheck = 1;
@@ -28,23 +29,23 @@ export class NavigationComponent implements OnInit {
       // this.data.changeMessage(this.card_number);
       if (this.enterCheck == 1) {
         document.getElementById("backBtn").style.visibility = 'visible';
-
         document.getElementById("logOutIcon").style.visibility = 'visible';
         document.getElementById("logOut").innerHTML = "ID: " + this.card_number + " Log out";
-        this.router.navigate(['/browse-option'])
+        this.data.changeMessage(this.card_number);
         this.enterCheck = 0;
+        this.router.navigate(['/browse-option']);
       }
     }
     else {
       if ("1234567890_".includes(event.key)) {
-        this.card_number = this.card_number + event.key
+        this.card_number = this.card_number + event.key;
       }
     }
   }
   back() {
     if (this.location.path() == '/browse-option'){
       document.getElementById("logOutIcon").style.visibility = 'hidden';
-      document.getElementById("logOut").innerHTML = "";    
+      document.getElementById("logOut").innerHTML = ""; 
       document.getElementById("backBtn").style.visibility = 'hidden';
       this.enterCheck = 1;
     }
@@ -56,7 +57,7 @@ export class NavigationComponent implements OnInit {
     document.getElementById("backBtn").style.visibility = 'hidden';
     this.enterCheck = 1;
     this.card_number = "";
-    this.router.navigate(['/'])
+    this.router.navigate(['/']);
   }
 }
 

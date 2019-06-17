@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { slideInAnimation } from './animation';
 import {HttpClient} from '@angular/common/http';
-import {DataService} from './data.service';
-// import{BehaviorSubject} from 'rxjs';
+// import {DataService} from './data.service';
 
 @Component({
   selector: 'app-root',
@@ -19,5 +18,8 @@ export class AppComponent {
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
+  constructor(
+    // private data: DataService
+  ) { }
 }
 
