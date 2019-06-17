@@ -16,27 +16,31 @@ export class LockerOptionComponent implements OnInit {
   lockers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
   displaynumber = [""];
   lockernum = "";
-  message : string;
-
+  card_number : string;
+  checkopen = 0;
   constructor(private http: HttpClient, private route: ActivatedRoute,
     private data: DataService,
     private router: Router, ) { }
 
   ngOnInit() {
-    this.data.currentMessage.subscribe(message => this.message = message);
+    this.data.currentMessage.subscribe(message => this.card_number = message);
   }
   @HostListener('document:keydown', ['$event']) onkeydownHandler(event: KeyboardEvent) {
-    if (event.key === "Enter") {
-      document.getElementById("numPad").innerHTML = serial_number + " Close the door";
-      
-      serial_number = "";
-      // this.router.navigate(['/browse-option'])
-      this.checkLocker();
-    }
-    else {
-      if ("1234567890_".includes(event.key)) {
-        serial_number = serial_number + event.key
+    if (this.checkopen == 1){
+      if (event.key === "Enter") {
+        document.getElementById("numPad").innerHTML = serial_number + " Close the door";
+        
+        serial_number = "";
+        // this.router.navigate(['/browse-option'])
+        this.checkLocker();
+        this.checkopen = 0;
       }
+      else {
+        if ("1234567890_".includes(event.key)) {
+          serial_number = serial_number + event.key
+        }
+      }
+      
     }
   }
   addnum(num = "") {
@@ -61,7 +65,8 @@ export class LockerOptionComponent implements OnInit {
         }
       )
       console.log(Url + this.lockernum);
-      document.getElementById("numPad").innerHTML = "Box number " + this.lockernum + " open!  Scan serial";  
+      document.getElementById("numPad").innerHTML = "Box number " + this.lockernum + " open!  Scan serial";
+      this.checkopen = 1;  
     }
     else{
       document.getElementById("displayNum").innerHTML = "No Box number: "+this.lockernum+" Please enter again.";
@@ -77,6 +82,7 @@ export class LockerOptionComponent implements OnInit {
         console.log("detail is " + detail.result);
         if (detail.result == 1) {
           // alert("close")
+          alert("Thank you "+this.card_number);
           this.router.navigate(['/browse-option'])
         }
         console.log(data);

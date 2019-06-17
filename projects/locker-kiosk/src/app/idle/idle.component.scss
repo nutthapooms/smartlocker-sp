@@ -34,6 +34,11 @@
         .main-text {
             font-size: calc((.4em + 2vmin) + (.4em + 2vmax));
             font-weight: bold;
+            .sub-text {
+                
+                font-size: calc((.2em + 1vmin) + (.2em + 1vmax));
+                font-weight: normal;
+            }
         }
     }
 }

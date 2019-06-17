@@ -19,6 +19,9 @@ export class IdleComponent implements OnInit {
   ngOnInit() {
     // this.data.currentMessage.subscribe(message => this.message = message);
   }
+  return(){
+      this.router.navigate(['/browse-option'])
+  }
   // @HostListener('document:keydown',['$event'])onkeydownHandler(event: KeyboardEvent){
   //   if (event.key === "Enter"){
   //     // alert(this.card_number)
