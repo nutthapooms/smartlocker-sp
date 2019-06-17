@@ -20,6 +20,7 @@
             }
         }
         .header-right {
+            float : right;
             display: flex;
             flex-direction: column;
             align-items: flex-end;
@@ -35,7 +36,7 @@
             font-size: calc((.4em + 2vmin) + (.4em + 2vmax));
             font-weight: bold;
             .sub-text {
-                padding-top: 1rem;                
+                padding-top: 1rem;
                 font-size: calc((.2em + 1vmin) + (.2em + 1vmax));
                 font-weight: normal;
             }

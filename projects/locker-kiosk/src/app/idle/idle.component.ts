@@ -19,33 +19,7 @@ export class IdleComponent implements OnInit {
   ngOnInit() {
     // this.data.currentMessage.subscribe(message => this.message = message);
   }
-  return(){
-      this.router.navigate(['/browse-option'])
+  return(){   
+      this.router.navigate(['/return-items'])
   }
-  // @HostListener('document:keydown',['$event'])onkeydownHandler(event: KeyboardEvent){
-  //   if (event.key === "Enter"){
-  //     // alert(this.card_number)
-  //     // this.data.changeMessage(this.card_number);
-  //     this.card_number = "";
-  //     this.router.navigate(['/browse-option'])
-
-  //   }
-  //   else{
-  //     if("1234567890_".includes(event.key)){
-  //       this.card_number = this.card_number + event.key
-  //     }
-  //   }
-  // }
-  
 }
-// document.addEventListener('keydown',function(event){
-//   if(event.keyCode == 13){
-//     alert("ENter: "+card_number);
-//     card_number = "";
-//     Enter = 1;
-//   }
-//   else {
-//     card_number = card_number+event.key;
-//   }
-  
-// });

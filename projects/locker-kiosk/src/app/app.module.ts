@@ -9,6 +9,7 @@ import { BrowseOptionComponent } from './browse-option/browse-option.component';
 import { CategoryOptionComponent } from './category-option/category-option.component';
 import { SubcategoryOptionComponent } from './subcategory-option/subcategory-option.component';
 import { LockerOptionComponent } from './locker-option/locker-option.component';
+import { ReturnItemsComponent } from './return-items/return-items.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { HttpClientModule} from '@angular/common/http';
 import { DataService} from './data.service';
@@ -23,6 +24,7 @@ import { DataService} from './data.service';
     SubcategoryOptionComponent,
     LockerOptionComponent,
     NavigationComponent,
+    ReturnItemsComponent
     // DataService,
   ],
   imports: [

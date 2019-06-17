@@ -33,4 +33,6 @@ export const slideInAnimation =
         transition('SubcategoryOption => *', animation),
         transition('LockerOption => *', animation),
         transition('Home => *', animation),
+        transition('ReturnItems => *', animation),
+
     ]);
