@@ -14,7 +14,7 @@ export class CountryListComponent implements OnInit {
     private location: Location) { }
 
   ngOnInit() {
-    this.http.get<Array<CountryDTO>>('http://207.46.236.46/api/admin/countries').subscribe(data => {
+    this.http.get<Array<CountryDTO>>('http://localhost:8080/api/admin/countries').subscribe(data => {
         console.log(data)
         this.countries = data;
       }

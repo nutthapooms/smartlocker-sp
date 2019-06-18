@@ -36,7 +36,7 @@ export class ItemFilterComponent implements OnInit {
 
 
   fetchCountires() {
-    let endpoint = `http://207.46.236.46/api/online/browse-locations`
+    let endpoint = `http://localhost:8080/api/online/browse-locations`
     console.log("Fetching containers...", endpoint)
     this.http.get<LocationResponse>(endpoint).subscribe(data => {
       this.locations = data

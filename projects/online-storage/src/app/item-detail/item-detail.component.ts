@@ -30,7 +30,7 @@ export class ItemDetailComponent implements OnInit {
 
 
 
-    this.http.get<ItemDetailResponse>(`http://207.46.236.46/api/online/items/${this.itemId}`).subscribe(data => {
+    this.http.get<ItemDetailResponse>(`http://localhost:8080/api/online/items/${this.itemId}`).subscribe(data => {
       this.item = data
       console.log(data)
       if(this.item.item.images.length > 0) {

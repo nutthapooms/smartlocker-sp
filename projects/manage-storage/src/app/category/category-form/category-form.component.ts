@@ -23,7 +23,7 @@ export class CategoryFormComponent implements OnInit {
   ngOnInit() {
     this.categoryId = this.route.snapshot.paramMap.get('categoryId');
     if(this.categoryId != null) {
-      this.http.get<CategoryDTO>(`http://207.46.236.46/api/admin/categories/${this.categoryId}`).subscribe(data => {
+      this.http.get<CategoryDTO>(`http://localhost:8080/api/admin/categories/${this.categoryId}`).subscribe(data => {
         console.log(data)
         this.category = data;
       })
@@ -34,9 +34,9 @@ export class CategoryFormComponent implements OnInit {
   submitForm() {
     let endpoint: string;
     if(this.categoryId != null) {
-      endpoint = `http://207.46.236.46/api/admin/categories/${this.categoryId}`
+      endpoint = `http://localhost:8080/api/admin/categories/${this.categoryId}`
      } else {
-      endpoint = `http://207.46.236.46/api/admin/categories`
+      endpoint = `http://localhost:8080/api/admin/categories`
      }
 
     this.http.post<any>(endpoint, {

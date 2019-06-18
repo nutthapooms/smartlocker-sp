@@ -24,7 +24,7 @@ export class SiteFormComponent implements OnInit {
     this.siteId = this.route.snapshot.paramMap.get('siteId');
     this.countryId = this.route.snapshot.paramMap.get('countryId');
     if(this.siteId != null) {
-      this.http.get<SiteDTO>(`http://207.46.236.46/api/admin/sites/${this.siteId}`).subscribe(data => {
+      this.http.get<SiteDTO>(`http://localhost:8080/api/admin/sites/${this.siteId}`).subscribe(data => {
         console.log(data)
         this.site = data;
       })
@@ -35,9 +35,9 @@ export class SiteFormComponent implements OnInit {
   submitForm() {
     let endpoint: string;
     if(this.siteId != null) {
-      endpoint = `http://207.46.236.46/api/admin/sites/${this.siteId}`
+      endpoint = `http://localhost:8080/api/admin/sites/${this.siteId}`
      } else {
-      endpoint = `http://207.46.236.46/api/admin/sites`
+      endpoint = `http://localhost:8080/api/admin/sites`
      }
 
     this.http.post<any>(endpoint, {

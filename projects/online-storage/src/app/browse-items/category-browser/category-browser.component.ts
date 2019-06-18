@@ -18,7 +18,7 @@ export class CategoryBrowserComponent implements OnInit {
     private _router: Router) { }
 
   ngOnInit() {
-    this.http.get<TypeResponse>('http://207.46.236.46/api/online/browse-types').subscribe(data => {
+    this.http.get<TypeResponse>('http://localhost:8080/api/online/browse-types').subscribe(data => {
       this.types = data
 
       this._route.queryParams.subscribe(queries => {

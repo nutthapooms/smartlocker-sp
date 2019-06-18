@@ -7,7 +7,7 @@
 <div class="model-count" *ngIf="catalog">Showing {{catalog.total}} results</div>
 <div class="model-list-container" *ngIf="catalog">
   <div class="model-container" *ngFor="let item of catalog.items" [ngClass]="{'unavailable': item.available == 0}">
-    <div class="model-image" [style.background-image]="'url(http://207.46.236.46/api/images/' + item.item.images[0] + ')'"></div>
+    <div class="model-image" [style.background-image]="'url(http://localhost:8080/api/images/' + item.item.images[0] + ')'"></div>
     <div class="model-text">
       <a class="model-name" routerLink="/item/{{item.item.id}}" queryParamsHandling="preserve">{{item.item.name}}</a>
       <div class="model-category">{{item.category.name}} / {{item.subcategory.name}}</div>

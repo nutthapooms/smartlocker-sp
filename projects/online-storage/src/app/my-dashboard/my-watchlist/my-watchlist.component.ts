@@ -15,7 +15,7 @@ export class MyWatchlistComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get<DashboardWatchResponse>('http://207.46.236.46/api/users/1/watch-list').subscribe(data => {
+    this.http.get<DashboardWatchResponse>('http://localhost:8080/api/users/1/watch-list').subscribe(data => {
         console.log(data)
         this.watches = data;
       }
