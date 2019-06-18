@@ -53,6 +53,7 @@ export class NavigationComponent implements OnInit {
           this.card_number = this.card_number + event.key;
         }
       }
+      
     }
     
   }
@@ -62,6 +63,8 @@ export class NavigationComponent implements OnInit {
       document.getElementById("logOut").innerHTML = ""; 
       document.getElementById("backBtn").style.visibility = 'hidden';
       this.enterCheck = 1;
+      this.card_number = "";
+
     }
     this.location.back()  
   }
