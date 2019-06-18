@@ -29,7 +29,7 @@ export class NavigationComponent implements OnInit {
     }
     else {
       document.getElementById("backBtn").style.visibility = 'visible';
-      document.getElementById("logOutIcon").style.visibility = 'hidden';
+      document.getElementById("logOutIcon").style.visibility = 'visible';
     }
 
   }

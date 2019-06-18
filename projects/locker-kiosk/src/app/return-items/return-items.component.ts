@@ -32,6 +32,7 @@ export class ReturnItemsComponent implements OnInit {
             alert(this.serial_number)
             this.http.get<TypeResponse>('http://localhost:8080/api/admin/barcode/'+this.serial_number).subscribe(data => {
             detail = data;
+            console.log(detail);
             this.locker_num_temp = detail.locker.name.toString();
             this.locker_num = this.locker_num_temp.substring(7);
             console.log("locker number: "+ this.locker_num);    
@@ -40,23 +41,26 @@ export class ReturnItemsComponent implements OnInit {
                     console.log(data);
                 }
             );
+            this.checkLocker(this.locker_num);
         })        
-        this.checkLocker();
+        
 
         }
         else {
-            if ("1234567890_".includes(event.key)) {
-                this.serial_number = this.serial_number + event.key;
-            }
+            this.serial_number = this.serial_number + event.key;
+
         }
 
     }
-    checkLocker() {
-        this.http.get("/lockers/checkclose/3").subscribe(
+    checkLocker(locker_num) {
+        console.log("ASSD"+locker_num);
+        this.http.get("/lockers/checkclose/"+locker_num).subscribe(
           data => {
             detail = data;
             if (detail.result == 1) {
               // alert("close")
+              console.log('http://localhost:8080/api/admin/return/'+this.serial_number);
+              this.http.get<TypeResponse>('http://localhost:8080/api/admin/return/'+this.serial_number).subscribe();
               alert("Thank you for returning : "+this.serial_number);
               this.serial_number = "";    
             }

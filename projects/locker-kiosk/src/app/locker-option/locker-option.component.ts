@@ -5,7 +5,7 @@ import { ContainerDetailComponent } from 'projects/manage-storage/src/app/contai
 import { delay } from 'q';
 import { ActivatedRoute, Router } from '@angular/router';
 import { stringify } from 'querystring';
-import { DataService }from '../data.service';
+import { DataService } from '../data.service';
 @Component({
   selector: 'app-locker-option',
   templateUrl: './locker-option.component.html',
@@ -16,7 +16,7 @@ export class LockerOptionComponent implements OnInit {
   lockers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
   displaynumber = [""];
   lockernum = "";
-  card_number : string;
+  card_number: string;
   checkopen = 0;
   constructor(private http: HttpClient, private route: ActivatedRoute,
     private data: DataService,
@@ -26,10 +26,10 @@ export class LockerOptionComponent implements OnInit {
     this.data.currentMessage.subscribe(message => this.card_number = message);
   }
   @HostListener('document:keydown', ['$event']) onkeydownHandler(event: KeyboardEvent) {
-    if (this.checkopen == 1){
+    if (this.checkopen == 1) {
       if (event.key === "Enter") {
         document.getElementById("numPad").innerHTML = serial_number + " Close the door";
-        
+
         serial_number = "";
         // this.router.navigate(['/browse-option'])
         this.checkLocker();
@@ -40,7 +40,7 @@ export class LockerOptionComponent implements OnInit {
           serial_number = serial_number + event.key
         }
       }
-      
+
     }
   }
   addnum(num = "") {
@@ -56,24 +56,42 @@ export class LockerOptionComponent implements OnInit {
       data => {
         maxSlot = data;
         console.log(maxSlot.result);
+        if (Number(this.lockernum) < maxSlot.result) {
+          // console.log("http://localhost:8080/api/admin/lockerno/" + containerName + "/" + this.lockernum);
+          this.http.get("http://localhost:8080/api/admin/lockerno/" + containerName + "/" + this.lockernum).subscribe(
+            data => {
+              IsAvailable = data;
+              console.log(IsAvailable.loaner);
+              if (IsAvailable.loaner.employeeId == null) {
+                this.http.get(Url + this.lockernum).subscribe(
+                  data => {
+                    console.log(data);
+                  }
+                )
+                this.http.get("http://localhost:8080/api/admin/borrow/" + IsAvailable.barcode + "/" + this.card_number).subscribe(
+                  data => {
+                    console.log(data);
+                  }
+                )
+                document.getElementById("numPad").innerHTML = "Box number " + this.lockernum + " open!  Scan serial";
+                this.checkopen = 1;
+              }
+              else {
+                alert("this item is not available");
+                this.lockernum = "";
+              }
+            }
+          )
+        }
+        else {
+          document.getElementById("displayNum").innerHTML = "No Box number: " + this.lockernum + " Please enter again.";
+          this.lockernum = "";
+        }
+
       }
     )
-    if(Number(this.lockernum)<maxSlot.result){
-      this.http.get(Url + this.lockernum).subscribe(
-        data => {
-          console.log(data);
-        }
-      )
-      console.log(Url + this.lockernum);
-      document.getElementById("numPad").innerHTML = "Box number " + this.lockernum + " open!  Scan serial";
-      this.checkopen = 1;  
-    }
-    else{
-      document.getElementById("displayNum").innerHTML = "No Box number: "+this.lockernum+" Please enter again.";
-      this.lockernum = "";
-    }
-    
-    
+
+
   }
   checkLocker() {
     this.http.get(Urlcheck + this.lockernum).subscribe(
@@ -82,7 +100,7 @@ export class LockerOptionComponent implements OnInit {
         console.log("detail is " + detail.result);
         if (detail.result == 1) {
           // alert("close")
-          alert("Thank you "+this.card_number);
+          alert("Thank you " + this.card_number);
           this.router.navigate(['/browse-option'])
         }
         console.log(data);
@@ -94,10 +112,11 @@ export class LockerOptionComponent implements OnInit {
 var serial_number = ""
 var detail;
 var maxSlot;
+var IsAvailable;
 const Url = '/lockers/open/';
 const Urlcheck = '/lockers/checkclose/';
 const UrlMaxSlot = '/lockers/maxSlot/';
-
+var containerName = '80017';
 
 
 
