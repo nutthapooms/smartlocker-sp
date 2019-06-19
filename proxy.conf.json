@@ -4,7 +4,14 @@
 	"secure": false,
 	"logLevel": "debug",
 	"changeOrigin": true
+	},
+	"/api/*":{
+		"target": "https://smartlocker20190619011530.azurewebsites.net", 
+		"secure": false,
+		"logLevel": "debug",
+		"changeOrigin": true
+			
 	}
-	
+		
 }
 	

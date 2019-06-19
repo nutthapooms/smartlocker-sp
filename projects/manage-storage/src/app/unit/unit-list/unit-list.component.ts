@@ -39,7 +39,7 @@ export class UnitListComponent implements OnInit {
     let params = new HttpParams();
     if(this.lockerId) params = params.append('lockerId', this.lockerId);
 
-    this.http.get<Array<UnitDTO>>(`http://192.168.1.34:8080/api/admin/units`, { params: params }).subscribe(data => {
+    this.http.get<Array<UnitDTO>>(`/api/admin/units`, { params: params }).subscribe(data => {
         console.log(data)
         this.units = data;
       }

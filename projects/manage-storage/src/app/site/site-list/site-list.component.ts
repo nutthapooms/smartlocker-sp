@@ -25,7 +25,7 @@ export class SiteListComponent implements OnInit {
     let params = new HttpParams();
     if (this.countryId) params = params.append('countryId', this.countryId);
 
-    this.http.get<Array<SiteDTO>>(`http://192.168.1.34:8080/api/admin/sites`, { params: params }).subscribe(data => {
+    this.http.get<Array<SiteDTO>>(`/api/admin/sites`, { params: params }).subscribe(data => {
       console.log(data)
       this.sites = data;
     })

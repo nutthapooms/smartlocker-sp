@@ -8,9 +8,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "online": "ng serve --project online-storage",
+    "online": "ng serve --proxy-config proxy.conf.json --project online-storage",
     "kiosk": "ng serve --proxy-config proxy.conf.json --project locker-kiosk",
-    "admin": "ng serve --project manage-storage"
+    "admin": "ng serve --proxy-config proxy.conf.json --project manage-storage "
   },
   "private": true,
   "dependencies": {
