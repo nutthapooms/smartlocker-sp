@@ -1,7 +1,7 @@
 <h2>My items <span *ngIf="loans">({{loans.total}})</span></h2>
 <div class="item-list-container" *ngIf="loans">
   <div class="item-container" *ngFor="let loan of loans.units">
-    <div class="item-image" [style.background-image]="'url(http://localhost:8080/api/images/' + loan.item.images[0] + ')'"></div>
+    <div class="item-image" [style.background-image]="'url(http://http://192.168.1.34:8080/api/images/' + loan.item.images[0] + ')'"></div>
     <div class="item-text">
       <a class="item-name" routerLink="/item/{{loan.item.id}}">{{loan.item.name}}</a>
       <div class="item-category">{{loan.category.name | uppercase}} / {{loan.subcategory.name | uppercase}}</div>

@@ -23,7 +23,7 @@ export class CategoryListComponent implements OnInit {
     let params = new HttpParams();
     if(this.containerId) params = params.append('containerId', this.containerId);
 
-    this.http.get<Array<CategoryDTO>>(`http://localhost:8080/api/admin/categories`, { params: params }).subscribe(data => {
+    this.http.get<Array<CategoryDTO>>(`http://http://192.168.1.34:8080/api/admin/categories`, { params: params }).subscribe(data => {
         console.log(data)
         this.categories = data;
       }
