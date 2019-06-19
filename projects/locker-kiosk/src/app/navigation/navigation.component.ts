@@ -2,7 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { DataService } from '../data.service';
-
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-navigation',
@@ -14,6 +14,7 @@ export class NavigationComponent implements OnInit {
   message : string;
   page_state = '';
   constructor(private location: Location,
+    private http : HttpClient,
     private router: Router,
     private data: DataService,
     private pagestate: DataService
@@ -43,6 +44,11 @@ export class NavigationComponent implements OnInit {
           document.getElementById("logOutIcon").style.visibility = 'visible';
           document.getElementById("logOut").innerHTML = "ID: " + this.card_number + " Log out";
           this.data.changeMessage(this.card_number);
+          this.http.get("http://localhost:8080/api/admin/finduser/" + this.card_number).subscribe(
+            data => {
+              console.log(data);
+            }
+          )
           this.enterCheck = 0;
           this.router.navigate(['/browse-option']);
   
@@ -64,9 +70,11 @@ export class NavigationComponent implements OnInit {
       document.getElementById("backBtn").style.visibility = 'hidden';
       this.enterCheck = 1;
       this.card_number = "";
-
+      this.router.navigate(['/']);
     }
-    this.location.back()  
+    else{
+    this.location.back();
+    }
   }
   out() {
     document.getElementById("logOutIcon").style.visibility = 'hidden';

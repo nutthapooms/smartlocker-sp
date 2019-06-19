@@ -94,6 +94,8 @@
 .numpad{
   height: 100px;
   width: 100px;
+  font-size: calc((.2em + 1vmin) + (.2em + 1vmax));
+
 }
 
 *:focus {
