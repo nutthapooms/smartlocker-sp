@@ -26,7 +26,7 @@ export class SubcategoryFormComponent implements OnInit {
     this.subcategoryId = this.route.snapshot.paramMap.get('subcategoryId');
 
     if(this.subcategoryId != null) {
-      this.http.get<SubcategoryDTO>(`http://http://192.168.1.34:8080/api/admin/subcategories/${this.subcategoryId}`).subscribe(data => {
+      this.http.get<SubcategoryDTO>(`http://192.168.1.34:8080/api/admin/subcategories/${this.subcategoryId}`).subscribe(data => {
         console.log(data)
         this.subcategory = data;
       })
@@ -37,9 +37,9 @@ export class SubcategoryFormComponent implements OnInit {
   submitForm() {
     let endpoint: string;
     if(this.subcategoryId != null) {
-      endpoint = `http://http://192.168.1.34:8080/api/admin/subcategories/${this.subcategoryId}`
+      endpoint = `http://192.168.1.34:8080/api/admin/subcategories/${this.subcategoryId}`
      } else {
-      endpoint = `http://http://192.168.1.34:8080/api/admin/subcategories`
+      endpoint = `http://192.168.1.34:8080/api/admin/subcategories`
      }
 
     this.http.post<any>(endpoint, {

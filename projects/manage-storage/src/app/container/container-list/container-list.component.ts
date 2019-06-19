@@ -29,7 +29,7 @@ export class ContainerListComponent implements OnInit {
     let params = new HttpParams();
     if(this.siteId) params = params.append('siteId', this.siteId);
 
-    this.http.get<Array<ContainerDTO>>(`http://http://192.168.1.34:8080/api/admin/containers`, { params: params }).subscribe(data => {
+    this.http.get<Array<ContainerDTO>>(`http://192.168.1.34:8080/api/admin/containers`, { params: params }).subscribe(data => {
         console.log(data)
         this.containers = data;
       })

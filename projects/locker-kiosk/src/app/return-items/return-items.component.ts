@@ -33,7 +33,7 @@ export class ReturnItemsComponent implements OnInit {
     @HostListener('document:keydown', ['$event']) onkeydownHandler(event: KeyboardEvent) {
         if (event.key === "Enter" && this.door_close == 1) {
             // alert(this.serial_number)
-            this.http.get<TypeResponse>('http://http://192.168.1.34:8080/api/admin/barcode/' + this.serial_number).subscribe(data => {
+            this.http.get<TypeResponse>('http://192.168.1.34:8080/api/admin/barcode/' + this.serial_number).subscribe(data => {
                 detail = data;
                 console.log(detail);
                 if (detail != null && detail.loaner.employeeId != null) {
@@ -70,8 +70,8 @@ export class ReturnItemsComponent implements OnInit {
                 detail = data;
                 if (detail.result == 1) {
                     // alert("close")
-                    console.log('http://http://192.168.1.34:8080/api/admin/return/' + this.serial_number);
-                    this.http.get<TypeResponse>('http://http://192.168.1.34:8080/api/admin/return/' + this.serial_number).subscribe();
+                    console.log('http://192.168.1.34:8080/api/admin/return/' + this.serial_number);
+                    this.http.get<TypeResponse>('http://192.168.1.34:8080/api/admin/return/' + this.serial_number).subscribe();
                     // alert("Thank you for returning : " + this.serial_number);
                     document.getElementById("ScanSerial_sub").innerHTML = "Thank you.Scan other item or tap to cancel.";
                     this.door_close = 1;

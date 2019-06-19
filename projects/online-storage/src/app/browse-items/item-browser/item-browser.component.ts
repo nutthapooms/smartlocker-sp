@@ -38,7 +38,7 @@ export class ItemBrowserComponent implements OnInit {
       this.queryParams.siteId = queries.siteId ? queries.siteId : undefined
       this.queryParams.containerId = queries.containerId ? queries.containerId : undefined
       this.queryParams.keyword = queries.keyword ? queries.keyword : undefined
-      let endpoint = `http://http://192.168.1.34:8080/api/online/items`
+      let endpoint = `http://192.168.1.34:8080/api/online/items`
       console.log("Fetching models...", endpoint, {params : this.queryParams})
       this.http.get<BrowseResponse>(endpoint, {params : JSON.parse(JSON.stringify(this.queryParams))}).subscribe(data =>
         this.catalog = data
@@ -52,7 +52,7 @@ export class ItemBrowserComponent implements OnInit {
 
   getFirstModelImage(model) {
     if(model.images.length > 0){
-      return 'http://http://192.168.1.34:8080/api/images/' + model.images[0];
+      return 'http://192.168.1.34:8080/api/images/' + model.images[0];
     } else {
       return 'http://www.independentmediators.co.uk/wp-content/uploads/2016/02/placeholder-image.jpg'
     }

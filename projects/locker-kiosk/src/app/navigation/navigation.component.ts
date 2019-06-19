@@ -44,7 +44,7 @@ export class NavigationComponent implements OnInit {
           document.getElementById("logOutIcon").style.visibility = 'visible';
           document.getElementById("logOut").innerHTML = "ID: " + this.card_number + " Log out";
           this.data.changeMessage(this.card_number);
-          this.http.get("http://http://192.168.1.34:8080/api/admin/finduser/" + this.card_number).subscribe(
+          this.http.get("http://192.168.1.34:8080/api/admin/finduser/" + this.card_number).subscribe(
             data => {
               console.log(data);
             }

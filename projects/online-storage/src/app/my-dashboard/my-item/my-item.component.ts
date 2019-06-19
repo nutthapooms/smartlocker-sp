@@ -14,7 +14,7 @@ export class MyItemComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get<DashboardLoanResponse>('http://http://192.168.1.34:8080/api/users/1/loan-list').subscribe(data => {
+    this.http.get<DashboardLoanResponse>('http://192.168.1.34:8080/api/users/1/loan-list').subscribe(data => {
         console.log(data)
         this.loans = data;
       }

@@ -30,7 +30,7 @@ export class LockerFormComponent implements OnInit {
     this.lockerId = this.route.snapshot.paramMap.get('lockerId');
 
     if(this.lockerId != null) {
-      this.http.get<LockerDTO>(`http://http://192.168.1.34:8080/api/admin/lockers/${this.lockerId}`).subscribe(data => {
+      this.http.get<LockerDTO>(`http://192.168.1.34:8080/api/admin/lockers/${this.lockerId}`).subscribe(data => {
         console.log(data)
         this.locker = data;
       })
@@ -41,9 +41,9 @@ export class LockerFormComponent implements OnInit {
   submitForm() {
     let endpoint: string;
     if(this.lockerId != null) {
-      endpoint = `http://http://192.168.1.34:8080/api/admin/lockers/${this.lockerId}`
+      endpoint = `http://192.168.1.34:8080/api/admin/lockers/${this.lockerId}`
      } else {
-      endpoint = `http://http://192.168.1.34:8080/api/admin/lockers`
+      endpoint = `http://192.168.1.34:8080/api/admin/lockers`
      }
 
     this.http.post<any>(endpoint, {

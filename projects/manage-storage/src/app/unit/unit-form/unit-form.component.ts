@@ -40,14 +40,14 @@ export class UnitFormComponent implements OnInit {
     this.containerId = this.route.snapshot.paramMap.get('containerId');
     this.lockerId = this.route.snapshot.paramMap.get('lockerId');
 
-    this.http.get<Array<CategoryDTO>>(`http://http://192.168.1.34:8080/api/admin/categories`).subscribe(data => {
+    this.http.get<Array<CategoryDTO>>(`http://192.168.1.34:8080/api/admin/categories`).subscribe(data => {
       console.log(data)
       this.categories = data;
     })
   }
 
   fetchSubcategory(categoryId: string) {
-    this.http.get<Array<SubcategoryDTO>>(`http://http://192.168.1.34:8080/api/admin/subcategories`, {params : {
+    this.http.get<Array<SubcategoryDTO>>(`http://192.168.1.34:8080/api/admin/subcategories`, {params : {
       "categoryId": categoryId
     }}).subscribe(data => {
       console.log(data)
@@ -56,7 +56,7 @@ export class UnitFormComponent implements OnInit {
   }
 
   fetchItem(subcategoryId: string) {
-    this.http.get<Array<ItemDTO>>(`http://http://192.168.1.34:8080/api/admin/items`, {params : {
+    this.http.get<Array<ItemDTO>>(`http://192.168.1.34:8080/api/admin/items`, {params : {
       "subcategoryId": subcategoryId
     }}).subscribe(data => {
       console.log(data)
@@ -65,7 +65,7 @@ export class UnitFormComponent implements OnInit {
   }
 
   fetchUnit(itemId: string) {
-    this.http.get<Array<UnitDTO>>(`http://http://192.168.1.34:8080/api/admin/units`, {params : {
+    this.http.get<Array<UnitDTO>>(`http://192.168.1.34:8080/api/admin/units`, {params : {
       "itemId": itemId
     }}).subscribe(data => {
       console.log(data)
@@ -76,7 +76,7 @@ export class UnitFormComponent implements OnInit {
 
   submitForm() {
     let endpoint: string;
-    endpoint = `http://http://192.168.1.34:8080/api/admin/units/${this.unitId}`
+    endpoint = `http://192.168.1.34:8080/api/admin/units/${this.unitId}`
 
     this.http.post<any>(endpoint, {
       "lockerId": this.lockerId,
