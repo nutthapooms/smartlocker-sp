@@ -83,7 +83,8 @@ export class LockerOptionComponent implements OnInit {
                 // this.checkopen = 0;
               }
               else {
-                alert("this item is not available");
+                document.getElementById("displayNum").innerHTML = "this item is not available.Please enter again";
+                // alert("this item is not available");
                 this.lockernum = "";
               }
             }
