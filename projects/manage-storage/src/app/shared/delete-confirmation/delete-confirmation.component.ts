@@ -26,7 +26,7 @@ export class DeleteConfirmationComponent implements OnInit {
   }
 
   delete() {
-    this.http.delete('http://localhost/api/admin/' + this.endpoint).subscribe(data => {
+    this.http.delete('/api/admin/' + this.endpoint).subscribe(data => {
       this.router.navigate([this.next])
     })
   }
