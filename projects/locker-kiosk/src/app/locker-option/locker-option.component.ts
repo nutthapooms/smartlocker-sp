@@ -25,24 +25,6 @@ export class LockerOptionComponent implements OnInit {
   ngOnInit() {
     this.data.currentMessage.subscribe(message => this.card_number = message);
   }
-  // @HostListener('document:keydown', ['$event']) onkeydownHandler(event: KeyboardEvent) {
-  //   if (this.checkopen == 1) {
-  //     if (event.key === "Enter") {
-  //       document.getElementById("numPad").innerHTML = serial_number + " Close the door";
-
-  //       serial_number = "";
-  //       // this.router.navigate(['/browse-option'])
-  //       this.checkLocker();
-  //       this.checkopen = 0;
-  //     }
-  //     else {
-  //       if ("1234567890_".includes(event.key)) {
-  //         serial_number = serial_number + event.key
-  //       }
-  //     }
-
-  //   }
-  // }
   addnum(num = "") {
     this.lockernum = this.lockernum + num
     document.getElementById("displayNum").innerHTML = "Box number :" + this.lockernum;
@@ -79,8 +61,6 @@ export class LockerOptionComponent implements OnInit {
                   }
                 )
                 document.getElementById("numPad").innerHTML = "Pick your item and close the door.";
-                // this.checkopen = 1;
-                // this.checkopen = 0;
               }
               else {
                 document.getElementById("displayNum").innerHTML = "this item is not available.Please enter again";

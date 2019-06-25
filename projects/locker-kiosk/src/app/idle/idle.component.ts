@@ -14,10 +14,7 @@ export class IdleComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     ) { }
-  // card_number = ""
-
   ngOnInit() {
-    // this.data.currentMessage.subscribe(message => this.message = message);
   }
   return(){   
       this.router.navigate(['/return-items'])

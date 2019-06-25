@@ -1,5 +1,4 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-// import { Location } from '@angular/common';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { DataService } from '../data.service';
 import { HttpClient } from '@angular/common/http';
@@ -7,28 +6,21 @@ import { TypeResponse, TypeCategory, TypeSubcategory } from 'src/app/shared/mode
 import { delay } from 'q';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
-
 @Component({
     selector: 'app-return-items',
     templateUrl: './return-items.component.html',
     styleUrls: ['./return-items.component.scss']
 })
 export class ReturnItemsComponent implements OnInit {
-    // page_state = '/return-items';
     serial_number = "";
     locker_num = "";
     locker_num_temp = "";
     door_close = 1;
     constructor(
         private router: Router,
-        // private pagestate: DataService,
         private http: HttpClient
-        // private data: DataService
     ) { }
     ngOnInit() {
-
-        // this.pagestate.changeMessage(this.page_state);
-        // console.log(this.page_state);
     }
     @HostListener('document:keydown', ['$event']) onkeydownHandler(event: KeyboardEvent) {
         if (event.key === "Enter" && this.door_close == 1) {
@@ -53,12 +45,11 @@ export class ReturnItemsComponent implements OnInit {
                     // alert(this.serial_number+" : Not found");
                     // document.getElementById("ScanSerial").innerHTML = this.serial_number+" : Not found. Please Scan other item."; 
                     document.getElementById("ScanSerial_sub").innerHTML = "Item not found. Please Scan other item or tap to cancel.";
-
                     this.serial_number = "";
                 }
             })
         }
-        else if(this.door_close == 1){
+        else if (this.door_close == 1) {
             this.serial_number = this.serial_number + event.key;
         }
     }

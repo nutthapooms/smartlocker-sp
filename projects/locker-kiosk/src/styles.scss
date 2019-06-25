@@ -92,13 +92,16 @@
   }
 }
 .numpad{
-  height: 100px;
-  width: 100px;
+  height: 110px;
+  width: 110px;
   font-size: calc((.2em + 1vmin) + (.2em + 1vmax));
+  border-radius: 8px;
+  background-color: #e7e7e7; ;
+  margin : 2px;
 }
 #displayNum{
   font-size: calc((.2em + 1vmin) + (.2em + 1vmax));
-
+  margin-bottom: 5px;
 }
 *:focus {
     outline: none;
