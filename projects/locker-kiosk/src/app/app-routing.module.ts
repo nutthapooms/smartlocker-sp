@@ -6,12 +6,16 @@ import { CategoryOptionComponent } from './category-option/category-option.compo
 import { SubcategoryOptionComponent } from './subcategory-option/subcategory-option.component';
 import { LockerOptionComponent } from './locker-option/locker-option.component';
 import { ReturnItemsComponent } from './return-items/return-items.component';
+import { ReportIssueComponent } from './report-issue/report-issue.compoenent';
+
+
 const routes: Routes = [
   { path: 'browse-option', component: BrowseOptionComponent, data: {animation: 'BrowseOption'} },
   { path: 'category-option', component: CategoryOptionComponent , data: {animation: 'CategoryOption'} },
   { path: 'subcategory-option', component: SubcategoryOptionComponent , data: {animation: 'SubcategoryOption'} },
   { path: 'locker-option', component: LockerOptionComponent , data: {animation: 'LockerOption'} },
   { path: 'return-items', component: ReturnItemsComponent , data: {animation: 'ReturnItems'} },
+  { path: 'report-issue', component: ReportIssueComponent , data: {animation: 'ReportIssue'} },
   { path: '**', component: IdleComponent, data: {animation: 'Home'} },
 
 

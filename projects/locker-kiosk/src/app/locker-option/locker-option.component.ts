@@ -63,7 +63,7 @@ export class LockerOptionComponent implements OnInit {
                 document.getElementById("numPad").innerHTML = "Pick your item and close the door.";
               }
               else {
-                document.getElementById("displayNum").innerHTML = "this item is not available.Please enter again";
+                document.getElementById("displayNum").innerHTML = "Item is not available.Please enter again";
                 // alert("this item is not available");
                 this.lockernum = "";
               }

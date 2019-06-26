@@ -11,6 +11,8 @@ import { SubcategoryOptionComponent } from './subcategory-option/subcategory-opt
 import { LockerOptionComponent } from './locker-option/locker-option.component';
 import { ReturnItemsComponent } from './return-items/return-items.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { ReportIssueComponent } from './report-issue/report-issue.compoenent';
+
 import { HttpClientModule} from '@angular/common/http';
 import { DataService} from './data.service';
 // import{BehaviorSubject} from 'rxjs';
@@ -24,7 +26,8 @@ import { DataService} from './data.service';
     SubcategoryOptionComponent,
     LockerOptionComponent,
     NavigationComponent,
-    ReturnItemsComponent
+    ReturnItemsComponent,
+    ReportIssueComponent
     // DataService,
   ],
   imports: [
