@@ -44,18 +44,18 @@ export class ReturnItemsComponent implements OnInit {
                 else {
                     // alert(this.serial_number+" : Not found");
                     // document.getElementById("ScanSerial").innerHTML = this.serial_number+" : Not found. Please Scan other item."; 
-                    document.getElementById("ScanSerial_sub").innerHTML = "Item not found. Please Scan other item or tap to cancel.";
+                    document.getElementById("ScanSerial_sub").innerHTML = "Item not found. Please Scan other item";
                     this.serial_number = "";
                 }
             })
         }
         else if (this.door_close == 1) {
             if ("Shift".includes(event.key)) {
-              }
-              else{
+            }
+            else {
                 this.serial_number = this.serial_number + event.key;
-                
-              }
+
+            }
         }
     }
     checkLocker(locker_num) {
@@ -69,7 +69,7 @@ export class ReturnItemsComponent implements OnInit {
                     console.log('/api/admin/return/' + this.serial_number);
                     this.http.get<TypeResponse>('/api/admin/return/' + this.serial_number).subscribe();
                     // alert("Thank you for returning : " + this.serial_number);
-                    document.getElementById("ScanSerial_sub").innerHTML = "Thank you.Scan other item or tap to cancel.";
+                    document.getElementById("ScanSerial_sub").innerHTML = "Thank you.Scan other item ";
                     this.door_close = 1;
                     this.serial_number = "";
                 }

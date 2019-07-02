@@ -30,7 +30,7 @@ export class NavigationComponent implements OnInit {
   locker_num_temp = "";
   door_close = 1;
   ngOnInit() {
-    if (this.location.path() == '' || this.location.path() == '/return-items') {
+    if (this.location.path() == '') {
       document.getElementById("logOutIcon").style.visibility = 'hidden';
       document.getElementById("logOut").innerHTML = "";
       document.getElementById("backBtn").style.visibility = 'hidden';
