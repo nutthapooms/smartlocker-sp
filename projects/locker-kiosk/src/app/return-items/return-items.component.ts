@@ -24,7 +24,7 @@ export class ReturnItemsComponent implements OnInit {
     }
     @HostListener('document:keydown', ['$event']) onkeydownHandler(event: KeyboardEvent) {
         if (event.key === "Enter" && this.door_close == 1) {
-            // alert(this.serial_number)
+            console.log(this.serial_number)
             this.http.get<TypeResponse>('/api/admin/barcode/' + this.serial_number).subscribe(data => {
                 detail = data;
                 console.log(detail);
@@ -50,7 +50,12 @@ export class ReturnItemsComponent implements OnInit {
             })
         }
         else if (this.door_close == 1) {
-            this.serial_number = this.serial_number + event.key;
+            if ("Shift".includes(event.key)) {
+              }
+              else{
+                this.serial_number = this.serial_number + event.key;
+                
+              }
         }
     }
     checkLocker(locker_num) {

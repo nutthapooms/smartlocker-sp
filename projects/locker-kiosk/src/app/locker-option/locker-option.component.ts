@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { detachEmbeddedView } from '@angular/core/src/view';
 import { ContainerDetailComponent } from 'projects/manage-storage/src/app/container/container-detail/container-detail.component';
 import { delay } from 'q';
@@ -23,6 +23,14 @@ export class LockerOptionComponent implements OnInit {
     private router: Router, ) { }
 
   ngOnInit() {
+    // let headers = new HttpHeaders();
+    // headers.append('Content-Type','application/json');
+    // headers.append('Access-Control-Allow-Origin','*');
+    // this.http.get("http://192.168.1.34:8080/api/admin/barcode/8520",{headers:headers}).subscribe(
+    //   data => {
+    //     console.log(data);
+    //   }
+    // )
     this.data.currentMessage.subscribe(message => this.card_number = message);
   }
   addnum(num = "") {
@@ -61,6 +69,8 @@ export class LockerOptionComponent implements OnInit {
                   }
                 )
                 document.getElementById("numPad").innerHTML = "Pick your item and close the door.";
+                document.getElementById("numPad").style.fontSize = "calc((.3em + 1vmin) + (.3em + 1vmax))"
+
               }
               else {
                 document.getElementById("displayNum").innerHTML = "Item is not available.Please enter again";

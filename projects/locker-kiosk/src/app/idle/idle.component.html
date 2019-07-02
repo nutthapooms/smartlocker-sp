@@ -1,6 +1,32 @@
 <div class="container">
   <div class="header">
     <div class="header-left">
+      <div class="header-icon"></div>
+      <div class="header-text">SMARTLOCKER</div>
+    </div>
+    <div class="header-right">
+      <div class="identity-text">THAILAND</div>
+      <div class="identity-text">HARINDHORN BUILDING</div>
+      <div class="identity-text">80017</div>
+    </div>
+  </div>
+  <div class="main" [routerLink]="''">
+        <table>
+          <tr>
+            <td><img class="image" src="assets/barcode-scanner.png" alt=""></td>
+
+            <td id="ScanSerial_sub" class="main-text table-text">Scan barcode on item to return</td>
+          </tr>
+          <tr>
+            <td><img class="image" src="assets/door-key.png" alt=""></td>
+            <td class="main-text table-text ">Tap ID card to borrow item</td>
+          </tr>
+        </table>
+    </div>
+</div>
+<!-- <div class="container">
+  <div class="header">
+    <div class="header-left">
         <div class="header-icon"></div>
         <div class="header-text">SMARTLOCKER : BORROW</div>
     
@@ -12,14 +38,16 @@
     
     </div>
   </div>
-  <!-- <div class="main" [routerLink]="'/browse-option'">
+  <div class="main" [routerLink]="'/browse-option'">
     <div class="main-text">Tap here to start browsing items</div>
   </div> -->
-  <div class="main" [routerLink]="'/return-items'">
-    <div class="main-text">Scan card to start browsing items
-    <div class="sub-text"> Or tap to return items</div>
+<!-- <div class="main" [routerLink]="'/return-items'"> -->
+<!-- <div class="main" >
 
-    </div>
-    <!-- <div><input type="password" ></div> -->
+    <div class="main-text">Scan card to start browsing items
+    <div class="sub-text"> Or tap to return items</div> -->
+
+<!-- </div>
+    <div><input type="password" ></div>
   </div>
-</div>
+</div>  -->
