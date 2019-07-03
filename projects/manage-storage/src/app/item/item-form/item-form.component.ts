@@ -38,8 +38,10 @@ export class ItemFormComponent implements OnInit {
         this.item = data;
         this.itemRequest.name = this.item.name
         this.itemRequest.attachments = this.item.images
+        console.log(this.item)
         this.duration = moment.duration(this.item.defaultDuration, 'seconds')
-        this.durationInput = this.duration.humanize();
+        this.durationInput = this.duration.asDays().toString();
+        console.log(this.duration)
       })
     }
 
@@ -55,7 +57,9 @@ export class ItemFormComponent implements OnInit {
       }
     }
     this.duration = moment.duration(this.durationDict)
-
+    // console.log(this.duration)
+    this.itemRequest.defaultDuration = this.duration.asSeconds();
+    console.log(this.itemRequest.defaultDuration)
   }
 
   onFileSelected(event) {
@@ -79,6 +83,7 @@ export class ItemFormComponent implements OnInit {
       endpoint = `/api/admin/items`
      }
     this.http.post<any>(endpoint, this.itemRequest).subscribe(data => {
+      console.log(this.itemRequest)
       this.router.navigate(['/categories', this.categoryId, 'subcategories', this.subcategoryId, 'items'])
     })
   }
