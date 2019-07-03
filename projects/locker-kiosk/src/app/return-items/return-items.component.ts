@@ -25,6 +25,8 @@ export class ReturnItemsComponent implements OnInit {
     @HostListener('document:keydown', ['$event']) onkeydownHandler(event: KeyboardEvent) {
         if (event.key === "Enter" && this.door_close == 1) {
             console.log(this.serial_number)
+            document.getElementById("ScanSerial_sub").innerHTML = "Processing, please wait";
+
             this.http.get<TypeResponse>('/api/admin/barcode/' + this.serial_number).subscribe(data => {
                 detail = data;
                 console.log(detail);
