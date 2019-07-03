@@ -42,6 +42,7 @@ export class LockerOptionComponent implements OnInit {
     document.getElementById("displayNum").innerHTML = "Box number :" + this.lockernum;
   }
   openLocker() {
+    document.getElementById("displayNum").innerHTML = "Processing, please wait.";
     this.http.get(UrlMaxSlot).subscribe(
       data => {
         maxSlot = data;
