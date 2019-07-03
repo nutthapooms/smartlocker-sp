@@ -118,7 +118,7 @@ export class NavigationComponent implements OnInit {
     document.getElementById("backBtn").style.visibility = 'hidden';
     this.enterCheck = 1;
     this.card_number = "";
-    this.serial_number =";"
+    this.serial_number ="";
     this.router.navigate(['/']);
   }
   checkLocker(locker_num) {
