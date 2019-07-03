@@ -82,6 +82,7 @@ export class NavigationComponent implements OnInit {
             // alert(this.serial_number+" : Not found");
             document.getElementById("ScanSerial_sub").innerHTML = "Item not found. Scan other item";
             this.serial_number = "";
+            this.card_number = "";
           }
         })
       }
@@ -117,6 +118,7 @@ export class NavigationComponent implements OnInit {
     document.getElementById("backBtn").style.visibility = 'hidden';
     this.enterCheck = 1;
     this.card_number = "";
+    this.serial_number =";"
     this.router.navigate(['/']);
   }
   checkLocker(locker_num) {
@@ -133,6 +135,7 @@ export class NavigationComponent implements OnInit {
           document.getElementById("ScanSerial_sub").innerHTML = "Thank you.Scan other item";
           this.door_close = 1;
           this.serial_number = "";
+          this.card_number = "";
         }
         console.log(detail.categories);
       }
