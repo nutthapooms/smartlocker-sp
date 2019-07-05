@@ -88,7 +88,7 @@ export class NavigationComponent implements OnInit {
         })
       }
     }
-    else {
+    else if (this.enterCheck == 1) {
       if ("1234567890_".includes(event.key)) {
         this.card_number = this.card_number + event.key;
       }
