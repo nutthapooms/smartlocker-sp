@@ -1,6 +1,6 @@
 {
 	"/lockers/*":{
-	"target": "http://192.168.4.103:8000", 
+	"target": "http://localhost:8000", 
 	"secure": false,
 	"logLevel": "debug",
 	"changeOrigin": true
