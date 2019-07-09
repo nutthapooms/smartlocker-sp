@@ -23,14 +23,6 @@ export class LockerOptionComponent implements OnInit {
     private router: Router, ) { }
 
   ngOnInit() {
-    // let headers = new HttpHeaders();
-    // headers.append('Content-Type','application/json');
-    // headers.append('Access-Control-Allow-Origin','*');
-    // this.http.get("http://192.168.1.34:8080/api/admin/barcode/8520",{headers:headers}).subscribe(
-    //   data => {
-    //     console.log(data);
-    //   }
-    // )
     this.data.currentMessage.subscribe(message => this.card_number = message);
   }
   addnum(num = "") {
@@ -41,8 +33,19 @@ export class LockerOptionComponent implements OnInit {
     this.lockernum = this.lockernum.slice(0, -1);
     document.getElementById("displayNum").innerHTML = "Box number :" + this.lockernum;
   }
+  disablebtn(){
+    for(var i=0;i<13;i++){
+    (document.getElementsByClassName("numpad")[i]as HTMLButtonElement).disabled = true;
+    }
+  }
+  ablebtn(){
+    for(var i=0;i<13;i++){
+    (document.getElementsByClassName("numpad")[i]as HTMLButtonElement).disabled = false;
+    }
+  }
   openLocker() {
     document.getElementById("displayNum").innerHTML = "Processing, please wait.";
+    this.disablebtn();
     this.http.get(UrlMaxSlot).subscribe(
       data => {
         maxSlot = data;
@@ -55,6 +58,7 @@ export class LockerOptionComponent implements OnInit {
               console.log(IsAvailable);
               if (IsAvailable == null){
                 document.getElementById("displayNum").innerHTML = "No item in this locker. Please enter again.";
+                this.ablebtn();
                 this.lockernum = "";
               } 
               else if (IsAvailable.loaner.employeeId == null ) {
@@ -75,6 +79,7 @@ export class LockerOptionComponent implements OnInit {
               }
               else {
                 document.getElementById("displayNum").innerHTML = "Item is not available.Please enter again";
+                this.ablebtn();
                 // alert("this item is not available");
                 this.lockernum = "";
               }
@@ -83,6 +88,7 @@ export class LockerOptionComponent implements OnInit {
         }
         else {
           document.getElementById("displayNum").innerHTML = "No Box number: " + this.lockernum + " Please enter again.";
+          this.ablebtn();
           this.lockernum = "";
         }
 
