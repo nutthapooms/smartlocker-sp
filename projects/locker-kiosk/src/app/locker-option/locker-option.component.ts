@@ -37,6 +37,7 @@ export class LockerOptionComponent implements OnInit {
     for(var i=0;i<13;i++){
     (document.getElementsByClassName("numpad")[i]as HTMLButtonElement).disabled = true;
     }
+    
   }
   ablebtn(){
     for(var i=0;i<13;i++){
