@@ -34,13 +34,13 @@ export class LockerOptionComponent implements OnInit {
     document.getElementById("displayNum").innerHTML = "Box number :" + this.lockernum;
   }
   disablebtn(){
-    for(var i=0;i<13;i++){
+    for(var i=0;i<12;i++){
     (document.getElementsByClassName("numpad")[i]as HTMLButtonElement).disabled = true;
     }
     
   }
   ablebtn(){
-    for(var i=0;i<13;i++){
+    for(var i=0;i<12;i++){
     (document.getElementsByClassName("numpad")[i]as HTMLButtonElement).disabled = false;
     }
   }
