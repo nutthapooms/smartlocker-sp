@@ -50,8 +50,9 @@ export class LockerOptionComponent implements OnInit {
     this.http.get(UrlMaxSlot).subscribe(
       data => {
         maxSlot = data;
-        console.log("choose: "+this.lockernum);
-        if (Number(this.lockernum) <= maxSlot.result) {
+        var showNumber = Number(this.lockernum) 
+        console.log("choose: "+showNumber);
+        if (showNumber <= maxSlot.result && showNumber > 0) {
           // console.log("/api/admin/lockerno/" + containerName + "/Locker " + this.lockernum);
           this.http.get("/api/admin/lockerno/" + containerName + "/Locker " + this.lockernum).subscribe(
             data => {
