@@ -54,7 +54,7 @@ export class LockerOptionComponent implements OnInit {
         console.log("choose: "+showNumber);
         if (showNumber <= maxSlot.result && showNumber > 0) {
           // console.log("/api/admin/lockerno/" + containerName + "/Locker " + this.lockernum);
-          this.http.get("/api/admin/lockerno/" + containerName + "/Locker " + this.lockernum).subscribe(
+          this.http.get("/api/admin/lockerno/" + containerName + "/Locker " + showNumber).subscribe(
             data => {
               IsAvailable = data;
               console.log(IsAvailable);
@@ -64,7 +64,7 @@ export class LockerOptionComponent implements OnInit {
                 this.lockernum = "";
               } 
               else if (IsAvailable.loaner.employeeId == null ) {
-                this.http.get(Url + this.lockernum).subscribe(
+                this.http.get(Url + showNumber).subscribe(
                   data => {
                     console.log(data);
                     this.checkLocker();
@@ -89,7 +89,7 @@ export class LockerOptionComponent implements OnInit {
           )
         }
         else {
-          document.getElementById("displayNum").innerHTML = "No Box number: " + this.lockernum + " Please enter again.";
+          document.getElementById("displayNum").innerHTML = "No Box number: " + showNumber + " Please enter again.";
           this.ablebtn();
           this.lockernum = "";
         }
