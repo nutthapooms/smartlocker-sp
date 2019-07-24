@@ -30,7 +30,7 @@ export class LockerFormComponent implements OnInit {
     this.lockerId = this.route.snapshot.paramMap.get('lockerId');
 
     if(this.lockerId != null) {
-      this.http.get<LockerDTO>(`/api/admin/lockers/${this.lockerId}`).subscribe(data => {
+      this.http.get<LockerDTO>(`https://smartlocker.azurewebsites.net/api/admin/lockers/${this.lockerId}`).subscribe(data => {
         console.log(data)
         this.locker = data;
       })
@@ -41,9 +41,9 @@ export class LockerFormComponent implements OnInit {
   submitForm() {
     let endpoint: string;
     if(this.lockerId != null) {
-      endpoint = `/api/admin/lockers/${this.lockerId}`
+      endpoint = `https://smartlocker.azurewebsites.net/api/admin/lockers/${this.lockerId}`
      } else {
-      endpoint = `/api/admin/lockers`
+      endpoint = `https://smartlocker.azurewebsites.net/api/admin/lockers`
      }
 
     this.http.post<any>(endpoint, {

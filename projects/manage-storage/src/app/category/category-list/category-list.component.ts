@@ -23,7 +23,7 @@ export class CategoryListComponent implements OnInit {
     let params = new HttpParams();
     if(this.containerId) params = params.append('containerId', this.containerId);
 
-    this.http.get<Array<CategoryDTO>>(`/api/admin/categories`, { params: params }).subscribe(data => {
+    this.http.get<Array<CategoryDTO>>('https://smartlocker.azurewebsites.net/api/admin/categories', { params: params }).subscribe(data => {
         console.log(data)
         this.categories = data;
       }

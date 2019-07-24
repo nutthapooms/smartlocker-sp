@@ -11,8 +11,8 @@
     "online": "ng serve --proxy-config proxy.conf.json --project online-storage",
     "kiosk": "ng serve --proxy-config proxy.conf.json --project locker-kiosk",
     "admin": "ng serve --proxy-config proxy.conf.json --project manage-storage ",
-    "prod-admin" : "ng build --project online-storage --prod",
-    "prod-online" : "ng build --project manage-storage --prod"
+    "prod-online" : "ng build --project online-storage --prod",
+    "prod-admin" : "ng build --project manage-storage --prod"
   },
   "private": true,
   "dependencies": {

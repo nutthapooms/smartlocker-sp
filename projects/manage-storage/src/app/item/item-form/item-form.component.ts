@@ -33,7 +33,7 @@ export class ItemFormComponent implements OnInit {
     this.itemId = this.route.snapshot.paramMap.get('itemId');
     this.itemRequest.subcategoryId = this.subcategoryId
     if(this.itemId != null) {
-      this.http.get<ItemDTO>(`/api/admin/items/${this.itemId}`).subscribe(data => {
+      this.http.get<ItemDTO>(`https://smartlocker.azurewebsites.net/api/admin/items/${this.itemId}`).subscribe(data => {
         console.log(data)
         this.item = data;
         this.itemRequest.name = this.item.name
@@ -67,7 +67,7 @@ export class ItemFormComponent implements OnInit {
       this.fileData = <File>event.target.files[0];
       const formData = new FormData();
       formData.append('file', this.fileData);
-      this.http.post<number>('http://localhost/api/admin/images/', formData)
+      this.http.post<number>('http://localhosthttps://smartlocker.azurewebsites.net/api/admin/images/', formData)
         .subscribe(res => {
           this.itemRequest.attachments.push(res);
           console.log(`Added image id ${res} to request model`, this.itemRequest)
@@ -78,9 +78,9 @@ export class ItemFormComponent implements OnInit {
   submitForm() {
     let endpoint: string;
     if(this.itemId != null) {
-      endpoint = `/api/admin/items/${this.itemId}`
+      endpoint = `https://smartlocker.azurewebsites.net/api/admin/items/${this.itemId}`
      } else {
-      endpoint = `/api/admin/items`
+      endpoint = `https://smartlocker.azurewebsites.net/api/admin/items`
      }
     this.http.post<any>(endpoint, this.itemRequest).subscribe(data => {
       console.log(this.itemRequest)

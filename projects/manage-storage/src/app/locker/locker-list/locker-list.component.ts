@@ -34,7 +34,7 @@ export class LockerListComponent implements OnInit {
     let params = new HttpParams();
     if(this.containerId) params = params.append('containerId', this.containerId);
 
-    this.http.get<Array<LockerDTO>>(`/api/admin/lockers`, { params: params }).subscribe(data => {
+    this.http.get<Array<LockerDTO>>(`https://smartlocker.azurewebsites.net/api/admin/lockers`, { params: params }).subscribe(data => {
         console.log(data)
         this.lockers = data;
       })

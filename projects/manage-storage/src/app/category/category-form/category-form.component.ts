@@ -23,7 +23,7 @@ export class CategoryFormComponent implements OnInit {
   ngOnInit() {
     this.categoryId = this.route.snapshot.paramMap.get('categoryId');
     if(this.categoryId != null) {
-      this.http.get<CategoryDTO>(`/api/admin/categories/${this.categoryId}`).subscribe(data => {
+      this.http.get<CategoryDTO>(`https://smartlocker.azurewebsites.net/api/admin/categories/${this.categoryId}`).subscribe(data => {
         console.log(data)
         this.category = data;
       })
@@ -34,9 +34,9 @@ export class CategoryFormComponent implements OnInit {
   submitForm() {
     let endpoint: string;
     if(this.categoryId != null) {
-      endpoint = `/api/admin/categories/${this.categoryId}`
+      endpoint = `https://smartlocker.azurewebsites.net/api/admin/categories/${this.categoryId}`
      } else {
-      endpoint = `/api/admin/categories`
+      endpoint = `https://smartlocker.azurewebsites.net/api/admin/categories`
      }
 
     this.http.post<any>(endpoint, {

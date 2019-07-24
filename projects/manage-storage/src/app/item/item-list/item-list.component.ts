@@ -31,7 +31,7 @@ export class ItemListComponent implements OnInit {
     let params = new HttpParams();
     if(this.subcategoryId) params = params.append('subcategoryId', this.subcategoryId);
 
-    this.http.get<Array<ItemDTO>>(`/api/admin/items`, { params: params }).subscribe(data => {
+    this.http.get<Array<ItemDTO>>(`https://smartlocker.azurewebsites.net/api/admin/items`, { params: params }).subscribe(data => {
         console.log(data)
         this.items = data;
       })
