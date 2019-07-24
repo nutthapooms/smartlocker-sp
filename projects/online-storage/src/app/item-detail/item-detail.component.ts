@@ -30,7 +30,7 @@ export class ItemDetailComponent implements OnInit {
 
 
 
-    this.http.get<ItemDetailResponse>(`/api/online/items/${this.itemId}`).subscribe(data => {
+    this.http.get<ItemDetailResponse>(`https://smartlocker.azurewebsites.net/api/online/items/${this.itemId}`).subscribe(data => {
       this.item = data
       console.log(data)
       if(this.item.item.images.length > 0) {

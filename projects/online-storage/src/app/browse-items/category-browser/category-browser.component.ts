@@ -18,7 +18,7 @@ export class CategoryBrowserComponent implements OnInit {
     private _router: Router) { }
 
   ngOnInit() {
-    this.http.get<TypeResponse>('/api/online/browse-types').subscribe(data => {
+    this.http.get<TypeResponse>('https://smartlocker.azurewebsites.net/api/online/browse-types').subscribe(data => {
       this.types = data
 
       this._route.queryParams.subscribe(queries => {
