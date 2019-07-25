@@ -18,7 +18,7 @@ import { ItemFilterComponent } from './browse-items/item-filter/item-filter.comp
 import { ItemDetailComponent } from './item-detail/item-detail.component';
 import { AvailabilityComponent } from './item-detail/availability/availability.component';
 import { LoanComponent } from './item-detail/loan/loan.component';
-import { TokenInterceptor } from 'src/app/shared/auth.token';
+import { HttpRequestInterceptor } from 'src/app/shared/auth.token';
 
 
 @NgModule({
@@ -47,7 +47,7 @@ import { TokenInterceptor } from 'src/app/shared/auth.token';
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
+      useClass: HttpRequestInterceptor,
       multi: true
     }
   ],

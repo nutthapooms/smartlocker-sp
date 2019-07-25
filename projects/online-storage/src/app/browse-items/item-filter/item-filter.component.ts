@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CountryResponse, SiteResponse, ContainerResponse, LockerResponse, LocationResponse, LocationCountry, LocationSite, LocationContainer, LocationLocker } from 'src/app/shared/model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpBackend } from '@angular/common/http';
 
 @Component({
   selector: 'app-item-filter',
@@ -27,7 +27,11 @@ export class ItemFilterComponent implements OnInit {
 
   constructor(private http: HttpClient,
     private _route: ActivatedRoute,
-    private _router: Router) { }
+    private _router: Router,
+    private handler: HttpBackend
+    ) {
+      this.http = new HttpClient(handler);
+     }
 
   ngOnInit() {
     this.fetchCountires();

@@ -1,21 +1,23 @@
 import { Injectable } from '@angular/core';
 import {
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HttpInterceptor
+  HttpEvent, HttpInterceptor, HttpHandler, HttpRequest
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
-@Injectable()
-export class TokenInterceptor implements HttpInterceptor {
-  constructor() {}
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    request = request.clone({
-      setHeaders: {
-        Authorization: `1`
-      }
-    });
-    return next.handle(request);
+import { Observable } from 'rxjs';
+
+/** Inject With Credentials into the request */
+@Injectable()
+export class HttpRequestInterceptor implements HttpInterceptor {
+
+  intercept(req: HttpRequest<any>, next: HttpHandler):
+    Observable<HttpEvent<any>> {
+    
+      // console.log("interceptor: " + req.url);
+      req = req.clone({
+        withCredentials: true
+      });
+      
+      return next.handle(req);
   }
+
 }

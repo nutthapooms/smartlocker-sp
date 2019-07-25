@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpBackend } from '@angular/common/http';
 import * as moment from 'moment';
 import { DashboardLoanResponse } from 'src/app/shared/model';
 
@@ -11,7 +11,11 @@ import { DashboardLoanResponse } from 'src/app/shared/model';
 export class MyItemComponent implements OnInit {
   loans: DashboardLoanResponse;
   today = moment.now();
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private handler: HttpBackend
+    ) {
+      this.http = new HttpClient(handler);
+     }
 
   ngOnInit() {
     this.http.get<DashboardLoanResponse>('https://smartlocker.azurewebsites.net/api/users/1/loan-list').subscribe(data => {

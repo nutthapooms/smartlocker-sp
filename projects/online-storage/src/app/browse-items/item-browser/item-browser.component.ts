@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpBackend } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CountryResponse, SiteResponse, ContainerResponse, BrowseResponse } from '../../../../../../src/app/shared/model';
 
@@ -28,7 +28,11 @@ export class ItemBrowserComponent implements OnInit {
 
   constructor(private http: HttpClient,
     private _route: ActivatedRoute,
-    private _router: Router) { }
+    private _router: Router,
+    private handler: HttpBackend
+    ) {
+      this.http = new HttpClient(handler);
+     }
 
   ngOnInit() {
     this._route.queryParams.subscribe(queries => {

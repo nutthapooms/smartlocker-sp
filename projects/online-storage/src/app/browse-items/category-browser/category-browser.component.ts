@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpBackend } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TypeResponse, TypeCategory, TypeSubcategory } from 'src/app/shared/model';
 
@@ -15,7 +15,11 @@ export class CategoryBrowserComponent implements OnInit {
 
   constructor(private http: HttpClient,
     private _route: ActivatedRoute,
-    private _router: Router) { }
+    private _router: Router,
+    private handler: HttpBackend
+    ) {
+      this.http = new HttpClient(handler);
+     }
 
   ngOnInit() {
     this.http.get<TypeResponse>('https://smartlocker.azurewebsites.net/api/online/browse-types').subscribe(data => {

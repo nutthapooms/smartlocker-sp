@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpBackend } from '@angular/common/http'
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+    ) {}
+     
 
   ngOnInit() {
-  }
+    this.http.get('https://ticket/api/user/').subscribe(
+      data => {
+        console.log(data);
+      }
+      )
+    }
+  
 
 }
