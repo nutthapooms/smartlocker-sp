@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpBackend } from '@angular/common/http';
 import { ItemResponse, CountryResponse, SiteResponse, ContainerResponse, ItemDetailResponse, CountryDTO, ItemDetailAvailabilityContainer } from '../../../../../src/app/shared/model';
 
 @Component({
@@ -23,7 +23,11 @@ export class ItemDetailComponent implements OnInit {
 
   constructor(private http: HttpClient,
     private _route: ActivatedRoute,
-    private _router: Router) { }
+    private _router: Router,
+    private handler: HttpBackend
+    ) {
+      this.http = new HttpClient(handler);
+     }
 
   ngOnInit() {
     this.itemId = this._route.snapshot.params.itemId;

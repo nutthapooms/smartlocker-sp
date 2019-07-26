@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ItemResponse, CountryResponse, SiteResponse, ContainerResponse, ItemDetailAvailabilityContainer, LocationResponse, LocationCountry, LocationSite, LocationContainer, WatchDTO, ItemDTO } from 'src/app/shared/model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpBackend } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -18,7 +18,11 @@ export class AvailabilityComponent implements OnInit {
   locations: LocationResponse;
   constructor(private http: HttpClient,
     private _route: ActivatedRoute,
-    private _router: Router) { }
+    private _router: Router,
+    private handler: HttpBackend
+    ) {
+      this.http = new HttpClient(handler);
+     }
 
   ngOnInit() {
     this.fetchCountires()
