@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { HttpClient, HttpBackend } from '@angular/common/http';
+import { HttpClient, HttpBackend, HttpHeaders } from '@angular/common/http';
 import { ItemResponse, CountryResponse, SiteResponse, ContainerResponse, ItemDetailResponse, CountryDTO, ItemDetailAvailabilityContainer } from '../../../../../src/app/shared/model';
 
 @Component({
@@ -30,11 +30,10 @@ export class ItemDetailComponent implements OnInit {
      }
 
   ngOnInit() {
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', '3721_226000');
     this.itemId = this._route.snapshot.params.itemId;
-
-
-
-    this.http.get<ItemDetailResponse>(`https://smartlocker.azurewebsites.net/api/online/items/${this.itemId}`).subscribe(data => {
+    this.http.get<ItemDetailResponse>(`https://smartlocker.azurewebsites.net/api/online/items/${this.itemId}`,{headers:headers}).subscribe(data => {
       this.item = data
       console.log(data)
       if(this.item.item.images.length > 0) {
