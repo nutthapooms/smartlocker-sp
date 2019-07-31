@@ -159,6 +159,17 @@ export class TypeSubcategory {
   public subcategory: SubcategoryDTO;
 }
 
+export class EmployeeResponse {
+  public employee : EmployeeDTO;
+}
+
+export class EmployeeDTO {
+  public EmployeeId: number;
+  public Name: number;
+  public Email: string;
+  public BadgeId: string;
+}
+
 export class ItemDetailResponse {
   public item: ItemDTO;
   public loans: ItemDetailLoan;

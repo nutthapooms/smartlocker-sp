@@ -19,6 +19,7 @@ import { ItemDetailComponent } from './item-detail/item-detail.component';
 import { AvailabilityComponent } from './item-detail/availability/availability.component';
 import { LoanComponent } from './item-detail/loan/loan.component';
 import { HttpRequestInterceptor } from 'src/app/shared/auth.token';
+import { DataService} from './shared/data.service';
 
 
 @NgModule({
@@ -45,7 +46,9 @@ import { HttpRequestInterceptor } from 'src/app/shared/auth.token';
     FormsModule
   ],
   providers: [
+    DataService,
     {
+      
       provide: HTTP_INTERCEPTORS,
       useClass: HttpRequestInterceptor,
       multi: true

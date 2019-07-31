@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpBackend } from '@angular/common/http'
-
+import { DataService } from '../data.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -9,6 +9,7 @@ import { HttpClient, HttpBackend } from '@angular/common/http'
 export class HeaderComponent implements OnInit {
   
   constructor(
+    private data: DataService,
     private http: HttpClient
     ) {}
   username : string;
@@ -20,6 +21,10 @@ export class HeaderComponent implements OnInit {
         user = data;
         this.username = user.First_Name;
         this.surname = user.Last_Name;
+        this.data.changeName(user.First_Name);
+        this.data.changeLastName(user.Last_Name);
+
+
       }
       )
     }
