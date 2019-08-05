@@ -16,13 +16,19 @@ export class NavigationComponent implements OnInit {
   isHome: boolean = false;
   message: string;
   page_state = '';
+  
   constructor(private location: Location,
     private http: HttpClient,
     private router: Router,
     private data: DataService,
     private pagestate: DataService
 
-  ) { }
+  ) { 
+     setInterval(() => {//
+      
+    this.auto_logout(); }, 1000);
+     
+      }
   card_number = ""
   enterCheck = 1;
   serial_number = "";
@@ -40,6 +46,9 @@ export class NavigationComponent implements OnInit {
       document.getElementById("logOutIcon").style.visibility = 'visible';
     }
 
+  }
+  @HostListener('window:click', ['$event']) onClickHandler(event: MouseEvent) {
+    time_out = 0;
   }
   @HostListener('document:keydown', ['$event']) onkeydownHandler(event: KeyboardEvent) {
     if (event.key === "Enter") {
@@ -100,6 +109,7 @@ export class NavigationComponent implements OnInit {
       }
     }
   }
+  
   back() {
     if (this.location.path() == '/browse-option') {
       document.getElementById("logOutIcon").style.visibility = 'hidden';
@@ -121,6 +131,18 @@ export class NavigationComponent implements OnInit {
     this.card_number = "";
     this.serial_number ="";
     this.router.navigate(['/']);
+  }
+  auto_logout(){
+    time_out ++;
+    console.log(time_out);
+    if(time_out >= 60 * 5 ){
+      if(this.enterCheck == 0){
+        this.out();
+      // alert("log out");
+      }
+      time_out = 0;
+    }
+    
   }
   checkLocker(locker_num) {
     // console.log("ASSD" + locker_num);
@@ -144,4 +166,4 @@ export class NavigationComponent implements OnInit {
   }
 }
 var detail;
-
+var time_out = 0;
