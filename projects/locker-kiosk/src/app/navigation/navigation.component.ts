@@ -49,6 +49,8 @@ export class NavigationComponent implements OnInit {
   }
   @HostListener('window:click', ['$event']) onClickHandler(event: MouseEvent) {
     time_out = 0;
+    
+
   }
   @HostListener('document:keydown', ['$event']) onkeydownHandler(event: KeyboardEvent) {
     if (event.key === "Enter") {
@@ -66,6 +68,7 @@ export class NavigationComponent implements OnInit {
             }
           )
           this.enterCheck = 0;
+          time_out = 0;
           this.router.navigate(['/browse-option']);
         }
       }
@@ -135,6 +138,13 @@ export class NavigationComponent implements OnInit {
   auto_logout(){
     time_out ++;
     console.log(time_out);
+    if(time_out >= 30 * 9 && this.enterCheck == 0){
+      let time_left = 300 - time_out
+      document.getElementById("logOut").innerHTML = "ID: " + this.card_number + " Log out | Auto log out in : "+ time_left;
+    }
+    else if (time_out <= 30 * 9 && this.enterCheck == 0){
+      document.getElementById("logOut").innerHTML = "ID: " + this.card_number + " Log out";
+    }
     if(time_out >= 60 * 5 ){
       if(this.enterCheck == 0){
         this.out();
