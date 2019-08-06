@@ -67,7 +67,7 @@ export class ItemFormComponent implements OnInit {
       this.fileData = <File>event.target.files[0];
       const formData = new FormData();
       formData.append('file', this.fileData);
-      this.http.post<number>('http://localhosthttps://smartlocker.azurewebsites.net/api/admin/images/', formData)
+      this.http.post<number>('https://smartlocker.azurewebsites.net/api/admin/images/', formData)
         .subscribe(res => {
           this.itemRequest.attachments.push(res);
           console.log(`Added image id ${res} to request model`, this.itemRequest)
