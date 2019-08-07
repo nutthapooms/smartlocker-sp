@@ -75,6 +75,7 @@ export class NavigationComponent implements OnInit {
       else if (this.door_close == 1) {
         document.getElementById("ScanSerial_sub").innerHTML = "Processing, please wait";
         console.log(this.serial_number)
+        this.card_number = "";
         this.http.get<TypeResponse>('/api/admin/barcode/' + this.serial_number).subscribe(data => {
           detail = data;
           console.log(detail);
