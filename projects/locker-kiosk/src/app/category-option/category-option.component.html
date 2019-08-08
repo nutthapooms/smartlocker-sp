@@ -6,16 +6,19 @@
   <div class="option-wrapper">
     <div class="option-opacity-gradient"></div>
     <div class="option-container">
-      <div class="option" [routerLink]="'/subcategory-option'">
-        <div class="option-text">
-          <div class="text-main">Input Device</div>
+      <div class="option" *ngFor="let category of categories">
+        <div class="option-text" >
+          <div class="text-main" (click)="routeToSubCat(category.id)">{{category.name}}</div>
         </div>
+        
       </div>
       <div class="option">
-        <div class="option-text">
-          <div class="text-main">Audio/Video</div>
+        <div class="option-text" >
+          <div class="text-main" id = "body">Loading Please wait.</div>
         </div>
+        
       </div>
+      
     </div>
   </div>
 </div>

@@ -54,7 +54,7 @@ export class LockerOptionComponent implements OnInit {
         console.log("choose: "+showNumber);
         if (showNumber <= maxSlot.result && showNumber > 0) {
           // console.log("/api/admin/lockerno/" + containerName + "/Locker " + this.lockernum);
-          this.http.get("/api/admin/lockerno/" + containerName + "/Locker " + showNumber).subscribe(
+          this.http.get("https://smartlocker.azurewebsites.net/api/admin/lockerno/" + containerName + "/Locker " + showNumber).subscribe(
             data => {
               IsAvailable = data;
               console.log(IsAvailable);
@@ -70,7 +70,7 @@ export class LockerOptionComponent implements OnInit {
                     this.checkLocker();
                   }
                 )
-                this.http.get("/api/admin/borrow/" + IsAvailable.barcode + "/" + this.card_number).subscribe(
+                this.http.get("https://smartlocker.azurewebsites.net/api/admin/borrow/" + IsAvailable.barcode + "/" + this.card_number).subscribe(
                   data => {
                     console.log(data);
                   }
@@ -105,7 +105,7 @@ export class LockerOptionComponent implements OnInit {
         console.log("detail is " + detail.result);
         if (detail.result == 1) {
           // alert("close")
-          // alert("Thank you " + this.card_number);
+          alert("Thank you " + this.card_number+" Don't forget to logout");
           this.router.navigate(['/browse-option'])
         }
         console.log(data);

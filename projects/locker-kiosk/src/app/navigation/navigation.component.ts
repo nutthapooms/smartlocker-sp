@@ -62,7 +62,7 @@ export class NavigationComponent implements OnInit {
           document.getElementById("logOutIcon").style.visibility = 'visible';
           document.getElementById("logOut").innerHTML = "ID: " + this.card_number + " Log out";
           this.data.changeMessage(this.card_number);
-          this.http.get("/api/admin/finduser/" + this.card_number).subscribe(
+          this.http.get("https://smartlocker.azurewebsites.net/api/admin/finduser/" + this.card_number).subscribe(
             data => {
               console.log(data);
             }
@@ -76,7 +76,7 @@ export class NavigationComponent implements OnInit {
         document.getElementById("ScanSerial_sub").innerHTML = "Processing, please wait";
         console.log(this.serial_number)
         this.card_number = "";
-        this.http.get<TypeResponse>('/api/admin/barcode/' + this.serial_number).subscribe(data => {
+        this.http.get<TypeResponse>('https://smartlocker.azurewebsites.net/api/admin/barcode/' + this.serial_number).subscribe(data => {
           detail = data;
           console.log(detail);
           if (detail != null && detail.loaner.employeeId != null) {
@@ -138,7 +138,7 @@ export class NavigationComponent implements OnInit {
   }
   auto_logout(){
     time_out ++;
-    console.log(time_out);
+    //console.log(time_out);
     if(time_out >= 30 * 9 && this.enterCheck == 0){
       let time_left = 300 - time_out
       document.getElementById("logOut").innerHTML = "ID: " + this.card_number + " Log out | Auto log out in : "+ time_left;
@@ -163,8 +163,8 @@ export class NavigationComponent implements OnInit {
         detail = data;
         if (detail.result == 1) {
           // alert("close")
-          console.log('/api/admin/return/' + this.serial_number);
-          this.http.get<TypeResponse>('/api/admin/return/' + this.serial_number).subscribe();
+          console.log('https://smartlocker.azurewebsites.net/api/admin/return/' + this.serial_number);
+          this.http.get<TypeResponse>('https://smartlocker.azurewebsites.net/api/admin/return/' + this.serial_number).subscribe();
           // alert("Thank you for returning : " + this.serial_number);
           document.getElementById("ScanSerial_sub").innerHTML = "Thank you.Scan other item";
           this.door_close = 1;

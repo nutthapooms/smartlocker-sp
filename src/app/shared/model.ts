@@ -62,6 +62,7 @@ export class SubcategoryDTO {
   public id: number;
   public itemCount: number;
   public name: string;
+  public category : CategoryDTO;
 }
 export class CountryDTO {
   public id: number;
