@@ -1,0 +1,51 @@
+<div class="option-page">
+    <div class="topic-container">
+      <div class="topic-title">Emergency Return</div>
+      <div class="topic-sub">
+         Whick Locker has Item but can't borrow?
+        <br/>Please input locker number carefully.
+    </div>
+    </div>
+    <div id = "numPad">
+      <div id="displayNum">
+        Box number :
+      </div>
+      <table>
+        <tr>
+          <td><button class="numpad" (click)="addnum(7)">7</button></td>
+          <td><button class="numpad" (click)="addnum(8)">8</button></td>
+          <td><button class="numpad" (click)="addnum(9)">9</button></td>
+        </tr>
+        <tr>
+          <td><button class="numpad" (click)="addnum(4)">4</button></td>
+          <td><button class="numpad" (click)="addnum(5)">5</button></td>
+          <td><button class="numpad" (click)="addnum(6)">6</button></td>
+        </tr>
+        <tr>
+          <td><button class="numpad" (click)="addnum(1)">1</button></td>
+          <td><button class="numpad" (click)="addnum(2)">2</button></td>
+          <td><button class="numpad" (click)="addnum(3)">3</button></td>
+        </tr>
+        <tr>
+          <td><button class="numpad" (click)="emergencyReturn()">Enter</button></td>
+          <td><button class="numpad" (click)="addnum(0)">0</button></td>
+          <td><button class="numpad" (click)="delnum()">Delete</button></td>
+        </tr>
+      </table>
+    </div>
+  
+    <!-- <div class="option-wrapper">
+      <div class="option-opacity-gradient"></div>
+      <div class="option-container">
+        <div *ngFor="let locker of lockers">
+          <div class="option">
+            <div class="option-text">
+              <span (click)="endd(locker)">
+                <div class="text-main" class="text-main ">Locker {{locker}}</div>
+              </span>
+            </div>
+          </div>  
+        </div>
+      </div>
+    </div> -->
+  </div>

@@ -31,7 +31,7 @@ export class CategoryOptionComponent implements OnInit {
     )
   }
   routeToSubCat(Cat:number) {
-    alert(Cat);
+    //alert(Cat);
     this.Category.changeMessage(Cat.toString());
     this.router.navigate(['/subcategory-option'])
   }

@@ -7,6 +7,8 @@ import { SubcategoryOptionComponent } from './subcategory-option/subcategory-opt
 import { LockerOptionComponent } from './locker-option/locker-option.component';
 import { ReturnItemsComponent } from './return-items/return-items.component';
 import { ReportIssueComponent } from './report-issue/report-issue.compoenent';
+import { EmergencyReturnComponent } from './emergency-return/emergency-return.component';
+
 
 
 const routes: Routes = [
@@ -16,6 +18,7 @@ const routes: Routes = [
   { path: 'locker-option', component: LockerOptionComponent , data: {animation: 'LockerOption'} },
   { path: 'return-items', component: ReturnItemsComponent , data: {animation: 'ReturnItems'} },
   { path: 'report-issue', component: ReportIssueComponent , data: {animation: 'ReportIssue'} },
+  { path: 'emergency-return', component: EmergencyReturnComponent , data: {animation: 'EmergencyReturn'} },
   { path: '**', component: IdleComponent, data: {animation: 'Home'} },
 
 

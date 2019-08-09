@@ -11,6 +11,7 @@ import { SubcategoryOptionComponent } from './subcategory-option/subcategory-opt
 import { LockerOptionComponent } from './locker-option/locker-option.component';
 import { ReturnItemsComponent } from './return-items/return-items.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { EmergencyReturnComponent } from './emergency-return/emergency-return.component';
 import { ReportIssueComponent } from './report-issue/report-issue.compoenent';
 
 import { HttpClientModule} from '@angular/common/http';
@@ -27,7 +28,8 @@ import { DataService} from './data.service';
     LockerOptionComponent,
     NavigationComponent,
     ReturnItemsComponent,
-    ReportIssueComponent
+    ReportIssueComponent,
+    EmergencyReturnComponent
     // DataService,
   ],
   imports: [

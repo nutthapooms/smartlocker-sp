@@ -25,12 +25,9 @@ export class SubcategoryOptionComponent implements OnInit {
     this.http.get<CategoryDTO>(`https://smartlocker.azurewebsites.net/api/admin/categories/${this.categoryId}`).subscribe(data => {
         console.log(data)
         this.category = data;
-
       }
     )
-    
     let params = new HttpParams();
-    
     if(this.categoryId) params = params.append('categoryId',this.categoryId);
     this.http.get<Array<SubcategoryDTO>>('https://smartlocker.azurewebsites.net/api/admin/subcategories', { params: params }).subscribe(data => {
         console.log(data)
