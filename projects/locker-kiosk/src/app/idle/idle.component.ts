@@ -10,11 +10,29 @@ import {DataService} from '../data.service';
 })
 export class IdleComponent implements OnInit {
   constructor(private http: HttpClient,
-    private data: DataService,
+    private language: DataService,
     private route: ActivatedRoute,
     private router: Router,
     ) { }
   ngOnInit() {
+    this.language.changeLanguage("eng");
+
+  }
+
+  thai(){
+    this.language.changeLanguage("thai");
+    console.log("thai");
+    document.getElementById("ScanSerial_sub").innerHTML = "แสกนบาร์โค๊ดบนอุปกรณ์เพื่อคืน"
+    document.getElementById("ScanCard_sub").innerHTML = "ส่องบัตรพนักงานเพื่อยืมอุปกรณ์"
+
+  }
+  eng(){
+    this.language.changeLanguage("eng");
+    console.log("eng");
+    document.getElementById("ScanSerial_sub").innerHTML = "Scan barcode on item to return"
+    document.getElementById("ScanCard_sub").innerHTML = "Tap ID card to borrow item"
+
+
   }
   return(){   
       this.router.navigate(['/return-items'])

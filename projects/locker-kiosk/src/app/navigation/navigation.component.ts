@@ -21,7 +21,7 @@ export class NavigationComponent implements OnInit {
     private http: HttpClient,
     private router: Router,
     private data: DataService,
-    private pagestate: DataService
+    private language: DataService,
 
   ) { 
      setInterval(() => {//
@@ -29,6 +29,7 @@ export class NavigationComponent implements OnInit {
     this.auto_logout(); }, 1000);
      
       }
+  lang = "";
   card_number = ""
   enterCheck = 1;
   serial_number = "";
@@ -49,7 +50,10 @@ export class NavigationComponent implements OnInit {
   }
   @HostListener('window:click', ['$event']) onClickHandler(event: MouseEvent) {
     time_out = 0;
-    
+    this.language.currentLanguage.subscribe(message => this.lang = message);
+    if(this.lang == "thai"){
+      this.to_thai();
+    }
 
   }
   @HostListener('document:keydown', ['$event']) onkeydownHandler(event: KeyboardEvent) {
@@ -58,6 +62,8 @@ export class NavigationComponent implements OnInit {
       // this.data.changeMessage(this.card_number);
       if (this.card_number.includes("_")) {
         if (this.enterCheck == 1) {
+          
+          
           document.getElementById("backBtn").style.visibility = 'visible';
           document.getElementById("logOutIcon").style.visibility = 'visible';
           document.getElementById("logOut").innerHTML = "ID: " + this.card_number + " Log out";
@@ -73,7 +79,14 @@ export class NavigationComponent implements OnInit {
         }
       }
       else if (this.door_close == 1) {
-        document.getElementById("ScanSerial_sub").innerHTML = "Processing, please wait";
+
+        
+        if(this.lang == "thai"){
+          document.getElementById("ScanSerial_sub").innerHTML = "ประมวลผล, รอซักครุ่";        
+        }
+        else{
+          document.getElementById("ScanSerial_sub").innerHTML = "Processing, please wait";
+        }
         console.log(this.serial_number)
         this.card_number = "";
         this.http.get<TypeResponse>('https://smartlocker.azurewebsites.net/api/admin/barcode/' + this.serial_number).subscribe(data => {
@@ -87,14 +100,24 @@ export class NavigationComponent implements OnInit {
               data => {
                 console.log(data);
                 this.door_close = 0;
+                if(this.lang == "thai"){
+                document.getElementById("ScanSerial_sub").innerHTML = "คืนอุปกรณ์แล้วปิดประตูตู้";
+                }
+                else{
                 document.getElementById("ScanSerial_sub").innerHTML = "Return the item and close the door.";
+                }
                 this.checkLocker(this.locker_num);
               }
             );
           }
           else {
             // alert(this.serial_number+" : Not found");
-            document.getElementById("ScanSerial_sub").innerHTML = "Item not found. Scan other item";
+            if(this.lang == "thai"){
+                document.getElementById("ScanSerial_sub").innerHTML = "ไม่พบข้อมูลอุปกรณ์ กรุณาแสกนอุปกรณ์อื่น";
+              }
+              else{
+                document.getElementById("ScanSerial_sub").innerHTML = "Item not found. Scan other item";
+              }
             this.serial_number = "";
             this.card_number = "";
           }
@@ -154,6 +177,9 @@ export class NavigationComponent implements OnInit {
       time_out = 0;
     }
     
+  }
+  to_thai(){
+    document.getElementById("backBtn_text").innerHTML = "กลับ"
   }
   checkLocker(locker_num) {
     // console.log("ASSD" + locker_num);
