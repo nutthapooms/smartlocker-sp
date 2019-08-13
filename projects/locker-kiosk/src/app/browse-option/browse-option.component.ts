@@ -24,8 +24,10 @@ export class BrowseOptionComponent implements OnInit {
   tothai(){
     document.getElementById("return").innerHTML = "คืนอุปกรณ์";
     document.getElementById("report").innerHTML = "แจ้งปัญหา";
-    document.getElementById("choosecat").innerHTML = "เลือกประเภทอุปกณ์";
+    document.getElementById("choosecat").innerHTML = "เลือกประเภทอุปกรณ์";
     document.getElementById("chooselock").innerHTML = "เลือกช่อง";
+    document.getElementById("menu").innerHTML = "เมนู";
+    document.getElementById("submenu").innerHTML = "ยินดีต้อนรับ";
 
   }
 
