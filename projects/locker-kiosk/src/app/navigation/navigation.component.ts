@@ -186,8 +186,8 @@ export class NavigationComponent implements OnInit {
 
   }
   heartbeat() {
-    this.http.get('https://heartbeatsl.azurewebsites.net/time/80017').subscribe();
-    console.log("beating");
+    this.http.get('https://heartbeatsl.azurewebsites.net/time/80017');
+    // console.log("beating");
   }
 
   to_thai() {
