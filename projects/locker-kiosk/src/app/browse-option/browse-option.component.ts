@@ -7,16 +7,29 @@ import { DataService} from '../data.service';
 })
 export class BrowseOptionComponent implements OnInit {
   message: string;
+  lang = "";
+
   constructor(
      private language : DataService
-    ) { }
-  lang = "";
+    ) { 
+      this.language.currentLanguage.subscribe(message => {
+        this.lang = message
+        if(this.lang =="thai"){
+          this.tothai();
+        }
+        else{
+          this.toeng();
+        }
+      });
+    }
   ngOnInit() {
-    // this.data.currentMessage.subscribe(message=> this.message = message);
     this.language.currentLanguage.subscribe(message => {
       this.lang = message
       if(this.lang =="thai"){
         this.tothai();
+      }
+      else{
+        this.toeng();
       }
     });
 
@@ -24,11 +37,18 @@ export class BrowseOptionComponent implements OnInit {
   tothai(){
     document.getElementById("return").innerHTML = "คืนอุปกรณ์";
     document.getElementById("report").innerHTML = "แจ้งปัญหา";
-    document.getElementById("choosecat").innerHTML = "เลือกประเภทอุปกรณ์";
+    // document.getElementById("choosecat").innerHTML = "เลือกประเภทอุปกรณ์";
     document.getElementById("chooselock").innerHTML = "เลือกช่อง";
     document.getElementById("menu").innerHTML = "เมนู";
     document.getElementById("submenu").innerHTML = "ยินดีต้อนรับ";
-
+  }
+  toeng(){
+    document.getElementById("return").innerHTML = "Return Item";
+    document.getElementById("report").innerHTML = "Report Issue";
+    // document.getElementById("choosecat").innerHTML = "Choose Categories";
+    document.getElementById("chooselock").innerHTML = "Choose Locker";
+    document.getElementById("menu").innerHTML = "Menu";
+    document.getElementById("submenu").innerHTML = "Welcome";
   }
 
 }

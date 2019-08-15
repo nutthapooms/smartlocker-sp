@@ -58,6 +58,9 @@ export class NavigationComponent implements OnInit {
     if (this.lang == "thai") {
       this.to_thai();
     }
+    else{
+      this.to_eng();
+    }
 
   }
   @HostListener('document:keydown', ['$event']) onkeydownHandler(event: KeyboardEvent) {
@@ -189,6 +192,9 @@ export class NavigationComponent implements OnInit {
 
   to_thai() {
     document.getElementById("backBtn_text").innerHTML = "กลับ"
+  }
+  to_eng() {
+    document.getElementById("backBtn_text").innerHTML = "Back"
   }
   checkLocker(locker_num) {
     // console.log("ASSD" + locker_num);
