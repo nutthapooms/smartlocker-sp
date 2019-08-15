@@ -16,19 +16,23 @@ export class NavigationComponent implements OnInit {
   isHome: boolean = false;
   message: string;
   page_state = '';
-  
+
   constructor(private location: Location,
     private http: HttpClient,
     private router: Router,
     private data: DataService,
     private language: DataService,
 
-  ) { 
-     setInterval(() => {//
-      
-    this.auto_logout(); }, 1000);
-     
-      }
+  ) {
+    setInterval(() => {//
+      this.auto_logout();
+    }, 1000);
+    setInterval(() => {
+      this.heartbeat();
+    }, 5000);
+
+  }
+
   lang = "";
   card_number = ""
   enterCheck = 1;
@@ -51,7 +55,7 @@ export class NavigationComponent implements OnInit {
   @HostListener('window:click', ['$event']) onClickHandler(event: MouseEvent) {
     time_out = 0;
     this.language.currentLanguage.subscribe(message => this.lang = message);
-    if(this.lang == "thai"){
+    if (this.lang == "thai") {
       this.to_thai();
     }
 
@@ -62,8 +66,8 @@ export class NavigationComponent implements OnInit {
       // this.data.changeMessage(this.card_number);
       if (this.card_number.includes("_")) {
         if (this.enterCheck == 1) {
-          
-          
+
+
           document.getElementById("backBtn").style.visibility = 'visible';
           document.getElementById("logOutIcon").style.visibility = 'visible';
           document.getElementById("logOut").innerHTML = "ID: " + this.card_number + " Log out";
@@ -80,11 +84,11 @@ export class NavigationComponent implements OnInit {
       }
       else if (this.door_close == 1) {
 
-        
-        if(this.lang == "thai"){
-          document.getElementById("ScanSerial_sub").innerHTML = "ประมวลผล, รอซักครุ่";        
+
+        if (this.lang == "thai") {
+          document.getElementById("ScanSerial_sub").innerHTML = "ประมวลผล, รอซักครุ่";
         }
-        else{
+        else {
           document.getElementById("ScanSerial_sub").innerHTML = "Processing, please wait";
         }
         console.log(this.serial_number)
@@ -100,11 +104,11 @@ export class NavigationComponent implements OnInit {
               data => {
                 console.log(data);
                 this.door_close = 0;
-                if(this.lang == "thai"){
-                document.getElementById("ScanSerial_sub").innerHTML = "คืนอุปกรณ์แล้วปิดประตูตู้";
+                if (this.lang == "thai") {
+                  document.getElementById("ScanSerial_sub").innerHTML = "คืนอุปกรณ์แล้วปิดประตูตู้";
                 }
-                else{
-                document.getElementById("ScanSerial_sub").innerHTML = "Return the item and close the door.";
+                else {
+                  document.getElementById("ScanSerial_sub").innerHTML = "Return the item and close the door.";
                 }
                 this.checkLocker(this.locker_num);
               }
@@ -112,12 +116,12 @@ export class NavigationComponent implements OnInit {
           }
           else {
             // alert(this.serial_number+" : Not found");
-            if(this.lang == "thai"){
-                document.getElementById("ScanSerial_sub").innerHTML = "ไม่พบข้อมูลอุปกรณ์ กรุณาแสกนอุปกรณ์อื่น";
-              }
-              else{
-                document.getElementById("ScanSerial_sub").innerHTML = "Item not found. Scan other item";
-              }
+            if (this.lang == "thai") {
+              document.getElementById("ScanSerial_sub").innerHTML = "ไม่พบข้อมูลอุปกรณ์ กรุณาแสกนอุปกรณ์อื่น";
+            }
+            else {
+              document.getElementById("ScanSerial_sub").innerHTML = "Item not found. Scan other item";
+            }
             this.serial_number = "";
             this.card_number = "";
           }
@@ -136,7 +140,7 @@ export class NavigationComponent implements OnInit {
       }
     }
   }
-  
+
   back() {
     if (this.location.path() == '/browse-option') {
       document.getElementById("logOutIcon").style.visibility = 'hidden';
@@ -156,29 +160,34 @@ export class NavigationComponent implements OnInit {
     document.getElementById("backBtn").style.visibility = 'hidden';
     this.enterCheck = 1;
     this.card_number = "";
-    this.serial_number ="";
+    this.serial_number = "";
     this.router.navigate(['/']);
   }
-  auto_logout(){
-    time_out ++;
+  auto_logout() {
+    time_out++;
     //console.log(time_out);
-    if(time_out >= 30 * 9 && this.enterCheck == 0){
+    if (time_out >= 30 * 9 && this.enterCheck == 0) {
       let time_left = 300 - time_out
-      document.getElementById("logOut").innerHTML = "ID: " + this.card_number + " Log out | Auto log out in : "+ time_left;
+      document.getElementById("logOut").innerHTML = "ID: " + this.card_number + " Log out | Auto log out in : " + time_left;
     }
-    else if (time_out <= 30 * 9 && this.enterCheck == 0){
+    else if (time_out <= 30 * 9 && this.enterCheck == 0) {
       document.getElementById("logOut").innerHTML = "ID: " + this.card_number + " Log out";
     }
-    if(time_out >= 60 * 5 ){
-      if(this.enterCheck == 0){
+    if (time_out >= 60 * 5) {
+      if (this.enterCheck == 0) {
         this.out();
-      // alert("log out");
+        // alert("log out");
       }
       time_out = 0;
     }
-    
+
   }
-  to_thai(){
+  heartbeat() {
+    this.http.get('https://heartbeatsl.azurewebsites.net/time/80017').subscribe();
+    console.log("beating");
+  }
+
+  to_thai() {
     document.getElementById("backBtn_text").innerHTML = "กลับ"
   }
   checkLocker(locker_num) {
