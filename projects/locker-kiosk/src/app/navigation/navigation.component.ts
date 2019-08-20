@@ -58,7 +58,7 @@ export class NavigationComponent implements OnInit {
     if (this.lang == "thai") {
       this.to_thai();
     }
-    else{
+    else {
       this.to_eng();
     }
 
@@ -69,20 +69,26 @@ export class NavigationComponent implements OnInit {
       // this.data.changeMessage(this.card_number);
       if (this.card_number.includes("_")) {
         if (this.enterCheck == 1) {
-
-
-          document.getElementById("backBtn").style.visibility = 'visible';
-          document.getElementById("logOutIcon").style.visibility = 'visible';
-          document.getElementById("logOut").innerHTML = "ID: " + this.card_number + " Log out";
-          this.data.changeMessage(this.card_number);
           this.http.get("https://smartlocker.azurewebsites.net/api/admin/finduser/" + this.card_number).subscribe(
             data => {
               console.log(data);
+              if (data != null) {
+                this.enterCheck = 0;
+                time_out = 0;
+                this.router.navigate(['/browse-option']);
+                document.getElementById("backBtn").style.visibility = 'visible';
+                document.getElementById("logOutIcon").style.visibility = 'visible';
+                document.getElementById("logOut").innerHTML = "ID: " + this.card_number + " Log out";
+                this.data.changeMessage(this.card_number);
+              }
+              else {
+                document.getElementById("ScanCard_sub").innerHTML = "User not found";
+                this.card_number = "";
+                this.serial_number = "";
+              }
             }
           )
-          this.enterCheck = 0;
-          time_out = 0;
-          this.router.navigate(['/browse-option']);
+
         }
       }
       else if (this.door_close == 1) {

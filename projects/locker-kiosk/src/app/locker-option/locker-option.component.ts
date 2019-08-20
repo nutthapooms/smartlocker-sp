@@ -1,7 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { detachEmbeddedView } from '@angular/core/src/view';
-import { ContainerDetailComponent } from 'projects/manage-storage/src/app/container/container-detail/container-detail.component';
 import { delay } from 'q';
 import { ActivatedRoute, Router } from '@angular/router';
 import { stringify } from 'querystring';

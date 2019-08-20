@@ -1,7 +1,7 @@
 <div class="option-page">
     <div class="topic-container">
-      <div class="topic-title">Report Issue</div>
-      <div class="topic-sub">what is the problem?</div>
+      <div class="topic-title" id = "Title">Report Issue</div>
+      <div class="topic-sub" id = "SubTitle">what is the problem?</div>
       <!-- <div class="topic-sub">มีปัญหาไรครับ?</div> -->
 
     </div>
@@ -16,12 +16,12 @@
         </div> -->
         <div class="option" >
           <div class="option-text">
-            <div class="text-main"style = "color:rgb(182, 182, 182)">Item has an issue (Not Available)</div>
+            <div class="text-main"style = "color:rgb(182, 182, 182)" id = "ItemIssue">Item has an issue (Not Available)</div>
           </div>
         </div>
         <div class="option" [routerLink]="'/emergency-return'">
             <div class="option-text">
-              <div class="text-main">Item is there, But can't Borrow</div>
+              <div class="text-main" id = "ItemIsThere">Item is there, But can't Borrow</div>
             </div>
           </div>
       </div>
