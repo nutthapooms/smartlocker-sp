@@ -4,6 +4,8 @@
         <a [routerLink]="'/countries/' + countryId + '/sites/'" *ngIf="country">{{country.name}}</a>
         <a [routerLink]="'/countries/' + countryId + '/sites/' + siteId + '/containers'"  *ngIf="site">{{site.name}}</a>
         <a class="active" *ngIf="container">{{container.name}}</a>
+        <a [routerLink]="'/countries/' + countryId + '/sites/' + siteId + '/containers/' + containerId + '/eventlog'"  *ngIf="site">Event Log</a>
+          
  </h1>
   </div>
   <div class="em-c-table-object ">

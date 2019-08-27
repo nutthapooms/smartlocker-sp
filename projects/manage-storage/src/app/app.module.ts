@@ -37,6 +37,7 @@ import { SubcategoryFormComponent } from './subcategory/subcategory-form/subcate
 import { ItemUnitFormComponent } from './item-unit/item-unit-form/item-unit-form.component';
 import { ItemUnitListComponent } from './item-unit/item-unit-list/item-unit-list.component';
 import { GlobalService } from 'src/app/shared/global.service';
+import { EventLogComponent } from './eventlog/eventlog.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { GlobalService } from 'src/app/shared/global.service';
     SubcategoryFormComponent,
     ItemUnitFormComponent,
     ItemUnitListComponent,
+    EventLogComponent
   ],
   imports: [
     BrowserModule,

@@ -62,7 +62,7 @@ export class SubcategoryDTO {
   public id: number;
   public itemCount: number;
   public name: string;
-  public category : CategoryDTO;
+  public category: CategoryDTO;
 }
 export class CountryDTO {
   public id: number;
@@ -161,7 +161,7 @@ export class TypeSubcategory {
 }
 
 export class EmployeeResponse {
-  public employee : EmployeeDTO;
+  public employee: EmployeeDTO;
 }
 
 export class EmployeeDTO {
@@ -169,6 +169,23 @@ export class EmployeeDTO {
   public Name: number;
   public Email: string;
   public BadgeId: string;
+}
+export class LoanDTO {
+  
+  public LoanId : number ;
+  public EmployeeId: number;
+  public UnitId: number;
+  public LoanDate : Date;
+  public DueDate : Date ;
+  public ReturnDate : Date;
+  public Employee : EmployeeDTO;
+  public IsLoanMailSent : boolean ;
+  public IsReturnMailSent : boolean;
+  public UnitName : string ;
+  public Barcode : string ;
+  public Duration : number ;
+
+
 }
 
 export class ItemDetailResponse {

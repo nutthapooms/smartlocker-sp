@@ -27,14 +27,14 @@ export class ContainerListComponent implements OnInit {
     this.siteId = this.route.snapshot.paramMap.get('siteId');
     this.countryId = this.route.snapshot.paramMap.get('countryId');
     let params = new HttpParams();
-    if(this.siteId) params = params.append('siteId', this.siteId);
+    if (this.siteId) params = params.append('siteId', this.siteId);
 
     this.http.get<Array<ContainerDTO>>(`https://smartlocker.azurewebsites.net/api/admin/containers`, { params: params }).subscribe(data => {
-        console.log(data)
-        this.containers = data;
-      })
-      this.dto.getDTO('countries', this.countryId).subscribe(data => this.country = data)
-      this.dto.getDTO('sites', this.siteId).subscribe(data => this.site = data)
+      console.log(data)
+      this.containers = data;
+    })
+    this.dto.getDTO('countries', this.countryId).subscribe(data => this.country = data)
+    this.dto.getDTO('sites', this.siteId).subscribe(data => this.site = data)
 
   }
   currentLocation() {

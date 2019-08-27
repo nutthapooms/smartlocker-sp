@@ -1,0 +1,54 @@
+<div class="em-c-page-header em-c-page-header--small">
+    <h1 class="em-c-page-header__title">
+        <a [routerLink]="'/countries/'">Storage</a>
+        <a [routerLink]="'/countries/' + countryId + '/sites/'" *ngIf="country">{{country.name}}</a>
+        <a [routerLink]="'/countries/' + countryId + '/sites/' + siteId + '/containers'" *ngIf="site">{{site.name}}</a>
+        <a class="active" *ngIf="container">{{container.name}}</a>
+    </h1>
+</div>
+<div class="em-c-table-object ">
+    <div class="em-c-table-object__body">
+        <div class="em-c-table-object__body-inner">
+            <table class="em-c-table ">
+                <thead class="em-c-table__header">
+                    <tr class="em-c-table__header-row">
+                        <th scope="col" class="em-c-table__header-cell ">Employee Badge_ID</th>
+                        <th scope="col" class="em-c-table__header-cell ">Name</th>
+                        <th scope="col" class="em-c-table__header-cell ">item name</th>
+                        <th scope="col" class="em-c-table__header-cell ">barcode</th>
+                        <th scope="col" class="em-c-table__header-cell ">Loan Date</th>
+                        <th scope="col" class="em-c-table__header-cell ">Return Date</th>
+
+                    </tr>
+                </thead>
+                <tbody class="em-c-table__body ">
+                    <tr class="em-c-table__row " *ngFor="let loan of loanlog">
+                        <td class="em-c-table__cell " colspan="" (click)="showUserProperty(loan.employee.badgeId)">
+                            <a >{{loan.employee.badgeId}}</a>
+                        </td>
+                        <td class="em-c-table__cell " colspan="">
+                            {{loan.employee.name}}
+                        </td>
+                        <td class="em-c-table__cell " colspan="">
+                            {{loan.unitName}}
+                        </td>
+                        <td class="em-c-table__cell " colspan="">
+                            {{loan.barcode}}
+                        </td>
+                        <td class="em-c-table__cell " colspan="">
+                            {{loan.loanDate}}
+                        </td>
+                        <td class="em-c-table__cell " colspan="">
+                            {{loan.returnDate}}
+                        </td>
+                        
+                    </tr>
+                </tbody>
+                <tfoot class="em-c-table__footer">
+                    <tr class="em-c-table__footer-row">
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

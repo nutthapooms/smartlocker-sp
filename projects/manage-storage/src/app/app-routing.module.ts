@@ -21,6 +21,7 @@ import { CategoryFormComponent } from './category/category-form/category-form.co
 import { SubcategoryFormComponent } from './subcategory/subcategory-form/subcategory-form.component';
 import { ItemUnitListComponent } from './item-unit/item-unit-list/item-unit-list.component';
 import { ItemUnitFormComponent } from './item-unit/item-unit-form/item-unit-form.component';
+import { EventLogComponent } from './eventlog/eventlog.component';
 
 const routes: Routes = [
   { path: 'countries', component: CountryListComponent },
@@ -76,6 +77,7 @@ const routes: Routes = [
   { path: 'categories/:categoryId/subcategories/:subcategoryId/items/:itemId/units/:unitId/edit', component: ItemUnitFormComponent },
   { path: 'categories/:categoryId/subcategories/:subcategoryId/items/:itemId/units/:unitId/delete', component: DeleteConfirmationComponent },
 
+  { path: 'countries/:countryId/sites/:siteId/containers/:containerId/eventlog', component: EventLogComponent },
 
 ];
 
