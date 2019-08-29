@@ -175,7 +175,7 @@ export class LoanDTO {
   public LoanId : number ;
   public EmployeeId: number;
   public UnitId: number;
-  public LoanDate : Date;
+  public loanDate : Date;
   public DueDate : Date ;
   public ReturnDate : Date;
   public Employee : EmployeeDTO;
