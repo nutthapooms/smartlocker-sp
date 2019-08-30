@@ -84,6 +84,7 @@ export class LockerDTO {
   public id: number;
   public unitCount: number;
   public name: string;
+  public UnitName: string ;
 }
 
 export class DashboardLoanResponse {
@@ -224,6 +225,7 @@ export class UnitDTO {
   public barcode: string;
   public serialNumber: string;
   public isReported: boolean;
+
 }
 
 
