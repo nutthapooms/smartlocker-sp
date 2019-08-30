@@ -29,7 +29,7 @@ export class NavigationComponent implements OnInit {
     }, 1000);
     setInterval(() => {
       this.heartbeat();
-    }, 5000);
+    }, 60000*30);
 
   }
 
