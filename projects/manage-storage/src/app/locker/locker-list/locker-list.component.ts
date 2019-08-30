@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
-import { LockerDTO, ContainerDTO, CountryDTO, SiteDTO } from 'src/app/shared/model';
+import { LockerDTO, ContainerDTO, CountryDTO, SiteDTO, UnitDTO } from 'src/app/shared/model';
 import { GetDtoService } from 'src/app/shared/get-dto.service';
 import { Location } from '@angular/common';
 

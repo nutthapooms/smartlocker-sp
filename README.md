@@ -14,6 +14,10 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
+## Create Sharepoint deploy unit
+
+In powershell/CMD, type 'npm ru prod-{project-name}. Deploy unit locate in "dist". change 'href = "/"' directory to match User sharepoint directory.
+
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
