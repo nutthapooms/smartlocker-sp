@@ -42,6 +42,9 @@ export class UnitListComponent implements OnInit {
     this.http.get<Array<UnitDTO>>(`https://smartlocker.azurewebsites.net/api/admin/units`, { params: params }).subscribe(data => {
         console.log(data)
         this.units = data;
+        if(this.units[0] != null) {
+          document.getElementById("assignBtn").style.visibility = "hidden"; 
+        }
       }
     )
     this.dto.getDTO('countries', this.countryId).subscribe(data => this.country = data)

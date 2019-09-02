@@ -41,6 +41,7 @@ export class NavigationComponent implements OnInit {
   locker_num_temp = "";
   door_close = 1;
   ngOnInit() {
+    this.heartbeat();
     if (this.location.path() == '') {
       document.getElementById("logOutIcon").style.visibility = 'hidden';
       document.getElementById("logOut").innerHTML = "";
@@ -192,8 +193,8 @@ export class NavigationComponent implements OnInit {
 
   }
   heartbeat() {
-    this.http.get('https://heartbeatsl.azurewebsites.net/time/80017');
-    // console.log("beating");
+    this.http.get('https://heartbeatsl.azurewebsites.net/time/80017').subscribe();
+    console.log("beating");
   }
 
   to_thai() {

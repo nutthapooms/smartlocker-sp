@@ -15,6 +15,7 @@
           <thead class="em-c-table__header">
             <tr class="em-c-table__header-row">
               <th scope="col" class="em-c-table__header-cell ">Locker Name</th>
+              <th scope="col" class="em-c-table__header-cell ">Item Name</th>
               <th scope="col" class="em-c-table__header-cell ">Units</th>
               <th scope="col" class="em-c-table__header-cell ">Action</th>
             </tr>
@@ -25,7 +26,10 @@
                 {{locker.name}}
               </td>
               <td class="em-c-table__cell " colspan="">
-                <a [routerLink]="locker.id + '/units'">{{locker.unitCount}} units</a>
+                {{locker.unitName}}
+              </td>
+              <td class="em-c-table__cell " colspan="">
+                <a [routerLink]="locker.id + '/units'">{{locker.unitBarcode}}</a>
               </td>
               <td class="em-c-table__cell " colspan="">
                 <a [routerLink]="locker.id + '/edit'"><strong>Edit</strong></a>
