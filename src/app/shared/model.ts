@@ -85,6 +85,7 @@ export class LockerDTO {
   public unitCount: number;
   public name: string;
   public UnitName: string ;
+  public Employee: string;
 }
 
 export class DashboardLoanResponse {
