@@ -31,7 +31,7 @@
               {{unit.barcode}}
             </td>
             <td class="em-c-table__cell " colspan="">
-              <a [routerLink]="unit.id + '/unassign'" [queryParams]="{endpoint: '/units/' + unit.id + '/assign', next: currentLocation()}"><strong>Unassign</strong></a>
+              <a [routerLink]="unit.id + '/unassign'" [queryParams]="{endpoint: 'units/' + unit.id + '/assign', next: currentLocation()}"><strong>Unassign</strong></a>
             </td>
           </tr>
         </tbody>

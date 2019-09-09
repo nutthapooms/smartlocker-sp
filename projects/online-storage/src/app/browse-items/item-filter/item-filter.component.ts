@@ -69,7 +69,7 @@ export class ItemFilterComponent implements OnInit {
       })
     })
   }
-
+ 
 
   changeParams() {
     let countryId = this.countryId != -1 ? this.countryId : undefined;
