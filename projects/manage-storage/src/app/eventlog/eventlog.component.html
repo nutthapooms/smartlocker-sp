@@ -4,12 +4,12 @@
         <a [routerLink]="'/countries/' + countryId + '/sites/'" *ngIf="country">{{country.name}}</a>
         <a [routerLink]="'/countries/' + countryId + '/sites/' + siteId + '/containers'" *ngIf="site">{{site.name}}</a>
         <a class="active" *ngIf="container">{{container.name}}</a>
-        
+
     </h1>
-        Filter (month and year): <input style="width: 30%" id = "logFilter" type="month" name="bdaymonth">
-        <input (click)="filteringLog()" type = "submit" value = "Filter"> 
-        <input (click)="loanlog = fullloanlog" type = "submit" value = "Show All">  
-        
+    Filter (month and year): <input style="width: 30%" id="logFilter" type="month" name="bdaymonth">
+    <input (click)="filteringLog()" type="submit" value="Filter">
+    <input (click)="loanlog = fullloanlog" type="submit" value="Show All">
+
 </div>
 
 <div class="em-c-table-object " style="margin-top : 10px">
@@ -20,6 +20,7 @@
                     <tr class="em-c-table__header-row">
                         <th scope="col" class="em-c-table__header-cell ">Employee Badge_ID</th>
                         <th scope="col" class="em-c-table__header-cell ">Name</th>
+                        <th scope="col" class="em-c-table__header-cell ">Company</th>
                         <th scope="col" class="em-c-table__header-cell ">item name</th>
                         <th scope="col" class="em-c-table__header-cell ">barcode</th>
                         <th scope="col" class="em-c-table__header-cell ">Loan Date</th>
@@ -29,6 +30,7 @@
                 </thead>
                 <tbody class="em-c-table__body ">
                     <tr class="em-c-table__row " *ngFor="let loan of loanlog">
+
                         <td class="em-c-table__cell " colspan="" (click)="showUserProperty(loan.employee.badgeId)">
                             <a>{{loan.employee.badgeId}}</a>
                         </td>
@@ -36,8 +38,12 @@
                             {{loan.employee.name}}
                         </td>
                         <td class="em-c-table__cell " colspan="">
+                                {{loan.Company}}
+                            </td>
+                        <td class="em-c-table__cell " colspan="">
                             {{loan.unitName}}
                         </td>
+                        
                         <td class="em-c-table__cell " colspan="">
                             {{loan.barcode}}
                         </td>

@@ -84,7 +84,7 @@ export class LockerDTO {
   public id: number;
   public unitCount: number;
   public name: string;
-  public UnitName: string ;
+  public UnitName: string;
   public Employee: string;
 }
 
@@ -173,20 +173,37 @@ export class EmployeeDTO {
   public BadgeId: string;
 }
 export class LoanDTO {
-  
-  public LoanId : number ;
+
+  public LoanId: number;
   public EmployeeId: number;
   public UnitId: number;
-  public loanDate : Date;
-  public DueDate : Date ;
-  public ReturnDate : Date;
-  public Employee : EmployeeDTO;
-  public IsLoanMailSent : boolean ;
-  public IsReturnMailSent : boolean;
-  public UnitName : string ;
-  public Barcode : string ;
-  public Duration : number ;
+  public loanDate: Date;
+  public DueDate: Date;
+  public ReturnDate: Date;
+  public employee: EmployeeDTO;
+  public IsLoanMailSent: boolean;
+  public IsReturnMailSent: boolean;
+  public UnitName: string;
+  public Barcode: string;
+  public Duration: number;
 
+
+}
+export class LoanDTO2 {
+
+  public LoanId: number;
+  public EmployeeId: number;
+  public UnitId: number;
+  public loanDate: Date;
+  public DueDate: Date;
+  public ReturnDate: Date;
+  public Employee: EmployeeDTO;
+  public IsLoanMailSent: boolean;
+  public IsReturnMailSent: boolean;
+  public UnitName: string;
+  public Barcode: string;
+  public Duration: number;
+  public Company: string;
 
 }
 
@@ -235,4 +252,22 @@ export class ItemRequest {
   public subcategoryId: string;
   public defaultDuration: number;
   public attachments: Array<number> = new Array<number>();
+}
+
+export class BadgeInfo {
+  public AdminSupGUI: string;
+  public CountryCode: string;
+  public DisplayName: string;
+  public EmploymentType: string;
+  public FuncOrgName: string;
+  public FuncSupGUID: string;
+  public GivenName: string;
+  public GUID: string;
+  public LocationCode: number;
+  public LocationName: string;
+  public MiddleName: string;
+  public PriLanID: string;
+  public SiteName: string;
+  public SMTP: string;
+  public Surname: string;
 }
