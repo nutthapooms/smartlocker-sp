@@ -1,6 +1,6 @@
 <div class="em-c-page-header em-c-page-header--small">
   <h1 class="em-c-page-header__title">
-    <a [routerLink]="'/countries/'">Device</a>
+    <a [routerLink]="'/categories/'">Device</a>
     <a [routerLink]="'/categories/' + categoryId + '/subcategories/'" *ngIf="category">{{category.name}}</a>
     <a [routerLink]="'/categories/' + categoryId + '/subcategories/' + subcategoryId +'/items'"
       *ngIf="subcategory">{{subcategory.name}}</a>

@@ -40,7 +40,7 @@ export class EventLogComponent implements OnInit {
                 this.http.get<BadgeInfo>('https://hoesql566.na.xom.com/BadgeEventAPI/api/Badge/ID/'+loan.employee.badgeId, { withCredentials: true }).subscribe(user => {
                     loan.Company = user.FuncOrgName;
                 })
-            });
+            });  
             this.loanlog = data;
             this.fullloanlog = data;
             console.log(this.loanlog);

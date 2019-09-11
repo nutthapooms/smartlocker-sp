@@ -170,7 +170,7 @@ export class EmployeeDTO {
   public EmployeeId: number;
   public Name: number;
   public Email: string;
-  public BadgeId: string;
+  public badgeId: string;
 }
 export class LoanDTO {
 
@@ -197,7 +197,7 @@ export class LoanDTO2 {
   public loanDate: Date;
   public DueDate: Date;
   public ReturnDate: Date;
-  public Employee: EmployeeDTO;
+  public employee: EmployeeDTO;
   public IsLoanMailSent: boolean;
   public IsReturnMailSent: boolean;
   public UnitName: string;
