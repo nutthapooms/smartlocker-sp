@@ -1,11 +1,11 @@
 <div class="option-page">
   <div class="topic-container">
     <div class="topic-title">Category</div>
-    <div class="topic-sub">What is the most fit for the item you are looking for?</div>
+    <!-- <div class="topic-sub">What is the most fit for the item you are looking for?</div> -->
   </div>
   <div class="option-wrapper">
     <div class="option-opacity-gradient"></div>
-    <div class="option-container">
+    <div class="option-container" id = "category-option">
       <div class="option" *ngFor="let category of categories">
         <div class="option-text" >
           <div class="text-main" (click)="routeToSubCat(category.id)">{{category.name}}</div>

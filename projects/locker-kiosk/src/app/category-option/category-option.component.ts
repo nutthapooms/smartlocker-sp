@@ -26,7 +26,9 @@ export class CategoryOptionComponent implements OnInit {
         console.log(data)
         this.categories = data;
         document.getElementById("body").innerHTML = "";
-
+        if(this.categories.length > 7){
+            document.getElementById("category-option").style.display = "static";
+        }
       }
     )
   }

@@ -20,7 +20,8 @@ export class EmergencyReturnComponent implements OnInit {
       private router: Router, ) { }
   
     ngOnInit() {
-      this.data.currentMessage.subscribe(message => this.card_number = message);
+      this.data.currentBadgeId.subscribe(message => this.card_number = message);
+      this.data.currentLocker.subscribe(conter => containerName = conter);
     }
     addnum(num = "") {
       this.lockernum = this.lockernum + num
@@ -109,7 +110,7 @@ export class EmergencyReturnComponent implements OnInit {
   const Url = '/lockers/open/';
   const Urlcheck = '/lockers/checkclose/';
   const UrlMaxSlot = '/lockers/maxSlot/';
-  var containerName = '80017';
+  var containerName;
   
   
   

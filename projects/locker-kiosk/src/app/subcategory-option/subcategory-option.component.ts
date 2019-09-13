@@ -37,5 +37,10 @@ export class SubcategoryOptionComponent implements OnInit {
       }
     )
   }
+  routeToItem(Item:number) {
+    //alert(Cat);
+    this.Category.changeMessage(Item.toString());
+    this.router.navigate(['/item-option'])
+  }
 
 }

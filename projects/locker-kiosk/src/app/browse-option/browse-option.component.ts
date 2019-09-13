@@ -35,17 +35,19 @@ export class BrowseOptionComponent implements OnInit {
 
   }
   tothai(){
+    document.getElementById("viewall").innerHTML = "ดูอุปกรณ์ทั้งหมด";
     document.getElementById("return").innerHTML = "คืนอุปกรณ์";
-    document.getElementById("report").innerHTML = "แจ้งปัญหา";
-    // document.getElementById("choosecat").innerHTML = "เลือกประเภทอุปกรณ์";
+    // document.getElementById("report").innerHTML = "แจ้งปัญหา";
+    document.getElementById("choosecat").innerHTML = "เลือกประเภทอุปกรณ์";
     document.getElementById("chooselock").innerHTML = "เลือกช่อง";
     document.getElementById("menu").innerHTML = "เมนู";
     document.getElementById("submenu").innerHTML = "ยินดีต้อนรับ";
   }
   toeng(){
     document.getElementById("return").innerHTML = "Return Item";
-    document.getElementById("report").innerHTML = "Report Issue";
-    // document.getElementById("choosecat").innerHTML = "Choose Categories";
+    document.getElementById("viewall").innerHTML = "View all Items";
+    // document.getElementById("report").innerHTML = "Report Issue";
+    document.getElementById("choosecat").innerHTML = "Choose Categories";
     document.getElementById("chooselock").innerHTML = "Choose Locker";
     document.getElementById("menu").innerHTML = "Menu";
     document.getElementById("submenu").innerHTML = "Welcome";

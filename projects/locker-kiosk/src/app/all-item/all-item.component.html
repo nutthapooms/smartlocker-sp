@@ -1,0 +1,27 @@
+<div class="option-page">
+  <div class="topic-container">
+    <div id = "title"class="topic-title">All items</div>
+    <div id="status" class="topic-sub">What is the most fit for the item you are looking for?</div>
+  </div>
+  <div class="option-wrapper">
+    <div class="option-opacity-gradient"></div>
+    <div class="option-container" id="allitem-option">
+      <div class="option" (click)="openLocker(unit.locker.name)" *ngFor="let unit of units">
+        <img [style.background-image]="'url(https://smartlocker.azurewebsites.net/api/images/' + unit.item.images[0] + ')'">
+        <div class="option-text">
+          <div class="text-main" >{{unit.item.name}}</div>
+          <div style="padding-top: 5px"> {{unit.locker.name}}</div>
+
+        </div>
+
+      </div>
+      <div class="option">
+        <div class="option-text">
+          <div class="text-main" id="body">Loading Please wait.</div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -62,7 +62,7 @@ export class SubcategoryDTO {
   public id: number;
   public itemCount: number;
   public name: string;
-  public category: CategoryDTO;
+  public category : CategoryDTO;
 }
 export class CountryDTO {
   public id: number;
@@ -84,8 +84,6 @@ export class LockerDTO {
   public id: number;
   public unitCount: number;
   public name: string;
-  public UnitName: string;
-  public Employee: string;
 }
 
 export class DashboardLoanResponse {
@@ -163,48 +161,14 @@ export class TypeSubcategory {
 }
 
 export class EmployeeResponse {
-  public employee: EmployeeDTO;
+  public employee : EmployeeDTO;
 }
 
 export class EmployeeDTO {
   public EmployeeId: number;
   public Name: number;
   public Email: string;
-  public badgeId: string;
-}
-export class LoanDTO {
-
-  public LoanId: number;
-  public EmployeeId: number;
-  public UnitId: number;
-  public loanDate: Date;
-  public DueDate: Date;
-  public ReturnDate: Date;
-  public employee: EmployeeDTO;
-  public IsLoanMailSent: boolean;
-  public IsReturnMailSent: boolean;
-  public UnitName: string;
-  public Barcode: string;
-  public Duration: number;
-
-
-}
-export class LoanDTO2 {
-
-  public LoanId: number;
-  public EmployeeId: number;
-  public UnitId: number;
-  public loanDate: Date;
-  public DueDate: Date;
-  public ReturnDate: Date;
-  public employee: EmployeeDTO;
-  public IsLoanMailSent: boolean;
-  public IsReturnMailSent: boolean;
-  public UnitName: string;
-  public Barcode: string;
-  public Duration: number;
-  public Company: string;
-
+  public BadgeId: string;
 }
 
 export class ItemDetailResponse {
@@ -243,7 +207,6 @@ export class UnitDTO {
   public barcode: string;
   public serialNumber: string;
   public isReported: boolean;
-
 }
 
 
@@ -252,22 +215,4 @@ export class ItemRequest {
   public subcategoryId: string;
   public defaultDuration: number;
   public attachments: Array<number> = new Array<number>();
-}
-
-export class BadgeInfo {
-  public AdminSupGUI: string;
-  public CountryCode: string;
-  public DisplayName: string;
-  public EmploymentType: string;
-  public FuncOrgName: string;
-  public FuncSupGUID: string;
-  public GivenName: string;
-  public GUID: string;
-  public LocationCode: number;
-  public LocationName: string;
-  public MiddleName: string;
-  public PriLanID: string;
-  public SiteName: string;
-  public SMTP: string;
-  public Surname: string;
 }

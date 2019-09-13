@@ -15,8 +15,8 @@ export class IdleComponent implements OnInit {
     private router: Router,
     ) { }
   ngOnInit() {
-    this.language.changeLanguage("eng");
-
+    this.language.changeLanguage("thai");
+    this.thai();
   }
 
   thai(){

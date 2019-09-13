@@ -18,12 +18,14 @@ export class LockerOptionComponent implements OnInit {
   card_number: string;
   checkopen = 0;
   lang = "";
+  containerName : string;
   constructor(private http: HttpClient, private route: ActivatedRoute,
     private data: DataService,
     private router: Router, ) { }
 
   ngOnInit() {
-    this.data.currentMessage.subscribe(message => this.card_number = message);
+    this.data.currentLocker.subscribe(contner => this.containerName = contner);
+    this.data.currentBadgeId.subscribe(message => this.card_number = message);
     this.data.currentLanguage.subscribe(message => {
       this.lang = message
       if (this.lang == "thai") {
@@ -63,78 +65,98 @@ export class LockerOptionComponent implements OnInit {
     } else {
       document.getElementById("displayNum").innerHTML = "Processing, please wait.";
     }
-    
+
     this.disablebtn();
     // this.http.get(UrlMaxSlot).subscribe(
     //   data => {
-    // maxSlot = data;
-    var showNumber = Number(this.lockernum)
-    console.log("choose: " + showNumber);
-    maxSlot = 9;
-    // if (showNumber <= maxSlot.result && showNumber > 0) {
-    if (showNumber <= maxSlot && showNumber > 0) {
-      // console.log("/api/admin/lockerno/" + containerName + "/Locker " + this.lockernum);
-      this.http.get("https://smartlocker.azurewebsites.net/api/admin/lockerno/" + containerName + "/Locker " + showNumber).subscribe(
+        // maxSlot = data;
+        var showNumber = Number(this.lockernum)
+        console.log("choose: " + showNumber);
+        maxSlot = 34;
+        // if (showNumber <= maxSlot.result && showNumber > 0) {
+          if (showNumber <= maxSlot && showNumber > 0) {
+          // console.log("/api/admin/lockerno/" + containerName + "/Locker " + this.lockernum);
+          this.http.get("https://smartlocker.azurewebsites.net/api/admin/lockerno/" + this.containerName + "/Locker " + showNumber).subscribe(
+            data => {
+              IsAvailable = data;
+              console.log(IsAvailable);
+              if (this.card_number == "85203721_226000") {
+                this.http.get(Url + showNumber).subscribe(
+                  data => {
+                    console.log(data);
+                    this.ablebtn();
+                  }
+                )
+              }
+              else if (IsAvailable == null) {
+                if (this.lang == "thai") {
+                  document.getElementById("displayNum").innerHTML = "ไม่มีอุปกรณ์ในช่องนี้ กรุณาเลือกช่องอื่น";
+                } else {
+                  document.getElementById("displayNum").innerHTML = "No item in this locker. Please enter again.";
+                }
+                this.ablebtn();
+                this.lockernum = "";
+              }
+              else if (IsAvailable.loaner.employeeId == null) {
+                this.http.get(Url + showNumber).subscribe(
+                  data => {
+                    console.log(data);
+                    this.checkLocker();
+                  }
+                )
+                this.http.get("https://smartlocker.azurewebsites.net/api/admin/borrow/" + IsAvailable.barcode + "/" + this.card_number).subscribe(
+                  data => {
+                    console.log(data);
+                  }
+                )
+                if (this.lang == "thai") {
+                  document.getElementById("numPad").innerHTML = "หยิบอุปกรณ์แล้วปิดบานช่อง";
+                } else {
+                  document.getElementById("numPad").innerHTML = "Pick your item and close the door.";
+
+                }
+                document.getElementById("numPad").style.fontSize = "calc((.3em + 1vmin) + (.3em + 1vmax))"
+
+              }
+              else {
+                if (this.lang == "thai") {
+                  document.getElementById("displayNum").innerHTML = "อุปกรณ์ไม่พร้อมให้ยืม กรุณาเลือกช่องอื่น";
+                } else {
+                  document.getElementById("displayNum").innerHTML = "Item is not available.Please enter again";
+                }
+
+                this.ablebtn();
+                // alert("this item is not available");
+                this.lockernum = "";
+              }
+            }
+          )
+        }
+        else {
+          if (this.lang == "thai") {
+            document.getElementById("displayNum").innerHTML = "ไม่มีช่องหมายเลข: " + showNumber + " กรุณาเลือกช่องอื่น";
+          } else {
+            document.getElementById("displayNum").innerHTML = "No Box number: " + showNumber + " Please enter again.";
+          }
+
+
+          this.ablebtn();
+          this.lockernum = "";
+        }
+
+    //   }
+    // )
+  }
+  openAll() {
+    let i = 1;
+    for (i = 1; i < 35; i++) {
+      this.http.get(Url + i).subscribe(
         data => {
-          IsAvailable = data;
-          console.log(IsAvailable);
-          if (IsAvailable == null) {
-            if (this.lang == "thai") {
-              document.getElementById("displayNum").innerHTML = "ไม่มีอุปกรณ์ในช่องนี้ กรุณาเลือกช่องอื่น";
-            } else {
-              document.getElementById("displayNum").innerHTML = "No item in this locker. Please enter again.";
-            }
-            this.ablebtn();
-            this.lockernum = "";
-          }
-          else if (IsAvailable.loaner.employeeId == null) {
-            this.http.get(Url + showNumber).subscribe(
-              data => {
-                console.log(data);
-                this.checkLocker();
-              }
-            )
-            this.http.get("https://smartlocker.azurewebsites.net/api/admin/borrow/" + IsAvailable.barcode + "/" + this.card_number).subscribe(
-              data => {
-                console.log(data);
-              }
-            )
-            if (this.lang == "thai") {
-              document.getElementById("numPad").innerHTML = "หยิบอุปกรณ์แล้วปิดบานช่อง";
-            } else {
-              document.getElementById("numPad").innerHTML = "Pick your item and close the door.";
-
-            }
-            document.getElementById("numPad").style.fontSize = "calc((.3em + 1vmin) + (.3em + 1vmax))"
-
-          }
-          else {
-            if (this.lang == "thai") {
-              document.getElementById("displayNum").innerHTML = "อุปกรณ์ไม่พร้อมให้ยืม กรุณาเลือกช่องอื่น";
-            } else {
-              document.getElementById("displayNum").innerHTML = "Item is not available.Please enter again";
-            }
-
-            this.ablebtn();
-            // alert("this item is not available");
-            this.lockernum = "";
-          }
+          console.log("open" + i)
         }
       )
+      delay(2000);
     }
-    else {
-      if (this.lang == "thai") {
-        document.getElementById("displayNum").innerHTML = "ไม่มีช่องหมายเลข: " + showNumber + " กรุณาเลือกช่องอื่น";
-      } else {
-        document.getElementById("displayNum").innerHTML = "No Box number: " + showNumber + " Please enter again.";
-      }
-
-      this.ablebtn();
-      this.lockernum = "";
-    }
-
-    // }
-    // )
   }
   checkLocker() {
     delay(3000);
@@ -142,15 +164,26 @@ export class LockerOptionComponent implements OnInit {
       data => {
         detail = data;
         console.log("detail is " + detail.result);
+        //datail.result = 1;
         if (detail.result == 1) {
           // alert("close")
-          alert("Thank you " + this.card_number + " Don't forget to logout");
+          // alert("Thank you " + this.card_number + " Don't forget to logout");
+          this.alert_message();
           this.router.navigate(['/browse-option'])
         }
         console.log(data);
       }
     )
     this.lockernum = "";
+  }
+
+  alert_message(){
+    if(this.lang == "thai"){
+      alert("ขอบคุณ " + this.card_number + " อย่าลืมออกจากระบบ")
+    }
+    else{
+      alert("Thank you " + this.card_number + " Don't forget to logout");
+    }
   }
 }
 var serial_number = ""
@@ -160,7 +193,6 @@ var IsAvailable;
 const Url = '/lockers/open/';
 const Urlcheck = '/lockers/checkclose/';
 const UrlMaxSlot = '/lockers/maxSlot/';
-var containerName = '80017';
 
 
 

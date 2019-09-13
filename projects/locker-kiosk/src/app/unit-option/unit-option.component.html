@@ -1,0 +1,26 @@
+<div class="option-page">
+    <div class="topic-container">
+      <div class="topic-title">{{Item.name}}</div>
+      <!-- <div class="topic-sub">What is the best type description of the item?</div> -->
+    </div>
+    <div class="option-wrapper">
+      <div class="option-opacity-gradient"></div>
+      <div id = "unit-choice" class="option-container">
+        <div class="option" *ngFor="let unit of units">
+          <div class="option-text " *ngIf="unit.container != null">
+            <!-- <div class="text-main" (click)="routeToSubCat(category.id)">{{subcategory.name}}</div> -->
+            <div  *ngIf="unit.container.name == LockerName" class="text-main "(click)="openLocker(unit.locker.name)">{{unit.locker.name}} {{unit.barcode}}</div> <!-- require further develop-->
+            
+          </div>
+          
+        </div>
+        <div class="option">
+          <div class="option-text" >
+            <div class="text-main" id = "body">Loading Please wait.</div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>

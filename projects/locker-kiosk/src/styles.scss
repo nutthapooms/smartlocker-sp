@@ -50,6 +50,7 @@
       pointer-events: none;
     }
     .option-container {
+      overflow-y: scroll;
       overflow-y: auto;
       height: 100%;
       width: 90%;
@@ -57,7 +58,7 @@
       border-left: 3px solid #aaa;
       border-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0))
         1 100%;
-      display: flex;
+      // display: flex;
       flex-direction: column;
       justify-content: center;
       position: relative;

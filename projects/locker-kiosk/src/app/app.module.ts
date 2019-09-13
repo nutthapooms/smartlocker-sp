@@ -8,11 +8,14 @@ import { IdleComponent } from './idle/idle.component';
 import { BrowseOptionComponent } from './browse-option/browse-option.component';
 import { CategoryOptionComponent } from './category-option/category-option.component';
 import { SubcategoryOptionComponent } from './subcategory-option/subcategory-option.component';
+import { ItemOptionComponent} from './item-option/item-option.component';
+import { UnitOptionComponent } from './unit-option/unit-option.component';
 import { LockerOptionComponent } from './locker-option/locker-option.component';
 import { ReturnItemsComponent } from './return-items/return-items.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { EmergencyReturnComponent } from './emergency-return/emergency-return.component';
 import { ReportIssueComponent } from './report-issue/report-issue.compoenent';
+import { AllItemComponent} from './all-item/all-item.component'
 
 import { HttpClientModule} from '@angular/common/http';
 import { DataService} from './data.service';
@@ -25,11 +28,15 @@ import { DataService} from './data.service';
     BrowseOptionComponent,
     CategoryOptionComponent,
     SubcategoryOptionComponent,
+    ItemOptionComponent,
+    UnitOptionComponent,
     LockerOptionComponent,
     NavigationComponent,
     ReturnItemsComponent,
     ReportIssueComponent,
-    EmergencyReturnComponent
+    EmergencyReturnComponent,
+    AllItemComponent
+
     // DataService,
   ],
   imports: [

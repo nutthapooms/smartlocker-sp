@@ -1,0 +1,27 @@
+<div class="option-page">
+    <div class="topic-container">
+      <div class="topic-title">{{Subcategory.name}}</div>
+      <!-- <div class="topic-sub">What is the best type description of the item?</div> -->
+    </div>
+    <div class="option-wrapper">
+      <div class="option-opacity-gradient"></div>
+      <div class="option-container">
+        <div class="option" *ngFor="let item of items">
+        <img [style.background-image]="'url(https://smartlocker.azurewebsites.net/api/images/' + item.images[0] + ')'">
+          <div class="option-text" >
+            <div class="text-main" (click)="routeToUnit(item.id)">{{item.name}}</div>
+            <!-- <div class="text-main">{{item.name}}</div> -->
+            
+          </div>
+          
+        </div>
+        <div class="option">
+          <div class="option-text" >
+            <div class="text-main" id = "body">Loading Please wait.</div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>

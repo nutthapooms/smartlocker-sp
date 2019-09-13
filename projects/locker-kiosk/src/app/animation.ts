@@ -29,8 +29,11 @@ var animation = [
 export const slideInAnimation =
     trigger('routeAnimations', [
         transition('BrowseOption => *', animation),
+        transition('AllItem => *', animation),        
         transition('CategoryOption => *', animation),
         transition('SubcategoryOption => *', animation),
+        transition('ItemOption => *', animation),
+        transition('UnitOption => *', animation),
         transition('LockerOption => *', animation),
         transition('EmergencyReturn => *', animation),
         transition('Home => *', animation),
