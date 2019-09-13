@@ -12,7 +12,7 @@ import { delay } from 'q';
   styleUrls: ['./all-item.component.scss']
 })
 export class AllItemComponent implements OnInit {
-  units: UnitDTO[];
+  units: UnitDTO[] =[];
   containerId: number;
   containerName: string;
   lang: string;
@@ -44,14 +44,19 @@ export class AllItemComponent implements OnInit {
         let params = new HttpParams();
         if (this.containerId) params = params.append('containerId', this.containerId.toString());
         this.http.get<Array<UnitDTO>>('https://smartlocker.azurewebsites.net/api/admin/units/container', { params: params }).subscribe(data => {
-          console.log(data)
-          this.units = data;
+          let tempUnits = data;
           document.getElementById("body").innerHTML = "";
+          tempUnits.forEach(element => {
+            if(element.loaner.employeeId == null)  {
+              this.units.push(element);
+            }
+          console.log(this.units);
+
+          });
         }
         )
       })
     })
-
   }
   openLocker(l) {
     alert(l);
@@ -87,16 +92,12 @@ export class AllItemComponent implements OnInit {
               )
             }
           )
-
-
           if (this.lang == "thai") {
             document.getElementById("status").innerHTML = "หยิบอุปกรณ์แล้วปิดบานช่อง";
           } else {
             document.getElementById("status").innerHTML = "Pick your item and close the door.";
-
           }
           document.getElementById("status").style.fontSize = "calc((.3em + 1vmin) + (.3em + 1vmax))"
-
         }
         else {
           if (this.lang == "thai") {
@@ -106,7 +107,6 @@ export class AllItemComponent implements OnInit {
           }
           // alert("this item is not available");
           document.getElementById("allitem-option").style.visibility = 'visible';
-
           this.chooseLocker = "";
         }
       }

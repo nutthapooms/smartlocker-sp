@@ -38,7 +38,9 @@ export class NavigationComponent implements OnInit {
   locker_num = "";
   locker_num_temp = "";
   door_close = 1;
+  containerName = "";
   ngOnInit() {
+    this.data.currentLocker.subscribe(contner => this.containerName = contner);
     this.data.currentLanguage.subscribe(message => this.lang = message);
     if (this.location.path() == '') {
       document.getElementById("logOutIcon").style.visibility = 'hidden';
@@ -222,7 +224,7 @@ export class NavigationComponent implements OnInit {
 
   }
   heartbeat() {
-    this.http.get("https://heartbeatsl.azurewebsites.net/time/SRT-Test").subscribe();
+    this.http.get("https://heartbeatsl.azurewebsites.net/time/"+this.containerName).subscribe();
     this.http.get("https://heartbeatsl.azurewebsites.net").subscribe();
 
   }

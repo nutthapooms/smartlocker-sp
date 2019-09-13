@@ -11,7 +11,7 @@ import { delay } from 'q';
   styleUrls: ['./unit-option.component.scss']
 })
 export class UnitOptionComponent implements OnInit {
-  units: UnitDTO[];
+  units: UnitDTO[] = [];
   ItemId: string;
   Item: ItemDTO;
   LockerId: number;
@@ -51,7 +51,14 @@ export class UnitOptionComponent implements OnInit {
     }
     this.http.get<Array<UnitDTO>>('https://smartlocker.azurewebsites.net/api/admin/units/item', { params: params }).subscribe(data => {
       console.log(data)
-      this.units = data;
+      let tempUnits = data;
+      tempUnits.forEach(element => {
+        if(element.loaner.employeeId == null)  {
+          this.units.push(element);
+        }
+      console.log(this.units);
+
+      });
 
       document.getElementById("body").innerHTML = "";
     }
