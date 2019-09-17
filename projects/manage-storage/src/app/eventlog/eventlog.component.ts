@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { LoanDTO, SiteDTO, CountryDTO, ContainerDTO, LoanDTO2, BadgeInfo } from 'src/app/shared/model';
 import { GetDtoService } from 'src/app/shared/get-dto.service';
 import { Location } from '@angular/common';
-import badgeData from '../badgeInfo.json'
+import badgeData from 'src/app/shared/badgeInfo.json'
 
 @Component({
     selector: 'app-eventlog',
