@@ -84,6 +84,8 @@ export class LockerDTO {
   public id: number;
   public unitCount: number;
   public name: string;
+  public employee : string;
+  public badgeId :string; 
 }
 
 export class DashboardLoanResponse {
@@ -166,9 +168,9 @@ export class EmployeeResponse {
 
 export class EmployeeDTO {
   public EmployeeId: number;
-  public Name: number;
+  public name: string;
   public Email: string;
-  public BadgeId: string;
+  public badgeId: string;
 }
 
 export class ItemDetailResponse {
@@ -226,9 +228,44 @@ export class LoanDTO {
   public Duration: number;
 }
 
+export class LoanDTO2 {
+  public LoanId: number;
+  public employeeId: number;
+  public UnitId: number;
+  public containerName: string;
+  public loanDate: Date;
+  public DueDate: Date;
+  public ReturnDate: Date;
+  public Company : string;
+  public employee: EmployeeDTO;
+  public IsLoanMailSent: boolean;
+  public IsReturnMailSent;
+  public UnitName: string;
+  public Barcode: string;
+  public Duration: number;
+}
+
 export class ItemRequest {
   public name: string;
   public subcategoryId: string;
   public defaultDuration: number;
   public attachments: Array<number> = new Array<number>();
 }
+
+export class BadgeInfo {
+  public AdminSupGUI: string;
+  public CountryCode: string;
+  public DisplayName: string;
+  public EmploymentType: string;
+  public FuncOrgName: string;
+  public FuncSupGUID: string;
+  public GivenName: string;
+  public GUID: string;
+  public LocationCode: number;
+  public LocationName: string;
+  public MiddleName: string;
+  public PriLanID: string;
+  public SiteName: string;
+  public SMTP: string;
+  public Surname: string;
+} 
