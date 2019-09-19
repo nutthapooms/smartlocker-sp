@@ -49,10 +49,15 @@ export class LockerListComponent implements OnInit {
       }
       else {
         data.forEach(locker => {
-          if (locker.badgeId!= null) {
+          if (locker.badgeId != null) {
             let Usertemp = this.findUser(locker.badgeId);
             if (Usertemp != null) {
               locker.employee = Usertemp[0][1].toString() + " " + Usertemp[0][2].toString();
+            }
+            else {
+              this.http.get<BadgeInfo>('https://hoesql566.na.xom.com/BadgeEventAPI/api/Badge/ID/' + locker.badgeId, { withCredentials: true }).subscribe(user => {
+                locker.employee = user.DisplayName;
+              })
             }
           }
         })
