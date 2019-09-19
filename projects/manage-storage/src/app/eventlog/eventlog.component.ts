@@ -52,6 +52,12 @@ export class EventLogComponent implements OnInit {
                         loan.Company = Usertemp[0][3].toString() + " : " + Usertemp[0][4].toString();
                         loan.employee.name = Usertemp[0][1].toString() + " " + Usertemp[0][2].toString();
                     }
+                    else {
+                        this.http.get<BadgeInfo>('https://hoesql566.na.xom.com/BadgeEventAPI/api/Badge/ID/' + loan.employee.badgeId, { withCredentials: true }).subscribe(user => {
+                            loan.Company = user.FuncOrgName;
+                            loan.employee.name = user.DisplayName;
+                        })
+                    }
                 })
             }
             this.loanlog = data;
