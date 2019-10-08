@@ -89,7 +89,7 @@ export class UnitOptionComponent implements OnInit {
           )
         }
         else if (IsAvailable.loaner.employeeId == null) {
-          this.http.get("https://smartlocker.azurewebsites.net/api/admin/borrow/" + IsAvailable.barcode + "/" + this.cardNumber).subscribe(
+          this.http.post("https://smartlocker.azurewebsites.net/api/admin/borrow/" + IsAvailable.barcode,{"BadgeId":this.cardNumber}).subscribe(
             data => {
               console.log(data);
             }

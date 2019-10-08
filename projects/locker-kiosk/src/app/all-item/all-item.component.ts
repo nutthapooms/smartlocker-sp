@@ -85,7 +85,7 @@ export class AllItemComponent implements OnInit {
             data => {
               console.log(data);
               this.checkLocker();
-              this.http.get("https://smartlocker.azurewebsites.net/api/admin/borrow/" + IsAvailable.barcode + "/" + this.cardNumber).subscribe(
+              this.http.post("https://smartlocker.azurewebsites.net/api/admin/borrow/" + IsAvailable.barcode,{"BadgeId":this.cardNumber}).subscribe(
                 data => {
                   console.log(data);
                 }

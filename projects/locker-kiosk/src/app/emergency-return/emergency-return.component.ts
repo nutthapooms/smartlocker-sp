@@ -63,22 +63,6 @@ export class EmergencyReturnComponent implements OnInit {
                   this.ablebtn();
                   this.lockernum = "";
                 } 
-                // else if (IsAvailable.loaner.employeeId == null ) {
-                //   this.http.get(Url + showNumber).subscribe(        //open locker
-                //     data => {
-                //       console.log(data);
-                //       this.checkLocker();
-                //     }
-                //   )
-                //   this.http.get("https://smartlocker.azurewebsites.net/api/admin/borrow/" + IsAvailable.barcode + "/" + this.card_number).subscribe(
-                //     data => {
-                //       console.log(data);
-                //     }
-                //   )
-                //   document.getElementById("numPad").innerHTML = "Pick your item and close the door.";
-                //   document.getElementById("numPad").style.fontSize = "calc((.3em + 1vmin) + (.3em + 1vmax))"
-  
-                // }
                 else {
                     this.http.get("https://smartlocker.azurewebsites.net/api/admin/return/" + IsAvailable.barcode).subscribe(
                     data => {

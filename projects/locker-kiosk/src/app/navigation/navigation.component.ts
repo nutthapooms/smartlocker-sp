@@ -77,7 +77,7 @@ export class NavigationComponent implements OnInit {
             document.getElementById("ScanCard_sub").innerHTML = "Processing, please wait";
           }
           if (this.enterCheck == 1) {
-            this.http.get("https://smartlocker.azurewebsites.net/api/admin/finduser/" + this.card_number).subscribe(
+            this.http.post("https://smartlocker.azurewebsites.net/api/admin/finduser",{"BadgeId":this.card_number}).subscribe(
               data => {
                 console.log(data);
                 if (data != null) {

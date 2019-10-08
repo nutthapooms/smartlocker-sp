@@ -104,7 +104,7 @@ export class LockerOptionComponent implements OnInit {
                     this.checkLocker();
                   }
                 )
-                this.http.get("https://smartlocker.azurewebsites.net/api/admin/borrow/" + IsAvailable.barcode + "/" + this.card_number).subscribe(
+                this.http.post("https://smartlocker.azurewebsites.net/api/admin/borrow/" + IsAvailable.barcode,{"BadgeId":this.card_number}).subscribe(
                   data => {
                     console.log(data);
                   }
