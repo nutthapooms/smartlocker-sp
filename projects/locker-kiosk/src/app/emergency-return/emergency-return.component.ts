@@ -15,16 +15,17 @@ export class EmergencyReturnComponent implements OnInit {
     lockernum = "";
     card_number: string;
     checkopen = 0;
+    containerName: string;
     constructor(private http: HttpClient, private route: ActivatedRoute,
       private data: DataService,
       private router: Router, ) { }
   
     ngOnInit() {
-      this.data.currentBadgeId.subscribe(message => this.card_number = message);
-      this.data.currentLocker.subscribe(conter => containerName = conter);
+      this.data.currentLocker.subscribe(conter => this.containerName = conter);
     }
-    addnum(num = "") {
-      this.lockernum = this.lockernum + num
+    addnum(num:number) {
+      let strNum = stringify(num);
+      this.lockernum = this.lockernum + strNum;
       document.getElementById("displayNum").innerHTML = "Box number :" + this.lockernum;
     }
     delnum() {
@@ -45,16 +46,16 @@ export class EmergencyReturnComponent implements OnInit {
     emergencyReturn() {
       document.getElementById("displayNum").innerHTML = "Processing, please wait.";
       this.disablebtn();
-    //   this.http.get(UrlMaxSlot).subscribe(
-            // data => {
-        //   maxSlot = data;
-          maxSlot = 9;
+      this.http.get(UrlMaxSlot).subscribe(
+            data => {
+          maxSlot = data;
+          // maxSlot = 34;
           var showNumber = Number(this.lockernum) 
           console.log("choose: "+showNumber);
-        //   if (showNumber <= maxSlot.result && showNumber > 0) {
-          if (showNumber <= maxSlot && showNumber > 0) {
+          if (showNumber <= maxSlot.result && showNumber > 0) {
+          // if (showNumber <= maxSlot && showNumber > 0) {
             // console.log("/api/admin/lockerno/" + containerName + "/Locker " + this.lockernum);
-            this.http.get("https://smartlocker.azurewebsites.net/api/admin/lockerno/" + containerName + "/Locker " + showNumber).subscribe(
+            this.http.get("https://smartlocker.azurewebsites.net/api/admin/lockerno/" + this.containerName + "/Locker " + showNumber).subscribe(
               data => {
                 IsAvailable = data;
                 console.log(IsAvailable);
@@ -83,18 +84,14 @@ export class EmergencyReturnComponent implements OnInit {
             this.lockernum = "";
           }
   
-        //}
-    //   )
+        }
+      )
     }
   }
-  var serial_number = ""
-  var detail;
   var maxSlot;
   var IsAvailable;
-  const Url = '/lockers/open/';
-  const Urlcheck = '/lockers/checkclose/';
-  const UrlMaxSlot = '/lockers/maxSlot/';
-  var containerName;
+const UrlMaxSlot = '/lockers/maxSlot/';
+  
   
   
   

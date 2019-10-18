@@ -22,7 +22,7 @@ export class IdleComponent implements OnInit {
   thai(){
     this.language.changeLanguage("thai");
     console.log("thai");
-    document.getElementById("ScanSerial_sub").innerHTML = "แสกนบาร์โค๊ดบนอุปกรณ์เพื่อคืน"
+    document.getElementById("ScanSerial_sub").innerHTML = "สแกนบาร์โค๊ดบนอุปกรณ์เพื่อคืน"
     document.getElementById("ScanCard_sub").innerHTML = "ส่องบัตรพนักงานเพื่อยืมอุปกรณ์"
 
   }

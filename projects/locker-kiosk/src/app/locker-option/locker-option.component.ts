@@ -1,10 +1,13 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { detachEmbeddedView } from '@angular/core/src/view';
-import { delay } from 'q';
+import { delay, async } from 'q';
 import { ActivatedRoute, Router } from '@angular/router';
 import { stringify } from 'querystring';
 import { DataService } from '../data.service';
+import { UnitDTO } from 'src/app/shared/model';
+import { AlertService } from '../alert.service';
+
 @Component({
   selector: 'app-locker-option',
   templateUrl: './locker-option.component.html',
@@ -18,9 +21,10 @@ export class LockerOptionComponent implements OnInit {
   card_number: string;
   checkopen = 0;
   lang = "";
-  containerName : string;
+  containerName: string;
   constructor(private http: HttpClient, private route: ActivatedRoute,
     private data: DataService,
+    private alrt: AlertService,
     private router: Router, ) { }
 
   ngOnInit() {
@@ -40,8 +44,9 @@ export class LockerOptionComponent implements OnInit {
     document.getElementById("delete").innerHTML = "ลบ";
 
   }
-  addnum(num = "") {
-    this.lockernum = this.lockernum + num
+  addnum(num: number) {
+    let strNum = stringify(num);
+    this.lockernum = this.lockernum + strNum;
     document.getElementById("displayNum").innerHTML = "Box number :" + this.lockernum;
   }
   delnum() {
@@ -67,14 +72,14 @@ export class LockerOptionComponent implements OnInit {
     }
 
     this.disablebtn();
-    // this.http.get(UrlMaxSlot).subscribe(
-    //   data => {
-        // maxSlot = data;
+    this.http.get(UrlMaxSlot).subscribe(
+      data => {
+        maxSlot = data;
         var showNumber = Number(this.lockernum)
         console.log("choose: " + showNumber);
-        maxSlot = 34;
-        // if (showNumber <= maxSlot.result && showNumber > 0) {
-          if (showNumber <= maxSlot && showNumber > 0) {
+        // maxSlot = 34;
+        if (showNumber <= maxSlot.result && showNumber > 0) {
+          // if (showNumber <= maxSlot && showNumber > 0) {
           // console.log("/api/admin/lockerno/" + containerName + "/Locker " + this.lockernum);
           this.http.get("https://smartlocker.azurewebsites.net/api/admin/lockerno/" + this.containerName + "/Locker " + showNumber).subscribe(
             data => {
@@ -98,17 +103,20 @@ export class LockerOptionComponent implements OnInit {
                 this.lockernum = "";
               }
               else if (IsAvailable.loaner.employeeId == null) {
-                this.http.get(Url + showNumber).subscribe(
+                this.http.post<UnitDTO>("https://smartlocker.azurewebsites.net/api/admin/borrow/" + IsAvailable.barcode, { "BadgeId": this.card_number }).subscribe(
                   data => {
+                    let returnday = data.item.defaultDuration / (24 * 60 * 60);
+                    this.alrt.dateAlert("กรุณาคืนอุปกรณ์ภายใน " + returnday + " วัน Please return the item in " + returnday + " days", 10000);
                     console.log(data);
-                    this.checkLocker();
+                    this.http.get(Url + showNumber).subscribe(
+                      data => {
+                        console.log(data);
+                        this.checkLocker();
+                      }
+                    )
                   }
                 )
-                this.http.post("https://smartlocker.azurewebsites.net/api/admin/borrow/" + IsAvailable.barcode,{"BadgeId":this.card_number}).subscribe(
-                  data => {
-                    console.log(data);
-                  }
-                )
+
                 if (this.lang == "thai") {
                   document.getElementById("numPad").innerHTML = "หยิบอุปกรณ์แล้วปิดบานช่อง";
                 } else {
@@ -144,8 +152,8 @@ export class LockerOptionComponent implements OnInit {
           this.lockernum = "";
         }
 
-    //   }
-    // )
+      }
+    )
   }
   openAll() {
     let i = 1;
@@ -168,7 +176,7 @@ export class LockerOptionComponent implements OnInit {
         if (detail.result == 1) {
           // alert("close")
           // alert("Thank you " + this.card_number + " Don't forget to logout");
-          this.alert_message();
+          // this.alert_message();
           this.router.navigate(['/browse-option'])
         }
         console.log(data);
@@ -177,11 +185,11 @@ export class LockerOptionComponent implements OnInit {
     this.lockernum = "";
   }
 
-  alert_message(){
-    if(this.lang == "thai"){
+  alert_message() {
+    if (this.lang == "thai") {
       alert("ขอบคุณ " + this.card_number + " อย่าลืมออกจากระบบ")
     }
-    else{
+    else {
       alert("Thank you " + this.card_number + " Don't forget to logout");
     }
   }

@@ -5,8 +5,7 @@ import { DataService } from '../data.service';
 import { HttpClient } from '@angular/common/http';
 import { delay } from 'q';
 import { TypeResponse, TypeCategory, TypeSubcategory } from 'src/app/shared/model';
-
-
+import badgeInfo from '../badgeInfo.json';
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
@@ -32,18 +31,22 @@ export class NavigationComponent implements OnInit {
   }
 
   lang = "";
+  userr = [];
   card_number = ""
   enterCheck = 1;
   serial_number = "";
   locker_num = "";
   locker_num_temp = "";
   door_close = 1;
-  containerName = "";
   ngOnInit() {
-    this.data.currentLocker.subscribe(contner => this.containerName = contner);
+    // if(this.findUser("3721_226000")){
+    //   console.log(this.userr[0]);
+    // }
+
+
     this.data.currentLanguage.subscribe(message => this.lang = message);
     if (this.location.path() == '') {
-      document.getElementById("logOutIcon").style.visibility = 'hidden';
+      document.getElementById("logOutBtn").style.visibility = 'hidden';
       document.getElementById("logOut").innerHTML = "";
       document.getElementById("backBtn").style.visibility = 'hidden';
     }
@@ -64,12 +67,25 @@ export class NavigationComponent implements OnInit {
     }
 
   }
+  findUser(input: string) {
+    let inputt = input.toString().split("_");
+    // console.log(inputt[1]);
+    this.userr = badgeInfo.filter(badge => badge[0] == inputt[1]);
+    // console.log(this.userr[0][1]);
+    if (this.userr[0] != null) {
+      return true
+    }
+    else {
+
+      return false
+    }
+  }
   @HostListener('document:keydown', ['$event']) onkeydownHandler(event: KeyboardEvent) {
     if (event.key === "Enter") {
-      // alert(this.card_number)
+      //alert(this.serial_number)
       // this.data.changeMessage(this.card_number);
       if (this.card_number.includes("_")) {
-        if (this.card_number.includes("3721_") || this.card_number.includes("185_") || this.card_number == "_") {
+        if (this.card_number.includes("3721_") || this.card_number.includes("185_")) {
           if (this.lang == "thai") {
             document.getElementById("ScanCard_sub").innerHTML = "ประมวลผล, รอซักครุ่";
           }
@@ -77,7 +93,7 @@ export class NavigationComponent implements OnInit {
             document.getElementById("ScanCard_sub").innerHTML = "Processing, please wait";
           }
           if (this.enterCheck == 1) {
-            this.http.post("https://smartlocker.azurewebsites.net/api/admin/finduser",{"BadgeId":this.card_number}).subscribe(
+            this.http.post("https://smartlocker.azurewebsites.net/api/admin/finduser", { "BadgeId": this.card_number }).subscribe(
               data => {
                 console.log(data);
                 if (data != null) {
@@ -85,7 +101,7 @@ export class NavigationComponent implements OnInit {
                   time_out = 0;
                   this.router.navigate(['/browse-option']);
                   document.getElementById("backBtn").style.visibility = 'visible';
-                  document.getElementById("logOutIcon").style.visibility = 'visible';
+                  document.getElementById("logOutBtn").style.visibility = 'visible';
                   document.getElementById("logOut").innerHTML = "ID: " + this.card_number + " Log out";
                   this.data.changeBadgeId(this.card_number);
                 }
@@ -161,6 +177,9 @@ export class NavigationComponent implements OnInit {
       }
       if ("Shift".includes(event.key)) {
       }
+      else if ("/".includes(event.key)) {
+        this.serial_number = this.serial_number + "-"
+      }
       else {
         this.serial_number = this.serial_number + event.key;
 
@@ -171,7 +190,7 @@ export class NavigationComponent implements OnInit {
   back() {
     let LP = this.location.path();
     if (this.location.path() == '/browse-option') {
-      document.getElementById("logOutIcon").style.visibility = 'hidden';
+      document.getElementById("logOutBtn").style.visibility = 'hidden';
       document.getElementById("logOut").innerHTML = "";
       document.getElementById("backBtn").style.visibility = 'hidden';
       this.enterCheck = 1;
@@ -187,7 +206,7 @@ export class NavigationComponent implements OnInit {
     }
   }
   out() {
-    document.getElementById("logOutIcon").style.visibility = 'hidden';
+    document.getElementById("logOutBtn").style.visibility = 'hidden';
     document.getElementById("logOut").innerHTML = "";
     document.getElementById("backBtn").style.visibility = 'hidden';
     this.enterCheck = 1;
@@ -207,14 +226,14 @@ export class NavigationComponent implements OnInit {
   auto_logout() {
     time_out++;
     //console.log(time_out);
-    if (time_out >= 30 * 9 && this.enterCheck == 0) {
-      let time_left = 300 - time_out
+    if (time_out >= 30 * 1 && this.enterCheck == 0) {
+      let time_left = 60 - time_out
       document.getElementById("logOut").innerHTML = "ID: " + this.card_number + " Log out | Auto log out in : " + time_left;
     }
-    else if (time_out <= 30 * 9 && this.enterCheck == 0) {
+    else if (time_out <= 30 * 2 && this.enterCheck == 0) {
       document.getElementById("logOut").innerHTML = "ID: " + this.card_number + this.logoutword(this.lang);
     }
-    if (time_out >= 60 * 5) {
+    if (time_out >= 60 * 1) {
       if (this.enterCheck == 0) {
         this.out();
         // alert("log out");
@@ -224,7 +243,7 @@ export class NavigationComponent implements OnInit {
 
   }
   heartbeat() {
-    this.http.get("https://heartbeatsl.azurewebsites.net/time/"+this.containerName).subscribe();
+    this.http.get("https://heartbeatsl.azurewebsites.net/time/SRT-Test").subscribe();
     this.http.get("https://heartbeatsl.azurewebsites.net").subscribe();
 
   }

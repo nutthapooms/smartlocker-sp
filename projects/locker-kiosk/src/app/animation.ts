@@ -36,6 +36,7 @@ export const slideInAnimation =
         transition('UnitOption => *', animation),
         transition('LockerOption => *', animation),
         transition('EmergencyReturn => *', animation),
+        transition('AddUser => *', animation),
         transition('Home => *', animation),
         transition('ReturnItems => *', animation),
         transition('ReportIssue => *', animation),

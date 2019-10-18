@@ -10,6 +10,7 @@ import { LockerOptionComponent } from './locker-option/locker-option.component';
 import { ReturnItemsComponent } from './return-items/return-items.component';
 import { ReportIssueComponent } from './report-issue/report-issue.compoenent';
 import { EmergencyReturnComponent } from './emergency-return/emergency-return.component';
+import { AddUserComponent } from './add-User/addUser.component';
 import { AllItemComponent} from './all-item/all-item.component'
 import { from } from 'rxjs';
 
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'return-items', component: ReturnItemsComponent , data: {animation: 'ReturnItems'} },
   { path: 'report-issue', component: ReportIssueComponent , data: {animation: 'ReportIssue'} },
   { path: 'emergency-return', component: EmergencyReturnComponent , data: {animation: 'EmergencyReturn'} },
+  { path: 'add-User', component:  AddUserComponent, data: {animation: 'AddUser'} },
   { path: 'all-item', component: AllItemComponent , data: {animation: 'AllItem'} },
   { path: '**', component: IdleComponent, data: {animation: 'Home'} },
 

@@ -4,6 +4,7 @@ import { SubcategoryDTO, UnitDTO, ItemDTO, ContainerDTO } from 'src/app/shared/m
 import { DataService } from '../data.service'
 import { Router } from '@angular/router';
 import { delay } from 'q';
+import { AlertService } from '../alert.service';
 
 @Component({
   selector: 'app-unit-option',
@@ -23,6 +24,7 @@ export class UnitOptionComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private router: Router,
+    private alrt: AlertService,
     private data: DataService
   ) {
     this.data.currentMessage.subscribe(message => this.ItemId = message);
@@ -50,24 +52,20 @@ export class UnitOptionComponent implements OnInit {
 
     }
     this.http.get<Array<UnitDTO>>('https://smartlocker.azurewebsites.net/api/admin/units/item', { params: params }).subscribe(data => {
-      console.log(data)
       let tempUnits = data;
-      tempUnits.forEach(element => {
-        if(element.loaner.employeeId == null)  {
-          this.units.push(element);
-        }
-      console.log(this.units);
-
-      });
-
-      document.getElementById("body").innerHTML = "";
+          document.getElementById("body").innerHTML = "";
+          tempUnits.forEach(element => {
+            if(element.loaner.employeeId == null)  {
+              this.units.push(element);
+            }
+          console.log(this.units);
+          });
     }
 
     )
   }
 
   openLocker(l) {
-    alert(l);
     this.chooseLocker = l;
     if (this.lang == "thai") {
       document.getElementById("unit-choice").innerHTML = "กรุณารอซักครู่";
@@ -89,18 +87,20 @@ export class UnitOptionComponent implements OnInit {
           )
         }
         else if (IsAvailable.loaner.employeeId == null) {
-          this.http.post("https://smartlocker.azurewebsites.net/api/admin/borrow/" + IsAvailable.barcode,{"BadgeId":this.cardNumber}).subscribe(
+          this.http.post<UnitDTO>("https://smartlocker.azurewebsites.net/api/admin/borrow/" + IsAvailable.barcode,{"BadgeId": this.cardNumber}).subscribe(
             data => {
+              let returnday = data.item.defaultDuration/(24*60*60);
+              this.alrt.dateAlert("กรุณาคืนอุปกรณ์ภายใน " + returnday +" วัน Please return the item in "+ returnday +" days",10000);
               console.log(data);
+              this.http.get(Url + showNumber).subscribe(
+                data => {
+                  console.log(data);
+                  this.checkLocker();
+                }
+              )
             }
           )
-          this.http.get(Url + showNumber).subscribe(
-            data => {
-              console.log(data);
-
-              this.checkLocker();
-            }
-          )
+          
           if (this.lang == "thai") {
             document.getElementById("unit-choice").innerHTML = "หยิบอุปกรณ์แล้วปิดบานช่อง";
           } else {
@@ -134,7 +134,7 @@ export class UnitOptionComponent implements OnInit {
         if (detail.result == 1) {
           // alert("close")
           // alert("Thank you " + this.card_number + " Don't forget to logout");
-          this.alert_message();
+          // this.alert_message();
           this.router.navigate(['/browse-option'])
         }
         console.log(data);

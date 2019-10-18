@@ -16,9 +16,13 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { EmergencyReturnComponent } from './emergency-return/emergency-return.component';
 import { ReportIssueComponent } from './report-issue/report-issue.compoenent';
 import { AllItemComponent} from './all-item/all-item.component'
-
+import {AddUserComponent} from './add-User/addUser.component'
 import { HttpClientModule} from '@angular/common/http';
 import { DataService} from './data.service';
+import { AlertService } from './alert.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AddHeaderInterceptor} from './interceptor.service';
+
 // import{BehaviorSubject} from 'rxjs';
 
 @NgModule({
@@ -35,6 +39,7 @@ import { DataService} from './data.service';
     ReturnItemsComponent,
     ReportIssueComponent,
     EmergencyReturnComponent,
+    AddUserComponent,
     AllItemComponent
 
     // DataService,
@@ -52,6 +57,12 @@ import { DataService} from './data.service';
   ],
   providers: [
     DataService,
+    AlertService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AddHeaderInterceptor,
+      multi: true,
+    }
   ],
   bootstrap: [AppComponent]
 })

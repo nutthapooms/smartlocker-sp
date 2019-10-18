@@ -77,8 +77,12 @@ export class ReturnItemsComponent implements OnInit {
             })
         }
         else if (this.door_close == 1) {
+            
             if ("Shift".includes(event.key)) {
             }
+            else if("/".includes(event.key)){
+                this.serial_number = this.serial_number + "-"
+              }
             else {
                 this.serial_number = this.serial_number + event.key;
 

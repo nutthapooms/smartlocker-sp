@@ -4,6 +4,7 @@ import { UnitDTO, LockerDTO, ContainerDTO } from 'src/app/shared/model';
 import { DataService } from '../data.service'
 import { Router } from '@angular/router';
 import { delay } from 'q';
+import { AlertService } from '../alert.service';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { delay } from 'q';
   styleUrls: ['./all-item.component.scss']
 })
 export class AllItemComponent implements OnInit {
-  units: UnitDTO[] =[];
+  units: UnitDTO[] = [];
   containerId: number;
   containerName: string;
   lang: string;
@@ -22,6 +23,7 @@ export class AllItemComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private router: Router,
+    private alrt: AlertService,
     private data: DataService
 
   ) { }
@@ -47,19 +49,18 @@ export class AllItemComponent implements OnInit {
           let tempUnits = data;
           document.getElementById("body").innerHTML = "";
           tempUnits.forEach(element => {
-            if(element.loaner.employeeId == null)  {
+            if (element.loaner.employeeId == null) {
               this.units.push(element);
             }
-          console.log(this.units);
-
+            console.log(this.units);
           });
         }
         )
       })
     })
+
   }
   openLocker(l) {
-    alert(l);
     this.chooseLocker = l;
     if (this.lang == "thai") {
       document.getElementById("status").innerHTML = "กรุณารอซักครู่";
@@ -81,23 +82,29 @@ export class AllItemComponent implements OnInit {
           )
         }
         else if (IsAvailable.loaner.employeeId == null) {
-          this.http.get(Url + showNumber).subscribe(
+          this.http.post<UnitDTO>("https://smartlocker.azurewebsites.net/api/admin/borrow/" + IsAvailable.barcode,{"BadgeId": this.cardNumber}).subscribe(
             data => {
               console.log(data);
-              this.checkLocker();
-              this.http.post("https://smartlocker.azurewebsites.net/api/admin/borrow/" + IsAvailable.barcode,{"BadgeId":this.cardNumber}).subscribe(
+              let returnday = data.item.defaultDuration/(24*60*60);
+              this.alrt.dateAlert("กรุณาคืนอุปกรณ์ภายใน " + returnday +" วัน Please return the item in "+ returnday +" days",10000);              
+              this.http.get(Url + showNumber).subscribe(
                 data => {
                   console.log(data);
+                  this.checkLocker();
                 }
-              )
+              ) 
             }
           )
+          
+
           if (this.lang == "thai") {
             document.getElementById("status").innerHTML = "หยิบอุปกรณ์แล้วปิดบานช่อง";
           } else {
             document.getElementById("status").innerHTML = "Pick your item and close the door.";
+
           }
           document.getElementById("status").style.fontSize = "calc((.3em + 1vmin) + (.3em + 1vmax))"
+
         }
         else {
           if (this.lang == "thai") {
@@ -107,6 +114,7 @@ export class AllItemComponent implements OnInit {
           }
           // alert("this item is not available");
           document.getElementById("allitem-option").style.visibility = 'visible';
+
           this.chooseLocker = "";
         }
       }
@@ -124,7 +132,7 @@ export class AllItemComponent implements OnInit {
         if (detail.result == 1) {
           // alert("close")
           // alert("Thank you " + this.card_number + " Don't forget to logout");
-          this.alert_message();
+          // this.alert_message();
           this.router.navigate(['/browse-option'])
         }
         console.log(data);
