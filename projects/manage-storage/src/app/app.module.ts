@@ -38,7 +38,7 @@ import { ItemUnitFormComponent } from './item-unit/item-unit-form/item-unit-form
 import { ItemUnitListComponent } from './item-unit/item-unit-list/item-unit-list.component';
 import { GlobalService } from 'src/app/shared/global.service';
 import { EventLogComponent } from './eventlog/eventlog.component';
-
+import { AddHeaderInterceptor} from './interceptor.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,6 +81,11 @@ import { EventLogComponent } from './eventlog/eventlog.component';
     MomentModule
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AddHeaderInterceptor,
+      multi: true,
+    },
     GetDtoService,
     GlobalService
   ],

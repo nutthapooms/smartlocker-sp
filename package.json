@@ -10,7 +10,7 @@
     "e2e": "ng e2e",
     "online": "ng serve --proxy-config proxy.conf.json --project online-storage",
     "kiosk": "ng serve --proxy-config proxy.conf.json --project locker-kiosk",
-    "admin": "ng serve --proxy-config proxy.conf.json --project manage-storage ",
+    "admin": "ng serve --proxy-config proxy.conf.json --project manage-storage --ssl true",
     "prod-kiosk" : "ng build --project locker-kiosk --prod",
     "prod-online" : "ng build --project online-storage --prod",
     "prod-admin" : "ng build --project manage-storage --prod"
