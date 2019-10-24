@@ -85,7 +85,7 @@ export class NavigationComponent implements OnInit {
       //alert(this.serial_number)
       // this.data.changeMessage(this.card_number);
       if (this.card_number.includes("_")) {
-        if (this.card_number.includes("3721_") || this.card_number.includes("185_")) {
+        if (this.card_number.includes("3721_") || this.card_number.includes("185_")|| this.card_number == "_") {
           if (this.lang == "thai") {
             document.getElementById("ScanCard_sub").innerHTML = "ประมวลผล, รอซักครุ่";
           }
