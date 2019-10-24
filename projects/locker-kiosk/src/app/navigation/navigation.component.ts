@@ -243,7 +243,7 @@ export class NavigationComponent implements OnInit {
 
   }
   heartbeat() {
-    this.http.get("https://heartbeatsl.azurewebsites.net/time/SRT-Test").subscribe();
+    this.http.get("https://heartbeatsl.azurewebsites.net/time/80017").subscribe();
     this.http.get("https://heartbeatsl.azurewebsites.net").subscribe();
 
   }
