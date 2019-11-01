@@ -45,8 +45,8 @@ export class LockerOptionComponent implements OnInit {
 
   }
   addnum(num: number) {
-    let strNum = stringify(num);
-    this.lockernum = this.lockernum + strNum;
+    // let strNum = stringify(num);
+    this.lockernum = this.lockernum + num;
     document.getElementById("displayNum").innerHTML = "Box number :" + this.lockernum;
   }
   delnum() {
