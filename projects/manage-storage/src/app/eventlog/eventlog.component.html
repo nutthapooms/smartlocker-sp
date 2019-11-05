@@ -18,7 +18,6 @@
             <table class="em-c-table ">
                 <thead class="em-c-table__header">
                     <tr class="em-c-table__header-row">
-                        <th scope="col" class="em-c-table__header-cell ">Employee Badge_ID</th>
                         <th scope="col" class="em-c-table__header-cell ">Name</th>
                         <th scope="col" class="em-c-table__header-cell ">Company</th>
                         <th scope="col" class="em-c-table__header-cell ">item name</th>
@@ -31,11 +30,9 @@
                 <tbody class="em-c-table__body ">
                     <tr class="em-c-table__row " *ngFor="let loan of loanlog">
 
-                        <td class="em-c-table__cell " colspan="" (click)="showUserProperty(loan.employee.badgeId)">
-                            <a>{{loan.employee.badgeId}}</a>
-                        </td>
-                        <td class="em-c-table__cell " colspan="">
-                            {{loan.employee.name}}
+                        
+                        <td class="em-c-table__cell " colspan=""(click)="showUserProperty(loan.employee.badgeId)">
+                            <a>{{loan.employee.name}}</a>
                         </td>
                         <td class="em-c-table__cell " colspan="">
                                 {{loan.Company}}
