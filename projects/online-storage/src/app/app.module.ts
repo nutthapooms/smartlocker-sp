@@ -20,6 +20,7 @@ import { AvailabilityComponent } from './item-detail/availability/availability.c
 import { LoanComponent } from './item-detail/loan/loan.component';
 import { HttpRequestInterceptor } from 'src/app/shared/auth.token';
 import { DataService} from './shared/data.service';
+import { AddHeaderInterceptor} from './interceptor.service'
 
 
 @NgModule({
@@ -48,10 +49,9 @@ import { DataService} from './shared/data.service';
   providers: [
     DataService,
     {
-      
       provide: HTTP_INTERCEPTORS,
-      useClass: HttpRequestInterceptor,
-      multi: true
+      useClass: AddHeaderInterceptor,
+      multi: true,
     }
   ],
   bootstrap: [AppComponent]

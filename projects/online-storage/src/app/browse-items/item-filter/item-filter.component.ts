@@ -28,9 +28,9 @@ export class ItemFilterComponent implements OnInit {
   constructor(private http: HttpClient,
     private _route: ActivatedRoute,
     private _router: Router,
-    private handler: HttpBackend
+    // private handler: HttpBackend
     ) {
-      this.http = new HttpClient(handler);
+      // this.http = new HttpClient(handler);
      }
 
   ngOnInit() {

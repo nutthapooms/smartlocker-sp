@@ -27,9 +27,9 @@ export class ItemDetailComponent implements OnInit {
     private data: DataService,
     private _route: ActivatedRoute,
     private _router: Router,
-    private handler: HttpBackend
+    // private handler: HttpBackend
     ) {
-      this.http = new HttpClient(handler);
+      // this.http = new HttpClient(handler);
      }
   username = "";
   lastname = "";
@@ -45,7 +45,7 @@ export class ItemDetailComponent implements OnInit {
     this.http.get<EmployeeDTO>(`https://smartlocker.azurewebsites.net/api/admin/finduser/name/${this.displayName}`).subscribe(data =>{
       if(data != null){
         this.userInfo = data;
-        headers = headers.set('Authorization', this.userInfo.BadgeId);  
+        headers = headers.set('Authorization', this.userInfo.badgeId);  
       }
       else{
         headers = headers.set('Authorization', '1'); 
