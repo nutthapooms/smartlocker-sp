@@ -42,7 +42,7 @@ export class NavigationComponent implements OnInit {
     // if(this.findUser("3721_226000")){
     //   console.log(this.userr[0]);
     // }
-
+    this.heartbeat();
 
     this.data.currentLanguage.subscribe(message => this.lang = message);
     if (this.location.path() == '') {
@@ -245,6 +245,7 @@ export class NavigationComponent implements OnInit {
   heartbeat() {
     this.http.get("https://heartbeatsl.azurewebsites.net/time/80017").subscribe();
     this.http.get("https://heartbeatsl.azurewebsites.net").subscribe();
+    this.http.get("/token").subscribe();
 
   }
 
