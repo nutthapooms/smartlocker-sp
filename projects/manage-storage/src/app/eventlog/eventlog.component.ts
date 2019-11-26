@@ -29,6 +29,7 @@ export class EventLogComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+
         this.siteId = this.route.snapshot.paramMap.get('siteId');
         this.countryId = this.route.snapshot.paramMap.get('countryId');
         this.containerId = this.route.snapshot.paramMap.get('containerId');
@@ -43,11 +44,20 @@ export class EventLogComponent implements OnInit {
                         loan.Company = user.FuncOrgName;
                         loan.employee.name = user.DisplayName;
                     })
+                    
                 });
             }
             else {
                 data.forEach(loan => {
+                    if(loan.returnDate == "1900-01-01T00:00:00"){
+                        alert(loan.returnDate);
+                        alert(loan.unitName + " : Unit Lost");
+                        loan.unitName = loan.unitName + " : Unit Lost";
 
+                    }
+                    // if(loan.employee.badgeId == "3721_5248"){
+                    //     alert(loan.returnDate)
+                    // }
                     let Usertemp = this.findUser(loan.employee.badgeId);
 
                     this.http.get<BadgeInfo>('https://hoesql566.na.xom.com/BadgeEventAPI/api/Badge/ID/' + loan.employee.badgeId, { withCredentials: true }).subscribe(user => {

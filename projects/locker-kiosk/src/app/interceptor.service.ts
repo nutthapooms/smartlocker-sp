@@ -14,7 +14,6 @@ export class AddHeaderInterceptor implements HttpInterceptor {
   private pwd = "";
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // Clone the request to add the new header
-    // let pwd = "zFA5In7bV1Gr3b7Uq7ldZR276";
 
     if (req.url.includes("token")) {
       return next.handle(req).pipe(map(event => {

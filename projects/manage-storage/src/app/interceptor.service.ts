@@ -15,21 +15,14 @@ export class AddHeaderInterceptor implements HttpInterceptor {
     if (req.url.includes("smartlocker")) {
 
 
-      if (req.method.toLowerCase() === 'post' || req.method.toLowerCase() === 'delete') {
-        const clonedRequest = req.clone({ headers: req.headers.set('Content-Type', 'application/json'),body : JSON.stringify(req.body).replace("{","{'password':'" + pwd+ "',")});
-        console.log(clonedRequest.body);
-        console.log(clonedRequest.method);
+      const clonedRequest = req.clone({
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'password': pwd
+        })
+      });
 
-        return next.handle(clonedRequest);
-
-      }
-      else {
-        const clonedRequest = req.clone({ headers: new HttpHeaders ({'Content-Type':  'application/json',
-        'password': pwd})});
-        
-        return next.handle(clonedRequest);
-
-      }
+      return next.handle(clonedRequest);
       // clonedRequest.headers.append('Content-Type','application/json');
     }
     else {

@@ -39,9 +39,6 @@ export class NavigationComponent implements OnInit {
   locker_num_temp = "";
   door_close = 1;
   ngOnInit() {
-    // if(this.findUser("3721_226000")){
-    //   console.log(this.userr[0]);
-    // }
     this.heartbeat();
 
     this.data.currentLanguage.subscribe(message => this.lang = message);
