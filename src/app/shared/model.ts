@@ -235,12 +235,12 @@ export class LoanDTO2 {
   public containerName: string;
   public loanDate: Date;
   public DueDate: Date;
-  public ReturnDate: Date;
+  public returnDate: Date;
   public Company : string;
   public employee: EmployeeDTO;
   public IsLoanMailSent: boolean;
   public IsReturnMailSent;
-  public UnitName: string;
+  public unitName: string;
   public Barcode: string;
   public Duration: number;
 }

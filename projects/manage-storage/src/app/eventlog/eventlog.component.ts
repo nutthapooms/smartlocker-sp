@@ -40,6 +40,12 @@ export class EventLogComponent implements OnInit {
             console.log(data);
             if (this.container.name != "SRT-Test") {
                 data.forEach(loan => {
+                    if(loan.returnDate != null){
+                        if(loan.returnDate.toString() == "1900-01-01T00:00:00"){
+                            loan.unitName = loan.unitName + " : Unit Lost";
+    
+                        }
+                    }
                     this.http.get<BadgeInfo>('https://hoesql566.na.xom.com/BadgeEventAPI/api/Badge/ID/' + loan.employee.badgeId, { withCredentials: true }).subscribe(user => {
                         loan.Company = user.FuncOrgName;
                         loan.employee.name = user.DisplayName;
@@ -49,11 +55,11 @@ export class EventLogComponent implements OnInit {
             }
             else {
                 data.forEach(loan => {
-                    if(loan.returnDate == "1900-01-01T00:00:00"){
-                        alert(loan.returnDate);
-                        alert(loan.unitName + " : Unit Lost");
-                        loan.unitName = loan.unitName + " : Unit Lost";
-
+                    if(loan.returnDate != null){
+                        if(loan.returnDate.toString() == "1900-01-01T00:00:00"){
+                            loan.unitName = loan.unitName + " : Unit Lost";
+    
+                        }
                     }
                     // if(loan.employee.badgeId == "3721_5248"){
                     //     alert(loan.returnDate)
