@@ -90,7 +90,10 @@ export class NavigationComponent implements OnInit {
             document.getElementById("ScanCard_sub").innerHTML = "Processing, please wait";
           }
           if (this.enterCheck == 1) {
-            this.http.post("https://smartlocker.azurewebsites.net/api/admin/finduser", { "BadgeId": this.card_number }).subscribe(
+            let temp_card = this.card_number;
+            this.serial_number = "";
+            this.card_number = "";
+            this.http.post("https://smartlocker.azurewebsites.net/api/admin/finduser", { "BadgeId": temp_card }).subscribe(
               data => {
                 console.log(data);
                 if (data != null) {
@@ -99,8 +102,8 @@ export class NavigationComponent implements OnInit {
                   this.router.navigate(['/browse-option']);
                   document.getElementById("backBtn").style.visibility = 'visible';
                   document.getElementById("logOutBtn").style.visibility = 'visible';
-                  document.getElementById("logOut").innerHTML = "ID: " + this.card_number + " Log out";
-                  this.data.changeBadgeId(this.card_number);
+                  document.getElementById("logOut").innerHTML = "ID: " + temp_card + " Log out";
+                  this.data.changeBadgeId(temp_card);
                 }
                 else {
                   document.getElementById("ScanCard_sub").innerHTML = "User not found";
