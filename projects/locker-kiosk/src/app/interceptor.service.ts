@@ -18,7 +18,7 @@ export class AddHeaderInterceptor implements HttpInterceptor {
     if (req.url.includes("token")) {
       return next.handle(req).pipe(map(event => {
         if(event instanceof HttpResponse){
-          console.log(event.clone().body.secret);
+          // console.log(event.clone().body.secret);
           this.pwd = event.clone().body.secret;
         }
         return event;

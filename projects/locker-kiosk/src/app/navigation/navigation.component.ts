@@ -95,7 +95,7 @@ export class NavigationComponent implements OnInit {
             this.serial_number = "";
             this.http.post("https://smartlocker.azurewebsites.net/api/admin/finduser", { "BadgeId": this.card_number }).subscribe(
               data => {
-                console.log(data);
+                // console.log(data);
                 if (data != null) {
                   this.enterCheck = 0;
                   time_out = 0;
@@ -134,19 +134,19 @@ export class NavigationComponent implements OnInit {
         else {
           document.getElementById("ScanSerial_sub").innerHTML = "Processing, please wait";
         }
-        console.log(this.serial_number)
+        // console.log(this.serial_number)
         this.card_number = "";
         this.http.get<TypeResponse>('https://smartlocker.azurewebsites.net/api/admin/barcode/' + this.serial_number).subscribe(data => {
 
           detail = data;
-          console.log(detail);
+          // console.log(detail);
           if (detail != null && detail.loaner.employeeId != null) {
             this.locker_num_temp = detail.locker.name.toString();
             this.locker_num = this.locker_num_temp.substring(7);
-            console.log("locker number: " + this.locker_num);
+            // console.log("locker number: " + this.locker_num);
             this.http.get("/lockers/open/" + this.locker_num).subscribe(
               data => {
-                console.log(data);
+                // console.log(data);
                 this.door_close = 0;
                 if (this.lang == "thai") {
                   document.getElementById("ScanSerial_sub").innerHTML = "คืนอุปกรณ์แล้วปิดประตูตู้";
@@ -284,7 +284,7 @@ export class NavigationComponent implements OnInit {
           this.serial_number = "";
           this.card_number = "";
         }
-        console.log(detail.categories);
+        // console.log(detail.categories);
       }
     )
   }
