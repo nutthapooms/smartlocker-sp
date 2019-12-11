@@ -38,6 +38,7 @@ export class NavigationComponent implements OnInit {
   locker_num = "";
   locker_num_temp = "";
   door_close = 1;
+  find_number = 0;
   ngOnInit() {
     this.heartbeat();
 
@@ -79,10 +80,11 @@ export class NavigationComponent implements OnInit {
   }
   @HostListener('document:keydown', ['$event']) onkeydownHandler(event: KeyboardEvent) {
     if (event.key === "Enter") {
+      this.find_number = 1;
       //alert(this.serial_number)
       // this.data.changeMessage(this.card_number);
       if (this.card_number.includes("_")) {
-        if (this.card_number.includes("3721_") || this.card_number.includes("185_")|| this.card_number == "_") {
+        if (this.card_number.includes("3721_") || this.card_number.includes("185_") || this.card_number == "_") {
           if (this.lang == "thai") {
             document.getElementById("ScanCard_sub").innerHTML = "ประมวลผล, รอซักครุ่";
           }
@@ -90,10 +92,8 @@ export class NavigationComponent implements OnInit {
             document.getElementById("ScanCard_sub").innerHTML = "Processing, please wait";
           }
           if (this.enterCheck == 1) {
-            let temp_card = this.card_number;
             this.serial_number = "";
-            this.card_number = "";
-            this.http.post("https://smartlocker.azurewebsites.net/api/admin/finduser", { "BadgeId": temp_card }).subscribe(
+            this.http.post("https://smartlocker.azurewebsites.net/api/admin/finduser", { "BadgeId": this.card_number }).subscribe(
               data => {
                 console.log(data);
                 if (data != null) {
@@ -102,8 +102,8 @@ export class NavigationComponent implements OnInit {
                   this.router.navigate(['/browse-option']);
                   document.getElementById("backBtn").style.visibility = 'visible';
                   document.getElementById("logOutBtn").style.visibility = 'visible';
-                  document.getElementById("logOut").innerHTML = "ID: " + temp_card + " Log out";
-                  this.data.changeBadgeId(temp_card);
+                  document.getElementById("logOut").innerHTML = "ID: " + this.card_number + " Log out";
+                  this.data.changeBadgeId(this.card_number);
                 }
                 else {
                   document.getElementById("ScanCard_sub").innerHTML = "User not found";
@@ -137,6 +137,7 @@ export class NavigationComponent implements OnInit {
         console.log(this.serial_number)
         this.card_number = "";
         this.http.get<TypeResponse>('https://smartlocker.azurewebsites.net/api/admin/barcode/' + this.serial_number).subscribe(data => {
+
           detail = data;
           console.log(detail);
           if (detail != null && detail.loaner.employeeId != null) {
@@ -169,9 +170,11 @@ export class NavigationComponent implements OnInit {
             this.card_number = "";
           }
         })
+
+
       }
     }
-    else if (this.enterCheck == 1) {
+    else if (this.enterCheck == 1 && this.find_number == 0) {
       if ("1234567890_".includes(event.key)) {
         this.card_number = this.card_number + event.key;
       }
@@ -196,6 +199,8 @@ export class NavigationComponent implements OnInit {
       this.enterCheck = 1;
       this.card_number = "";
       this.router.navigate(['/']);
+      this.find_number = 0;
+
     }
     else if (LP == '/subcategory-option' || LP == '/item-option' || 'unit-option') {
       this.router.navigate(['/browse-option']);
@@ -213,6 +218,8 @@ export class NavigationComponent implements OnInit {
     this.card_number = "";
     this.serial_number = "";
     this.router.navigate(['/']);
+    this.find_number = 0;
+
   }
   logoutword(lang) {
     if (lang == "thai") {
@@ -263,6 +270,7 @@ export class NavigationComponent implements OnInit {
         detail = data;
         if (detail.result == 1) {
           // alert("close")
+          this.find_number = 0;
           console.log('https://smartlocker.azurewebsites.net/api/admin/return/' + this.serial_number);
           this.http.get<TypeResponse>('https://smartlocker.azurewebsites.net/api/admin/return/' + this.serial_number).subscribe();
           // alert("Thank you for returning : " + this.serial_number);
