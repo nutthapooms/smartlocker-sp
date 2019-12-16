@@ -33,6 +33,7 @@
             <td class="em-c-table__cell " colspan="">
               <a [routerLink]="unit.id + '/unassign'" [queryParams]="{endpoint: 'units/' + unit.id + '/assign', next: currentLocation()}"><strong>Unassign</strong></a>
               <a [routerLink]="unit.barcode + '/lost'" [queryParams]="{endpoint: 'units/' + unit.barcode + '/lost', next: currentLocation()}"><strong>Lost</strong></a>
+              <a (click)="returnUnit(unit.barcode)">Return</a>
             </td>
           </tr>
         </tbody>
