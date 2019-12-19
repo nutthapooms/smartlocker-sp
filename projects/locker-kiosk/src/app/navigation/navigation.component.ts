@@ -106,7 +106,12 @@ export class NavigationComponent implements OnInit {
                   this.data.changeBadgeId(this.card_number);
                 }
                 else {
-                  document.getElementById("ScanCard_sub").innerHTML = "User not found";
+                  if (this.lang == "thai") {
+                    document.getElementById("ScanCard_sub").innerHTML = "ไม่พบผู้ใช้บน BadgeEventApi";
+                  }
+                  else {
+                    document.getElementById("ScanCard_sub").innerHTML = "User not found on BadgeEventApi";
+                  }
                   this.card_number = "";
                   this.serial_number = "";
                 }
