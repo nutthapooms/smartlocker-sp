@@ -42,7 +42,7 @@ export class LockerListComponent implements OnInit {
       console.log(data)
       if (this.container.name != "SRT-Test") {
         data.forEach(locker => {
-          this.http.get<BadgeInfo>('https://hoesql566.na.xom.com/BadgeEventAPI/api/Badge/ID/' + locker.badgeId, { withCredentials: true }).subscribe(user => {
+          this.http.get<BadgeInfo>('https://badge-event.us-e1.cloudhub.io/' + locker.badgeId, { withCredentials: true }).subscribe(user => {
             locker.employee = user.DisplayName;
           })
         });
@@ -55,7 +55,7 @@ export class LockerListComponent implements OnInit {
               locker.employee = Usertemp[0][1].toString() + " " + Usertemp[0][2].toString();
             }
             else {
-              this.http.get<BadgeInfo>('https://hoesql566.na.xom.com/BadgeEventAPI/api/Badge/ID/' + locker.badgeId, { withCredentials: true }).subscribe(user => {
+              this.http.get<BadgeInfo>('https://badge-event.us-e1.cloudhub.io/' + locker.badgeId, { withCredentials: true }).subscribe(user => {
                 locker.employee = user.DisplayName;
               })
             }

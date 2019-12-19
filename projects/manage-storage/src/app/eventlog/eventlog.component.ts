@@ -46,7 +46,7 @@ export class EventLogComponent implements OnInit {
     
                         }
                     }
-                    this.http.get<BadgeInfo>('https://hoesql566.na.xom.com/BadgeEventAPI/api/Badge/ID/' + loan.employee.badgeId, { withCredentials: true }).subscribe(user => {
+                    this.http.get<BadgeInfo>('https://badge-event.us-e1.cloudhub.io/' + loan.employee.badgeId, { withCredentials: true }).subscribe(user => {
                         loan.Company = user.FuncOrgName;
                         loan.employee.name = user.DisplayName;
                     })
@@ -66,7 +66,7 @@ export class EventLogComponent implements OnInit {
                     // }
                     let Usertemp = this.findUser(loan.employee.badgeId);
 
-                    this.http.get<BadgeInfo>('https://hoesql566.na.xom.com/BadgeEventAPI/api/Badge/ID/' + loan.employee.badgeId, { withCredentials: true }).subscribe(user => {
+                    this.http.get<BadgeInfo>('https://badge-event.us-e1.cloudhub.io/' + loan.employee.badgeId, { withCredentials: true }).subscribe(user => {
                         loan.Company = user.FuncOrgName;
                         loan.employee.name = user.DisplayName;
                         if (Usertemp != null) {
@@ -104,7 +104,7 @@ export class EventLogComponent implements OnInit {
         }
     }
     showUserProperty(badge_Id) {
-        window.open('https://hoesql566.na.xom.com/BadgeEventAPI/api/Badge/ID/' + badge_Id);
+        window.open('https://badge-event.us-e1.cloudhub.io/' + badge_Id);
         console.log("badge :" + badge_Id.toString());
     }
     currentLocation() {
