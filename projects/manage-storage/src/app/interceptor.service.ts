@@ -26,7 +26,13 @@ export class AddHeaderInterceptor implements HttpInterceptor {
       // clonedRequest.headers.append('Content-Type','application/json');
     }
     else {
-      return next.handle(req.clone({ withCredentials: true }));
+      return next.handle(req.clone({
+        headers: new HttpHeaders({
+          'Access-Control-Allow-Origin' : '*',
+          'Content-Type': 'application/json',
+          'password': pwd
+        })
+      , withCredentials :false}));
 
     }
 

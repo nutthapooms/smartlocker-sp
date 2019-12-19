@@ -16,7 +16,14 @@
 		"secure": false,
 		"logLevel": "debug",
 		"changeOrigin": true
-		}
+		},
+	"https://badge-event.us-e1.cloudhub.io/*":{
+		"target": "https://badge-event.us-e1.cloudhub.io/", 
+		"secure": false,
+		"logLevel": "debug",
+		"changeOrigin": true
+	}	
+		
 		
 }
 	
