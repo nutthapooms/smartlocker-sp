@@ -112,6 +112,8 @@ export class NavigationComponent implements OnInit {
                   else {
                     document.getElementById("ScanCard_sub").innerHTML = "User not found on BadgeEventApi";
                   }
+                  this.find_number = 0;
+
                   this.card_number = "";
                   this.serial_number = "";
                 }
@@ -126,13 +128,12 @@ export class NavigationComponent implements OnInit {
           else {
             document.getElementById("ScanCard_sub").innerHTML = "Please use ESSO ID card";
           }
+          this.find_number = 0;
           this.serial_number = "";
           this.card_number = "";
         }
       }
       else if (this.door_close == 1) {
-
-
         if (this.lang == "thai") {
           document.getElementById("ScanSerial_sub").innerHTML = "ประมวลผล, รอซักครุ่";
         }
@@ -159,6 +160,7 @@ export class NavigationComponent implements OnInit {
                 else {
                   document.getElementById("ScanSerial_sub").innerHTML = "Return the item and close the door.";
                 }
+                this.find_number = 0;
                 this.checkLocker(this.locker_num);
               }
             );
@@ -171,6 +173,7 @@ export class NavigationComponent implements OnInit {
             else {
               document.getElementById("ScanSerial_sub").innerHTML = "Item not found. Scan other item";
             }
+            this.find_number = 0;
             this.serial_number = "";
             this.card_number = "";
           }
