@@ -39,6 +39,8 @@ import { ItemUnitListComponent } from './item-unit/item-unit-list/item-unit-list
 import { GlobalService } from 'src/app/shared/global.service';
 import { EventLogComponent } from './eventlog/eventlog.component';
 import { AddHeaderInterceptor} from './interceptor.service';
+import { EmailComponent } from './Email/email.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +73,8 @@ import { AddHeaderInterceptor} from './interceptor.service';
     SubcategoryFormComponent,
     ItemUnitFormComponent,
     ItemUnitListComponent,
-    EventLogComponent
+    EventLogComponent,
+    EmailComponent
   ],
   imports: [
     BrowserModule,

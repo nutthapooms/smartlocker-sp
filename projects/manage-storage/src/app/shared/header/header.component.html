@@ -21,6 +21,10 @@
         <nav id="nav" class="em-c-primary-nav" role="navigation">
           <ul class="em-c-primary-nav__list">
             <li class="em-c-primary-nav__item ">
+              <a [routerLink]="'/email'" class="em-c-primary-nav__link"
+                [routerLinkActive]="['em-is-current']">Email Manage</a>
+            </li>
+            <li class="em-c-primary-nav__item ">
               <a [routerLink]="'/countries'" class="em-c-primary-nav__link"
                 [routerLinkActive]="['em-is-current']">Storage</a>
             </li>

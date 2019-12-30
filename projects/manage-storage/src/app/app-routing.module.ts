@@ -22,6 +22,7 @@ import { SubcategoryFormComponent } from './subcategory/subcategory-form/subcate
 import { ItemUnitListComponent } from './item-unit/item-unit-list/item-unit-list.component';
 import { ItemUnitFormComponent } from './item-unit/item-unit-form/item-unit-form.component';
 import { EventLogComponent } from './eventlog/eventlog.component';
+import { EmailComponent } from './Email/email.component';
 
 const routes: Routes = [
   { path: 'countries', component: CountryListComponent },
@@ -80,6 +81,7 @@ const routes: Routes = [
 
   { path: 'countries/:countryId/sites/:siteId/containers/:containerId/eventlog', component: EventLogComponent },
 
+  { path: 'email', component:EmailComponent}
 ];
 
 @NgModule({
