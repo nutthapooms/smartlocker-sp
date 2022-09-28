@@ -4,7 +4,6 @@ import { DataService } from '../data.service';
 import { HttpClient } from '@angular/common/http';
 import { TypeResponse, TypeCategory, TypeSubcategory } from 'src/app/shared/model';
 import { delay } from 'q';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
     selector: 'app-return-items',

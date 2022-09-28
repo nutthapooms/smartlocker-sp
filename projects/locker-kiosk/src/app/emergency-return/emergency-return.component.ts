@@ -1,7 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { detachEmbeddedView } from '@angular/core/src/view';
-import { delay } from 'q';
 import { ActivatedRoute, Router } from '@angular/router';
 import { stringify } from 'querystring';
 import { DataService } from '../data.service';
@@ -24,7 +22,7 @@ export class EmergencyReturnComponent implements OnInit {
       this.data.currentLocker.subscribe(conter => this.containerName = conter);
     }
     addnum(num:number) {
-      let strNum = stringify(num);
+      let strNum = num.toString();
       this.lockernum = this.lockernum + strNum;
       document.getElementById("displayNum").innerHTML = "Box number :" + this.lockernum;
     }

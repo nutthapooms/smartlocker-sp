@@ -49,8 +49,7 @@
               "src/styles.scss",
               "src/_reset.css"
             ],
-            "scripts": [],
-            "es5BrowserSupport": true
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -201,8 +200,7 @@
               "projects/online-storage/src/styles.scss",
               "src/_reset.css"
             ],
-            "scripts": [],
-            "es5BrowserSupport": true
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -353,8 +351,7 @@
               "projects/locker-kiosk/src/styles.scss",
               "src/_reset.css"
             ],
-            "scripts": [],
-            "es5BrowserSupport": true
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -508,8 +505,7 @@
             "scripts": [
               "projects/manage-storage/src/assets/js/vendor/svg4everybody.min.js",
               "projects/manage-storage/src/assets/js/em-unity-1.3.0.min.js"
-            ],
-            "es5BrowserSupport": true
+            ]
           },
           "configurations": {
             "production": {
@@ -616,5 +612,8 @@
       }
     }
   },
-  "defaultProject": "smartlocker-sp"
+  "defaultProject": "smartlocker-sp",
+  "cli": {
+    "analytics": false
+  }
 }
