@@ -25,7 +25,7 @@ export class SiteListComponent implements OnInit {
     let params = new HttpParams();
     if (this.countryId) params = params.append('countryId', this.countryId);
 
-    this.http.get<Array<SiteDTO>>(`https://smartlocker.azurewebsites.net/api/admin/sites`, { params: params }).subscribe(data => {
+    this.http.get<Array<SiteDTO>>(`https://smartlocker20220922110147.azurewebsites.net/api/admin/sites`, { params: params }).subscribe(data => {
       console.log(data)
       this.sites = data;
     })

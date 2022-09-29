@@ -7,7 +7,7 @@
     <div class="option-opacity-gradient"></div>
     <div class="option-container" id="allitem-option">
       <div class="option" (click)="openLocker(unit.locker.name)" *ngFor="let unit of units">
-        <img [style.background-image]="'url(https://smartlocker.azurewebsites.net/api/images/' + unit.item.images[0] + ')'">
+        <img [style.background-image]="'url(https://smartlocker20220922110147.azurewebsites.net/api/images/' + unit.item.images[0] + ')'">
         <div class="option-text">
           <div class="text-main" >{{unit.item.name}}</div>
           <div style="padding-top: 5px"> {{unit.locker.name}}</div>

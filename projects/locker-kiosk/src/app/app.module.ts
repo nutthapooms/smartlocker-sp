@@ -21,7 +21,8 @@ import { HttpClientModule} from '@angular/common/http';
 import { DataService} from './data.service';
 import { AlertService } from './alert.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AddHeaderInterceptor} from './interceptor.service';
+import { AuthInterceptorService} from './interceptor.service';
+import { AuthService} from './authService'
 
 // import{BehaviorSubject} from 'rxjs';
 
@@ -58,9 +59,10 @@ import { AddHeaderInterceptor} from './interceptor.service';
   providers: [
     DataService,
     AlertService,
+    AuthService,
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: AddHeaderInterceptor,
+      useClass: AuthInterceptorService,
       multi: true,
     }
   ],

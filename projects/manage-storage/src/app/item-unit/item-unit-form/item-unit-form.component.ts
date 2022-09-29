@@ -31,7 +31,7 @@ export class ItemUnitFormComponent implements OnInit {
     this.categoryId = this.route.snapshot.paramMap.get('categoryId');
     this.itemId = this.route.snapshot.paramMap.get('itemId');
     if(this.unitId != null) {
-      this.http.get<UnitDTO>(`https://smartlocker.azurewebsites.net/api/admin/units/${this.unitId}`).subscribe(data => {
+      this.http.get<UnitDTO>(`https://smartlocker20220922110147.azurewebsites.net/api/admin/units/${this.unitId}`).subscribe(data => {
         console.log(data)
         this.unit = data;
       })
@@ -45,9 +45,9 @@ export class ItemUnitFormComponent implements OnInit {
   submitForm() {
     let endpoint: string;
     if(this.unitId != null) {
-      endpoint = `https://smartlocker.azurewebsites.net/api/admin/units/${this.unitId}`
+      endpoint = `https://smartlocker20220922110147.azurewebsites.net/api/admin/units/${this.unitId}`
      } else {
-      endpoint = `https://smartlocker.azurewebsites.net/api/admin/units`
+      endpoint = `https://smartlocker20220922110147.azurewebsites.net/api/admin/units`
      }
 
     this.http.post<any>(endpoint, {

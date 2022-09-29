@@ -29,7 +29,7 @@ export class ContainerListComponent implements OnInit {
     let params = new HttpParams();
     if (this.siteId) params = params.append('siteId', this.siteId);
 
-    this.http.get<Array<ContainerDTO>>(`https://smartlocker.azurewebsites.net/api/admin/containers`, { params: params }).subscribe(data => {
+    this.http.get<Array<ContainerDTO>>(`https://smartlocker20220922110147.azurewebsites.net/api/admin/containers`, { params: params }).subscribe(data => {
       console.log(data)
       this.containers = data;
     })

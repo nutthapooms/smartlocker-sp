@@ -22,14 +22,14 @@ export class ItemOptionComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.get<SubcategoryDTO>(`https://smartlocker.azurewebsites.net/api/admin/subcategories/${this.SubcategoryId}`).subscribe(data => {
+    this.http.get<SubcategoryDTO>(`https://smartlocker20220922110147.azurewebsites.net/api/admin/subcategories/${this.SubcategoryId}`).subscribe(data => {
         console.log(data)
         this.Subcategory = data;
       }
     )
     let params = new HttpParams();
     if(this.SubcategoryId) params = params.append('subcategoryId',this.SubcategoryId);
-    this.http.get<Array<ItemDTO>>('https://smartlocker.azurewebsites.net/api/admin/items', { params: params }).subscribe(data => {
+    this.http.get<Array<ItemDTO>>('https://smartlocker20220922110147.azurewebsites.net/api/admin/items', { params: params }).subscribe(data => {
         console.log(data)
         this.items = data;
         document.getElementById("body").innerHTML = "";

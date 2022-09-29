@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-
+import { HttpClient } from '@angular/common/http';
 
  
 @Injectable()
 export class DataService {
+    
     private LockerName = new BehaviorSubject('80017');  
     currentLocker = this.LockerName.asObservable();
 
@@ -20,13 +21,22 @@ export class DataService {
     private langSource = new BehaviorSubject('eng');  
     currentLanguage = this.langSource.asObservable();
 
-    constructor() { }
+    private token = new BehaviorSubject('no token');  
+    currentToken = this.token.asObservable();
+
+    constructor(
+        private http: HttpClient
+    ) { }
     changeMessage(message : string){
         this.messageSource.next(message);
     }
     changeSecret(message : string){
         this.LockerSecret.next(message);
     }
+    changeToken(message : string){
+        this.token.next(message);
+    }
+
     changeLanguage(message : string){
         this.langSource.next(message);
     }
@@ -34,6 +44,7 @@ export class DataService {
         this.badgeIdSource.next(message);
     }
 
+    
 
     
 

@@ -27,7 +27,7 @@ export class ContainerFormComponent implements OnInit {
     this.containerId = this.route.snapshot.paramMap.get('containerId');
     this.countryId = this.route.snapshot.paramMap.get('countryId');
     if(this.containerId != null) {
-      this.http.get<ContainerDTO>(`https://smartlocker.azurewebsites.net/api/admin/containers/${this.containerId}`).subscribe(data => {
+      this.http.get<ContainerDTO>(`https://smartlocker20220922110147.azurewebsites.net/api/admin/containers/${this.containerId}`).subscribe(data => {
         console.log(data)
         this.container = data;
       })
@@ -38,9 +38,9 @@ export class ContainerFormComponent implements OnInit {
   submitForm() {
     let endpoint: string;
     if(this.containerId != null) {
-      endpoint = `https://smartlocker.azurewebsites.net/api/admin/containers/${this.containerId}`
+      endpoint = `https://smartlocker20220922110147.azurewebsites.net/api/admin/containers/${this.containerId}`
      } else {
-      endpoint = `https://smartlocker.azurewebsites.net/api/admin/containers`
+      endpoint = `https://smartlocker20220922110147.azurewebsites.net/api/admin/containers`
      }
 
     this.http.post<any>(endpoint, {

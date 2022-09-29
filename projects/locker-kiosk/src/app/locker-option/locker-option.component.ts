@@ -80,7 +80,7 @@ export class LockerOptionComponent implements OnInit {
         if (showNumber <= maxSlot.result && showNumber > 0) {
           // if (showNumber <= maxSlot && showNumber > 0) {
           // console.log("/api/admin/lockerno/" + containerName + "/Locker " + this.lockernum);
-          this.http.get("https://smartlocker.azurewebsites.net/api/admin/lockerno/" + this.containerName + "/Locker " + showNumber).subscribe(
+          this.http.get("https://smartlocker20220922110147.azurewebsites.net/api/admin/lockerno/" + this.containerName + "/Locker " + showNumber).subscribe(
             data => {
               IsAvailable = data;
               console.log(IsAvailable);
@@ -102,7 +102,7 @@ export class LockerOptionComponent implements OnInit {
                 this.lockernum = "";
               }
               else if (IsAvailable.loaner.employeeId == null) {
-                this.http.post<UnitDTO>("https://smartlocker.azurewebsites.net/api/admin/borrow/" + IsAvailable.barcode, { "BadgeId": this.card_number }).subscribe(
+                this.http.post<UnitDTO>("https://smartlocker20220922110147.azurewebsites.net/api/admin/borrow/" + IsAvailable.barcode, { "BadgeId": this.card_number }).subscribe(
                   data => {
                     let returnday = data.item.defaultDuration / (24 * 60 * 60);
                     this.alrt.dateAlert("กรุณาคืนอุปกรณ์ภายใน " + returnday + " วัน Please return the item in " + returnday + " days", 10000);

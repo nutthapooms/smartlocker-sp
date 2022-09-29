@@ -14,7 +14,7 @@ export class CountryListComponent implements OnInit {
     private location: Location) { }
 
   ngOnInit() {
-    this.http.get<Array<CountryDTO>>('https://smartlocker.azurewebsites.net/api/admin/countries').subscribe(data => {
+    this.http.get<Array<CountryDTO>>('https://smartlocker20220922110147.azurewebsites.net/api/admin/countries').subscribe(data => {
         console.log(data)
         this.countries = data;
       }

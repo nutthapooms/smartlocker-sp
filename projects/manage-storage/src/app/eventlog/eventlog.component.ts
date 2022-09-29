@@ -36,7 +36,7 @@ export class EventLogComponent implements OnInit {
         this.dto.getDTO('countries', this.countryId).subscribe(data => this.country = data)
         this.dto.getDTO('sites', this.siteId).subscribe(data => this.site = data)
         this.dto.getDTO('containers', this.containerId).subscribe(data => this.container = data)
-        this.http.get<Array<LoanDTO2>>('https://smartlocker.azurewebsites.net/api/admin/loanlist/' + this.containerId).subscribe(data => {
+        this.http.get<Array<LoanDTO2>>('https://smartlocker20220922110147.azurewebsites.net/api/admin/loanlist/' + this.containerId).subscribe(data => {
             console.log(data);
             if (this.container.name != "SRT-Test") {
                 data.forEach(loan => {

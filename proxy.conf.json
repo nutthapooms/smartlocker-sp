@@ -6,7 +6,7 @@
 	"changeOrigin": true
 	},
 	"/apii/*":{
-		"target": "https://smartlocker.azurewebsites.net", 
+		"target": "https://smartlocker20220922110147.azurewebsites.net", 
 		"secure": false,
 		"logLevel": "debug",
 		"changeOrigin": true			

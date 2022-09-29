@@ -15,7 +15,7 @@ export class MyWatchlistComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get<DashboardWatchResponse>('https://smartlocker.azurewebsites.net/api/users/1/watch-list').subscribe(data => {
+    this.http.get<DashboardWatchResponse>('https://smartlocker20220922110147.azurewebsites.net/api/users/1/watch-list').subscribe(data => {
         console.log(data)
         this.watches = data;
       }

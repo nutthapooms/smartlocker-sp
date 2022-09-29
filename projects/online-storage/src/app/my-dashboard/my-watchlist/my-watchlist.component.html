@@ -1,7 +1,7 @@
 <h2>My Watch List <span *ngIf="watches">({{watches.total}})</span></h2>
 <div class="item-list-container" *ngIf="watches">
   <div class="item-container" *ngFor="let watch of watches.items">
-    <div class="item-image" [style.background-image]="'url(https://smartlocker.azurewebsites.net/api/images/' + watch.item.images[0] + ')'"></div>
+    <div class="item-image" [style.background-image]="'url(https://smartlocker20220922110147.azurewebsites.net/api/images/' + watch.item.images[0] + ')'"></div>
     <div class="item-text">
       <a class="item-name" routerLink="/item/{{watch.item.id}}">{{watch.item.name}}</a>
       <div class="item-category">{{watch.category.name | uppercase}} / {{watch.subcategory.name | uppercase}}</div>

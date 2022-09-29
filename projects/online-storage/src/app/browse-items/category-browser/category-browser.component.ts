@@ -22,7 +22,7 @@ export class CategoryBrowserComponent implements OnInit {
      }
 
   ngOnInit() {
-    this.http.get<TypeResponse>('https://smartlocker.azurewebsites.net/api/online/browse-types').subscribe(data => {
+    this.http.get<TypeResponse>('https://smartlocker20220922110147.azurewebsites.net/api/online/browse-types').subscribe(data => {
       this.types = data
 
       this._route.queryParams.subscribe(queries => {

@@ -23,7 +23,7 @@ export class EmailComponent implements OnInit {
     }
     submitForm() {
         
-        let endpoint = "https://smartlocker.azurewebsites.net/api/admin/EditSendEmailContact";
+        let endpoint = "https://smartlocker20220922110147.azurewebsites.net/api/admin/EditSendEmailContact";
         this.http.post<any>(endpoint, {
             "AddReceiver": this.AddEmail,
             "ReceiverContainer": this.Container,

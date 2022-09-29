@@ -43,7 +43,7 @@ export class ReportIssueComponent implements OnInit {
       else {
         document.getElementById("SubTitle").innerHTML = "Processing, please wait";
       }
-      this.http.get<TypeResponse>('https://smartlocker.azurewebsites.net/api/admin/barcode/' + this.serial_number).subscribe(data => {
+      this.http.get<TypeResponse>('https://smartlocker20220922110147.azurewebsites.net/api/admin/barcode/' + this.serial_number).subscribe(data => {
         detail = data;
         console.log(detail);
         if (detail != null) {
@@ -99,8 +99,8 @@ export class ReportIssueComponent implements OnInit {
   //       detail = data;
   //       if (detail.result == 1) {
   //         // alert("close")
-  //         console.log('https://smartlocker.azurewebsites.net/api/admin/return/' + this.serial_number);
-  //         this.http.get<TypeResponse>('https://smartlocker.azurewebsites.net/api/admin/return/' + this.serial_number).subscribe();
+  //         console.log('https://smartlocker20220922110147.azurewebsites.net/api/admin/return/' + this.serial_number);
+  //         this.http.get<TypeResponse>('https://smartlocker20220922110147.azurewebsites.net/api/admin/return/' + this.serial_number).subscribe();
   //         // alert("Thank you for returning : " + this.serial_number);
   //         if (this.lang == "thai") {
   //           document.getElementById("ScanSerial").innerHTML = "ขอบคุณ เชิญแสกนอุปกรณ์ถัดไป";

@@ -53,7 +53,7 @@ export class EmergencyReturnComponent implements OnInit {
           if (showNumber <= maxSlot.result && showNumber > 0) {
           // if (showNumber <= maxSlot && showNumber > 0) {
             // console.log("/api/admin/lockerno/" + containerName + "/Locker " + this.lockernum);
-            this.http.get("https://smartlocker.azurewebsites.net/api/admin/lockerno/" + this.containerName + "/Locker " + showNumber).subscribe(
+            this.http.get("https://smartlocker20220922110147.azurewebsites.net/api/admin/lockerno/" + this.containerName + "/Locker " + showNumber).subscribe(
               data => {
                 IsAvailable = data;
                 console.log(IsAvailable);
@@ -63,7 +63,7 @@ export class EmergencyReturnComponent implements OnInit {
                   this.lockernum = "";
                 } 
                 else {
-                    this.http.get("https://smartlocker.azurewebsites.net/api/admin/return/" + IsAvailable.barcode).subscribe(
+                    this.http.get("https://smartlocker20220922110147.azurewebsites.net/api/admin/return/" + IsAvailable.barcode).subscribe(
                     data => {
                       console.log(data);
                     }

@@ -34,13 +34,13 @@ export class UnitOptionComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.get<ItemDTO>(`https://smartlocker.azurewebsites.net/api/admin/items/${this.ItemId}`).subscribe(data => {
+    this.http.get<ItemDTO>(`https://smartlocker20220922110147.azurewebsites.net/api/admin/items/${this.ItemId}`).subscribe(data => {
       console.log(data)
       this.Item = data;
     }
     )
     this.data.currentLocker.subscribe(data => {
-      this.http.get<ContainerDTO>(`https://smartlocker.azurewebsites.net/api/admin/containers/name/${data}`).subscribe(id => {
+      this.http.get<ContainerDTO>(`https://smartlocker20220922110147.azurewebsites.net/api/admin/containers/name/${data}`).subscribe(id => {
         this.LockerId = id.id;
         this.LockerName = data;
       })
@@ -51,7 +51,7 @@ export class UnitOptionComponent implements OnInit {
       params = params.append('itemId', this.ItemId);
 
     }
-    this.http.get<Array<UnitDTO>>('https://smartlocker.azurewebsites.net/api/admin/units/item', { params: params }).subscribe(data => {
+    this.http.get<Array<UnitDTO>>('https://smartlocker20220922110147.azurewebsites.net/api/admin/units/item', { params: params }).subscribe(data => {
       let tempUnits = data;
           document.getElementById("body").innerHTML = "";
           tempUnits.forEach(element => {
@@ -75,7 +75,7 @@ export class UnitOptionComponent implements OnInit {
 
     console.log("choose: " + this.chooseLocker);
     var showNumber = this.chooseLocker.substring(7);
-    this.http.get("https://smartlocker.azurewebsites.net/api/admin/lockerno/" + this.containerName + "/" + this.chooseLocker).subscribe(
+    this.http.get("https://smartlocker20220922110147.azurewebsites.net/api/admin/lockerno/" + this.containerName + "/" + this.chooseLocker).subscribe(
       data => {
         IsAvailable = data;
         console.log(IsAvailable);
@@ -87,7 +87,7 @@ export class UnitOptionComponent implements OnInit {
           )
         }
         else if (IsAvailable.loaner.employeeId == null) {
-          this.http.post<UnitDTO>("https://smartlocker.azurewebsites.net/api/admin/borrow/" + IsAvailable.barcode,{"BadgeId": this.cardNumber}).subscribe(
+          this.http.post<UnitDTO>("https://smartlocker20220922110147.azurewebsites.net/api/admin/borrow/" + IsAvailable.barcode,{"BadgeId": this.cardNumber}).subscribe(
             data => {
               let returnday = data.item.defaultDuration/(24*60*60);
               this.alrt.dateAlert("กรุณาคืนอุปกรณ์ภายใน " + returnday +" วัน Please return the item in "+ returnday +" days",10000);

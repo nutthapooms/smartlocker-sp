@@ -18,7 +18,7 @@ export class MyItemComponent implements OnInit {
      }
 
   ngOnInit() {
-    this.http.get<DashboardLoanResponse>('https://smartlocker.azurewebsites.net/api/users/1/loan-list').subscribe(data => {
+    this.http.get<DashboardLoanResponse>('https://smartlocker20220922110147.azurewebsites.net/api/users/1/loan-list').subscribe(data => {
         console.log(data)
         this.loans = data;
       }

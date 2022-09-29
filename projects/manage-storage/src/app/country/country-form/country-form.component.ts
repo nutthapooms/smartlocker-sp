@@ -22,7 +22,7 @@ export class CountryFormComponent implements OnInit {
   ngOnInit() {
     this.countryId = this.route.snapshot.paramMap.get('countryId');
     if(this.countryId != null) {
-      this.http.get<CountryDTO>(`https://smartlocker.azurewebsites.net/api/admin/countries/${this.countryId}`).subscribe(data => {
+      this.http.get<CountryDTO>(`https://smartlocker20220922110147.azurewebsites.net/api/admin/countries/${this.countryId}`).subscribe(data => {
         console.log(data)
         this.country = data;
       })
@@ -33,9 +33,9 @@ export class CountryFormComponent implements OnInit {
   submitForm() {
     let endpoint: string;
     if(this.countryId != null) {
-      endpoint = `https://smartlocker.azurewebsites.net/api/admin/countries/${this.countryId}`
+      endpoint = `https://smartlocker20220922110147.azurewebsites.net/api/admin/countries/${this.countryId}`
      } else {
-      endpoint = `https://smartlocker.azurewebsites.net/api/admin/countries`
+      endpoint = `https://smartlocker20220922110147.azurewebsites.net/api/admin/countries`
      }
 
     this.http.post<any>(endpoint, {

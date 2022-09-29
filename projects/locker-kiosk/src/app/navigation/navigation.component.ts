@@ -30,6 +30,7 @@ export class NavigationComponent implements OnInit {
     }, 1000);
     setInterval(() => {
       this.heartbeat();
+      this.data.changeToken(this.getToken())
     }, 60000 * 15);
 
   }
@@ -45,33 +46,35 @@ export class NavigationComponent implements OnInit {
   find_number = 0;
 
 
-  
 
-  async getToken() {
-    
-      
 
-    
-    console.log('getting token')
-    this.http.post<any>("https://login.microsoftonline.com/d1ee1acd-bc7a-4bc4-a787-938c49a83906/oauth2/v2.0/token", 
-    'grant_type=client_credentials&client_id=a61a1ea8-c8a9-47bf-a84f-caba25dd5879&scope=api://3a4bd202-bede-4dd7-8321-cda964ab6fee/.default&client_secret=cmC8Q~q1Xy~dDPJsRMrlB04f0lnJVfCL~xrjkc1J',
-     {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        // 'Access-Control-Allow-Origin' : '*',
+  getToken(): string {
+    try {
 
-      },
-            // withCredentials: true
+      console.log('getting token')
+      this.http.post<any>("https://login.microsoftonline.com/d1ee1acd-bc7a-4bc4-a787-938c49a83906/oauth2/v2.0/token",
+        'grant_type=client_credentials&client_id=a61a1ea8-c8a9-47bf-a84f-caba25dd5879&scope=api://3a4bd202-bede-4dd7-8321-cda964ab6fee/.default&client_secret=cmC8Q~q1Xy~dDPJsRMrlB04f0lnJVfCL~xrjkc1J',
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
 
-    }).subscribe(data => {
-      console.log(data.access_token)
-      return data
-    })
+        }).subscribe(data => {
+          // console.log(data.access_token)
+          this.data.changeToken(data.access_token)
+          return data.access_token
+
+        })
+    }
+    catch (error) {
+      return error
+    }
   }
 
   ngOnInit() {
     this.heartbeat();
-    console.log(this.getToken());
+    this.getToken();
+    this.data.changeToken('test')
     this.data.currentLanguage.subscribe(message => this.lang = message);
     if (this.location.path() == '') {
       document.getElementById("logOutBtn").style.visibility = 'hidden';
@@ -123,7 +126,7 @@ export class NavigationComponent implements OnInit {
           }
           if (this.enterCheck == 1) {
             this.serial_number = "";
-            this.http.post("https://smartlocker.azurewebsites.net/api/admin/finduser", { "BadgeId": this.card_number }).subscribe(
+            this.http.post("https://smartlocker20220922110147.azurewebsites.net/api/admin/finduser", { "BadgeId": this.card_number }).subscribe(
               data => {
                 // console.log(data);
                 if (data != null) {
@@ -172,7 +175,7 @@ export class NavigationComponent implements OnInit {
         }
         // console.log(this.serial_number)
         this.card_number = "";
-        this.http.get<TypeResponse>('https://smartlocker.azurewebsites.net/api/admin/barcode/' + this.serial_number).subscribe(data => {
+        this.http.get<TypeResponse>('https://smartlocker20220922110147.azurewebsites.net/api/admin/barcode/' + this.serial_number).subscribe(data => {
 
           detail = data;
           // console.log(detail);
@@ -310,8 +313,8 @@ export class NavigationComponent implements OnInit {
         if (detail.result == 1) {
           // alert("close")
           this.find_number = 0;
-          console.log('https://smartlocker.azurewebsites.net/api/admin/return/' + this.serial_number);
-          this.http.get<TypeResponse>('https://smartlocker.azurewebsites.net/api/admin/return/' + this.serial_number).subscribe();
+          console.log('https://smartlocker20220922110147.azurewebsites.net/api/admin/return/' + this.serial_number);
+          this.http.get<TypeResponse>('https://smartlocker20220922110147.azurewebsites.net/api/admin/return/' + this.serial_number).subscribe();
           // alert("Thank you for returning : " + this.serial_number);
           if (this.lang == "thai") {
             document.getElementById("ScanSerial_sub").innerHTML = "ขอบคุณ เชิญแสกนอุปกรณ์ถัดไป";

@@ -39,7 +39,7 @@ export class UnitListComponent implements OnInit {
     let params = new HttpParams();
     if (this.lockerId) params = params.append('lockerId', this.lockerId);
 
-    this.http.get<Array<UnitDTO>>(`https://smartlocker.azurewebsites.net/api/admin/units`, { params: params }).subscribe(data => {
+    this.http.get<Array<UnitDTO>>(`https://smartlocker20220922110147.azurewebsites.net/api/admin/units`, { params: params }).subscribe(data => {
       console.log(data)
       this.units = data;
       if (this.units[0] != null) {
@@ -54,7 +54,7 @@ export class UnitListComponent implements OnInit {
 
   }
   returnUnit(unitBarcode) {
-    this.http.get("https://smartlocker.azurewebsites.net/api/admin/return/" + unitBarcode).subscribe(
+    this.http.get("https://smartlocker20220922110147.azurewebsites.net/api/admin/return/" + unitBarcode).subscribe(
       data => {
         alert(unitBarcode+" Return successful")
       })

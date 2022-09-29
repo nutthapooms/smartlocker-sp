@@ -42,7 +42,7 @@ export class ItemDetailComponent implements OnInit {
     this.displayName = this.username+" "+this.lastname;
     console.log("message: "+this.displayName);
     let headers = new HttpHeaders();
-    // this.http.get<EmployeeDTO>(`https://smartlocker.azurewebsites.net/api/admin/finduser/name/${this.displayName}`).subscribe(data =>{
+    // this.http.get<EmployeeDTO>(`https://smartlocker20220922110147.azurewebsites.net/api/admin/finduser/name/${this.displayName}`).subscribe(data =>{
     //   if(data != null){
     //     this.userInfo = data;
     //     headers = headers.set('Authorization', this.userInfo.badgeId);  
@@ -56,7 +56,7 @@ export class ItemDetailComponent implements OnInit {
     
     // headers = headers.set('Authorization', '1');  //temporary
     this.itemId = this._route.snapshot.params.itemId;
-    this.http.get<ItemDetailResponse>(`https://smartlocker.azurewebsites.net/api/online/items/${this.itemId}`,{headers:headers}).subscribe(data => {
+    this.http.get<ItemDetailResponse>(`https://smartlocker20220922110147.azurewebsites.net/api/online/items/${this.itemId}`,{headers:headers}).subscribe(data => {
       this.item = data
       console.log(data)
       if(this.item.item.images.length > 0) {

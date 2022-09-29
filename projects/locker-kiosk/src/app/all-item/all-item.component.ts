@@ -40,12 +40,12 @@ export class AllItemComponent implements OnInit {
       }
     });
     this.data.currentLocker.subscribe(data => {
-      this.http.get<ContainerDTO>(`https://smartlocker.azurewebsites.net/api/admin/containers/name/${data}`).subscribe(id => {
+      this.http.get<ContainerDTO>(`https://smartlocker20220922110147.azurewebsites.net/api/admin/containers/name/${data}`).subscribe(id => {
         this.containerId = id.id;
         this.containerName = data;
         let params = new HttpParams();
         if (this.containerId) params = params.append('containerId', this.containerId.toString());
-        this.http.get<Array<UnitDTO>>('https://smartlocker.azurewebsites.net/api/admin/units/container', { params: params }).subscribe(data => {
+        this.http.get<Array<UnitDTO>>('https://smartlocker20220922110147.azurewebsites.net/api/admin/units/container', { params: params }).subscribe(data => {
           let tempUnits = data;
           document.getElementById("body").innerHTML = "";
           tempUnits.forEach(element => {
@@ -70,7 +70,7 @@ export class AllItemComponent implements OnInit {
     document.getElementById("allitem-option").style.visibility = 'hidden';
     console.log("choose: " + this.chooseLocker);
     var showNumber = this.chooseLocker.substring(7);
-    this.http.get("https://smartlocker.azurewebsites.net/api/admin/lockerno/" + this.containerName + "/" + this.chooseLocker).subscribe(
+    this.http.get("https://smartlocker20220922110147.azurewebsites.net/api/admin/lockerno/" + this.containerName + "/" + this.chooseLocker).subscribe(
       data => {
         IsAvailable = data;
         console.log(IsAvailable);
@@ -82,7 +82,7 @@ export class AllItemComponent implements OnInit {
           )
         }
         else if (IsAvailable.loaner.employeeId == null) {
-          this.http.post<UnitDTO>("https://smartlocker.azurewebsites.net/api/admin/borrow/" + IsAvailable.barcode,{"BadgeId": this.cardNumber}).subscribe(
+          this.http.post<UnitDTO>("https://smartlocker20220922110147.azurewebsites.net/api/admin/borrow/" + IsAvailable.barcode,{"BadgeId": this.cardNumber}).subscribe(
             data => {
               console.log(data);
               let returnday = data.item.defaultDuration/(24*60*60);

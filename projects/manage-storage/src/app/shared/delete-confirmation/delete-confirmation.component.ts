@@ -26,7 +26,7 @@ export class DeleteConfirmationComponent implements OnInit {
   }
 
   delete() {
-    this.http.request('delete','https://smartlocker.azurewebsites.net/api/admin/' + this.endpoint,{body: {}}).subscribe(data => {
+    this.http.request('delete','https://smartlocker20220922110147.azurewebsites.net/api/admin/' + this.endpoint,{body: {}}).subscribe(data => {
       this.router.navigate([this.next])
     })
   }
