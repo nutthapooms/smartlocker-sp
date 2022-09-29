@@ -3,9 +3,13 @@ import { Location } from '@angular/common';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { DataService } from '../data.service';
 import { HttpClient } from '@angular/common/http';
+import { MsalModule, MsalRedirectComponent, MsalGuard, MsalInterceptor } from '@azure/msal-angular';
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { delay } from 'q';
 import { TypeResponse, TypeCategory, TypeSubcategory } from 'src/app/shared/model';
 import badgeInfo from '../badgeInfo.json';
+import { query } from '@angular/animations';
+
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
@@ -39,9 +43,35 @@ export class NavigationComponent implements OnInit {
   locker_num_temp = "";
   door_close = 1;
   find_number = 0;
+
+
+  
+
+  async getToken() {
+    
+      
+
+    
+    console.log('getting token')
+    this.http.post<any>("https://login.microsoftonline.com/d1ee1acd-bc7a-4bc4-a787-938c49a83906/oauth2/v2.0/token", 
+    'grant_type=client_credentials&client_id=a61a1ea8-c8a9-47bf-a84f-caba25dd5879&scope=api://3a4bd202-bede-4dd7-8321-cda964ab6fee/.default&client_secret=cmC8Q~q1Xy~dDPJsRMrlB04f0lnJVfCL~xrjkc1J',
+     {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        // 'Access-Control-Allow-Origin' : '*',
+
+      },
+            // withCredentials: true
+
+    }).subscribe(data => {
+      console.log(data.access_token)
+      return data
+    })
+  }
+
   ngOnInit() {
     this.heartbeat();
-
+    console.log(this.getToken());
     this.data.currentLanguage.subscribe(message => this.lang = message);
     if (this.location.path() == '') {
       document.getElementById("logOutBtn").style.visibility = 'hidden';
@@ -258,9 +288,10 @@ export class NavigationComponent implements OnInit {
 
   }
   heartbeat() {
-    this.http.get("https://heartbeatsl.azurewebsites.net/time/80017").subscribe();
-    this.http.get("https://heartbeatsl.azurewebsites.net").subscribe();
-    this.http.get("/token").subscribe();
+    // this.http.get("https://heartbeatsl.azurewebsites.net/time/80017").subscribe();
+    // this.http.get("https://heartbeatsl.azurewebsites.net").subscribe();
+    // this.http.get("/token").subscribe();
+
 
   }
 

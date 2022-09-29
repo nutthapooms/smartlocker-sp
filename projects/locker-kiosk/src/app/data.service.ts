@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
+
+
  
 @Injectable()
 export class DataService {
@@ -31,4 +33,8 @@ export class DataService {
     changeBadgeId(message : string){
         this.badgeIdSource.next(message);
     }
+
+
+    
+
 }
