@@ -3,7 +3,6 @@ import { Location } from '@angular/common';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { DataService } from '../data.service';
 import { HttpClient } from '@angular/common/http';
-import { MsalModule, MsalRedirectComponent, MsalGuard, MsalInterceptor } from '@azure/msal-angular';
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { delay } from 'q';
 import { TypeResponse, TypeCategory, TypeSubcategory } from 'src/app/shared/model';
