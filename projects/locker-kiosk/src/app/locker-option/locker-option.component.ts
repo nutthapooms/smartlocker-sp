@@ -24,7 +24,7 @@ export class LockerOptionComponent implements OnInit {
   constructor(private http: HttpClient, private route: ActivatedRoute,
     private data: DataService,
     private alrt: AlertService,
-    private router: Router, ) { }
+    private router: Router,) { }
 
   ngOnInit() {
     this.data.currentLocker.subscribe(contner => this.containerName = contner);
@@ -109,6 +109,12 @@ export class LockerOptionComponent implements OnInit {
                     console.log(data);
                     this.http.get('/lockers/open/' + showNumber).subscribe(
                       data => {
+                        if (this.lang == "thai") {
+                          document.getElementById("numPad").innerHTML = "หยิบอุปกรณ์แล้วปิดบานช่อง";
+                        } else {
+                          document.getElementById("numPad").innerHTML = "Pick your item and close the door.";
+
+                        }
                         console.log(data);
                         this.checkLocker();
                       }
@@ -116,12 +122,7 @@ export class LockerOptionComponent implements OnInit {
                   }
                 )
 
-                if (this.lang == "thai") {
-                  document.getElementById("numPad").innerHTML = "หยิบอุปกรณ์แล้วปิดบานช่อง";
-                } else {
-                  document.getElementById("numPad").innerHTML = "Pick your item and close the door.";
 
-                }
                 document.getElementById("numPad").style.fontSize = "calc((.3em + 1vmin) + (.3em + 1vmax))"
 
               }
