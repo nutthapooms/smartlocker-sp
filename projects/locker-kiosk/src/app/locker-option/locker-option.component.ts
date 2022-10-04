@@ -85,7 +85,7 @@ export class LockerOptionComponent implements OnInit {
               IsAvailable = data;
               console.log(IsAvailable);
               if (this.card_number == "85203721_226000") {
-                this.http.get(Url + showNumber).subscribe(
+                this.http.get('/lockers/open/' + showNumber).subscribe(
                   data => {
                     console.log(data);
                     this.ablebtn();
@@ -107,7 +107,7 @@ export class LockerOptionComponent implements OnInit {
                     let returnday = data.item.defaultDuration / (24 * 60 * 60);
                     this.alrt.dateAlert("กรุณาคืนอุปกรณ์ภายใน " + returnday + " วัน Please return the item in " + returnday + " days", 10000);
                     console.log(data);
-                    this.http.get(Url + showNumber).subscribe(
+                    this.http.get('/lockers/open/' + showNumber).subscribe(
                       data => {
                         console.log(data);
                         this.checkLocker();
@@ -167,7 +167,7 @@ export class LockerOptionComponent implements OnInit {
   }
   checkLocker() {
     delay(3000);
-    this.http.get(Urlcheck + this.lockernum).subscribe(
+    this.http.get('/lockers/checkclose/' + this.lockernum).subscribe(
       data => {
         detail = data;
         console.log("detail is " + detail.result);
