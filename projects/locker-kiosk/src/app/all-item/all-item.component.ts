@@ -86,7 +86,7 @@ export class AllItemComponent implements OnInit {
             data => {
               console.log(data);
               let returnday = data.item.defaultDuration/(24*60*60);
-              this.alrt.dateAlert("กรุณาคืนอุปกรณ์ภายใน " + returnday +" วัน Please return the item in "+ returnday +" days",10000);              
+              // this.alrt.dateAlert("กรุณาคืนอุปกรณ์ภายใน " + returnday +" วัน Please return the item in "+ returnday +" days",10000);              
               this.http.get(Url + showNumber).subscribe(
                 data => {
                   console.log(data);

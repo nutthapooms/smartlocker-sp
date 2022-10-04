@@ -105,8 +105,8 @@ export class LockerOptionComponent implements OnInit {
                 this.http.post<UnitDTO>("https://smartlocker20220922110147.azurewebsites.net/api/admin/borrow/" + IsAvailable.barcode, { "BadgeId": this.card_number }).subscribe(
                   data => {
                     let returnday = data.item.defaultDuration / (24 * 60 * 60);
-                    this.alrt.dateAlert("กรุณาคืนอุปกรณ์ภายใน " + returnday + " วัน Please return the item in " + returnday + " days", 10000);
-                    console.log(data);
+                    // this.alrt.dateAlert("กรุณาคืนอุปกรณ์ภายใน " + returnday + " วัน Please return the item in " + returnday + " days", 10000);
+                    console.log('borrow success');
                     this.http.get('/lockers/open/' + showNumber).subscribe(
                       data => {
                         if (this.lang == "thai") {
