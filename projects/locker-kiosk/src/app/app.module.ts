@@ -22,7 +22,6 @@ import { DataService} from './data.service';
 import { AlertService } from './alert.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService} from './interceptor.service';
-import { AuthService} from './authService'
 
 // import{BehaviorSubject} from 'rxjs';
 
@@ -59,7 +58,6 @@ import { AuthService} from './authService'
   providers: [
     DataService,
     AlertService,
-    AuthService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,

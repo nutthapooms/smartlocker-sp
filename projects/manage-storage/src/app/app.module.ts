@@ -38,8 +38,10 @@ import { ItemUnitFormComponent } from './item-unit/item-unit-form/item-unit-form
 import { ItemUnitListComponent } from './item-unit/item-unit-list/item-unit-list.component';
 import { GlobalService } from 'src/app/shared/global.service';
 import { EventLogComponent } from './eventlog/eventlog.component';
-import { AddHeaderInterceptor} from './interceptor.service';
+import { AuthInterceptorService} from './interceptor.service';
 import { EmailComponent } from './Email/email.component';
+import { DataService} from './data.service';
+
 
 @NgModule({
   declarations: [
@@ -84,9 +86,11 @@ import { EmailComponent } from './Email/email.component';
     MomentModule
   ],
   providers: [
+    DataService,
+
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: AddHeaderInterceptor,
+      useClass: AuthInterceptorService,
       multi: true,
     },
     GetDtoService,

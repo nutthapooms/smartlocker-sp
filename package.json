@@ -23,6 +23,7 @@
     "@angular/common": "^14.2.3",
     "@angular/compiler": "^14.2.3",
     "@angular/core": "^14.2.3",
+    "@angular/forms": "^14.2.4",
     "@angular/platform-browser": "^14.2.3",
     "@angular/platform-browser-dynamic": "^14.2.3",
     "@angular/router": "^14.2.3",
@@ -30,6 +31,7 @@
     "@azure/msal-browser": "^2.28.3",
     "@azure/msal-node": "^1.14.0",
     "angular": "^1.8.3",
+    "ngx-moment": "^6.0.2",
     "q": "^1.5.1",
     "querystring": "^0.2.1",
     "tslib": "^2.4.0"
