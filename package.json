@@ -4,16 +4,16 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
-    "build": "ng build",
+    "build": "ng build --project online-storage --configuration production",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "online": "ng serve --proxy-config proxy.conf.json --project online-storage --ssl true",
     "kiosk": "ng serve --proxy-config proxy.conf.json --project locker-kiosk",
     "admin": "ng serve --proxy-config proxy.conf.json --project manage-storage --ssl true --ssl-cert ssl/server.crt --ssl-key ssl/server.key",
-    "prod-kiosk": "ng build --project locker-kiosk --prod",
-    "prod-online": "ng build --project online-storage --prod",
-    "prod-admin": "ng build --project manage-storage --prod"
+    "prod-kiosk": "ng build --project locker-kiosk --configuration production",
+    "prod-online": "ng build --project online-storage --configuration production",
+    "prod-admin": "ng build --project manage-storage --configuration production"
   },
   "private": true,
   "dependencies": {

@@ -20,15 +20,13 @@ export class AuthInterceptorService implements HttpInterceptor {
     this.data.currentToken.subscribe(message => {
       // console.log('token :' + message)
       request = request.clone({
-        setHeaders: { Authorization: 'Bearer ' + message }
+        setHeaders: { Authorization: 'Bearer ' + message },
+        // setHeaders: { Authorization: 'Bearer ' + request.headers["X-MS-TOKEN-AAD-ACCESS-TOKEN"] },
+        withCredentials : true
       });
     })
 
     return next.handle(request);
-
-
-
-
   }
 }
 

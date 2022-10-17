@@ -16,8 +16,6 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class AuthInterceptorService implements HttpInterceptor {
   constructor(
-    private authService: AuthService,
-    private http: HttpClient,
     private data: DataService
   ) { }
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -25,14 +23,11 @@ export class AuthInterceptorService implements HttpInterceptor {
       // console.log('token :' + message)
       request = request.clone({
         setHeaders: { Authorization: 'Bearer ' + message }
+
       });
     })
 
     return next.handle(request);
-
-
-
-
   }
 }
 
