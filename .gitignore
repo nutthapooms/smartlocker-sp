@@ -46,4 +46,4 @@ testem.log
 Thumbs.db
 
 # Cache file
-/angular/cache
+/angular/cache/*

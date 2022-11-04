@@ -60,6 +60,10 @@ export class AllItemComponent implements OnInit {
     })
 
   }
+  checkReserve(reserveUserId){
+    return ((reserveUserId == this.cardNumber) || !reserveUserId)
+  }
+
   openLocker(l) {
     this.chooseLocker = l;
     if (this.lang == "thai") {

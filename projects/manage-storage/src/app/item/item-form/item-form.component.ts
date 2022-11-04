@@ -37,6 +37,7 @@ export class ItemFormComponent implements OnInit {
         console.log(data)
         this.item = data;
         this.itemRequest.name = this.item.name
+        this.itemRequest.description = this.item.description
         this.itemRequest.attachments = this.item.images
         console.log(this.item)
         this.duration = moment.duration(this.item.defaultDuration, 'seconds')

@@ -47,6 +47,7 @@ export class ItemDTO {
   public id: number;
   public unitCount: number;
   public name: string;
+  public description: string;
   public images: Array<number>;
   public defaultDuration: number;
   public category: CategoryDTO;
@@ -247,6 +248,7 @@ export class LoanDTO2 {
 
 export class ItemRequest {
   public name: string;
+  public description  : string;
   public subcategoryId: string;
   public defaultDuration: number;
   public attachments: Array<number> = new Array<number>();

@@ -101,7 +101,7 @@ export class LockerOptionComponent implements OnInit {
                 this.ablebtn();
                 this.lockernum = "";
               }
-              else if (IsAvailable.loaner.employeeId == null) {
+              else if (IsAvailable.loaner.employeeId == null ||IsAvailable.watcher.badgeId == null ||IsAvailable.watcher.badgeId == this.card_number  ) {
                 this.http.post<UnitDTO>("https://smartlocker20220922110147.azurewebsites.net/api/admin/borrow/" + IsAvailable.barcode, { "BadgeId": this.card_number }).subscribe(
                   data => {
                     let returnday = data.item.defaultDuration / (24 * 60 * 60);
