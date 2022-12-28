@@ -42,7 +42,10 @@ import { AuthInterceptorService} from './interceptor.service';
 import { EmailComponent } from './Email/email.component';
 import { DataService} from './data.service';
 
+import { MsalModule, MsalRedirectComponent } from '@azure/msal-angular';
+import { PublicClientApplication } from '@azure/msal-browser';
 
+const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,7 +86,18 @@ import { DataService} from './data.service';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    MomentModule
+    MomentModule,
+    MsalModule.forRoot( new PublicClientApplication({
+      auth: {
+        clientId: '3a4bd202-bede-4dd7-8321-cda964ab6fee',
+        authority: 'd1ee1acd-bc7a-4bc4-a787-938c49a83906',
+        redirectUri: 'https://localhost:4500'
+      },
+      cache: {
+        cacheLocation: 'localStorage',
+        storeAuthStateInCookie: isIE,
+      }
+    }), null, null)
   ],
   providers: [
     DataService,
@@ -96,6 +110,6 @@ import { DataService} from './data.service';
     GetDtoService,
     GlobalService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, MsalRedirectComponent]
 })
 export class AppModule { }

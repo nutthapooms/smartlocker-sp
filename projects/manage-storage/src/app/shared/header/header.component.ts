@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private data: DataService
-  ) { 
+  ) {
     setInterval(() => {
       this.data.changeToken(this.getToken())
     }, 60000 * 15);
@@ -27,9 +27,10 @@ export class HeaderComponent implements OnInit {
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
           },
-
+          
         }).subscribe(data => {
           // console.log(data.access_token)
+
           this.data.changeToken(data.access_token)
           return data.access_token
 
@@ -49,7 +50,9 @@ export class HeaderComponent implements OnInit {
         {
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
+
           },
+          withCredentials: false
 
         }).subscribe(data => {
           // console.log(data.access_token)
@@ -62,7 +65,7 @@ export class HeaderComponent implements OnInit {
       return error
     }
   }
-  
+
   ngOnInit() {
     this.getToken()
 

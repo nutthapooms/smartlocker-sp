@@ -20,9 +20,10 @@ export class AuthInterceptorService implements HttpInterceptor {
     this.data.currentToken.subscribe(message => {
       // console.log('token :' + message)
       request = request.clone({
-        setHeaders: { Authorization: 'Bearer ' + message },
+        
+        setHeaders: {"Access-Control-Allow-Origin": window.location.origin },
         // setHeaders: { Authorization: 'Bearer ' + request.headers["X-MS-TOKEN-AAD-ACCESS-TOKEN"] },
-        withCredentials : true
+        withCredentials : false
       });
     })
 
@@ -49,13 +50,13 @@ export class AddHeaderInterceptor implements HttpInterceptor {
       // clonedRequest.headers.append('Content-Type','application/json');
     }
     else {
-      return next.handle(req.clone({
-        headers: new HttpHeaders({
-          // 'Access-Control-Allow-Origin' : '*',
-          'Content-Type': 'application/json',
-          // 'password': pwd
-        })
-      , withCredentials :false}));
+      // return next.handle(req.clone({
+      //   headers: new HttpHeaders({
+      //     // 'Access-Control-Allow-Origin' : '*',
+      //     // 'Content-Type': 'application/json',
+      //     // 'password': pwd
+      //   })
+      // , withCredentials :false}));
 
     }
 

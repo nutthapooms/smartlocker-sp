@@ -1,2 +1,16 @@
 <app-header></app-header>
+
+    
+
+    <div class="toolbar-spacer"></div>
+
+    <a mat-button [routerLink]="['profile']">Profile</a>
+
+    <button mat-raised-button *ngIf="!loginDisplay" (click)="login()">Login</button>
+
+
+<div class="container">
+    <!--This is to avoid reload during acquireTokenSilent() because of hidden iframe -->
+    <router-outlet *ngIf="!isIframe"></router-outlet>
+</div>
 <app-main></app-main>
